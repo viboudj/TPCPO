@@ -21,7 +21,7 @@ public abstract class Joueur {
 	
 	private String nom = "";
 	
-	private int score=0;
+	private Score score;
 
 	/**
 	 * Description of the property nbrTourRejoue.
@@ -86,12 +86,12 @@ public abstract class Joueur {
 	}
 
 
-	public int getScore() {
+	public Score getScore() {
 		return score;
 	}
 
 
-	public void setScore(int score) {
+	public void setScore(Score score) {
 		this.score = score;
 	}
 
@@ -105,24 +105,14 @@ public abstract class Joueur {
 		Joueur.numJoueur = numJoueur;
 	}
 	
-	private void updateScore(){
-		if(this.nbrTourRejoue==0){
-			this.score=this.score+2;
-		} else {
-			this.score=this.score+(2+(this.nbrTourRejoue*2-1));
-		}
 	
-	}
-	
-
-	
-	public void tourGagner(){
+	public void tourGagne(){
 		this.nbrTourRejoue++;
-		updateScore();
+		score.updateScore(nbrTourRejoue);
 	}
 	
 	public void tourPerdu(){
-		this.nbrTourRejoue=0;
+		this.nbrTourRejoue = 0;
 	}
 
 }
