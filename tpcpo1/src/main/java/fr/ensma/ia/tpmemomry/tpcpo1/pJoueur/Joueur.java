@@ -1,118 +1,119 @@
-/*******************************************************************************
- * 2015, All rights reserved.
- *******************************************************************************/
 package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
-
-// Start of user code (user defined imports)
-
-// End of user code
 
 /**
  * Description of Joueur.
  * 
  * @author douaultc
  */
+/**
+ * Description de la classe abstraite Joueur
+ * @author clementdouault
+ *
+ */
 public abstract class Joueur {
 	/**
-	 * Description of the property nom.
+	 * numJoueur : stocke le nombre d'instance de Joueur creees
 	 */
-	
 	private static int numJoueur=0;
 	
-	private String nom = "";
+	/**
+	 * nom : le nom du joueur
+	 */
+	protected String nom = "";
 	
+	/**
+	 * score : le score du joueur
+	 * @see Score
+	 */
 	private Score score;
 
 	/**
-	 * Description of the property nbrTourRejoue.
+	 * pairesSuccessives : nombre de paires trouvées successivement
 	 */
-	private int nbrTourRejoue = 0;
-
-	// Start of user code (user defined attributes for Joueur)
-
-	// End of user code
+	private int pairesSuccessives = 0;
 
 	/**
-	 * The constructor.
+	 * Constructeur sans parametre
 	 */
 	public Joueur() {
-		// Start of user code constructor for Joueur)
 		super();
 		numJoueur++;
 		nom="joueur"+numJoueur;
-		// End of user code
 	}
 	
+	/**
+	 * Constructeur avec parametre
+	 * @param nom String : le nom a donner au joueur
+	 */
 	public Joueur(String nom){
 		super();
 		numJoueur++;
 		this.nom=nom;
 	}
 
-
-	// Start of user code (user defined methods for Joueur)
-
-	// End of user code
 	/**
-	 * Returns nom.
-	 * @return nom 
+	 * Obtient le nom du joueur
+	 * @return nom String : le nom du joueur
 	 */
 	public String getNom() {
 		return this.nom;
 	}
 
 	/**
-	 * Sets a value to attribute nom. 
-	 * @param newNom 
+	 * Modifie le nom du joueur 
+	 * @param newNom String : le nouveau nom du joueur
 	 */
 	public void setNom(String newNom) {
 		this.nom = newNom;
 	}
 
 	/**
-	 * Returns nbrTourRejoue.
-	 * @return nbrTourRejoue 
+	 * Obtient le nombre de paires trouvées successivement par le joueur
+	 * @return pairesSuccessives int : nombre de paires trouvées successivement
 	 */
-	public int getNbrTourRejoue() {
-		return this.nbrTourRejoue;
+	public int getpairesSuccessives() {
+		return this.pairesSuccessives;
 	}
 
 	/**
-	 * Sets a value to attribute nbrTourRejoue. 
-	 * @param newNbrTourRejoue 
+	 * Modifie le nombre de paires trouvées successivement par le joueur 
+	 * @param newpairesSuccessives int : nouveau nombre de paire trouvées successivement
 	 */
-	public void setNbrTourRejoue(int newNbrTourRejoue) {
-		this.nbrTourRejoue = newNbrTourRejoue;
+	public void setpairesSuccessives(int newpairesSuccessives) {
+		this.pairesSuccessives = newpairesSuccessives;
 	}
 
-
+	/**
+	 * Obtient le score du joueur
+	 * @return Score : le score du joueur
+	 * @see Score
+	 */
 	public Score getScore() {
 		return score;
 	}
 
-
+	/**
+	 * Modifie le score du joueur
+	 * @param score Score : le nouveau score
+	 * @see Score
+	 */
 	public void setScore(Score score) {
 		this.score = score;
 	}
-
-
-	public static int getNumJoueur() {
-		return numJoueur;
-	}
-
-
-	public static void setNumJoueur(int numJoueur) {
-		Joueur.numJoueur = numJoueur;
-	}
 	
-	
+	/**
+	 * Le joueur trouve deux paires identiques
+	 */
 	public void tourGagne(){
-		this.nbrTourRejoue++;
-		score.updateScore(nbrTourRejoue);
+		this.pairesSuccessives++;
+		score.updateScore(pairesSuccessives);
 	}
 	
+	/**
+	 * Le joueur trouve deux paires differentes
+	 */
 	public void tourPerdu(){
-		this.nbrTourRejoue = 0;
+		this.pairesSuccessives = 0;
 	}
 
 }
