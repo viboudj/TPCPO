@@ -1,41 +1,25 @@
-/*******************************************************************************
- * 2015, All rights reserved.
- *******************************************************************************/
 package fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.pEtatPlateau;
 
-
-
-// Start of user code (user defined imports)
-
-// End of user code
-
 /**
- * Description of IEtatPlateau.
+ * Interface representant un etat de l'automate plateau
  * 
  * @author douaultc
  */
 public interface IEtatPlateau {
-	// Start of user code (user defined attributes for IEtatPlateau)
-
-	// End of user code
 
 	/**
-	 * Description of the method selectCarte1.
+	 * Transition selectCarte1 de l'automate
 	 */
 	public void selectCarte1();
 
 	/**
-	 * Description of the method selectCarte2.
+	 * Transition selectCarte2 de l'automate
 	 */
 	public void selectCarte2();
 
 	/**
-	 * Description of the method retourDebut.
+	 * Transition comparaisonCartes de l'automate
 	 */
-	public void retourDebut();
-
-	// Start of user code (user defined methods for IEtatPlateau)
-
-	// End of user code
+	public void comparaisonCartes();
 
 }

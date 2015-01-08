@@ -1,100 +1,121 @@
-/*******************************************************************************
- * 2015, All rights reserved.
- *******************************************************************************/
 package fr.ensma.ia.tpmemomry.tpcpo1.pPlateau;
 
-
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.ListIterator;
 import java.util.Random;
-import java.util.Collections;
 
-import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Carte;
-import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.pEtatPlateau.DeuxCartes;
-import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.pEtatPlateau.IEtatPlateau;
-import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.pEtatPlateau.PasCarte;
-import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.pEtatPlateau.UneCarte;
-// Start of user code (user defined imports)
+import fr.ensma.ia.tpmemomry.tpcpo1.Partie;
+import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte.*;
+import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.pEtatPlateau.*;
 
-// End of user code
 
 /**
- * Description of Plateau.
- * 
- * @author douaultc
+ * Plateau : classe gerant le plateau de jeu
+ * @author clementdouault
+ *
  */
 public class Plateau {
-	/**
-	 * Description of the property nbrCartes.
-	 */
-	private int nbrCartes = 0;
 
 	/**
-	 * Description of the property carte1.
+	 * La reference de la partie a laquelle le plateau appartient
+	 */
+	private Partie partie;
+	
+	/**
+	 * Nombre de cartes dont est compose le plateau
+	 */
+	private int nbrCartes = 0;
+	
+	/**
+	 * Nombre de cartes restantes sur le plateau
+	 */
+	private int nbrCartesRestantes;
+	
+	/**
+	 * Liste des cartes composant le plateau
+	 */
+	private ArrayList<Carte> cartes =null;
+
+	/**
+	 * Liste des cartes melangees composant le plateau
+	 */
+	private ArrayList<Carte> listeCartesMelangees = null;
+
+	/**
+	 * Reference de la premiere carte selectionnee par le joueur
 	 */
 	private Carte carte1 = null;
 
 	/**
-	 * Description of the property carte2.
+	 * Reference de la deuxieme carte selectionnee par le joueur
 	 */
 	private Carte carte2 = null;
 
 	/**
-	 * Description of the property etatPasCarte.
+	 * Instance de l'Žtat PasCarteSelectionnee
 	 */
-	private PasCarte etatPasCarte = null;
+	private IEtatPlateau pasCarteSelectionnee = new PasCarteSelectionnee(this);
+	
+	/**
+	 * Instance de l'Žtat UneCarteSelectionnee
+	 */
+	private IEtatPlateau uneCarteSelectionnee = new UneCarteSelectionnee(this);
 
 	/**
-	 * Description of the property etatDeuxCartes.
+	 * Instance de l'Žtat DeuxCartesSelectionnees
 	 */
-	private DeuxCartes etatDeuxCartes = null;
+	private IEtatPlateau deuxCartesSelectionnees = new DeuxCartesSelectionnees(this);
 
 	/**
-	 * Description of the property etatUneCarte.
-	 */
-	private UneCarte etatUneCarte = null;
-
-	/**
-	 * Description of the property etatCourant.
+	 * Etat actuel du plateau
 	 */
 	private IEtatPlateau etatCourant = null;
 
-	/**
-	 * Description of the property cartes.
-	 */
-	public List<Carte> cartes =null;
-
-	/**
-	 * Description of the property listeCartesMelangees.
-	 */
-	private List<Carte> listeCartesMelangees = null;
+	// -- CONSTRUCTEURS -- //
 	
-	// Start of user code (user defined attributes for Plateau)
-
-	// End of user code
-
 	/**
-	 * The constructor.
+	 * Constructeur avec un parametre
+	 * Cree un plateau compose de 32 cartes avec 8 symboles differents (2 paires par symbole)
 	 */
-	public Plateau(int nbr) {
-		
+	public Plateau(Partie partie){
 		super();
+		this.partie = partie;
+		etatCourant = pasCarteSelectionnee;
 		
-		cartes= new ArrayList(nbr);
-		listeCartesMelangees = new ArrayList(nbr);
+		Random r = new Random();
+		int v = r.nextInt();
+		
+		this.nbrCartes=32;
+		cartes= new ArrayList<Carte>(this.nbrCartes);
+		listeCartesMelangees = new ArrayList<Carte>(this.nbrCartes);
+		
+		for(int i=v;i<v+8;i++){
+			for(int j=0; j<4;j++){
+				cartes.add( new Carte(choixESymboleCarte(i),r.nextInt()));
+			}
+			
+		}
+		
+		melangerCartes();
+	}
+	
+	/**
+	 * Constructeur a deux parametres
+	 * Cree un plateau compose de nbr (ou nbr-1 si nbr est impair) cartes avec des symboles choisis alŽatoirement 
+	 * @param nbr int : nombre de cartes composant le plateau
+	 */
+	public Plateau(Partie partie, int nbr) {
+		super();
+		this.partie = partie;
+		etatCourant = pasCarteSelectionnee;
+		
 		if(nbr%2==1){
-		this.nbrCartes=nbr-1;
+		this.nbrCartes=nbr-1; 
 		} else {
 			this.nbrCartes=nbr;
 		}
 		
-		this.etatPasCarte= new PasCarte(this);
-		this.etatUneCarte= new UneCarte(this);
-		this.etatDeuxCartes= new DeuxCartes(this);
-		this.etatCourant=this.etatPasCarte;
-		 
+		cartes= new ArrayList<Carte>(nbrCartes);
+		listeCartesMelangees = new ArrayList<Carte>(this.nbrCartes); 
 		
 		Random r = new Random();
 		
@@ -107,176 +128,38 @@ public class Plateau {
 			Carte d = new Carte(symb,r.nextInt());
 			cartes.add(d);
 		}
-		distribueCarte();
-	
+		
+		melangerCartes();
 	}
 	
-	public Plateau(){
-		super();
+	/**
+	 * Melange les cartes contenues dans la liste cartes en les placant aleatoirement dans listeCartesMelangees
+	 */
+	public void melangerCartes() {
 		
-		Random r = new Random();
-		int v = r.nextInt();
+		Carte c = null;
+		ArrayList<Carte> listeTempo = new ArrayList<Carte>(nbrCartes) ;
+		listeTempo=cartes;
 		
-		this.nbrCartes=32;
-		cartes= new ArrayList(this.nbrCartes);
-		listeCartesMelangees = new ArrayList(this.nbrCartes);
-		this.etatPasCarte= new PasCarte(this);
-		this.etatUneCarte= new UneCarte(this);
-		this.etatDeuxCartes= new DeuxCartes(this);
-		this.etatCourant=this.etatPasCarte;
-		
-		for(int i=v;i<v+8;i++){
-			for(int j=0; j<4;j++){
-				cartes.add( new Carte(choixESymboleCarte(i),r.nextInt()));
-			}
+		for(int j=0;j<this.nbrCartes;j++){
+			c=listeTempo.get(0);
 			
-		}
-		distribueCarte();
-
+			for(int i=0;i<listeTempo.size();i++){
+				if(c.getRandValue()>listeTempo.get(i).getRandValue())  c=listeTempo.get(i);
+				}
+			
+			listeCartesMelangees.add(c);
+			listeTempo.remove(c);
+		}		
 		
-		
-		
-	}
-
-	/**
-	 * Description of the method comparaisonCartes.
-	 * @return 
-	 */
-	public boolean comparaisonCartes() {
-		// Start of user code for method comparaisonCartes
-		boolean comparaisonCartes = false;
-		return comparaisonCartes;
-		// End of user code
-	}
-
-	/**
-	 * Description of the method Melanger.
-	 */
-	public void Melanger() {
-		// Start of user code for method Melanger
-		// End of user code
-	}
-
-	// Start of user code (user defined methods for Plateau)
-
-	// End of user code
-	/**
-	 * Returns nbrCartes.
-	 * @return nbrCartes 
-	 */
-	public int getNbrCartes() {
-		return this.nbrCartes;
-	}
-
-	/**
-	 * Sets a value to attribute nbrCartes. 
-	 * @param newNbrCartes 
-	 */
-	public void setNbrCartes(int newNbrCartes) {
-		this.nbrCartes = newNbrCartes;
-	}
-
-	/**
-	 * Returns carte1.
-	 * @return carte1 
-	 */
-	public Carte getCarte1() {
-		return this.carte1;
-	}
-
-	/**
-	 * Sets a value to attribute carte1. 
-	 * @param newCarte1 
-	 */
-	public void setCarte1(Carte newCarte1) {
-		this.carte1 = newCarte1;
-	}
-
-	/**
-	 * Returns carte2.
-	 * @return carte2 
-	 */
-	public Carte getCarte2() {
-		return this.carte2;
-	}
-
-	/**
-	 * Sets a value to attribute carte2. 
-	 * @param newCarte2 
-	 */
-	public void setCarte2(Carte newCarte2) {
-		this.carte2 = newCarte2;
-	}
-
-	/**
-	 * Returns etatPasCarte.
-	 * @return etatPasCarte 
-	 */
-	public PasCarte getEtatPasCarte() {
-		return this.etatPasCarte;
-	}
-
-	/**
-	 * Sets a value to attribute etatPasCarte. 
-	 * @param newEtatPasCarte 
-	 */
-	public void setEtatPasCarte(PasCarte newEtatPasCarte) {
-		this.etatPasCarte = newEtatPasCarte;
-	}
-
-	/**
-	 * Returns etatDeuxCartes.
-	 * @return etatDeuxCartes 
-	 */
-	public DeuxCartes getEtatDeuxCartes() {
-		return this.etatDeuxCartes;
-	}
-
-	/**
-	 * Sets a value to attribute etatDeuxCartes. 
-	 * @param newEtatDeuxCartes 
-	 */
-	public void setEtatDeuxCartes(DeuxCartes newEtatDeuxCartes) {
-		this.etatDeuxCartes = newEtatDeuxCartes;
-	}
-
-	/**
-	 * Returns etatUneCarte.
-	 * @return etatUneCarte 
-	 */
-	public UneCarte getEtatUneCarte() {
-		return this.etatUneCarte;
-	}
-
-	/**
-	 * Sets a value to attribute etatUneCarte. 
-	 * @param newEtatUneCarte 
-	 */
-	public void setEtatUneCarte(UneCarte newEtatUneCarte) {
-		this.etatUneCarte = newEtatUneCarte;
-	}
-
-	/**
-	 * Returns etatCourant.
-	 * @return etatCourant 
-	 */
-	public IEtatPlateau getEtatCourant() {
-		return this.etatCourant;
-	}
-
-	/**
-	 * Sets a value to attribute etatCourant. 
-	 * @param newEtatCourant 
-	 */
-	public void setEtatCourant(IEtatPlateau newEtatCourant) {
-		this.etatCourant = newEtatCourant;
 	}
 	
-	public  List<Carte> getListeCartesMelangees(){
-		return this.listeCartesMelangees;
-	}
-	
-	
+	/**
+	 * Retour un symbole de carte parmi l'enumeration ESymboleCarte en fonction de la valeur val d'entree
+	 * @param val int : valeur
+	 * @return ESymboleCarte : un symbole de carte
+	 * @see ESymboleCarte
+	 */
 	private ESymboleCarte choixESymboleCarte(int val){
 		switch(Math.abs(val) % 10){
 		case 1 : return ESymboleCarte.croix; 
@@ -293,45 +176,158 @@ public class Plateau {
 		return null;
 	}
 	
-
-
-
+	/**
+	 * Retourne un symbole de carte aleatoire parmi l'enumeration ESymboleCarte
+	 * @return ESymboleCarte : un symbole de carte
+	 * @see ESymboleCarte
+	 */
 	private ESymboleCarte choixESymboleCartealea(){
 		Random r=new Random();
 		int val= r.nextInt(10);
 		return choixESymboleCarte(val);
 	}
 	
-	/**
-	 * Returns distribueCarte.
-	 * @return vide la première liste cartes pour placer les cartes dans la seconde liste listeCartesMelangees 
-	 * selon la valeur aléatoire de chaque carte
-	 */
+	// -- GETTEURS ET SETTEURS -- //
 
+	/**
+	 * Obtient le nombre de cartes composant le plateau
+	 * @return nbrCartes int : le nombre de cartes composant le plateau 
+	 */
+	public int getNbrCartes() {
+		return this.nbrCartes;
+	}
+
+	/**
+	 * Modifie le nombre de cartes composant le plateau
+	 * @param newNbrCartes int : le nouveau nombre de cartes composant le plateau
+	 */
+	public void setNbrCartes(int newNbrCartes) {
+		this.nbrCartes = newNbrCartes;
+	}
 	
-	public void distribueCarte(){
-		
-		Carte c = null;
-		List<Carte> listeTempo = new ArrayList(nbrCartes) ;
-		listeTempo=cartes;
-		
-		for(int j=0;j<this.nbrCartes;j++){
-			c=listeTempo.get(0);
-			for(int i=0;i<listeTempo.size();i++){
-				if(c.getRandValue()>listeTempo.get(i).getRandValue())  c=listeTempo.get(i);
-				}
-			listeCartesMelangees.add(c);
-			listeTempo.remove(c);
-			}		
-		
+	/**
+	 * Obtient le nombre de cartes restantes sur le plateau
+	 * @return nbrCartesRestantes int : le nombre de cartes restantes sur le plateau
+	 */
+	public int getNbrCartesRestantes() {
+		return nbrCartesRestantes;
+	}
+
+	/**
+	 * Modifie le nombre de cartes restantes sur le plateau
+	 * @param nbrCartesRestantes int : le nouveau nombre de cartes restantes sur le plateau
+	 */
+	public void setNbrCartesRestantes(int nbrCartesRestantes) {
+		this.nbrCartesRestantes = nbrCartesRestantes;
+	}
+	
+	/**
+	 * Obtient la liste des cartes melangees composant le plateau
+	 * @return listeCarteMelangee ArrayList : liste des cartes mŽlangees
+	 */
+	public  ArrayList<Carte> getListeCartesMelangees(){
+		return this.listeCartesMelangees;
+	}
+	
+	/**
+	 * Obtient la reference de la premiere carte selectionnee par le joueur
+	 * @return carte1 Carte : la premiere carte selectionnee
+	 */
+	public Carte getCarte1() {
+		return this.carte1;
+	}
+
+	/**
+	 * Modifie la reference de la premiere carte selectionnee par le joueur
+	 * @param newCarte1 Carte : la nouvelle carte selectionnee en premier
+	 */
+	public void setCarte1(Carte newCarte1) {
+		this.carte1 = newCarte1;
+		etatCourant.selectCarte1();
+	}
+
+	/**
+	 * Obtient la reference de la deuxieme carte selectionnee par le joueur
+	 * @return carte2 Carte : la deuxieme carte selectionnee
+	 */
+	public Carte getCarte2() {
+		return this.carte2;
+	}
+
+	/**
+	 * Modifie la reference de la deuxieme carte selectionnee par le joueur
+	 * @param newCarte2 Carte : la nouvelle carte selectionnee en deuxieme
+	 */
+	public void setCarte2(Carte newCarte2) {
+		this.carte2 = newCarte2;
+		etatCourant.selectCarte2();
+	}
+	
+	// -- COMPORTEMENT -- //
+	
+	/**
+	 * Compare les deux cartes selectionnees par le joueur
+	 * @return boolean : true si cartes identiques, false sinon
+	 */
+	public boolean comparaisonPaire() {
+		etatCourant.comparaisonCartes();
+		if(carte1.getSymbole() == carte2.getSymbole()){
+			partie.paireCartesIdentiques();
+			return true;
+		} else {
+			partie.paireCartesDifferentes();
+			return false;
 		}
+	}
+
+	// -- GESTION DES ETATS -- //
+	
+	/**
+	 * Obtient l'instance de l'etat pasCarteSelectionnee
+	 * @return pasCarteSelectionnee 
+	 */
+	public IEtatPlateau getpasCarteSelectionnee() {
+		return this.pasCarteSelectionnee;
+	}
+	
+	/**
+	 * Obtient l'instance de l'etat uneCarteSelectionnee
+	 * @return uneCarteSelectionnee 
+	 */
+	public IEtatPlateau getuneCarteSelectionnee() {
+		return this.uneCarteSelectionnee;
+	}
+	
+	/**
+	 * Obtient l'instance de l'etat deuxCartesSelectionnees
+	 * @return deuxCartesSelectionnees 
+	 */
+	public IEtatPlateau getdeuxCartesSelectionnees() {
+		return this.deuxCartesSelectionnees;
+	}
+
+	/**
+	 * Obtient l'etat courant du plateau
+	 * @return etatCourant IEtat plateau : l'etat courant du plateau
+	 */
+	public IEtatPlateau getEtatCourant() {
+		return this.etatCourant;
+	}
+
+	/**
+	 * Modifie l'etat courant du plateau
+	 * @param newEtatCourant IEtatPlateau : le nouvel etat courant du plateau
+	 */
+	public void setEtatCourant(IEtatPlateau newEtatCourant) {
+		this.etatCourant = newEtatCourant;
+	}
+	
+	// -- OVERRIDE -- //
 	
 	/**
 	 * Returns toStringM.
 	 * @return String de la liste cartes (normalement vide)
 	 */
-			
-	
 	public String toStringM(){
 		String phrase = "nombre de cartes sur le plateau " +  this.nbrCartes + '\n';
 		for(int i=0;i<cartes.size();i++){
@@ -341,10 +337,11 @@ public class Plateau {
 	}
 	
 	/**
-	 * Returns toStringM.
-	 * @return String de la liste des cartes mélangées
+	 * Redefinition de la fonction toString pour l'affichage du plateau melange
+	 * Affiche le plateau de la forme "nombre de carte" + detail de chaque carte
+	 * @return String : liste des cartes melangees
 	 */
-	
+	@Override
 	public String toString(){
 		String phrase = "nombre de cartes sur le plateau " +  this.nbrCartes + '\n';
 		for(int i=0;i<this.nbrCartes;i++){
@@ -352,6 +349,4 @@ public class Plateau {
 		}
 		return phrase;
 	}
-	
-
 }

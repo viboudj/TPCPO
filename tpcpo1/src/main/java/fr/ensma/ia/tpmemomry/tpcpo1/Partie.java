@@ -1,22 +1,14 @@
-/*******************************************************************************
- * 2015, All rights reserved.
- *******************************************************************************/
 package fr.ensma.ia.tpmemomry.tpcpo1;
-
 
 import java.util.HashSet;
 import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.IEtatPartie;
-import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.Initialisation;
-import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.PartieEnCours;
-import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.PartieFin;
+import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.PairesRestantes;
+import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.FinPartie;
 import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.Joueur;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.*;
-// Start of user code (user defined imports)
-
-// End of user code
 
 /**
- * Description of Partie.
+ * Classe modelisant une partie de memory
  * 
  * @author douaultc
  */
@@ -24,7 +16,7 @@ public class Partie {
 	/**
 	 * Description of the property etatPartieEnCours.
 	 */
-	private PartieEnCours etatPartieEnCours = null;
+	private IEtatPartie pairesRestantes;
 
 	/**
 	 * Description of the property plateau.
@@ -44,7 +36,7 @@ public class Partie {
 	/**
 	 * Description of the property etatPartieFin.
 	 */
-	private PartieFin etatPartieFin = null;
+	private FinPartie etatPartieFin = null;
 
 	/**
 	 * Description of the property joueurs.
@@ -61,11 +53,6 @@ public class Partie {
 	 */
 	private Joueur joueurJouant = null;
 
-	/**
-	 * Description of the property etatPartieInitialisation.
-	 */
-	private Initialisation etatPartieInitialisation = null;
-
 	// Start of user code (user defined attributes for Partie)
 
 	// End of user code
@@ -79,6 +66,14 @@ public class Partie {
 		// End of user code
 	}
 
+	
+	public void paireCartesIdentiques() {
+		
+	}
+	
+	public void paireCartesDifferentes() {
+		
+	}
 	/**
 	 * Description of the method tour.
 	 */
@@ -94,7 +89,7 @@ public class Partie {
 	 * Returns etatPartieEnCours.
 	 * @return etatPartieEnCours 
 	 */
-	public PartieEnCours getEtatPartieEnCours() {
+	public PairesRestantes getEtatPartieEnCours() {
 		return this.etatPartieEnCours;
 	}
 
@@ -102,7 +97,7 @@ public class Partie {
 	 * Sets a value to attribute etatPartieEnCours. 
 	 * @param newEtatPartieEnCours 
 	 */
-	public void setEtatPartieEnCours(PartieEnCours newEtatPartieEnCours) {
+	public void setEtatPartieEnCours(PairesRestantes newEtatPartieEnCours) {
 		this.etatPartieEnCours = newEtatPartieEnCours;
 	}
 
@@ -158,7 +153,7 @@ public class Partie {
 	 * Returns etatPartieFin.
 	 * @return etatPartieFin 
 	 */
-	public PartieFin getEtatPartieFin() {
+	public FinPartie getEtatPartieFin() {
 		return this.etatPartieFin;
 	}
 
@@ -166,7 +161,7 @@ public class Partie {
 	 * Sets a value to attribute etatPartieFin. 
 	 * @param newEtatPartieFin 
 	 */
-	public void setEtatPartieFin(PartieFin newEtatPartieFin) {
+	public void setEtatPartieFin(FinPartie newEtatPartieFin) {
 		this.etatPartieFin = newEtatPartieFin;
 	}
 
