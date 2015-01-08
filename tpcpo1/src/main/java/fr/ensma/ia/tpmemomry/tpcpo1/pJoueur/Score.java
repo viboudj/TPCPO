@@ -66,7 +66,7 @@ public class Score {
 	public void setJoueur(Joueur joueur) {
 		this.joueur = joueur;
 	}
-	
+	 
 	/**
 	 * Calcul de la valeur du score en fonction du nombre de paires successivement trouvées par le joueur
 	 * @param pairesSuccessives int : le nombre de paires successivement trouvées

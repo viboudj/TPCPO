@@ -12,9 +12,9 @@ package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
  */
 public abstract class Joueur {
 	/**
-	 * numJoueur : stocke le nombre d'instance de Joueur creees
+	 * numInstanceJoueur : stocke le nombre d'instance de Joueur creees
 	 */
-	private static int numJoueur=0;
+	private static int numInstanceJoueur=0;
 	
 	/**
 	 * nom : le nom du joueur
@@ -37,8 +37,8 @@ public abstract class Joueur {
 	 */
 	public Joueur() {
 		super();
-		numJoueur++;
-		nom="joueur"+numJoueur;
+		numInstanceJoueur++;
+		nom="Joueur "+numInstanceJoueur;
 	}
 	
 	/**
@@ -47,7 +47,7 @@ public abstract class Joueur {
 	 */
 	public Joueur(String nom){
 		super();
-		numJoueur++;
+		numInstanceJoueur++;
 		this.nom=nom;
 	}
 
