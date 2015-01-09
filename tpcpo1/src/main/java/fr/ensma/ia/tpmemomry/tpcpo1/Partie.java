@@ -8,6 +8,7 @@ import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.PairesRestantes;
 import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.FinPartie;
 import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.Joueur;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.*;
+import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.pEtatPlateau.IEtatPlateau;
 
 /**
  * Classe modelisant une partie de memory
@@ -32,6 +33,11 @@ public class Partie {
 	private Joueur joueurCourant;
 	
 	/**
+	 * Compteur suivant le nombre de tours joues dans la partie
+	 */
+	private int nbrTourJoue = 0;
+	
+	/**
 	 * Instances de l'Žtat pairesRestantes
 	 */
 	private IEtatPartie pairesRestantes;
@@ -52,61 +58,20 @@ public class Partie {
 	public Plateau plateau = null;
 
 	/**
-	 * Description of the property nbrTourJoue.
-	 */
-	private int nbrTourJoue = 0;
-
-	/**
-	 * Description of the property joueurJouant.
-	 */
-	private Joueur joueurJouant = null;
-
-	// Start of user code (user defined attributes for Partie)
-
-	// End of user code
-
-	/**
 	 * The constructor.
 	 */
 	public Partie() {
-		// Start of user code constructor for Partie)
 		super();
-		// End of user code
+		
 	}
 
 	
 	public void paireCartesIdentiques() {
-		
+		etatCourantPartie.paireTrouvee();
 	}
 	
 	public void paireCartesDifferentes() {
-		
-	}
-	/**
-	 * Description of the method tour.
-	 */
-	public void tour() {
-		// Start of user code for method tour
-		// End of user code
-	}
-
-	// Start of user code (user defined methods for Partie)
-
-	// End of user code
-	/**
-	 * Returns etatPartieEnCours.
-	 * @return etatPartieEnCours 
-	 */
-	public PairesRestantes getEtatPartieEnCours() {
-		return this.etatPartieEnCours;
-	}
-
-	/**
-	 * Sets a value to attribute etatPartieEnCours. 
-	 * @param newEtatPartieEnCours 
-	 */
-	public void setEtatPartieEnCours(PairesRestantes newEtatPartieEnCours) {
-		this.etatPartieEnCours = newEtatPartieEnCours;
+		etatCourantPartie.pasPaireTrouvee();
 	}
 
 	/**
@@ -126,22 +91,6 @@ public class Partie {
 	}
 
 	/**
-	 * Returns etatPartieCourrant.
-	 * @return etatPartieCourrant 
-	 */
-	public IEtatPartie getEtatPartieCourrant() {
-		return this.etatPartieCourrant;
-	}
-
-	/**
-	 * Sets a value to attribute etatPartieCourrant. 
-	 * @param newEtatPartieCourrant 
-	 */
-	public void setEtatPartieCourrant(IEtatPartie newEtatPartieCourrant) {
-		this.etatPartieCourrant = newEtatPartieCourrant;
-	}
-
-	/**
 	 * Returns nbrJoueur.
 	 * @return nbrJoueur 
 	 */
@@ -155,22 +104,6 @@ public class Partie {
 	 */
 	public void setNbrJoueur(int newNbrJoueur) {
 		this.nbrJoueur = newNbrJoueur;
-	}
-
-	/**
-	 * Returns etatPartieFin.
-	 * @return etatPartieFin 
-	 */
-	public FinPartie getEtatPartieFin() {
-		return this.etatPartieFin;
-	}
-
-	/**
-	 * Sets a value to attribute etatPartieFin. 
-	 * @param newEtatPartieFin 
-	 */
-	public void setEtatPartieFin(FinPartie newEtatPartieFin) {
-		this.etatPartieFin = newEtatPartieFin;
 	}
 
 	/**
@@ -195,39 +128,6 @@ public class Partie {
 	 */
 	public void setNbrTourJoue(int newNbrTourJoue) {
 		this.nbrTourJoue = newNbrTourJoue;
-	}
-
-	/**
-	 * Returns joueurJouant.
-	 * @return joueurJouant 
-	 */
-	public Joueur getJoueurJouant() {
-		return this.joueurJouant;
-	}
-
-	/**
-	 * Sets a value to attribute joueurJouant. 
-	 * @param newJoueurJouant 
-	 */
-	public void setJoueurJouant(Joueur newJoueurJouant) {
-		this.joueurJouant = newJoueurJouant;
-	}
-
-	/**
-	 * Returns etatPartieInitialisation.
-	 * @return etatPartieInitialisation 
-	 */
-	public Initialisation getEtatPartieInitialisation() {
-		return this.etatPartieInitialisation;
-	}
-
-	/**
-	 * Sets a value to attribute etatPartieInitialisation. 
-	 * @param newEtatPartieInitialisation 
-	 */
-	public void setEtatPartieInitialisation(
-			Initialisation newEtatPartieInitialisation) {
-		this.etatPartieInitialisation = newEtatPartieInitialisation;
 	}
 
 }
