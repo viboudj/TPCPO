@@ -18,6 +18,21 @@ import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.pEtatPlateau.IEtatPlateau;
 public class Partie {
 	
 	/**
+	 * Le plateau de jeu
+	 */
+	private Plateau plateau;
+	
+	/**
+	 * Nombre de symboles de carte differents 
+	 */
+	private int nbrSymboles;
+	
+	/**
+	 * Nombre de cartes par symbole
+	 */
+	private int nbrPairesParSymboles;
+	
+	/**
 	 * Nombre de joueurs jouant une partie
 	 */
 	private int nbrJoueur = 0;
@@ -30,7 +45,7 @@ public class Partie {
 	/**
 	 * Joueur courant
 	 */
-	private Joueur joueurCourant;
+	private Joueur joueurCourant = null;
 	
 	/**
 	 * Compteur suivant le nombre de tours joues dans la partie
@@ -53,11 +68,35 @@ public class Partie {
 	private IEtatPartie etatCourantPartie;
 
 	/**
-	 * The constructor.
+	 * Constructeur sans parametre
+	 * Cree une nouvelle partie avec des parametres par default (8 symboles, 2 paires par symbole)
 	 */
 	public Partie() {
 		super();
+		nbrSymboles = 8;
+		nbrPairesParSymboles = 2;
+		plateau = new Plateau(this, nbrSymboles, nbrPairesParSymboles);
 		
+		listeJoueurs = new ArrayList<Joueur>();
+		
+		etatCourantPartie = pairesRestantes;	
+	}
+	
+	/**
+	 * Constructeur a deux parametres
+	 * Cree une nouvelle partie avec des parametres personnalisés
+	 * @param nbrSymboles int : nombre de symboles differents
+	 * @param nbrPairesParSymbole int : nombre de paires par symbole
+	 */
+	public Partie(int nbrSymboles, int nbrPairesParSymbole) {
+		super();
+		this.nbrSymboles = nbrSymboles;
+		this.nbrPairesParSymboles = nbrPairesParSymbole;
+		plateau = new Plateau(this, nbrSymboles, nbrPairesParSymboles);
+		
+		listeJoueurs = new ArrayList<Joueur>();
+		
+		etatCourantPartie = pairesRestantes;
 	}
 
 	/**
@@ -150,6 +189,14 @@ public class Partie {
 	
 	public void paireCartesDifferentes() {
 		etatCourantPartie.pasPaireTrouvee();
+	}
+	
+	public void traitementPaireTrouvee() {
+		joueurCourant.tourGagne();
+		
+		plateau.getCarte1().setSurPlateau(false);
+		plateau.getCarte2().setSurPlateau(false);
+		plateau.setNbrCartesRestantes(plateau.getNbrCartesRestantes()-2);
 	}
 	
 	/**

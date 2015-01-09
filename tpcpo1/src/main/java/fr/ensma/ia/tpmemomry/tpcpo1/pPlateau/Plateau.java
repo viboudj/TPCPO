@@ -26,6 +26,16 @@ public class Plateau {
 	private int nbrCartes = 0;
 	
 	/**
+	 * Nombre de symboles de carte differents
+	 */
+	private int nbrSymboles = 0;
+	
+	/**
+	 * Nombre de cartes par symbole
+	 */
+	private int nbrPairesParSymbole = 0;
+	
+	/**
 	 * Nombre de cartes restantes sur le plateau
 	 */
 	private int nbrCartesRestantes;
@@ -75,6 +85,7 @@ public class Plateau {
 	/**
 	 * Constructeur avec un parametre
 	 * Cree un plateau compose de 32 cartes avec 8 symboles differents (2 paires par symbole)
+	 * @param partie Partie : la reference de la partie
 	 */
 	public Plateau(Partie partie){
 		super();
@@ -85,11 +96,13 @@ public class Plateau {
 		int v = r.nextInt();
 		
 		this.nbrCartes=32;
+		nbrSymboles = 8;
+		nbrPairesParSymbole = 2;
 		cartes= new ArrayList<Carte>(this.nbrCartes);
 		listeCartesMelangees = new ArrayList<Carte>(this.nbrCartes);
 		
-		for(int i=v;i<v+8;i++){
-			for(int j=0; j<4;j++){
+		for(int i=v ; i<(v+nbrSymboles) ; i++){
+			for(int j=0; j<(nbrPairesParSymbole*2) ; j++){
 				cartes.add( new Carte(choixESymboleCarte(i),r.nextInt()));
 			}
 			
@@ -133,6 +146,36 @@ public class Plateau {
 	}
 	
 	/**
+	 * Constructeur a trois parametres
+	 * Cree un plateau avec nbrSymboles symboles et nbrPairesParSymbole paires par symbole
+	 * @param partie Partie : la reference de la partie
+	 * @param nbrSymboles int : le nombre de symboles differents
+	 * @param nbrPairesParSymbole int : le nombre de paires par symboles
+	 */
+	public Plateau(Partie partie, int nbrSymboles, int nbrPairesParSymbole) {
+		super();
+		this.partie = partie;
+		etatCourant = pasCarteSelectionnee;
+		
+		this.nbrSymboles = nbrSymboles;
+		this.nbrPairesParSymbole = nbrPairesParSymbole;
+		nbrCartes = nbrSymboles*nbrPairesParSymbole*2;
+		nbrCartesRestantes = nbrCartes;
+		
+		Random r = new Random();
+		cartes = new ArrayList<Carte>(nbrCartes);
+		listeCartesMelangees = new ArrayList<Carte>(nbrCartes);
+		
+		for(int i=0 ; i<nbrSymboles ; i++) {
+			for(int j=0 ; j<(nbrPairesParSymbole*2) ; j++) {
+				cartes.add(new Carte(choixESymboleCarte(i), r.nextInt()));
+			}
+		}
+		
+		melangerCartes();
+	}
+	
+	/**
 	 * Melange les cartes contenues dans la liste cartes en les placant aleatoirement dans listeCartesMelangees
 	 */
 	public void melangerCartes() {
@@ -162,16 +205,16 @@ public class Plateau {
 	 */
 	private ESymboleCarte choixESymboleCarte(int val){
 		switch(Math.abs(val) % 10){
-		case 1 : return ESymboleCarte.croix; 
-		case 2 : return ESymboleCarte.losange;
-		case 3 : return ESymboleCarte.carré;
-		case 4 : return ESymboleCarte.cercle;
-		case 5 : return ESymboleCarte.rectangle;
-		case 6 : return ESymboleCarte.étoile;
-		case 7 : return ESymboleCarte.soleil;
-		case 8 : return ESymboleCarte.lune;
-		case 9 : return ESymboleCarte.venus;
-		case 0 : return ESymboleCarte.mars;
+		case 0 : return ESymboleCarte.croix; 
+		case 1 : return ESymboleCarte.losange;
+		case 2 : return ESymboleCarte.carré;
+		case 3 : return ESymboleCarte.cercle;
+		case 4 : return ESymboleCarte.rectangle;
+		case 5 : return ESymboleCarte.étoile;
+		case 6 : return ESymboleCarte.soleil;
+		case 7 : return ESymboleCarte.lune;
+		case 8 : return ESymboleCarte.venus;
+		case 9 : return ESymboleCarte.mars;
 	}
 		return null;
 	}
@@ -203,6 +246,38 @@ public class Plateau {
 	 */
 	public void setNbrCartes(int newNbrCartes) {
 		this.nbrCartes = newNbrCartes;
+	}
+	
+	/**
+	 * Obtient le nombre de symboles de carte differents
+	 * @return nbrSymboles int : le nombre de symboles different
+	 */
+	public int getNbrSymboles() {
+		return nbrSymboles;
+	}
+
+	/**
+	 * Modifie le nombre de symboles de carte differents
+	 * @param newNbrSymboles int : le nouveau nombre de symboles differents
+	 */
+	public void setNbrSymboles(int newNbrSymboles) {
+		this.nbrSymboles = newNbrSymboles;
+	}
+
+	/**
+	 * Obtient le nombre de paires par symbole
+	 * @return nbrPairesParSymbole int : le nombre de paires par symbole 
+	 */
+	public int getNbrPairesParSymbole() {
+		return nbrPairesParSymbole;
+	}
+
+	/**
+	 * Modifie le nombre de paires par symbole
+	 * @param newNbrPairesParSymbole : le nouveau nombre de paires par symbole
+	 */
+	public void setNbrPairesParSymbole(int newNbrPairesParSymbole) {
+		this.nbrPairesParSymbole = newNbrPairesParSymbole;
 	}
 	
 	/**
