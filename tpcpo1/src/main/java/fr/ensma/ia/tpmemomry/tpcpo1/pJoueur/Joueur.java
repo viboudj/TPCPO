@@ -31,6 +31,11 @@ public abstract class Joueur {
 	 * pairesSuccessives : nombre de paires trouvées successivement
 	 */
 	private int pairesSuccessives = 0;
+	
+	/**
+	 * Nombre de paires trouvees par le joueur
+	 */
+	private int nbrPairesTrouvees = 0;
 
 	/**
 	 * Constructeur sans parametre
@@ -82,6 +87,22 @@ public abstract class Joueur {
 	public void setpairesSuccessives(int newpairesSuccessives) {
 		this.pairesSuccessives = newpairesSuccessives;
 	}
+	
+	/**
+	 * Obtient le nombre de paires trouvees par le joueur
+	 * @return nbrPairesTrouvees int : le nombre de paires trouvees
+	 */
+	public int getNbrPairesTrouvees() {
+		return nbrPairesTrouvees;
+	}
+
+	/**
+	 * Modifie le nombre de paires trouvees par le joueur
+	 * @param nbrPairesTrouvees int : le nouveau nombre de paires trouvees
+	 */
+	public void setNbrPairesTrouvees(int nbrPairesTrouvees) {
+		this.nbrPairesTrouvees = nbrPairesTrouvees;
+	}
 
 	/**
 	 * Obtient le score du joueur
@@ -106,6 +127,7 @@ public abstract class Joueur {
 	 */
 	public void tourGagne(){
 		this.pairesSuccessives++;
+		this.nbrPairesTrouvees++;
 		score.updateScore(pairesSuccessives);
 	}
 	
