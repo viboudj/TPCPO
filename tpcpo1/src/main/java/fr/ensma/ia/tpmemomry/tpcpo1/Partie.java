@@ -35,7 +35,7 @@ public class Partie {
 	/**
 	 * Nombre de joueurs jouant une partie
 	 */
-	private int nbrJoueur = 0;
+	private int nbrJoueurs = 0;
 	
 	/**
 	 * Liste des joueurs jouant une partie
@@ -50,7 +50,7 @@ public class Partie {
 	/**
 	 * Compteur suivant le nombre de tours joues dans la partie
 	 */
-	private int nbrTourJoue = 0;
+	private int nbrToursJoues = 0;
 	
 	/**
 	 * Instances de l'Žtat pairesRestantes
@@ -66,6 +66,8 @@ public class Partie {
 	 * Etat actuel de la partie
 	 */
 	private IEtatPartie etatCourantPartie;
+	
+	// -- CONSTRUCTEURS -- //
 
 	/**
 	 * Constructeur sans parametre
@@ -98,21 +100,72 @@ public class Partie {
 		
 		etatCourantPartie = pairesRestantes;
 	}
+	
+	// -- GETTEURS ET SETTEURS -- //
+
+	/**
+	 * Obtient l'instance du plateau de jeu
+	 * @return plateu Plateau : le plateau de jeu
+	 * @see Plateau
+	 */
+	public Plateau getPlateau() {
+		return plateau;
+	}
+
+	/**
+	 * Modifie l'instance du plateau de jeu
+	 * @param plateau Plateau : le nouveau plateau de jeu
+	 * @see Plateau
+	 */
+	public void setPlateau(Plateau plateau) {
+		this.plateau = plateau;
+	}
+	/**
+	 * Obtient le nombre de symboles de carte differents dans la partie
+	 * @return nbrSymbole int : le nombre de symboles de carte
+	 */
+	public int getNbrSymboles() {
+		return nbrSymboles;
+	}
+
+	/**
+	 * Modifie le nombre de symboles de carte differents dans la partie
+	 * @param nbrSymboles int : le nouveau nombre de symboles
+	 */
+	public void setNbrSymboles(int nbrSymboles) {
+		this.nbrSymboles = nbrSymboles;
+	}
+
+	/**
+	 * Obtient le nombre de paires par symbole dans la partie
+	 * @return nbrPairesParSymboles int : le nombre de paires par symbole
+	 */
+	public int getNbrPairesParSymboles() {
+		return nbrPairesParSymboles;
+	}
+
+	/**
+	 * Modifie le nombre de paires par symbole dans la partie
+	 * @param nbrPairesParSymboles int : le nouveau nombre de paires par symbole
+	 */
+	public void setNbrPairesParSymboles(int nbrPairesParSymboles) {
+		this.nbrPairesParSymboles = nbrPairesParSymboles;
+	}
 
 	/**
 	 * Obtient le nombre de joueurs jouant a la partie
-	 * @return nbrJoueur int : le nombre de joueurs
+	 * @return nbrJoueurs int : le nombre de joueurs
 	 */
-	public int getNbrJoueur() {
-		return this.nbrJoueur;
+	public int getNbrJoueurs() {
+		return this.nbrJoueurs;
 	}
 
 	/**
 	 * Modifie le nombre de joueurs jouant a la partie
-	 * @param newNbrJoueur int : le nouveau nombre de joueurs
+	 * @param newNbrJoueurs int : le nouveau nombre de joueurs
 	 */
-	public void setNbrJoueur(int newNbrJoueur) {
-		this.nbrJoueur = newNbrJoueur;
+	public void setNbrJoueurs(int newNbrJoueurs) {
+		this.nbrJoueurs = newNbrJoueurs;
 	}
 	
 	/**
@@ -169,35 +222,21 @@ public class Partie {
 
 	/**
 	 * Obtient le nombre de tours de jeu durant la partie
-	 * @return nbrTourJoue int : le nombre de tours de jeu
+	 * @return nbrToursJoues int : le nombre de tours de jeu
 	 */
-	public int getNbrTourJoue() {
-		return this.nbrTourJoue;
+	public int getnbrToursJoues() {
+		return this.nbrToursJoues;
 	}
 
 	/**
 	 * Modifie le nombre de tours de jeu durant la partie
-	 * @param newNbrTourJoue int : le nouveau nombre de tours de jeu
+	 * @param newNbrToursJoues int : le nouveau nombre de tours de jeu
 	 */
-	public void setNbrTourJoue(int newNbrTourJoue) {
-		this.nbrTourJoue = newNbrTourJoue;
+	public void setnbrToursJoues(int newNbrToursJoues) {
+		this.nbrToursJoues = newNbrToursJoues;
 	}
 
-	public void paireCartesIdentiques() {
-		etatCourantPartie.paireTrouvee();
-	}
-	
-	public void paireCartesDifferentes() {
-		etatCourantPartie.pasPaireTrouvee();
-	}
-	
-	public void traitementPaireTrouvee() {
-		joueurCourant.tourGagne();
-		
-		plateau.getCarte1().setSurPlateau(false);
-		plateau.getCarte2().setSurPlateau(false);
-		plateau.setNbrCartesRestantes(plateau.getNbrCartesRestantes()-2);
-	}
+	// -- GESTION DES ETATS -- //
 	
 	/**
 	 * Obtient l'instance de l'etat PairesRestantes
@@ -229,5 +268,42 @@ public class Partie {
 	 */
 	public void setEtatCourantPartie(IEtatPartie newEtatCourant) {
 		this.etatCourantPartie = newEtatCourant;
+	}
+	
+	/**
+	 * Declanche la transition paireTrouvee de l'automate
+	 */
+	public void paireCartesIdentiques() {
+		etatCourantPartie.paireTrouvee();
+	}
+	
+	/**
+	 * Declanche la transition pasPaireTrouvee de l'automate
+	 */
+	public void paireCartesDifferentes() {
+		etatCourantPartie.pasPaireTrouvee();
+	}
+	
+	/**
+	 * Traite les actions si une paire a ete trouvee par un joueur
+	 */
+	public void traitementPaireTrouvee() {
+		joueurCourant.tourGagne();
+		// traiter le cas des cartes bonus
+		plateau.getCarte1().setSurPlateau(false);
+		plateau.getCarte2().setSurPlateau(false);
+		plateau.setNbrCartesRestantes(plateau.getNbrCartesRestantes()-2);
+		if (plateau.getNbrCartesRestantes() == 0) {
+			etatCourantPartie.plusPairePossible();
+		}
+	}
+	
+	/**
+	 * Traite les actions si aucune paire n'a ete trouvee ce tour
+	 */
+	public void traitementPaireNonTrouvee() {
+		joueurCourant.tourPerdu();	
+		nbrToursJoues++;
+		joueurSuivant();
 	}
 }

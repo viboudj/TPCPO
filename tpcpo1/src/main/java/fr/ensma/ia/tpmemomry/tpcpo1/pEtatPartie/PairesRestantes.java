@@ -29,21 +29,21 @@ public class PairesRestantes implements IEtatPartie {
 	 * Transition paireTrouvee
 	 */
 	public void paireTrouvee(){
-		
+		partie.traitementPaireTrouvee();
 	}
 
 	/**
 	 * Transition pasPaireTrouvee
 	 */
 	public void pasPaireTrouvee(){
-		
+		partie.traitementPaireNonTrouvee();
 	}
 	
 	/**
 	 * Transition plusPairePossible
 	 */
 	public void plusPairePossible(){
-		
+		partie.setEtatCourantPartie(partie.getFinPartie());
 	}
 
 }
