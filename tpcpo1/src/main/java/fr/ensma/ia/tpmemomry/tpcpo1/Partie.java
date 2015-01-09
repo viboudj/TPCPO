@@ -1,6 +1,8 @@
 package fr.ensma.ia.tpmemomry.tpcpo1;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+
 import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.IEtatPartie;
 import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.PairesRestantes;
 import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.FinPartie;
@@ -13,35 +15,41 @@ import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.*;
  * @author douaultc
  */
 public class Partie {
+	
 	/**
-	 * Description of the property etatPartieEnCours.
+	 * Nombre de joueurs jouant une partie
+	 */
+	private int nbrJoueur = 0;
+	
+	/**
+	 * Liste des joueurs jouant une partie
+	 */
+	public ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
+	
+	/**
+	 * Joueur courant
+	 */
+	private Joueur joueurCourant;
+	
+	/**
+	 * Instances de l'Žtat pairesRestantes
 	 */
 	private IEtatPartie pairesRestantes;
+	
+	/**
+	 * Instances de l'Žtat finPartie
+	 */
+	private IEtatPartie finPartie;
+	
+	/**
+	 * Etat actuel de la partie
+	 */
+	private IEtatPartie etatCourantPartie;
 
 	/**
 	 * Description of the property plateau.
 	 */
 	public Plateau plateau = null;
-
-	/**
-	 * Description of the property etatPartieCourrant.
-	 */
-	private IEtatPartie etatPartieCourrant = null;
-
-	/**
-	 * Description of the property nbrJoueur.
-	 */
-	private int nbrJoueur = 0;
-
-	/**
-	 * Description of the property etatPartieFin.
-	 */
-	private FinPartie etatPartieFin = null;
-
-	/**
-	 * Description of the property joueurs.
-	 */
-	public HashSet<Joueur> joueurs = new HashSet<Joueur>();
 
 	/**
 	 * Description of the property nbrTourJoue.
