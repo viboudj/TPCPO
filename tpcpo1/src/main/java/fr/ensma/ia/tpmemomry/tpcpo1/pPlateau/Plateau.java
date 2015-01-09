@@ -284,7 +284,7 @@ public class Plateau {
 	
 	/**
 	 * Obtient l'instance de l'etat pasCarteSelectionnee
-	 * @return pasCarteSelectionnee 
+	 * @return pasCarteSelectionnee IEtatPlateau
 	 */
 	public IEtatPlateau getpasCarteSelectionnee() {
 		return this.pasCarteSelectionnee;
@@ -292,7 +292,7 @@ public class Plateau {
 	
 	/**
 	 * Obtient l'instance de l'etat uneCarteSelectionnee
-	 * @return uneCarteSelectionnee 
+	 * @return uneCarteSelectionnee IEtatPlateau
 	 */
 	public IEtatPlateau getuneCarteSelectionnee() {
 		return this.uneCarteSelectionnee;
@@ -300,7 +300,7 @@ public class Plateau {
 	
 	/**
 	 * Obtient l'instance de l'etat deuxCartesSelectionnees
-	 * @return deuxCartesSelectionnees 
+	 * @return deuxCartesSelectionnees IEtatPlateau
 	 */
 	public IEtatPlateau getdeuxCartesSelectionnees() {
 		return this.deuxCartesSelectionnees;
@@ -308,7 +308,7 @@ public class Plateau {
 
 	/**
 	 * Obtient l'etat courant du plateau
-	 * @return etatCourant IEtat plateau : l'etat courant du plateau
+	 * @return etatCourant IEtatPlateau : l'etat courant du plateau
 	 */
 	public IEtatPlateau getEtatCourant() {
 		return this.etatCourant;
