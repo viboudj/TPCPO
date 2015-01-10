@@ -47,7 +47,7 @@ public interface ICarte {
 	/**
 	 * Produit un effet si la carte est trouvee avec une carte identique
 	 */
-	public void effetCarte();
+	public int effetCarte();
 	
 	/**
 	 * Redefinition de la methode toString pour ICarte

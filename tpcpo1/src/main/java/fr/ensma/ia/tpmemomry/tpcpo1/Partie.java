@@ -295,7 +295,7 @@ public class Partie {
 	 * Traite les actions si une paire a ete trouvee par un joueur
 	 */
 	public void traitementPaireTrouvee() {
-		joueurCourant.tourGagne();
+		joueurCourant.tourGagne(plateau.getCarte1().effetCarte());
 		// traiter le cas des cartes bonus
 		plateau.getCarte1().setSurPlateau(false);
 		plateau.getCarte2().setSurPlateau(false);

@@ -125,10 +125,10 @@ public abstract class Joueur {
 	/**
 	 * Le joueur trouve deux paires identiques
 	 */
-	public void tourGagne(){
+	public void tourGagne(int bonus){
 		this.pairesSuccessives++;
 		this.nbrPairesTrouvees++;
-		score.updateScore(pairesSuccessives);
+		score.updateScore(pairesSuccessives, bonus);
 	}
 	
 	/**

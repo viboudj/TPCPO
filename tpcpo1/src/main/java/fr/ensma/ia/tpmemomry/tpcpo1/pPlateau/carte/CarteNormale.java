@@ -21,7 +21,7 @@ public class CarteNormale extends Carte implements ICarte {
 	/**
 	 * Effet de la carte
 	 */
-	public void effetCarte() {
-		// Pas d'effet pour une carte normale
+	public int effetCarte() {
+		return 0;
 	}
 }

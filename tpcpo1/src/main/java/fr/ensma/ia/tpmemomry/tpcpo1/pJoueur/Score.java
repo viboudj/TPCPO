@@ -71,12 +71,13 @@ public class Score {
 	 * Calcul de la valeur du score en fonction du nombre de paires successivement trouvées par le joueur
 	 * @param pairesSuccessives int : le nombre de paires successivement trouvées
 	 */
-	public void updateScore(int pairesSuccessives){
+	public void updateScore(int pairesSuccessives, int bonus){
 		if(pairesSuccessives==0){
 			this.score=this.score+2;
 		} else {
 			this.score=this.score+(2+(pairesSuccessives*2-1));
 		}
+		score = score + bonus;
 	}
 	
 }

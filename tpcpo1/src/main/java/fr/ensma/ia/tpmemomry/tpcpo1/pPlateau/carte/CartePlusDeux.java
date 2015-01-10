@@ -8,20 +8,20 @@ package fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte;
  * 
  * @author douaultc
  */
-public class CarteBonus1 extends Carte implements ICarte {
+public class CartePlusDeux extends Carte implements ICarte {
 
 	/**
 	 * Constructeur a un parametre
 	 * Cree une instance de carte
 	 */
-	public CarteBonus1(ESymboleCarte symboleCarte) {
+	public CartePlusDeux(ESymboleCarte symboleCarte) {
 		super(symboleCarte);
 	}
 
 	/**
 	 * Effet de la carte
 	 */
-	public void effetCarte() {
-		// TODO effet de la carte
+	public int effetCarte() {
+		return 2;
 	}
 }
