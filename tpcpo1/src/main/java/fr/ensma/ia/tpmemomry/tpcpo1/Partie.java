@@ -86,10 +86,10 @@ public class Partie {
 	 * @param nbrSymboles int : nombre de symboles differents
 	 * @param nbrPairesParSymbole int : nombre de paires par symbole
 	 */
-	public Partie(int nbrSymboles, int nbrPairesParSymbole) {
+	public Partie(int nbrSymb, int nbrPairesParSymb) {
 		super();
-		this.nbrSymboles = nbrSymboles;
-		this.nbrPairesParSymboles = nbrPairesParSymbole;
+		this.nbrSymboles = nbrSymb;
+		this.nbrPairesParSymboles = nbrPairesParSymb;
 		plateau = new Plateau(this, nbrSymboles, nbrPairesParSymboles);
 		
 		listeJoueurs = new ArrayList<Joueur>();

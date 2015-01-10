@@ -7,13 +7,13 @@ public class TestPlateau extends TestCase{
 	
 	
 	public void testPlateau(){
-		Plateau p = new Plateau(5);
-		System.out.println(p.toString());
+		Partie p = new Partie(5,1);
+		System.out.println(p.getPlateau().toString());
 		System.out.println("le deuxième string avec cartes melanges \n");
-		System.out.println(p.toStringM());
+		System.out.println(p.getPlateau().toStringM());
 		
-		Plateau p2 = new Plateau();
+		Partie p2 = new Partie();
 		System.out.println("Pateau cahier des charge \n");
-		System.out.println(p2.toString());
+		System.out.println(p2.getPlateau().toString());
 	}
 }

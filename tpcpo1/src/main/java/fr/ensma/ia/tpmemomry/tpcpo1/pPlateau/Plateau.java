@@ -159,6 +159,7 @@ public class Plateau {
 		listeCartesMelangees = new ArrayList<ICarte>(nbrCartes);
 		
 		tirerCartes(nbrSymboles, nbrPairesParSymbole);
+		//System.out.println(this.toString());
 		// TODO trouver le moyen d'integrer les cartes speciales a la construction
 		melangerCartes();
 	}
@@ -169,9 +170,11 @@ public class Plateau {
 	 * @param nbrPairesParSymb int : nombre de paires par symbole
 	 */
 	public void tirerCartes(int nbrSymb, int nbrPairesParSymb) {
+		ESymboleCarte symbole = ESymboleCarte.carre;
 		for(int i=0 ; i<nbrSymb ; i++) {
-			for(int j=0 ; j<(nbrPairesParSymb*2) ; j++) {
-				listeCartes.add(new CarteNormale(choixESymboleCarte(i)));
+			for(int j=0 ; j<nbrPairesParSymb ; j++) {
+				listeCartes.add(new CarteNormale(symbole.choixESymboleCarte(i)));
+				listeCartes.add(new CarteNormale(symbole.choixESymboleCarte(i)));
 			}
 		}
 	}
@@ -180,7 +183,7 @@ public class Plateau {
 	 * Melange les cartes contenues dans la liste cartes en les placant aleatoirement dans listeCartesMelangees
 	 */
 	public void melangerCartes() {
-		ArrayList<ICarte> _copieListeCarte = listeCartes;
+		ArrayList<ICarte> _copieListeCarte=listeCartes;
 		int _carteRestantMelanger = nbrCartes;
 		int _indice;
 		Random _rand = new Random();
@@ -193,31 +196,31 @@ public class Plateau {
 		}		
 	}
 	
-	/**
-	 * Retour un symbole de carte parmi l'enumeration ESymboleCarte en fonction de la valeur val d'entree
-	 * @param val int : valeur
-	 * @return ESymboleCarte : un symbole de carte
-	 * @see ESymboleCarte
-	 */
-	private ESymboleCarte choixESymboleCarte(int val){
-		switch(Math.abs(val) % 13) {
-			case 0 : return ESymboleCarte.croix; 
-			case 1 : return ESymboleCarte.losange;
-			case 2 : return ESymboleCarte.carre;
-			case 3 : return ESymboleCarte.cercle;
-			case 4 : return ESymboleCarte.rectangle;
-			case 5 : return ESymboleCarte.etoile;
-			case 6 : return ESymboleCarte.soleil;
-			case 7 : return ESymboleCarte.lune;
-			case 8 : return ESymboleCarte.venus;
-			case 9 : return ESymboleCarte.mars;
-			case 10 : return ESymboleCarte.pic;
-			case 11 : return ESymboleCarte.coeur;
-			case 12 : return ESymboleCarte.carreau;
-			case 13 : return ESymboleCarte.trefle;
-		}
-		return null;
-	}
+//	/**
+//	 * Retour un symbole de carte parmi l'enumeration ESymboleCarte en fonction de la valeur val d'entree
+//	 * @param val int : valeur
+//	 * @return ESymboleCarte : un symbole de carte
+//	 * @see ESymboleCarte
+//	 */
+//	private ESymboleCarte choixESymboleCarte(int val){		
+//		switch(Math.abs(val) % 13) {
+//			case 0 : return ESymboleCarte.croix; 
+//			case 1 : return ESymboleCarte.losange;
+//			case 2 : return ESymboleCarte.carre;
+//			case 3 : return ESymboleCarte.cercle;
+//			case 4 : return ESymboleCarte.rectangle;
+//			case 5 : return ESymboleCarte.etoile;
+//			case 6 : return ESymboleCarte.soleil;
+//			case 7 : return ESymboleCarte.lune;
+//			case 8 : return ESymboleCarte.venus;
+//			case 9 : return ESymboleCarte.mars;
+//			case 10 : return ESymboleCarte.pic;
+//			case 11 : return ESymboleCarte.coeur;
+//			case 12 : return ESymboleCarte.carreau;
+//			case 13 : return ESymboleCarte.trefle;
+//		}
+//		return null;
+//	}
 //	
 //	/**
 //	 * Retourne un symbole de carte aleatoire parmi l'enumeration ESymboleCarte
@@ -405,8 +408,8 @@ public class Plateau {
 	 */
 	public String toStringM(){
 		String phrase = "nombre de cartes sur le plateau " +  this.nbrCartes + '\n';
-		for(int i=0;i<listeCartes.size();i++){
-			phrase = phrase + listeCartes.get(i).toString() + '\n';
+		for(int i=0;i<listeCartesMelangees.size();i++){
+			phrase = phrase + listeCartesMelangees.get(i).toString() + '\n';
 		}
 		return phrase;
 	}
@@ -419,8 +422,8 @@ public class Plateau {
 	@Override
 	public String toString(){
 		String phrase = "nombre de cartes sur le plateau " +  this.nbrCartes + '\n';
-		for(int i=0;i<this.nbrCartes;i++){
-			phrase = phrase + listeCartesMelangees.get(i).toString() + '\n';
+		for(int i=0;i<listeCartes.size();i++){
+			phrase = phrase + listeCartes.get(i).toString() + '\n';
 		}
 		return phrase;
 	}
