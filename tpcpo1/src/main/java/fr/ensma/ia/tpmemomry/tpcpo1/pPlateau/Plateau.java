@@ -350,10 +350,8 @@ public class Plateau {
 	public boolean comparaisonPaire() {
 		etatCourant.comparaisonCartes();
 		if(carte1.getSymbole() == carte2.getSymbole()){
-			partie.paireCartesIdentiques();
 			return true;
 		} else {
-			partie.paireCartesDifferentes();
 			return false;
 		}
 	}

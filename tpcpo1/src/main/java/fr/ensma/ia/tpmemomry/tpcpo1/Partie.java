@@ -272,6 +272,17 @@ public class Partie {
 	public void paireCartesIdentiques() {
 		etatCourantPartie.paireTrouvee();
 	}
+
+	/**
+	 * 
+	 */
+	public void traitement() {
+		if(plateau.comparaisonPaire()) {
+			traitementPaireTrouvee();
+		} else {
+			traitementPaireNonTrouvee();
+		}
+	}
 	
 	/**
 	 * Declanche la transition pasPaireTrouvee de l'automate
