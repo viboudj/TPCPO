@@ -18,7 +18,7 @@ public class FinPartie implements IEtatPartie {
 	private Partie partie;
 
 	/**
-	 * Constructeur de l'Žtat FinPartie
+	 * Constructeur de l'Etat FinPartie
 	 * @param partie Partie : reference de l'automate
 	 */
 	public FinPartie(Partie partie) {

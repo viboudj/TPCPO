@@ -49,7 +49,7 @@ public class Partie {
 	private int nbrToursJoues = 0;
 	
 	/**
-	 * Instances de l'Žtat pairesRestantes
+	 * Instances de l'Etat pairesRestantes
 	 */
 	private IEtatPartie pairesRestantes;
 	
@@ -161,7 +161,7 @@ public class Partie {
 	 * Modifie le nombre de joueurs jouant a la partie
 	 * @param newNbrJoueurs int : le nouveau nombre de joueurs
 	 */
-	public void setNbrJoueurs(int newNbrJoueurs) {
+	private void setNbrJoueurs(int newNbrJoueurs) {
 		this.nbrJoueurs = newNbrJoueurs;
 	}
 	
@@ -181,6 +181,12 @@ public class Partie {
 	 */
 	public void ajouterJoueur(Joueur joueur) {
 		listeJoueurs.add(joueur);
+		this.nbrJoueurs++;
+	}
+	
+	public void supprimerJoueur(Joueur joueur){
+		listeJoueurs.remove(joueur);
+		this.nbrJoueurs--;
 	}
 
 	/**
@@ -313,5 +319,15 @@ public class Partie {
 		joueurCourant.tourPerdu();	
 		nbrToursJoues++;
 		joueurSuivant();
+	}
+	
+	public String toString(){
+		String phraseJoueur = "liste des joueur \n";
+		for(int i=0;i<this.nbrJoueurs;i++){
+			phraseJoueur=phraseJoueur + "Joueur" + i + " " + listeJoueurs.get(i).getNom() + "\n";
+		}
+		
+		return "état du plateau: " + this.plateau.toStringM() + "\n" + phraseJoueur +"\n" + this.etatCourantPartie ;
+		
 	}
 }

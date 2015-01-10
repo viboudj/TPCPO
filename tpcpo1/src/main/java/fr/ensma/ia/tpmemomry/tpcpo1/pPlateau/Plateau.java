@@ -19,7 +19,7 @@ public class Plateau {
 	/**
 	 * La reference de la partie a laquelle le plateau appartient
 	 */
-	private Partie partie;
+
 	
 	/**
 	 * Nombre de cartes dont est compose le plateau
@@ -90,7 +90,6 @@ public class Plateau {
 	 */
 	public Plateau(Partie partie){
 		super();
-		this.partie = partie;
 		etatCourant = pasCarteSelectionnee;
 		
 		nbrSymboles = 8;
@@ -114,7 +113,6 @@ public class Plateau {
 	 */
 	public Plateau(Partie partie, int nbrSymboles, int nbrPairesParSymbole, boolean cartesBonus, int probabiliteBonus) {
 		super();
-		this.partie = partie;
 		etatCourant = pasCarteSelectionnee;
 		
 		this.nbrSymboles = nbrSymboles;
