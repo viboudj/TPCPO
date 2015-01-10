@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.ListIterator;
 import java.util.Random;
 
-import fr.ensma.ia.tpmemomry.tpcpo1.Partie;
+
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte.*;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.pEtatPlateau.*;
 
@@ -16,9 +16,7 @@ import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.pEtatPlateau.*;
  */
 public class Plateau {
 
-	/**
-	 * La reference de la partie a laquelle le plateau appartient
-	 */
+
 
 	
 	/**
@@ -86,9 +84,9 @@ public class Plateau {
 	/**
 	 * Constructeur avec un parametre
 	 * Cree un plateau compose de 32 cartes sans effet avec 8 symboles differents (2 paires par symbole)
-	 * @param partie Partie : la reference de la partie
+	 * @param 
 	 */
-	public Plateau(Partie partie){
+	public Plateau(){
 		super();
 		etatCourant = pasCarteSelectionnee;
 		
@@ -107,11 +105,10 @@ public class Plateau {
 	/**
 	 * Constructeur a trois parametres
 	 * Cree un plateau avec nbrSymboles symboles et nbrPairesParSymbole paires par symbole
-	 * @param partie Partie : la reference de la partie
 	 * @param nbrSymboles int : le nombre de symboles differents
 	 * @param nbrPairesParSymbole int : le nombre de paires par symboles
 	 */
-	public Plateau(Partie partie, int nbrSymboles, int nbrPairesParSymbole, boolean cartesBonus, int probabiliteBonus) {
+	public Plateau(int nbrSymboles, int nbrPairesParSymbole, boolean cartesBonus, int probabiliteBonus) {
 		super();
 		etatCourant = pasCarteSelectionnee;
 		

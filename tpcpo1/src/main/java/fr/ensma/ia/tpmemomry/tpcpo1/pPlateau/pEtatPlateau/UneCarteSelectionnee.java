@@ -40,7 +40,6 @@ public class UneCarteSelectionnee implements IEtatPlateau {
 				&& plateau.getCarte2()!=plateau.getCarte1()) {
 			plateau.getCarte2().setVisible(true);
 			plateau.setEtatCourant(plateau.getdeuxCartesSelectionnees());
-			plateau.comparaisonPaire();
 		} else {
 			System.out.println("changement d'etat une carte visible sur le plateau a deux cartes visibles sur le plateau: bloque!");
 		}

@@ -2,7 +2,7 @@ package fr.ensma.ia.tpmemomry.tpcpo1;
 
 import java.util.ArrayList;
 
-import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.IEtatPartie;
+import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.*;
 import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.Joueur;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
 
@@ -51,17 +51,17 @@ public class Partie {
 	/**
 	 * Instances de l'Etat pairesRestantes
 	 */
-	private IEtatPartie pairesRestantes;
+	private IEtatPartie pairesRestantes = new PairesRestantes(this);
 	
 	/**
 	 * Instances de l'Žtat finPartie
 	 */
-	private IEtatPartie finPartie;
+	private IEtatPartie finPartie = new FinPartie(this);
 	
 	/**
 	 * Etat actuel de la partie
 	 */
-	private IEtatPartie etatCourantPartie;
+	private IEtatPartie etatCourantPartie = null;
 	
 	// -- CONSTRUCTEURS -- //
 
@@ -284,6 +284,7 @@ public class Partie {
 	 * 
 	 */
 	public void traitement() {
+		
 		if(plateau.comparaisonPaire()) {
 			traitementPaireTrouvee();
 		} else {
@@ -319,6 +320,10 @@ public class Partie {
 		joueurCourant.tourPerdu();	
 		nbrToursJoues++;
 		joueurSuivant();
+	}
+	
+	public void tour(){
+		
 	}
 	
 	public String toString(){
