@@ -1,6 +1,7 @@
 package fr.ensma.ia.tpmemomry.tpcpo1.pPlateau;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 import java.util.Random;
 
 import fr.ensma.ia.tpmemomry.tpcpo1.Partie;
@@ -34,7 +35,7 @@ public class Plateau {
 	 * Nombre de cartes par symbole
 	 */
 	private int nbrPairesParSymbole = 0;
-	
+		
 	/**
 	 * Nombre de cartes restantes sur le plateau
 	 */
@@ -103,40 +104,6 @@ public class Plateau {
 		tirerCartes(nbrSymboles, nbrPairesParSymbole);
 		melangerCartes();
 	}
-//	
-//	/**
-//	 * Constructeur a deux parametres
-//	 * Cree un plateau compose de nbr (ou nbr-1 si nbr est impair) cartes avec des symboles choisis aléatoirement 
-//	 * @param nbr int : nombre de cartes composant le plateau
-//	 */
-//	public Plateau(Partie partie, int nbr) {
-//		super();
-//		this.partie = partie;
-//		etatCourant = pasCarteSelectionnee;
-//		
-//		if(nbr%2==1){
-//		this.nbrCartes=nbr-1; 
-//		} else {
-//			this.nbrCartes=nbr;
-//		}
-//		
-//		cartes= new ArrayList<Carte>(nbrCartes);
-//		listeCartesMelangees = new ArrayList<Carte>(this.nbrCartes); 
-//		
-//		Random r = new Random();
-//		
-//		for(int i=0; i<nbr/2; i++  ){
-//			
-//			ESymboleCarte symb;
-//			symb=choixESymboleCartealea();
-//			Carte c = new Carte(symb,r.nextInt());
-//			cartes.add(c);
-//			Carte d = new Carte(symb,r.nextInt());
-//			cartes.add(d);
-//		}
-//		
-//		melangerCartes();
-//	}
 	
 	/**
 	 * Constructeur a trois parametres
@@ -145,7 +112,7 @@ public class Plateau {
 	 * @param nbrSymboles int : le nombre de symboles differents
 	 * @param nbrPairesParSymbole int : le nombre de paires par symboles
 	 */
-	public Plateau(Partie partie, int nbrSymboles, int nbrPairesParSymbole) {
+	public Plateau(Partie partie, int nbrSymboles, int nbrPairesParSymbole, boolean cartesBonus, int probabiliteBonus) {
 		super();
 		this.partie = partie;
 		etatCourant = pasCarteSelectionnee;
@@ -158,14 +125,17 @@ public class Plateau {
 		listeCartes = new ArrayList<ICarte>(nbrCartes);
 		listeCartesMelangees = new ArrayList<ICarte>(nbrCartes);
 		
-		tirerCartes(nbrSymboles, nbrPairesParSymbole);
-		//System.out.println(this.toString());
-		// TODO trouver le moyen d'integrer les cartes speciales a la construction
+		if(cartesBonus) {
+			tirerCartes(nbrSymboles, nbrPairesParSymbole, probabiliteBonus);
+		} else {
+			tirerCartes(nbrSymboles, nbrPairesParSymbole);
+		}
+
 		melangerCartes();
 	}
 	
 	/**
-	 * Tire les paires et les range de facon ordonnee dans listeCartes
+	 * Tire des paires sans bonus et les range de facon ordonnee dans listeCartes
 	 * @param nbrSymb int : nombre de symboles differents
 	 * @param nbrPairesParSymb int : nombre de paires par symbole
 	 */
@@ -180,10 +150,78 @@ public class Plateau {
 	}
 	
 	/**
+	 * Tire les paires avec et sans bonus et les range de facon ordonnee dans la listeCartes
+	 * @param nbrSymb int : nombre de symboles differents
+	 * @param nbrPairesParSymb int : nombre de paires par symbole
+	 * @param probaBonus int : la probabilite de tirer une paire bonus
+	 */
+	public void tirerCartes(int nbrSymb, int nbrPairesParSymb, int probaBonus) {
+		ESymboleCarte symbole = ESymboleCarte.carre;
+		for(int i=0 ; i<nbrSymb ; i++) {
+			for(int j=0 ; j<nbrPairesParSymb ; j++) {
+				if(tirageBonus(probaBonus)) {
+					tirerPaireBonus(symbole.choixESymboleCarte(i));
+				} else {
+					listeCartes.add(new CarteNormale(symbole.choixESymboleCarte(i)));
+					listeCartes.add(new CarteNormale(symbole.choixESymboleCarte(i)));
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Determine si la prochaine paire tiree sera avec (true) ou sans (false) effet
+	 * Avec une probabilite de 1 (peu probable) a 10 (sur)
+	 * @param probabilite int : la probabilite que la paire soit avec effet (entre 1 et 10)
+	 * @return boolean : true si la paire est avec effet, false sinon
+	 */
+	public boolean tirageBonus(int probabilite) {
+		Random ran = new Random();
+
+		if((ran.nextInt(10)+1)<=probabilite) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Tire une paire bonus avec un effet aleatoire (choix parmi l'enumeration ECartesBonus)
+	 * @param symbole ESymboleCarte : symbole de la paire
+	 * @see ECartesBonus
+	 */
+	public void tirerPaireBonus(ESymboleCarte symbole) {
+		ECartesBonus bonus = ECartesBonus.plusDeuxPoints;
+		switch(bonus.CartesBonusAleatoire()) {
+		case plusDeuxPoints:
+			listeCartes.add(new CartePlusDeux(symbole));
+			listeCartes.add(new CartePlusDeux(symbole));
+			break;
+		case plusQuatrePoints:
+			listeCartes.add(new CartePlusQuatre(symbole));
+			listeCartes.add(new CartePlusQuatre(symbole));
+			break;
+		case plusDixPoints:
+			listeCartes.add(new CartePlusDix(symbole));
+			listeCartes.add(new CartePlusDix(symbole));
+			break;
+		default:
+			listeCartes.add(new CartePlusDeux(symbole));
+			listeCartes.add(new CartePlusDeux(symbole));
+			break;
+		}
+	}
+	
+	/**
 	 * Melange les cartes contenues dans la liste cartes en les placant aleatoirement dans listeCartesMelangees
 	 */
 	public void melangerCartes() {
-		ArrayList<ICarte> _copieListeCarte=listeCartes;
+		ArrayList<ICarte> _copieListeCarte = new ArrayList<ICarte>();
+		ListIterator<ICarte> ite = listeCartes.listIterator();
+		while (ite.hasNext()) {
+			_copieListeCarte.add(ite.next());
+		}
+		
 		int _carteRestantMelanger = nbrCartes;
 		int _indice;
 		Random _rand = new Random();
@@ -195,43 +233,6 @@ public class Plateau {
 			_carteRestantMelanger--;			
 		}		
 	}
-	
-//	/**
-//	 * Retour un symbole de carte parmi l'enumeration ESymboleCarte en fonction de la valeur val d'entree
-//	 * @param val int : valeur
-//	 * @return ESymboleCarte : un symbole de carte
-//	 * @see ESymboleCarte
-//	 */
-//	private ESymboleCarte choixESymboleCarte(int val){		
-//		switch(Math.abs(val) % 13) {
-//			case 0 : return ESymboleCarte.croix; 
-//			case 1 : return ESymboleCarte.losange;
-//			case 2 : return ESymboleCarte.carre;
-//			case 3 : return ESymboleCarte.cercle;
-//			case 4 : return ESymboleCarte.rectangle;
-//			case 5 : return ESymboleCarte.etoile;
-//			case 6 : return ESymboleCarte.soleil;
-//			case 7 : return ESymboleCarte.lune;
-//			case 8 : return ESymboleCarte.venus;
-//			case 9 : return ESymboleCarte.mars;
-//			case 10 : return ESymboleCarte.pic;
-//			case 11 : return ESymboleCarte.coeur;
-//			case 12 : return ESymboleCarte.carreau;
-//			case 13 : return ESymboleCarte.trefle;
-//		}
-//		return null;
-//	}
-//	
-//	/**
-//	 * Retourne un symbole de carte aleatoire parmi l'enumeration ESymboleCarte
-//	 * @return ESymboleCarte : un symbole de carte
-//	 * @see ESymboleCarte
-//	 */
-//	private ESymboleCarte choixESymboleCartealea(){
-//		Random r=new Random();
-//		int val= r.nextInt(10);
-//		return choixESymboleCarte(val);
-//	}
 	
 	// -- GETTEURS ET SETTEURS -- //
 

@@ -1,10 +1,12 @@
 package fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte;
 
+import java.util.Random;
+
 public enum ECartesBonus {
 
 	plusDeuxPoints,
 	plusQuatrePoints,
-	plusSixPoints;
+	plusDixPoints;
 	
 	/**
 	 * Nombre total d'elements dans l'enumeration
@@ -15,7 +17,7 @@ public enum ECartesBonus {
 	 * Obtient le nombre total d'elements de l'enumeration
 	 * @return nombreECartesBonus int : le nombre d'elements de l'enumeration
 	 */
-	public int getNombreESCartesBOnus() {
+	public int getNombreECartesBOnus() {
 		return nombreECartesBonus;
 	}
 	
@@ -28,8 +30,15 @@ public enum ECartesBonus {
 		switch(Math.abs(val) % nombreECartesBonus) {
 			case 0 : return ECartesBonus.plusDeuxPoints; 
 			case 1 : return ECartesBonus.plusQuatrePoints;
-			case 2 : return ECartesBonus.plusSixPoints;
+			case 2 : return ECartesBonus.plusDixPoints;
 		}
 		return null;
-	}	
+	}
+	
+	public ECartesBonus CartesBonusAleatoire(){
+		Random ran = new Random();
+		int val= ran.nextInt(nombreECartesBonus);
+		return choixECartesBonus(val);
+}
+
 }

@@ -68,12 +68,13 @@ public class Partie {
 	/**
 	 * Constructeur sans parametre
 	 * Cree une nouvelle partie avec des parametres par default (8 symboles, 2 paires par symbole)
+	 * Plus une probabilite de 20% d'avoir des paires bonus
 	 */
 	public Partie() {
 		super();
 		nbrSymboles = 8;
 		nbrPairesParSymboles = 2;
-		plateau = new Plateau(this, nbrSymboles, nbrPairesParSymboles);
+		plateau = new Plateau(this, nbrSymboles, nbrPairesParSymboles, true, 2);
 		
 		listeJoueurs = new ArrayList<Joueur>();
 		
@@ -86,11 +87,11 @@ public class Partie {
 	 * @param nbrSymboles int : nombre de symboles differents
 	 * @param nbrPairesParSymbole int : nombre de paires par symbole
 	 */
-	public Partie(int nbrSymb, int nbrPairesParSymb) {
+	public Partie(int nbrSymb, int nbrPairesParSymb, boolean pairesBonus, int probabiliteBonus) {
 		super();
 		this.nbrSymboles = nbrSymb;
 		this.nbrPairesParSymboles = nbrPairesParSymb;
-		plateau = new Plateau(this, nbrSymboles, nbrPairesParSymboles);
+		plateau = new Plateau(this, nbrSymboles, nbrPairesParSymboles, pairesBonus, probabiliteBonus);
 		
 		listeJoueurs = new ArrayList<Joueur>();
 		

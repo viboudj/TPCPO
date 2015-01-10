@@ -24,4 +24,9 @@ public class CartePlusQuatre extends Carte implements ICarte {
 	public int effetCarte() {
 		return 4;
 	}
+	
+	@Override
+	public String toString() {
+		return super.toString() + "Bonus : plus 4 points";
+	}
 }
