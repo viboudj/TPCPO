@@ -1,41 +1,27 @@
-/*******************************************************************************
- * 2015, All rights reserved.
- *******************************************************************************/
 package fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte;
 
-// Start of user code (user defined imports)
-
-// End of user code
-
 /**
- * Description of CarteBonus1.
+ * Classe decrivant une carte bonus, c.a.d avec effet
+ * Pattern Strategy
+ * Classe fille de Carte
+ * @see Carte 
  * 
  * @author douaultc
  */
-public class CarteBonus1 implements ITypeCarte {
-	// Start of user code (user defined attributes for CarteBonus1)
-
-	// End of user code
+public class CarteBonus1 extends Carte implements ICarte {
 
 	/**
-	 * The constructor.
+	 * Constructeur a un parametre
+	 * Cree une instance de carte
 	 */
-	public CarteBonus1() {
-		// Start of user code constructor for CarteBonus1)
-		super();
-		// End of user code
+	public CarteBonus1(ESymboleCarte symboleCarte) {
+		super(symboleCarte);
 	}
 
 	/**
-	 * Description of the method bonus.
+	 * Effet de la carte
 	 */
-	public void bonus() {
-		// Start of user code for method bonus
-		// End of user code
+	public void effetCarte() {
+		// TODO effet de la carte
 	}
-
-	// Start of user code (user defined methods for CarteBonus1)
-
-	// End of user code
-
 }

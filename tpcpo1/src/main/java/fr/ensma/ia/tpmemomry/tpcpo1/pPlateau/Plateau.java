@@ -43,22 +43,22 @@ public class Plateau {
 	/**
 	 * Liste des cartes composant le plateau
 	 */
-	private ArrayList<Carte> cartes =null;
+	private ArrayList<ICarte> listeCartes;
 
 	/**
 	 * Liste des cartes melangees composant le plateau
 	 */
-	private ArrayList<Carte> listeCartesMelangees = null;
+	private ArrayList<ICarte> listeCartesMelangees = null;
 
 	/**
 	 * Reference de la premiere carte selectionnee par le joueur
 	 */
-	private Carte carte1 = null;
+	private ICarte carte1 = null;
 
 	/**
 	 * Reference de la deuxieme carte selectionnee par le joueur
 	 */
-	private Carte carte2 = null;
+	private ICarte carte2 = null;
 
 	/**
 	 * Instance de l'état PasCarteSelectionnee
@@ -84,7 +84,7 @@ public class Plateau {
 	
 	/**
 	 * Constructeur avec un parametre
-	 * Cree un plateau compose de 32 cartes avec 8 symboles differents (2 paires par symbole)
+	 * Cree un plateau compose de 32 cartes sans effet avec 8 symboles differents (2 paires par symbole)
 	 * @param partie Partie : la reference de la partie
 	 */
 	public Plateau(Partie partie){
@@ -92,58 +92,51 @@ public class Plateau {
 		this.partie = partie;
 		etatCourant = pasCarteSelectionnee;
 		
-		Random r = new Random();
-		int v = r.nextInt();
-		
-		this.nbrCartes=32;
 		nbrSymboles = 8;
 		nbrPairesParSymbole = 2;
-		cartes= new ArrayList<Carte>(this.nbrCartes);
-		listeCartesMelangees = new ArrayList<Carte>(this.nbrCartes);
+		nbrCartes=nbrSymboles*nbrPairesParSymbole*2;
+		nbrCartesRestantes = nbrCartes;
 		
-		for(int i=v ; i<(v+nbrSymboles) ; i++){
-			for(int j=0; j<(nbrPairesParSymbole*2) ; j++){
-				cartes.add( new Carte(choixESymboleCarte(i),r.nextInt()));
-			}
-			
-		}
+		listeCartes= new ArrayList<ICarte>(nbrCartes);
+		listeCartesMelangees = new ArrayList<ICarte>(nbrCartes);
 		
+		tirerCartes(nbrSymboles, nbrPairesParSymbole);
 		melangerCartes();
 	}
-	
-	/**
-	 * Constructeur a deux parametres
-	 * Cree un plateau compose de nbr (ou nbr-1 si nbr est impair) cartes avec des symboles choisis aléatoirement 
-	 * @param nbr int : nombre de cartes composant le plateau
-	 */
-	public Plateau(Partie partie, int nbr) {
-		super();
-		this.partie = partie;
-		etatCourant = pasCarteSelectionnee;
-		
-		if(nbr%2==1){
-		this.nbrCartes=nbr-1; 
-		} else {
-			this.nbrCartes=nbr;
-		}
-		
-		cartes= new ArrayList<Carte>(nbrCartes);
-		listeCartesMelangees = new ArrayList<Carte>(this.nbrCartes); 
-		
-		Random r = new Random();
-		
-		for(int i=0; i<nbr/2; i++  ){
-			
-			ESymboleCarte symb;
-			symb=choixESymboleCartealea();
-			Carte c = new Carte(symb,r.nextInt());
-			cartes.add(c);
-			Carte d = new Carte(symb,r.nextInt());
-			cartes.add(d);
-		}
-		
-		melangerCartes();
-	}
+//	
+//	/**
+//	 * Constructeur a deux parametres
+//	 * Cree un plateau compose de nbr (ou nbr-1 si nbr est impair) cartes avec des symboles choisis aléatoirement 
+//	 * @param nbr int : nombre de cartes composant le plateau
+//	 */
+//	public Plateau(Partie partie, int nbr) {
+//		super();
+//		this.partie = partie;
+//		etatCourant = pasCarteSelectionnee;
+//		
+//		if(nbr%2==1){
+//		this.nbrCartes=nbr-1; 
+//		} else {
+//			this.nbrCartes=nbr;
+//		}
+//		
+//		cartes= new ArrayList<Carte>(nbrCartes);
+//		listeCartesMelangees = new ArrayList<Carte>(this.nbrCartes); 
+//		
+//		Random r = new Random();
+//		
+//		for(int i=0; i<nbr/2; i++  ){
+//			
+//			ESymboleCarte symb;
+//			symb=choixESymboleCartealea();
+//			Carte c = new Carte(symb,r.nextInt());
+//			cartes.add(c);
+//			Carte d = new Carte(symb,r.nextInt());
+//			cartes.add(d);
+//		}
+//		
+//		melangerCartes();
+//	}
 	
 	/**
 	 * Constructeur a trois parametres
@@ -162,39 +155,41 @@ public class Plateau {
 		nbrCartes = nbrSymboles*nbrPairesParSymbole*2;
 		nbrCartesRestantes = nbrCartes;
 		
-		Random r = new Random();
-		cartes = new ArrayList<Carte>(nbrCartes);
-		listeCartesMelangees = new ArrayList<Carte>(nbrCartes);
+		listeCartes = new ArrayList<ICarte>(nbrCartes);
+		listeCartesMelangees = new ArrayList<ICarte>(nbrCartes);
 		
-		for(int i=0 ; i<nbrSymboles ; i++) {
-			for(int j=0 ; j<(nbrPairesParSymbole*2) ; j++) {
-				cartes.add(new Carte(choixESymboleCarte(i), r.nextInt()));
+		tirerCartes(nbrSymboles, nbrPairesParSymbole);
+		melangerCartes();
+	}
+	
+	/**
+	 * Tire les paires et les range de facon ordonnee dans listeCartes
+	 * @param nbrSymb int : nombre de symboles differents
+	 * @param nbrPairesParSymb int : nombre de paires par symbole
+	 */
+	public void tirerCartes(int nbrSymb, int nbrPairesParSymb) {
+		for(int i=0 ; i<nbrSymb ; i++) {
+			for(int j=0 ; j<(nbrPairesParSymb*2) ; j++) {
+				listeCartes.add(new CarteNormale(choixESymboleCarte(i)));
 			}
 		}
-		
-		melangerCartes();
 	}
 	
 	/**
 	 * Melange les cartes contenues dans la liste cartes en les placant aleatoirement dans listeCartesMelangees
 	 */
 	public void melangerCartes() {
+		ArrayList<ICarte> _copieListeCarte = listeCartes;
+		int _carteRestantMelanger = nbrCartes;
+		int _indice;
+		Random _rand = new Random();
 		
-		Carte c = null;
-		ArrayList<Carte> listeTempo = new ArrayList<Carte>(nbrCartes) ;
-		listeTempo=cartes;
-		
-		for(int j=0;j<this.nbrCartes;j++){
-			c=listeTempo.get(0);
-			
-			for(int i=0;i<listeTempo.size();i++){
-				if(c.getRandValue()>listeTempo.get(i).getRandValue())  c=listeTempo.get(i);
-				}
-			
-			listeCartesMelangees.add(c);
-			listeTempo.remove(c);
+		while (_carteRestantMelanger>0) {
+			_indice = _rand.nextInt(_carteRestantMelanger);
+			listeCartesMelangees.add(_copieListeCarte.get(_indice));
+			_copieListeCarte.remove(_indice);
+			_carteRestantMelanger--;			
 		}		
-		
 	}
 	
 	/**
@@ -204,31 +199,35 @@ public class Plateau {
 	 * @see ESymboleCarte
 	 */
 	private ESymboleCarte choixESymboleCarte(int val){
-		switch(Math.abs(val) % 10){
-		case 0 : return ESymboleCarte.croix; 
-		case 1 : return ESymboleCarte.losange;
-		case 2 : return ESymboleCarte.carrÈ;
-		case 3 : return ESymboleCarte.cercle;
-		case 4 : return ESymboleCarte.rectangle;
-		case 5 : return ESymboleCarte.Ètoile;
-		case 6 : return ESymboleCarte.soleil;
-		case 7 : return ESymboleCarte.lune;
-		case 8 : return ESymboleCarte.venus;
-		case 9 : return ESymboleCarte.mars;
-	}
+		switch(Math.abs(val) % 13) {
+			case 0 : return ESymboleCarte.croix; 
+			case 1 : return ESymboleCarte.losange;
+			case 2 : return ESymboleCarte.carre;
+			case 3 : return ESymboleCarte.cercle;
+			case 4 : return ESymboleCarte.rectangle;
+			case 5 : return ESymboleCarte.etoile;
+			case 6 : return ESymboleCarte.soleil;
+			case 7 : return ESymboleCarte.lune;
+			case 8 : return ESymboleCarte.venus;
+			case 9 : return ESymboleCarte.mars;
+			case 10 : return ESymboleCarte.pic;
+			case 11 : return ESymboleCarte.coeur;
+			case 12 : return ESymboleCarte.carreau;
+			case 13 : return ESymboleCarte.trefle;
+		}
 		return null;
 	}
-	
-	/**
-	 * Retourne un symbole de carte aleatoire parmi l'enumeration ESymboleCarte
-	 * @return ESymboleCarte : un symbole de carte
-	 * @see ESymboleCarte
-	 */
-	private ESymboleCarte choixESymboleCartealea(){
-		Random r=new Random();
-		int val= r.nextInt(10);
-		return choixESymboleCarte(val);
-	}
+//	
+//	/**
+//	 * Retourne un symbole de carte aleatoire parmi l'enumeration ESymboleCarte
+//	 * @return ESymboleCarte : un symbole de carte
+//	 * @see ESymboleCarte
+//	 */
+//	private ESymboleCarte choixESymboleCartealea(){
+//		Random r=new Random();
+//		int val= r.nextInt(10);
+//		return choixESymboleCarte(val);
+//	}
 	
 	// -- GETTEURS ET SETTEURS -- //
 
@@ -300,7 +299,7 @@ public class Plateau {
 	 * Obtient la liste des cartes melangees composant le plateau
 	 * @return listeCarteMelangee ArrayList : liste des cartes mélangees
 	 */
-	public  ArrayList<Carte> getListeCartesMelangees(){
+	public  ArrayList<ICarte> getListeCartesMelangees(){
 		return this.listeCartesMelangees;
 	}
 	
@@ -308,7 +307,7 @@ public class Plateau {
 	 * Obtient la reference de la premiere carte selectionnee par le joueur
 	 * @return carte1 Carte : la premiere carte selectionnee
 	 */
-	public Carte getCarte1() {
+	public ICarte getCarte1() {
 		return this.carte1;
 	}
 
@@ -316,7 +315,7 @@ public class Plateau {
 	 * Modifie la reference de la premiere carte selectionnee par le joueur
 	 * @param newCarte1 Carte : la nouvelle carte selectionnee en premier
 	 */
-	public void setCarte1(Carte newCarte1) {
+	public void setCarte1(ICarte newCarte1) {
 		this.carte1 = newCarte1;
 		etatCourant.selectCarte1();
 	}
@@ -325,7 +324,7 @@ public class Plateau {
 	 * Obtient la reference de la deuxieme carte selectionnee par le joueur
 	 * @return carte2 Carte : la deuxieme carte selectionnee
 	 */
-	public Carte getCarte2() {
+	public ICarte getCarte2() {
 		return this.carte2;
 	}
 
@@ -333,7 +332,7 @@ public class Plateau {
 	 * Modifie la reference de la deuxieme carte selectionnee par le joueur
 	 * @param newCarte2 Carte : la nouvelle carte selectionnee en deuxieme
 	 */
-	public void setCarte2(Carte newCarte2) {
+	public void setCarte2(ICarte newCarte2) {
 		this.carte2 = newCarte2;
 		etatCourant.selectCarte2();
 	}
@@ -405,8 +404,8 @@ public class Plateau {
 	 */
 	public String toStringM(){
 		String phrase = "nombre de cartes sur le plateau " +  this.nbrCartes + '\n';
-		for(int i=0;i<cartes.size();i++){
-			phrase = phrase + cartes.get(i).toString() + '\n';
+		for(int i=0;i<listeCartes.size();i++){
+			phrase = phrase + listeCartes.get(i).toString() + '\n';
 		}
 		return phrase;
 	}

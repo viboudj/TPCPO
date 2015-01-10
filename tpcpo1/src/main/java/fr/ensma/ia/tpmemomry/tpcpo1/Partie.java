@@ -1,14 +1,10 @@
 package fr.ensma.ia.tpmemomry.tpcpo1;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.IEtatPartie;
-import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.PairesRestantes;
-import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.FinPartie;
 import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.Joueur;
-import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.*;
-import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.pEtatPlateau.IEtatPlateau;
+import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
 
 /**
  * Classe modelisant une partie de memory

@@ -20,13 +20,17 @@ public enum ESymboleCarte {
 	croix,
 	losange,
 	cercle,
-	carré,
+	carre,
 	rectangle,
-	étoile,
+	etoile,
 	soleil,
 	lune,
 	venus,
-	mars;
+	mars,
+	pic,
+	coeur,
+	carreau,
+	trefle;
 	
 		
 		

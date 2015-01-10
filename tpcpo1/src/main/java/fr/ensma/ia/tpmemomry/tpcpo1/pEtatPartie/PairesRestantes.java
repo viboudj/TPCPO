@@ -45,5 +45,4 @@ public class PairesRestantes implements IEtatPartie {
 	public void plusPairePossible(){
 		partie.setEtatCourantPartie(partie.getFinPartie());
 	}
-
 }

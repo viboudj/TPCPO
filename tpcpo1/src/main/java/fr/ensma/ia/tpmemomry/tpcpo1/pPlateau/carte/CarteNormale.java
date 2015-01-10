@@ -1,41 +1,27 @@
-/*******************************************************************************
- * 2015, All rights reserved.
- *******************************************************************************/
 package fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte;
 
-// Start of user code (user defined imports)
-
-// End of user code
-
 /**
- * Description of CarteNormale.
+ * Classe decrivant une carte normale, c.a.d sans effet
+ * Pattern Strategy
+ * Classe fille de Carte
+ * @see Carte
  * 
  * @author douaultc
  */
-public class CarteNormale implements ITypeCarte {
-	// Start of user code (user defined attributes for CarteNormale)
-
-	// End of user code
-
+public class CarteNormale extends Carte implements ICarte {
+	
 	/**
-	 * The constructor.
+	 * Constructeur a un parametre
+	 * Cree une instance de carteNormale
 	 */
-	public CarteNormale() {
-		// Start of user code constructor for CarteNormale)
-		super();
-		// End of user code
+	public CarteNormale(ESymboleCarte symboleCarte) {
+		super(symboleCarte);
 	}
 
 	/**
-	 * Description of the method bonus.
+	 * Effet de la carte
 	 */
-	public void bonus() {
-		// Start of user code for method bonus
-		// End of user code
+	public void effetCarte() {
+		// Pas d'effet pour une carte normale
 	}
-
-	// Start of user code (user defined methods for CarteNormale)
-
-	// End of user code
-
 }

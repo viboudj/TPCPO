@@ -1,125 +1,94 @@
-/*******************************************************************************
- * 2015, All rights reserved.
- *******************************************************************************/
 package fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte;
 
-// Start of user code (user defined imports)
-
-// End of user code
-
 /**
- * Description of Carte.
+ * Classe mere des cartes
+ * Regroupe les attributs commun aux cartes sans effet et aux cartes avec effet
  * 
  * @author douaultc
  */
-public class Carte {
-	/**
-	 * Description of the property symbole.
-	 */
-	private ESymboleCarte symbole = null;
+public abstract class Carte {
 
 	/**
-	 * Description of the property type.
+	 * Symbole de la carte permettant sa comparaion avec d'autres
 	 */
-	private ITypeCarte type = null;
-
+	private ESymboleCarte symboleCarte;
+	
 	/**
-	 * Description of the property visible.
+	 * Booleen a "true" si la carte est face visible sur le plateau, "false" sinon
 	 */
 	private boolean visible = false;
 	
-	private boolean surPlateau= false;
-	
-	private int randValue;
-
-
-
 	/**
-	 * The constructor.
+	 * Booleen a "true" si la carte est sur le plateau, "false" sinon (c.a.d carte trouvee dans une paire)
 	 */
-	public Carte(ESymboleCarte symbole,int rdVal) {
-		
-		// Start of user code constructor for Carte)
+	private boolean surPlateau = true;
+
+	// -- CONSTRUCTEURS -- //
+	
+	/**
+	 * Constructeur a un parametre
+	 * Cree une instance de Carte
+	 */
+	public Carte(ESymboleCarte symboleCarte) {
 		super();
-		this.type= new CarteNormale();
-		this.visible=false;
-		this.symbole=symbole;
-		this.surPlateau=false;
-		this.randValue=rdVal;
-		// End of user code
+		this.symboleCarte = symboleCarte;
 	}
 
-	// Start of user code (user defined methods for Carte)
-
-	// End of user code
+	// -- GETTEURS ET SETTEURS -- //
+	
 	/**
-	 * Returns symbole.
-	 * @return symbole 
+	 * Obtient le symbole de la carte
+	 * @return symboleCarte ESymboleCarte : le symbole de la carte
 	 */
 	public ESymboleCarte getSymbole() {
-		return this.symbole;
+		return this.symboleCarte;
 	}
 
 	/**
-	 * Sets a value to attribute symbole. 
-	 * @param newSymbole 
+	 * Modifie le symbole de la carte 
+	 * @param newSymbole ESymboleCarte : le nouveau symbole de la carte
 	 */
 	public void setSymbole(ESymboleCarte newSymbole) {
-		this.symbole = newSymbole;
+		this.symboleCarte = newSymbole;
 	}
 
 	/**
-	 * Returns type.
-	 * @return type 
-	 */
-	public ITypeCarte getType() {
-		return this.type;
-	}
-
-	/**
-	 * Sets a value to attribute type. 
-	 * @param newType 
-	 */
-	public void setType(ITypeCarte newType) {
-		this.type = newType;
-	}
-
-	/**
-	 * Returns visible.
-	 * @return visible 
+	 * Obtient la visibilite de la carte (true=face visible, false sinon)
+	 * @return visible boolean : la visibilite de la carte
 	 */
 	public boolean getVisible() {
 		return this.visible;
 	}
 
 	/**
-	 * Sets a value to attribute visible. 
-	 * @param newVisible 
+	 * Modifie la visibilite de la carte (true=face visible, false sinon)
+	 * @param newVisible boolean : la visibilite de la carte
 	 */
 	public void setVisible(boolean newVisible) {
 		this.visible = newVisible;
 	}
 		
+	/**
+	 * Indique si la carte est sur le plateau (true si oui, false sinon)
+	 * @return surPlateau boolean : carte sur le plateau ou non
+	 */
 	public boolean getSurPlateau(){
 		return this.surPlateau;
 	}
 	
-	public void setSurPlateau(boolean val){
-		this.surPlateau=val;
+	/**
+	 * Laisse/enleve la carte du plateau (true=laisse, false sinon)
+	 * @param surPlateau boolean : carte sur le plateau ou non
+	 */
+	public void setSurPlateau(boolean surPlateau){
+		this.surPlateau=surPlateau;
 	}
 	
-	public int getRandValue(){
-		return this.randValue;
-	}
+	// -- OVERRIDE -- //
 	
-	public void setRandValue(int val){
-		this.randValue=val;
-	}
-	
+	@Override
 	public String toString(){
-		return "symbole de la carte " + symbole + '\n' 
-				+ "valeur associée à ma carte " + randValue +'\n'
-				;
+		return "symbole de la carte " + symboleCarte + "\n";
 	}
 
 }
