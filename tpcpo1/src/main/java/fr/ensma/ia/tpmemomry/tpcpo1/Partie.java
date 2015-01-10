@@ -296,7 +296,7 @@ public class Partie {
 	 */
 	public void traitementPaireTrouvee() {
 		joueurCourant.tourGagne(plateau.getCarte1().effetCarte());
-		// traiter le cas des cartes bonus
+
 		plateau.getCarte1().setSurPlateau(false);
 		plateau.getCarte2().setSurPlateau(false);
 		plateau.setNbrCartesRestantes(plateau.getNbrCartesRestantes()-2);
