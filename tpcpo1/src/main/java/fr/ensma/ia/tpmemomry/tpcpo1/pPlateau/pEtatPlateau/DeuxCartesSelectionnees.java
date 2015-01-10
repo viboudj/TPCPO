@@ -44,10 +44,11 @@ public class DeuxCartesSelectionnees implements IEtatPlateau {
 	 * Transition comparaisonCartes
 	 */
 	public void comparaisonCartes() {
-		plateau.getCarte1().setVisible(false);
-		plateau.getCarte2().setVisible(false);
 		
 		plateau.setEtatCourant(plateau.getpasCarteSelectionnee());
+		
+		plateau.getCarte1().setVisible(false);
+		plateau.getCarte2().setVisible(false);
 		
 		plateau.setCarte1(null);
 		plateau.setCarte2(null);
