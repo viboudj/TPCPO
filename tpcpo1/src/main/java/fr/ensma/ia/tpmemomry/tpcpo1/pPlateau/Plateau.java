@@ -159,6 +159,7 @@ public class Plateau {
 		listeCartesMelangees = new ArrayList<ICarte>(nbrCartes);
 		
 		tirerCartes(nbrSymboles, nbrPairesParSymbole);
+		// TODO trouver le moyen d'integrer les cartes speciales a la construction
 		melangerCartes();
 	}
 	
