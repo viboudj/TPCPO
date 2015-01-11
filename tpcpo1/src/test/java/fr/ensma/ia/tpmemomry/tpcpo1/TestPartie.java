@@ -41,7 +41,8 @@ public class TestPartie extends TestCase{
 		Partie partie= new Partie();
 		partie.ajoutJoueurIAStupide();
 		partie.ajoutJoueurIAStupide();
-		System.out.println(partie.getPlateau().toStringM());
+		System.out.println(partie.toString());
+		
 		while(partie.getEtatCourantPartie()==partie.getPairesRestantes()){
 		System.out.println(partie.getJoueurCourant().getNom());
 		System.out.println("nombre de cartes restantes: " + partie.getPlateau().getNbrCartesRestantes());

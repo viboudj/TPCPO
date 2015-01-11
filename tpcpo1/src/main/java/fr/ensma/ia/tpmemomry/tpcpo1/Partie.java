@@ -322,7 +322,6 @@ public class Partie {
 	 * Traite les actions si une paire a ete trouvee par un joueur
 	 */
 	public void traitementPaireTrouvee() {
-		System.out.println("paire trouvées!!!");
 		joueurCourant.tourGagne(plateau.getCarte1().effetCarte());
 		plateau.getCarte1().setSurPlateau(false);
 		plateau.getCarte2().setSurPlateau(false);
@@ -340,6 +339,10 @@ public class Partie {
 		nbrToursJoues++;
 		joueurSuivant();
 	}
+	
+	/**
+	 * description d'un tour complet
+	 */
 	
 	public void tour() {
 		if(this.etatCourantPartie==this.finPartie) {	
