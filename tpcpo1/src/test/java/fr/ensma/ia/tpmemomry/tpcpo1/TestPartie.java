@@ -24,12 +24,25 @@ public class TestPartie extends TestCase{
 		System.out.println(partie.getJoueurCourant().getNom());
 	}
 	
+	public void testPetitePartie(){
+		Partie partie= new Partie(10, 10, false, 0);
+		partie.ajoutJoueurIAStupide();
+		partie.ajoutJoueurIAStupide();
+		System.out.println(partie.getPlateau().toStringM());
+		while (partie.getEtatCourantPartie()==partie.getPairesRestantes()){
+		partie.tour();
+		System.out.println("Carte restante sur le Plateau: " + partie.getPlateau().toStringCarteSurPlateau());
+		}
+		System.out.println("fin du test");
+
+	}
+
 	public void testPartieIA() {
 		Partie partie= new Partie();
 		partie.ajoutJoueurIAStupide();
 		partie.ajoutJoueurIAStupide();
 		System.out.println(partie.getPlateau().toStringM());
-		while(true){
+		while(partie.getEtatCourantPartie()==partie.getPairesRestantes()){
 		System.out.println(partie.getJoueurCourant().getNom());
 		System.out.println("nombre de cartes restantes: " + partie.getPlateau().getNbrCartesRestantes());
 		partie.tour();

@@ -74,7 +74,7 @@ public class Partie {
 		super();
 		nbrSymboles = 8;
 		nbrPairesParSymboles = 2;
-		plateau = new Plateau(nbrSymboles, nbrPairesParSymboles, true, 2);
+		plateau = new Plateau(nbrSymboles, nbrPairesParSymboles, false, 0);
 		
 		listeJoueurs = new ArrayList<IJoueur>();
 		
@@ -322,6 +322,7 @@ public class Partie {
 	 * Traite les actions si une paire a ete trouvee par un joueur
 	 */
 	public void traitementPaireTrouvee() {
+		System.out.println("paire trouvées!!!");
 		joueurCourant.tourGagne(plateau.getCarte1().effetCarte());
 		plateau.getCarte1().setSurPlateau(false);
 		plateau.getCarte2().setSurPlateau(false);
@@ -341,8 +342,11 @@ public class Partie {
 	}
 	
 	public void tour() {
+		if(this.etatCourantPartie==this.finPartie) {	
+		} else {
 		joueurCourant.jouer();
 		traitement();
+		}
 		
 	}
 	

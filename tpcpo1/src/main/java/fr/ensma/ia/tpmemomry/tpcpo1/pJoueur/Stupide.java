@@ -67,7 +67,7 @@ public class Stupide extends IA implements IJoueur{
 		while(jeu==false){
 			jeu=true;
 			select2=r.nextInt(plateau.getListeCartesMelangees().size());
-			if((plateau.getListeCartesMelangees().get(select2).getSurPlateau()==false)&&(select1==select2)) jeu =false;
+			if((plateau.getListeCartesMelangees().get(select2).getSurPlateau()==false)) jeu =false;
 			if (select1==select2) jeu=false;
 		}
 

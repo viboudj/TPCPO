@@ -395,6 +395,7 @@ public class Plateau {
 		this.etatCourant = newEtatCourant;
 	}
 	
+
 	// -- OVERRIDE -- //
 	
 	/**
@@ -410,7 +411,7 @@ public class Plateau {
 	}
 	
 	public String toStringCarteSurPlateau(){
-		String phrase = "nombre de cartes sur le plateau " +  this.nbrCartes + '\n';
+		String phrase = "nombre de cartes restantes sur le plateau " +  this.nbrCartesRestantes + '\n';
 		for(int i=0;i<listeCartesMelangees.size();i++){
 			if(listeCartesMelangees.get(i).getSurPlateau()) phrase = phrase + listeCartesMelangees.get(i).toString() + '\n';
 		}

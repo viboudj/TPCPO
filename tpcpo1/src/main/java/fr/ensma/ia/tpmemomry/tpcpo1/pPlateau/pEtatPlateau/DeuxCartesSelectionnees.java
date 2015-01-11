@@ -50,8 +50,6 @@ public class DeuxCartesSelectionnees implements IEtatPlateau {
 		plateau.getCarte1().setVisible(false);
 		plateau.getCarte2().setVisible(false);
 		
-		//plateau.setCarte1(null);
-		//plateau.setCarte2(null);
 	}
 
 }
