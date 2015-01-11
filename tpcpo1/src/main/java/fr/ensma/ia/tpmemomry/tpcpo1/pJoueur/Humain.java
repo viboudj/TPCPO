@@ -15,6 +15,8 @@ public class Humain implements IJoueur {
 	
 	private Score score;
 	
+	private int nbrPairesTrouvees=0;
+	
 	/**
 	 * Constructeur sans parametre
 	 */
@@ -34,6 +36,30 @@ public class Humain implements IJoueur {
 		numInstanceHumain++;
 		this.nom=nom;
 		score = new Score();
+	}
+
+	@Override
+	public String getNom() {
+		return nom;
+	}
+
+	@Override
+	public void setNom(String nom) {
+		this.nom=nom;
+	}
+
+	@Override
+	public Score getScore() {
+		return score;
+	}
+
+	@Override
+	public void updateScore(int bonus) {
+		score.updateScore(nbrPairesTrouvees, bonus);
+	}
+
+	@Override
+	public void jouer() {
 	}
 	
 

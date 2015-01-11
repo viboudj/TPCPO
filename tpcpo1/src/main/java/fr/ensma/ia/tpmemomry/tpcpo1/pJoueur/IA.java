@@ -24,22 +24,26 @@ public abstract class IA implements IJoueur {
 	protected Score score;
 	
 	protected Plateau plateau;
+	
+	protected int nbrPairesTrouvees=0;
 
 	/**
 	 * The constructor.
 	 */
-	public IA() {
+	public IA(Plateau p) {
 		super();
 		numInstance++;
 		nom = "IA " + numInstance;
 		score = new Score();
+		plateau=p;
 	}
 	
-	public IA(String nom) {
+	public IA(Plateau p,String nom) {
 		super();
 		numInstance++;
 		this.nom=nom;
 		score = new Score();
+		plateau=p;
 	}
 
 

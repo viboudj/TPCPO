@@ -5,6 +5,7 @@ package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 
 import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.IA;
 // Start of user code (user defined imports)
+import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
 
 // End of user code
 
@@ -21,40 +22,35 @@ public class Expert extends IA implements IJoueur {
 	/**
 	 * The constructor.
 	 */
-	public Expert() {
+	public Expert(Plateau p) {
 		// Start of user code constructor for Expert)
-		super();
+		super(p);
 		// End of user code
 	}
 
 	@Override
 	public String getNom() {
-		// TODO Auto-generated method stub
-		return null;
+		return nom;
 	}
 
 
 	public void setNom(String nom) {
-		// TODO Auto-generated method stub
-		
+		this.nom=nom;
 	}
 
 	@Override
 	public Score getScore() {
-		// TODO Auto-generated method stub
-		return null;
+		return score;
 	}
 
 	@Override
-	public void updateScore() {
-		// TODO Auto-generated method stub
+	public void updateScore(int bonus) {
+		score.updateScore(nbrPairesTrouvees, bonus);
 		
 	}
 
 	@Override
-	public int jouer() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void jouer() {
 	}
 
 
