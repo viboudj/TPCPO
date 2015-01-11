@@ -24,8 +24,8 @@ public class TestPartie extends TestCase{
 		System.out.println(partie.getJoueurCourant().getNom());
 	}
 	
-	public void testPetitePartie(){
-		Partie partie= new Partie(10, 10, false, 0);
+	/*public void testPetitePartie(){
+		Partie partie= new Partie(2, 2, false, 0);
 		partie.ajoutJoueurIAStupide();
 		partie.ajoutJoueurIAStupide();
 		System.out.println(partie.getPlateau().toStringM());
@@ -33,9 +33,7 @@ public class TestPartie extends TestCase{
 		partie.tour();
 		System.out.println("Carte restante sur le Plateau: " + partie.getPlateau().toStringCarteSurPlateau());
 		}
-		System.out.println("fin du test");
-
-	}
+	}*/
 
 	public void testPartieIA() {
 		Partie partie= new Partie();
@@ -48,8 +46,10 @@ public class TestPartie extends TestCase{
 		System.out.println("nombre de cartes restantes: " + partie.getPlateau().getNbrCartesRestantes());
 		partie.tour();
 		System.out.println("Carte sur le Plateau: " + partie.getPlateau().toStringCarteSurPlateau());
-		System.out.println(partie.getEtatCourantPartie());
 		}
+		System.out.println("score du joueur " + partie.getListeJoueurs().get(0).getNom() + " : " + partie.getListeJoueurs().get(0).getScore().getScore() );
+		System.out.println("score du joueur " + partie.getListeJoueurs().get(1).getNom() + " : " + partie.getListeJoueurs().get(1).getScore().getScore() );
+		System.out.println("fin du test");
 	}
 	
 
