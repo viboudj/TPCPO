@@ -2,19 +2,30 @@ package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 
 
 /**
- * Description de la classe Humaine, classe fille de Joueur
+ * joueur humain
  * @author clementdouault
  * @see Joueur
  *
  */
 public class Humain implements IJoueur {
 	
+	/**
+	 * nom du joueur
+	 */
 	private String nom;
-
+	/**
+	 * nombre de joueur humain
+	 */
 	private static int numInstanceHumain = 0;
 	
+	/**
+	 * score du joueur
+	 */
 	private Score score;
 	
+	/**
+	 * nombre de paire trouvée par le joueur
+	 */
 	private int nbrPairesTrouvees=0;
 	
 	/**

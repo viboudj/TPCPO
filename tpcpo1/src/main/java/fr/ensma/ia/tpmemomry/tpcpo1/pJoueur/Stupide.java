@@ -6,20 +6,16 @@ package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 import java.util.Random;
 
 import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.IA;
-// Start of user code (user defined imports)
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
 
-// End of user code
 
 /**
- * Description of Stupide.
+ * IA n'ayant pas compris les règles du jeu
+ * selectionne au hasard des cartes
  * 
  * @author douaultc
  */
 public class Stupide extends IA implements IJoueur{
-	// Start of user code (user defined attributes for Stupide)
-
-	// End of user code
 
 	/**
 	 * The constructor.
@@ -31,27 +27,46 @@ public class Stupide extends IA implements IJoueur{
 	public Stupide(Plateau p,String nom) {
 		super(p,nom);
 	}
+	/**
+	 * donne le nom du joueur
+	 * @return nom du joueur
+	 */
 
 	@Override
 	public String getNom() {
 		return nom;
 	}
-
+	/**
+	 * set nom du joueur
+	 * @param nom
+	 */
 	@Override
 	public void setNom(String nom) {
 		this.nom=nom;
 	}
-
+	/**
+	 * donne la classe score du joueur
+	 * @return score du joueur
+	 */
 	@Override
 	public Score getScore() {
 		return score;
 	}
-
+	
+	
+	/**
+	 * mise à jour du score du joueur
+	 * @param effet du bonus
+	 */
 	@Override
 	public void updateScore(int bonus) {
 		score.updateScore(nbrPairesTrouvees, bonus);
 		
 	}
+	
+	/**
+	 * selectionne deux cartes au hasard sur le plateau
+	 */
 
 	@Override
 	public void jouer() {

@@ -6,25 +6,37 @@ package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
 
 
-// Start of user code (user defined imports)
-
-// End of user code
 
 /**
  * Description of IA.
- * 
+ * Classe mère des différentes IA
  * @author douaultc
  */
 public abstract class IA implements IJoueur {
-	// Start of user code (user defined attributes for IA)
+	
+	/**
+	 * nombre d'IA iplémentées
+	 */
 	private static int numInstance = 0;
 	
+	/**
+	 * nom de l'IA
+	 */	
 	protected String nom;
 	
+	/**
+	 * score de l'IA
+	 */
 	protected Score score;
 	
+	/**
+	 * Connaissance du plateau par l'IA 
+	 */
 	protected Plateau plateau;
 	
+	/**
+	 * nombre de paire d'affilées trouvées
+	 */
 	protected int nbrPairesTrouvees=0;
 
 	/**

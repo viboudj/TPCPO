@@ -291,9 +291,11 @@ public class Partie {
 	public void paireCartesIdentiques() {
 		etatCourantPartie.paireTrouvee();
 	}
+	
+	// -- COMPORTEMENT DE LA PARTIR -- //
 
 	/**
-	 * 
+	 * traitement d'un tour
 	 */
 	public void traitement() {
 		
@@ -336,7 +338,6 @@ public class Partie {
 	/**
 	 * description d'un tour complet
 	 */
-	
 	public void tour() {
 		if(this.etatCourantPartie==this.finPartie) {	
 		} else {
@@ -346,6 +347,37 @@ public class Partie {
 		
 	}
 	
+	/**
+	 * donne le joueur gagnant de la partie
+	 * @return joueur gagnant
+	 */
+	public IJoueur joueurGagant(){
+		IJoueur gagnant;
+		int nbrGagnant=0;
+		if(this.etatCourantPartie==this.finPartie){
+			gagnant=listeJoueurs.get(0);
+			for(int i=0; i<listeJoueurs.size();i++){
+				if(listeJoueurs.get(i).getScore().getScore()>gagnant.getScore().getScore()) gagnant=listeJoueurs.get(i);
+			}
+			for(int i=0; i<listeJoueurs.size();i++){
+				if(listeJoueurs.get(i).getScore().getScore()==gagnant.getScore().getScore()) nbrGagnant++;
+			}
+			
+			if(nbrGagnant>1){
+				System.out.println("égalité");
+				return null;
+			}
+			return gagnant;
+			
+		}
+		System.out.println("La partie n'est pas finie!!");
+		return null;
+	}
+	
+	/**
+	 * mise en string le plateau
+	 */
+	@Override
 	public String toString(){
 		String phraseJoueur = "liste des joueur \n";
 		for(int i=0;i<this.nbrJoueurs;i++){

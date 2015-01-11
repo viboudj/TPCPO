@@ -1,7 +1,7 @@
 package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 
 /**
- * Description de la classe Score
+ * score du joueur
  * @author clementdouault
  *
  */

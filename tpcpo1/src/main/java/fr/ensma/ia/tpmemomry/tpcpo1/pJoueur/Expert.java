@@ -4,21 +4,16 @@
 package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 
 import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.IA;
-// Start of user code (user defined imports)
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
 
-// End of user code
-
 /**
- * Description of Expert.
- * 
+ * IA experte dans le jeu 
  * @author douaultc
  */
+
+//non implémentée
+
 public class Expert extends IA implements IJoueur {
-	// Start of user code (user defined attributes for Expert)
-
-	// End of user code
-
 	/**
 	 * The constructor.
 	 */

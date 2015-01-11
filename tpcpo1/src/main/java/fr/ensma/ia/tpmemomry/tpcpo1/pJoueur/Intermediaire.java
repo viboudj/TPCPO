@@ -4,16 +4,15 @@
 package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 
 import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.IA;
-// Start of user code (user defined imports)
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
 
-// End of user code
-
 /**
- * Description of Intermediaire.
+ * IA d'intelligence intermédiaire
  * 
  * @author douaultc
  */
+
+//non implémentée
 public class Intermediaire extends IA implements IJoueur {
 
 	/**
