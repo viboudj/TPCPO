@@ -1,8 +1,6 @@
 package fr.ensma.ia.tpmemomry.tpcpo1;
 
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
-import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte.*;
-import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.pEtatPlateau.*;
 import junit.framework.*;
 
 public class TestPlateau extends TestCase{

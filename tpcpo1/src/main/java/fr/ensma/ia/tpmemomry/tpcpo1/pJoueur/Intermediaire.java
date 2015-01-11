@@ -15,9 +15,6 @@ import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
  * @author douaultc
  */
 public class Intermediaire extends IA implements IJoueur {
-	// Start of user code (user defined attributes for Intermediaire)
-
-	// End of user code
 
 	/**
 	 * The constructor.

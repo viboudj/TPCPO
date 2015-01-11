@@ -157,13 +157,6 @@ public class Partie {
 		return this.nbrJoueurs;
 	}
 
-	/**
-	 * Modifie le nombre de joueurs jouant a la partie
-	 * @param newNbrJoueurs int : le nouveau nombre de joueurs
-	 */
-	private void setNbrJoueurs(int newNbrJoueurs) {
-		this.nbrJoueurs = newNbrJoueurs;
-	}
 	
 	/**
 	 * Obtient la liste des joueurs jouant une partie
