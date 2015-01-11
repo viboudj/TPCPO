@@ -29,32 +29,5 @@ public class Intermediaire extends IA {
 		super(nom);
 	}
 
-	@Override
-	public String getNom() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setNom() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Score getScore() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void updateScore() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	// Start of user code (user defined methods for Intermediaire)
-
-	// End of user code
-
+	
 }

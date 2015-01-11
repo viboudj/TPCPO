@@ -13,7 +13,7 @@ import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.IA;
  * 
  * @author douaultc
  */
-public class Expert extends IA {
+public class Expert extends IA implements IJoueur {
 	// Start of user code (user defined attributes for Expert)
 
 	// End of user code
@@ -33,8 +33,8 @@ public class Expert extends IA {
 		return null;
 	}
 
-	@Override
-	public void setNom() {
+
+	public void setNom(String nom) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -51,8 +51,12 @@ public class Expert extends IA {
 		
 	}
 
-	// Start of user code (user defined methods for Expert)
+	@Override
+	public int jouer() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
-	// End of user code
+
 
 }

@@ -3,6 +3,8 @@
  *******************************************************************************/
 package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 
+import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
+
 
 // Start of user code (user defined imports)
 
@@ -17,9 +19,11 @@ public abstract class IA implements IJoueur {
 	// Start of user code (user defined attributes for IA)
 	private static int numInstance = 0;
 	
-	private String nom;
+	protected String nom;
 	
-	private Score score;
+	protected Score score;
+	
+	protected Plateau plateau;
 
 	/**
 	 * The constructor.
@@ -37,17 +41,8 @@ public abstract class IA implements IJoueur {
 		this.nom=nom;
 		score = new Score();
 	}
+
+
 	
-	/**
-	 * Description of the method jouer.
-	 */
-	public void  jouer() {
-
-	}
-
-
-	// Start of user code (user defined methods for IA)
-
-	// End of user code
 
 }

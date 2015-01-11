@@ -37,28 +37,6 @@ public class Humain implements IJoueur {
 	}
 	
 
-	@Override
-	public String getNom() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setNom() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Score getScore() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void updateScore() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }
