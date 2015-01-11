@@ -61,6 +61,18 @@ public class Humain implements IJoueur {
 	@Override
 	public void jouer() {
 	}
+
+	@Override
+	public void tourPerdu() {
+		this.nbrPairesTrouvees=0;
+		
+	}
+
+	@Override
+	public void tourGagne(int effetCarte) {
+		this.score.updateScore(nbrPairesTrouvees, effetCarte);
+		
+	}
 	
 
 	

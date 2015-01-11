@@ -180,6 +180,9 @@ public class Partie {
 	 * @see Joueur
 	 */
 	public void ajouterJoueur(IJoueur joueur) {
+		if (listeJoueurs.size()==0){
+			this.joueurCourant=joueur;
+		}
 		listeJoueurs.add(joueur);
 		this.nbrJoueurs++;
 	}
@@ -303,11 +306,10 @@ public class Partie {
 	 * Traite les actions si une paire a ete trouvee par un joueur
 	 */
 	public void traitementPaireTrouvee() {
-	//	joueurCourant.tourGagne(plateau.getCarte1().effetCarte());
-
+		joueurCourant.tourGagne(plateau.getCarte1().effetCarte());
 		plateau.getCarte1().setSurPlateau(false);
 		plateau.getCarte2().setSurPlateau(false);
-		//plateau.setNbrCartesRestantes(plateau.getNbrCartesRestantes()-2);
+		plateau.setNbrCartesRestantes(plateau.getNbrCartesRestantes()-2);
 		if (plateau.getNbrCartesRestantes() == 0) {
 			etatCourantPartie.plusPairePossible();
 		}
@@ -317,7 +319,7 @@ public class Partie {
 	 * Traite les actions si aucune paire n'a ete trouvee ce tour
 	 */
 	public void traitementPaireNonTrouvee() {
-	//	joueurCourant.tourPerdu();	
+		joueurCourant.tourPerdu();	
 		nbrToursJoues++;
 		joueurSuivant();
 	}

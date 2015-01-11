@@ -56,5 +56,17 @@ public class Intermediaire extends IA implements IJoueur {
 	public void jouer() {
 	}
 
+	@Override
+	public void tourPerdu() {
+		this.nbrPairesTrouvees=0;
+		
+	}
+
+	@Override
+	public void tourGagne(int effetCarte) {
+		this.score.updateScore(nbrPairesTrouvees, effetCarte);
+		
+	}
+
 	
 }
