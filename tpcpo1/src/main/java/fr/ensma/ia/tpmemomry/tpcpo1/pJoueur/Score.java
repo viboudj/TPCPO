@@ -10,7 +10,6 @@ public class Score {
 	/**
 	 * Reference du joueur ayant ce score
 	 */
-	private Joueur joueur;
 	
 	/**
 	 * la valeur du score
@@ -22,15 +21,6 @@ public class Score {
 	 */
 	public Score() {
 		super();
-	}
-	
-	/**
-	 * Constructeur avec parametre
-	 * @param joueur Joueur : reference du joueur possedant ce score
-	 * @see Joueur
-	 */
-	public Score(Joueur joueur) {
-		this.setJoueur(joueur);
 	}
 	
 	/**
@@ -49,24 +39,7 @@ public class Score {
 		this.score = score;
 	}
 
-	/**
-	 * Obtient le joueur possedant ce score
-	 * @return Joueur : le joueur possedant ce score
-	 * @see Joueur
-	 */
-	public Joueur getJoueur() {
-		return joueur;
-	}
 
-	/**
-	 * Modifie le joueur possedant ce score
-	 * @param joueur Joueur : le nouveau joueur possedant ce score
-	 * @see Joueur
-	 */
-	public void setJoueur(Joueur joueur) {
-		this.joueur = joueur;
-	}
-	 
 	/**
 	 * Calcul de la valeur du score en fonction du nombre de paires successivement trouvées par le joueur
 	 * @param pairesSuccessives int : le nombre de paires successivement trouvées

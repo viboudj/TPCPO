@@ -22,9 +22,35 @@ public class Intermediaire extends IA {
 	 * The constructor.
 	 */
 	public Intermediaire() {
-		// Start of user code constructor for Intermediaire)
 		super();
-		// End of user code
+	}
+	
+	public Intermediaire(String nom) {
+		super(nom);
+	}
+
+	@Override
+	public String getNom() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setNom() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Score getScore() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateScore() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	// Start of user code (user defined methods for Intermediaire)

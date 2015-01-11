@@ -3,7 +3,7 @@
  *******************************************************************************/
 package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 
-import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.Joueur;
+
 // Start of user code (user defined imports)
 
 // End of user code
@@ -13,26 +13,36 @@ import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.Joueur;
  * 
  * @author douaultc
  */
-public abstract class IA extends Joueur {
+public abstract class IA implements IJoueur {
 	// Start of user code (user defined attributes for IA)
-
-	// End of user code
+	private static int numInstance = 0;
+	
+	private String nom;
+	
+	private Score score;
 
 	/**
 	 * The constructor.
 	 */
 	public IA() {
-		// Start of user code constructor for IA)
 		super();
-		// End of user code
+		numInstance++;
+		nom = "IA " + numInstance;
+		score = new Score();
+	}
+	
+	public IA(String nom) {
+		super();
+		numInstance++;
+		this.nom=nom;
+		score = new Score();
 	}
 	
 	/**
 	 * Description of the method jouer.
 	 */
 	public void  jouer() {
-		// Start of user code for method jouer
-		// End of user code
+
 	}
 
 

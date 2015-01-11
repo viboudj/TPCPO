@@ -3,7 +3,7 @@ package fr.ensma.ia.tpmemomry.tpcpo1;
 import java.util.ArrayList;
 
 import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.*;
-import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.Joueur;
+import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.*;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
 
 /**
@@ -36,12 +36,12 @@ public class Partie {
 	/**
 	 * Liste des joueurs jouant une partie
 	 */
-	public ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur>();
+	public ArrayList<IJoueur> listeJoueurs = new ArrayList<IJoueur>();
 	
 	/**
 	 * Joueur courant
 	 */
-	private Joueur joueurCourant = null;
+	private IJoueur joueurCourant = null;
 	
 	/**
 	 * Compteur suivant le nombre de tours joues dans la partie
@@ -74,9 +74,9 @@ public class Partie {
 		super();
 		nbrSymboles = 8;
 		nbrPairesParSymboles = 2;
-		plateau = new Plateau(this, nbrSymboles, nbrPairesParSymboles, true, 2);
+		plateau = new Plateau(nbrSymboles, nbrPairesParSymboles, true, 2);
 		
-		listeJoueurs = new ArrayList<Joueur>();
+		listeJoueurs = new ArrayList<IJoueur>();
 		
 		etatCourantPartie = pairesRestantes;	
 	}
@@ -91,9 +91,9 @@ public class Partie {
 		super();
 		this.nbrSymboles = nbrSymb;
 		this.nbrPairesParSymboles = nbrPairesParSymb;
-		plateau = new Plateau(this, nbrSymboles, nbrPairesParSymboles, pairesBonus, probabiliteBonus);
+		plateau = new Plateau( nbrSymboles, nbrPairesParSymboles, pairesBonus, probabiliteBonus);
 		
-		listeJoueurs = new ArrayList<Joueur>();
+		listeJoueurs = new ArrayList<IJoueur>();
 		
 		etatCourantPartie = pairesRestantes;
 	}
@@ -170,7 +170,7 @@ public class Partie {
 	 * @return listeJoueurs ArrayList : la liste des joueurs
 	 * @see Joueur
 	 */
-	public ArrayList<Joueur> getListeJoueurs() {
+	public ArrayList<IJoueur> getListeJoueurs() {
 		return listeJoueurs;
 	}
 	
@@ -179,12 +179,12 @@ public class Partie {
 	 * @param joueur : le joueur a ajouter a la liste
 	 * @see Joueur
 	 */
-	public void ajouterJoueur(Joueur joueur) {
+	public void ajouterJoueur(IJoueur joueur) {
 		listeJoueurs.add(joueur);
 		this.nbrJoueurs++;
 	}
 	
-	public void supprimerJoueur(Joueur joueur){
+	public void supprimerJoueur(IJoueur joueur){
 		listeJoueurs.remove(joueur);
 		this.nbrJoueurs--;
 	}
@@ -194,7 +194,7 @@ public class Partie {
 	 * @return joueurCourant Joueur : le joueur courant
 	 * @see Joueur
 	 */
-	public Joueur getJoueurCourant() {
+	public IJoueur getJoueurCourant() {
 		return joueurCourant;
 	}
 
@@ -203,7 +203,7 @@ public class Partie {
 	 * @param joueurCourant Joueur : le nouveau joueur courant
 	 * @see Joueur
 	 */
-	public void setJoueurCourant(Joueur joueurCourant) {
+	public void setJoueurCourant(IJoueur joueurCourant) {
 		this.joueurCourant = joueurCourant;
 	}
 	
@@ -303,11 +303,11 @@ public class Partie {
 	 * Traite les actions si une paire a ete trouvee par un joueur
 	 */
 	public void traitementPaireTrouvee() {
-		joueurCourant.tourGagne(plateau.getCarte1().effetCarte());
+	//	joueurCourant.tourGagne(plateau.getCarte1().effetCarte());
 
 		plateau.getCarte1().setSurPlateau(false);
 		plateau.getCarte2().setSurPlateau(false);
-		plateau.setNbrCartesRestantes(plateau.getNbrCartesRestantes()-2);
+		//plateau.setNbrCartesRestantes(plateau.getNbrCartesRestantes()-2);
 		if (plateau.getNbrCartesRestantes() == 0) {
 			etatCourantPartie.plusPairePossible();
 		}
@@ -317,7 +317,7 @@ public class Partie {
 	 * Traite les actions si aucune paire n'a ete trouvee ce tour
 	 */
 	public void traitementPaireNonTrouvee() {
-		joueurCourant.tourPerdu();	
+	//	joueurCourant.tourPerdu();	
 		nbrToursJoues++;
 		joueurSuivant();
 	}

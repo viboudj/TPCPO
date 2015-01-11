@@ -5,6 +5,7 @@ import java.util.ListIterator;
 import java.util.Random;
 
 
+import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.*;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte.*;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.pEtatPlateau.*;
 
