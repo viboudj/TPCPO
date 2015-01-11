@@ -27,6 +27,6 @@ public class CarteNormale extends Carte implements ICarte {
 	
 	@Override
 	public String toString() {
-		return super.toString() + "Bonus : pas d'effet";
+		return super.toString() + "Bonus : pas d'effet" + "\n";
 	}
 }

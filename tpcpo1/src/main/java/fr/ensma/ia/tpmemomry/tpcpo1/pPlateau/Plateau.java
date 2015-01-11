@@ -409,6 +409,14 @@ public class Plateau {
 		return phrase;
 	}
 	
+	public String toStringCarteSurPlateau(){
+		String phrase = "nombre de cartes sur le plateau " +  this.nbrCartes + '\n';
+		for(int i=0;i<listeCartesMelangees.size();i++){
+			if(listeCartesMelangees.get(i).getSurPlateau()) phrase = phrase + listeCartesMelangees.get(i).toString() + '\n';
+		}
+		return phrase;
+	}
+	
 	/**
 	 * Redefinition de la fonction toString pour l'affichage du plateau melange
 	 * Affiche le plateau de la forme "nombre de carte" + detail de chaque carte

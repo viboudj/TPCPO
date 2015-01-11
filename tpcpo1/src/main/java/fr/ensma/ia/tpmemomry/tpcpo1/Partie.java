@@ -191,6 +191,22 @@ public class Partie {
 		listeJoueurs.remove(joueur);
 		this.nbrJoueurs--;
 	}
+	
+	public void ajoutJoueurHumain(){
+		ajouterJoueur(new Humain());
+	}
+	
+	public void ajoutJoueurHumain(String nom){
+		ajouterJoueur(new Humain(nom));
+	}
+	
+	public void ajoutJoueurIAStupide(){
+		ajouterJoueur(new Stupide(plateau));
+	}
+	
+	public void ajoutJoueurIAStupide(String nom){
+		ajouterJoueur(new Stupide(plateau,nom));
+	}
 
 	/**
 	 * Obtient la reference du joueur courant
@@ -215,9 +231,9 @@ public class Partie {
 	 * Si joueurCourant est le dernier de la listeJoueurs, le suivant est le premier joueur de la listeJoueurs
 	 */
 	public void joueurSuivant() {
-		int _suivant = 0;
+	 int _suivant = 0;	
 		
-		if(listeJoueurs.indexOf(joueurCourant) == listeJoueurs.size()) {
+		if(listeJoueurs.indexOf(joueurCourant) == listeJoueurs.size()-1) {
 			_suivant = 0;
 		} else {
 			_suivant = listeJoueurs.indexOf(joueurCourant)+1;
@@ -324,7 +340,9 @@ public class Partie {
 		joueurSuivant();
 	}
 	
-	public void tour(){
+	public void tour() {
+		joueurCourant.jouer();
+		traitement();
 		
 	}
 	

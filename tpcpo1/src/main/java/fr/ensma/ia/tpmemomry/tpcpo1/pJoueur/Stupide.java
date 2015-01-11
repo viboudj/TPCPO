@@ -28,7 +28,7 @@ public class Stupide extends IA implements IJoueur{
 		super(p);
 	}
 	
-	public Stupide(String nom,Plateau p) {
+	public Stupide(Plateau p,String nom) {
 		super(p,nom);
 	}
 
@@ -54,7 +54,7 @@ public class Stupide extends IA implements IJoueur{
 	}
 
 	@Override
-	public void jouer() throws InterruptedException {
+	public void jouer() {
 		Random r = new Random();
 		int select1 = 0,select2=0;
 		boolean jeu=false;
@@ -67,22 +67,14 @@ public class Stupide extends IA implements IJoueur{
 		while(jeu==false){
 			jeu=true;
 			select2=r.nextInt(plateau.getListeCartesMelangees().size());
-			if((plateau.getListeCartesMelangees().get(select2).getSurPlateau()==false)&&(select1!=select2)) jeu =false;
+			if((plateau.getListeCartesMelangees().get(select2).getSurPlateau()==false)&&(select1==select2)) jeu =false;
+			if (select1==select2) jeu=false;
 		}
-		try {
-			plateau.setCarte1(plateau.getListeCartesMelangees().get(select1));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		wait(500);
-		try {
-			plateau.setCarte2(plateau.getListeCartesMelangees().get(select2));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		wait(500);
+
+		plateau.setCarte1(plateau.getListeCartesMelangees().get(select1));
+
+		plateau.setCarte2(plateau.getListeCartesMelangees().get(select2));
+		
 		
 		
 	}

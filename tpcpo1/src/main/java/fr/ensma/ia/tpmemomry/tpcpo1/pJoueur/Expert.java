@@ -23,9 +23,11 @@ public class Expert extends IA implements IJoueur {
 	 * The constructor.
 	 */
 	public Expert(Plateau p) {
-		// Start of user code constructor for Expert)
 		super(p);
-		// End of user code
+	}
+	
+	public Expert(Plateau p,String nom) {
+		super(p,nom);
 	}
 
 	@Override

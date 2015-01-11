@@ -27,6 +27,6 @@ public class CartePlusDeux extends Carte implements ICarte {
 	
 	@Override
 	public String toString() {
-		return super.toString() + "Bonus : plus 2 points";
+		return super.toString() + "Bonus : plus 2 points"+"\n";
 	}
 }
