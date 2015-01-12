@@ -152,6 +152,7 @@ public class Plateau {
 		ESymboleCarte symbole = ESymboleCarte.carre;
 		for(int i=0 ; i<nbrSymb ; i++) {
 			for(int j=0 ; j<nbrPairesParSymb ; j++) {
+				// Determine si on tire paire bonus ou une paire sans effet
 				if(tirageBonus(probaBonus)) {
 					tirerPaireBonus(symbole.choixESymboleCarte(i));
 				} else {
@@ -170,7 +171,7 @@ public class Plateau {
 	 */
 	public boolean tirageBonus(int probabilite) {
 		Random ran = new Random();
-
+		// Si le nombre aleatoire est inferieur ou egal a la probabilite, retourner vrai
 		if((ran.nextInt(10)+1)<=probabilite) {
 			return true;
 		} else {
@@ -209,6 +210,7 @@ public class Plateau {
 	 * Melange les cartes contenues dans la liste cartes en les placant aleatoirement dans listeCartesMelangees
 	 */
 	public void melangerCartes() {
+		// creation d'une copie de listeCartes
 		ArrayList<ICarte> _copieListeCarte = new ArrayList<ICarte>();
 		ListIterator<ICarte> ite = listeCartes.listIterator();
 		while (ite.hasNext()) {

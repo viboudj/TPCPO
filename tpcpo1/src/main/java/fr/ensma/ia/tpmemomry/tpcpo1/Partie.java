@@ -324,6 +324,7 @@ public class Partie {
 	 */
 	public void traitementPaireTrouvee() {
 		joueurCourant.tourGagne(plateau.getCarte1().effetCarte());
+		
 		plateau.getCarte1().setSurPlateau(false);
 		plateau.getCarte2().setSurPlateau(false);
 		plateau.setNbrCartesRestantes(plateau.getNbrCartesRestantes()-2);
@@ -354,18 +355,21 @@ public class Partie {
 		int _scoreMax  = 0;
 		int _pairesMax= 0;
 		
+		// Calcul du score le plus eleve
 		for (int i=0 ; i<listeJoueurs.size() ; i++) {
 			if (listeJoueurs.get(i).getScore().getScore()>_scoreMax) {
 				_scoreMax = listeJoueurs.get(i).getScore().getScore();
 			}
 		}
 		
+		// Liste des joueurs ayant le score le plus eleve
 		for(int i=0 ; i<listeJoueurs.size() ; i++) {
 			if(listeJoueurs.get(i).getScore().getScore() == _scoreMax) {
 				_joueursGagnants.add(listeJoueurs.get(i));
 			}
 		}
 		
+		// Calul du joueur ayant le plus grand nombre de paires
 		for(int i=0 ; i<_joueursGagnants.size() ; i++) {
 			if(_joueursGagnants.get(i).getNbrPairesTrouvees()>_pairesMax) {
 				_pairesMax = _joueursGagnants.get(i).getNbrPairesTrouvees();

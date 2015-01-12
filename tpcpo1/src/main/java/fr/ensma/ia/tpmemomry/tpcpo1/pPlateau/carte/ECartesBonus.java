@@ -35,6 +35,10 @@ public enum ECartesBonus {
 		return null;
 	}
 	
+	/**
+	 * Retourne un ECarteBonus aleatoire parmi ceux de l'enumeration
+	 * @return
+	 */
 	public ECartesBonus CartesBonusAleatoire(){
 		Random ran = new Random();
 		int val= ran.nextInt(nombreECartesBonus);
