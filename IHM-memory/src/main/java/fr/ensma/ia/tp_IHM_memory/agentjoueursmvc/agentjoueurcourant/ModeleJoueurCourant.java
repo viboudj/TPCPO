@@ -1,7 +1,6 @@
 package fr.ensma.ia.tp_IHM_memory.agentjoueursmvc.agentjoueurcourant;
 
 import fr.ensma.ia.tpmemomry.tpcpo1.Partie;
-import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.IJoueur;
 
 public class ModeleJoueurCourant {
 	
@@ -51,6 +50,4 @@ public class ModeleJoueurCourant {
 		updateSerieCourante();
 		
 	}
-	
-	
 }
