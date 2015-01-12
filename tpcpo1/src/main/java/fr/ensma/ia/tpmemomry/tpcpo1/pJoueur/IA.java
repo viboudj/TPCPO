@@ -42,7 +42,7 @@ public abstract class IA {
 	/**
 	 * nombre total de paires trouvees par le joueur
 	 */
-	protected int nbrPairesTrouvees=0;
+	protected int nbrPairesTrouvees = 0;
 
 	/**
 	 * Constructeur a un parametre
@@ -115,7 +115,6 @@ public abstract class IA {
 	public void tourGagne(int effetCarte) {
 		nbrPairesSuccessives++;
 		nbrPairesTrouvees++;
-		this.score.updateScore(nbrPairesSuccessives, effetCarte);
-		
+		this.score.updateScore(nbrPairesSuccessives, effetCarte);	
 	}
 }

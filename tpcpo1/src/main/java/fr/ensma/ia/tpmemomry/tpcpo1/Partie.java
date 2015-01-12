@@ -343,29 +343,37 @@ public class Partie {
 	
 	
 	/**
-	 * donne le joueur gagnant de la partie
-	 * @return joueur gagnant
+	 * Retourne le joueur ayant gagne la partie.
+	 * Le gagnant est celui qui a le plus de point, ou le plus grand nombre de paires trouvees en cas d'egalite sur le score.
+	 * S'il y a egalite de score et de paires trouvees, le gagnant est le premier de la liste de joueur.
+	 * @return joueurGagnant IJoueur : le joueur ayant gagne la partie
 	 */
 	public IJoueur joueurGagant(){
-		IJoueur gagnant;
-		int nbrGagnant=0;
-		if(this.etatCourantPartie==this.finPartie){
-			gagnant=listeJoueurs.get(0);
-			for(int i=0; i<listeJoueurs.size();i++){
-				if(listeJoueurs.get(i).getScore().getScore()>gagnant.getScore().getScore()) gagnant=listeJoueurs.get(i);
+		ArrayList<IJoueur> _joueursGagnants = new ArrayList<IJoueur>();
+		int _positionJoueurGagnant = 0;
+		int _scoreMax  = 0;
+		int _pairesMax= 0;
+		
+		for (int i=0 ; i<listeJoueurs.size() ; i++) {
+			if (listeJoueurs.get(i).getScore().getScore()>_scoreMax) {
+				_scoreMax = listeJoueurs.get(i).getScore().getScore();
 			}
-			for(int i=0; i<listeJoueurs.size();i++){
-				if(listeJoueurs.get(i).getScore().getScore()==gagnant.getScore().getScore()) nbrGagnant++;
-			}
-			
-			if(nbrGagnant>1){
-				return null;
-			}
-			return gagnant;
-			
 		}
-		System.out.println("La partie n'est pas finie!!");
-		return null;
+		
+		for(int i=0 ; i<listeJoueurs.size() ; i++) {
+			if(listeJoueurs.get(i).getScore().getScore() == _scoreMax) {
+				_joueursGagnants.add(listeJoueurs.get(i));
+			}
+		}
+		
+		for(int i=0 ; i<_joueursGagnants.size() ; i++) {
+			if(_joueursGagnants.get(i).getNbrPairesTrouvees()>_pairesMax) {
+				_pairesMax = _joueursGagnants.get(i).getNbrPairesTrouvees();
+				_positionJoueurGagnant = i;
+			}
+		}
+		
+		return _joueursGagnants.get(_positionJoueurGagnant);
 	}
 	
 	// -- OVERRIDE -- //
