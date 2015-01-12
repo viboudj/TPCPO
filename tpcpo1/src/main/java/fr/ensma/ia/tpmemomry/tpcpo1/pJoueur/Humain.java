@@ -74,6 +74,14 @@ public class Humain implements IJoueur {
 	}
 	
 	/**
+	 * Obtient le nombre de paires successives trouvee lors d'un meme tour
+	 * @return nbrPairesSuccessives int : le nombre de paires successives
+	 */
+	public int getNbrPairesSuccessives() {
+		return nbrPairesSuccessives;
+	}
+	
+	/**
 	 * Obtient le nombre total de paires trouvees par le joueur
 	 * @return nbrPairesTrouvees int : le nombren total de paires trouvees
 	 */
