@@ -1,6 +1,3 @@
-/*******************************************************************************
- * 2015, All rights reserved.
- *******************************************************************************/
 package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 
 import java.util.Random;
@@ -18,7 +15,8 @@ import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
 public class Stupide extends IA implements IJoueur{
 
 	/**
-	 * The constructor.
+	 * Constructeur a un parametre
+	 * Cree une instance de Stupide
 	 */
 	public Stupide(Plateau p) {
 		super(p);
@@ -67,7 +65,6 @@ public class Stupide extends IA implements IJoueur{
 	/**
 	 * selectionne deux cartes au hasard sur le plateau
 	 */
-
 	@Override
 	public void jouer() {
 		Random r = new Random();
@@ -89,17 +86,20 @@ public class Stupide extends IA implements IJoueur{
 		plateau.setCarte1(plateau.getListeCartesMelangees().get(select1));
 
 		plateau.setCarte2(plateau.getListeCartesMelangees().get(select2));
-		
-		
-		
 	}
 
+	/**
+	 * traitement du tour perdu du joueur
+	 */
 	@Override
 	public void tourPerdu() {
 		this.nbrPairesTrouvees=0;
 		
 	}
 
+	/**
+	 * traitement du tour gagné du joueur
+	 */
 	@Override
 	public void tourGagne(int effetCarte) {
 		this.score.updateScore(nbrPairesTrouvees, effetCarte);
