@@ -364,7 +364,6 @@ public class Partie {
 			}
 			
 			if(nbrGagnant>1){
-				System.out.println("égalité");
 				return null;
 			}
 			return gagnant;

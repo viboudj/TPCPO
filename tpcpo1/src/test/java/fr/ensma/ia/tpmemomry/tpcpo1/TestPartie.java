@@ -49,7 +49,11 @@ public class TestPartie extends TestCase{
 		}
 		System.out.println("score du joueur " + partie.getListeJoueurs().get(0).getNom() + " : " + partie.getListeJoueurs().get(0).getScore().getScore() );
 		System.out.println("score du joueur " + partie.getListeJoueurs().get(1).getNom() + " : " + partie.getListeJoueurs().get(1).getScore().getScore() );
+		if(partie.joueurGagant()!=null){
 		System.out.println(partie.joueurGagant().getNom());
+		} else {
+			System.out.println("égalité!!");
+		}
 		System.out.println("fin du test");
 	}
 	
