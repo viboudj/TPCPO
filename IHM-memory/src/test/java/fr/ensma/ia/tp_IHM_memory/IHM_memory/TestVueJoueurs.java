@@ -1,5 +1,31 @@
 package fr.ensma.ia.tp_IHM_memory.IHM_memory;
 
-public class TestVueJoueurs {
+import java.awt.Container;
+import java.awt.Frame;
 
+import javax.swing.JFrame;
+
+import junit.framework.TestCase;
+import fr.ensma.ia.tp_IHM_memory.agentjoueursmvc.*;
+import fr.ensma.ia.tpmemomry.tpcpo1.Partie;
+
+public class TestVueJoueurs extends TestCase {
+	
+	public static void main(){
+		Partie p = new Partie();
+		ModeleJoueurs modele =new ModeleJoueurs(p);
+		ControlleurJoueurs controlleur = new ControlleurJoueurs();
+
+		
+		p.ajoutJoueurHumain();
+		p.ajoutJoueurHumain("Léon");
+
+		VueJoueurs vue = new VueJoueurs(modele, controlleur);
+		JFrame j = new JFrame("testVueJoueur");
+		j.setSize(100, 100);
+		Container C = j.getContentPane();
+		C.add(vue);
+		j.setVisible(true);
+		
+	}
 }

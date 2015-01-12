@@ -9,8 +9,8 @@ public class ModeleJoueurs {
 	
 	Partie partie;
 	
-	public ModeleJoueurs(){
-		
+	public ModeleJoueurs(Partie p){
+		this.partie=p;
 	}
 	
 	
@@ -25,6 +25,13 @@ public class ModeleJoueurs {
 
 	public ArrayList<IJoueur> getListeJoueur(){
 		return partie.listeJoueurs;
+	}
+
+
+
+	public Partie getPartie() {
+		return this.partie;
+		
 	};
 	
 	
