@@ -8,12 +8,29 @@ import fr.ensma.ia.tpmemomry.tpcpo1.Partie;
 
 public class VueJoueurs extends Container {
 
-	private Partie partie;
+	private ModeleJoueurs modele;
+	private ControlleurJoueur controlleur;
 	
 	
 	
-	public VueJoueurs(Partie partie) {
+	public VueJoueurs(ModeleJoueurs modele,ControlleurJoueur controlleur) {
 		
+		JScrollPane tabScr = new JScrollPane();
+		JTable tab = new JTable(modele.getNbrJoueur(),3);
+		
+		tab.getColumnModel().getColumn(0).setHeaderValue("Nom des joueurs");
+		tab.getColumnModel().getColumn(1).setHeaderValue("Score des joueurs");
+		tab.getColumnModel().getColumn(2).setHeaderValue("Nombre de paires trouvées");
+
+		
+		for(int i=0; i<modele.getNbrJoueur() ;i++ ){
+			tab.setValueAt(modele.getListeJoueur().get(i).getNom(), i, 0);
+			tab.setValueAt(modele.getListeJoueur().get(i).getScore().getScore(), i, 1);
+			tab.setValueAt(modele.getListeJoueur().get(i).getNbrPairesTrouvees(), i, 0);
+		}
+		
+		
+		this.add(tabScr);
 	}
 	
 
