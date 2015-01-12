@@ -34,7 +34,7 @@ public interface IJoueur {
 	public void updateScore(int bonus);
 	
 	/**
-	 * lance e jeu des joueur IA
+	 * lance le jeu des joueur IA
 	 */
 	public void jouer() ;
 	
