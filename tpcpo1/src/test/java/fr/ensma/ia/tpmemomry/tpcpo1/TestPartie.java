@@ -36,9 +36,12 @@ public class TestPartie extends TestCase{
 	}*/
 
 	public void testPartieIA() {
-		Partie partie= new Partie();
+		Partie partie = new Partie();
+		//Partie partie= new Partie(10,10,false,0);
 		partie.ajoutJoueurIAStupide();
 		partie.ajoutJoueurIAStupide();
+		//partie.ajoutJoueurIAStupide();
+		//partie.ajoutJoueurIAStupide();
 		System.out.println(partie.toString());
 		
 		while(partie.getEtatCourantPartie()==partie.getPairesRestantes()){
@@ -50,6 +53,8 @@ public class TestPartie extends TestCase{
 		}
 		System.out.println("score du joueur " + partie.getListeJoueurs().get(0).getNom() + " : " + partie.getListeJoueurs().get(0).getScore().getScore() );
 		System.out.println("score du joueur " + partie.getListeJoueurs().get(1).getNom() + " : " + partie.getListeJoueurs().get(1).getScore().getScore() );
+		//System.out.println("score du joueur " + partie.getListeJoueurs().get(2).getNom() + " : " + partie.getListeJoueurs().get(2).getScore().getScore() );
+		//System.out.println("score du joueur " + partie.getListeJoueurs().get(3).getNom() + " : " + partie.getListeJoueurs().get(3).getScore().getScore() );
 		if(partie.joueurGagant()!=null){
 		System.out.println(partie.joueurGagant().getNom());
 		} else {
