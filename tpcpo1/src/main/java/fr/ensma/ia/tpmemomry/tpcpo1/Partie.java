@@ -303,7 +303,7 @@ public class Partie {
 		this.etatCourantPartie = newEtatCourant;
 	}
 
-	// -- COMPORTEMENT DE LA PARTIR -- //
+	// -- COMPORTEMENT DE LA PARTIE -- //
 
 	/**
 	 * Compare les deux cartes d'une paire et lance les actions adequates
@@ -317,7 +317,6 @@ public class Partie {
 		}
 	}
 	
-
 	/**
 	 * Traite les actions si une paire a ete trouvee par un joueur
 	 */
@@ -366,6 +365,8 @@ public class Partie {
 		System.out.println("La partie n'est pas finie!!");
 		return null;
 	}
+	
+	// -- OVERRIDE -- //
 	
 	/**
 	 * mise en string le plateau
