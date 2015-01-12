@@ -9,21 +9,26 @@ import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
  * @author douaultc
  */
 
-//non implémentée
+//non implementee
+//idee pour l'implementation : l'IA garde en memoire jusqu'a 10 emplacements de carte
+//elle choisit une carte au hasard sur le plateau et regarde si elle a deja une carte similaire en memoire
+
 public class Intermediaire extends IA implements IJoueur {
 
 	/**
 	 * Constructeur a un parametre
 	 * Cree une instance de Stupide
+	 * @param p Plateau
 	 */
 	public Intermediaire(Plateau p) {
 		super(p);
 	}
 	
 	/**
-	 * 
-	 * @param p
-	 * @param nom
+	 * Constructeur a deux parametres
+	 * Cree une instance de Stupide
+	 * @param p Plateau
+	 * @param nom String
 	 */
 	public Intermediaire(Plateau p,String nom) {
 		super(p,nom);
