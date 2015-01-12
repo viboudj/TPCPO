@@ -353,17 +353,6 @@ public class Partie {
 		joueurSuivant();
 	}
 	
-	/**
-	 * description d'un tour complet
-	 */
-	public void tour() {
-		if(this.etatCourantPartie==this.finPartie) {	
-		} else {
-		joueurCourant.jouer();
-		traitement();
-		}
-		
-	}
 	
 	/**
 	 * donne le joueur gagnant de la partie

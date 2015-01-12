@@ -44,7 +44,8 @@ public class TestPartie extends TestCase{
 		while(partie.getEtatCourantPartie()==partie.getPairesRestantes()){
 		System.out.println(partie.getJoueurCourant().getNom());
 		System.out.println("nombre de cartes restantes: " + partie.getPlateau().getNbrCartesRestantes());
-		partie.tour();
+		partie.getJoueurCourant().jouer();
+		partie.traitement();
 		System.out.println("Carte sur le Plateau: " + partie.getPlateau().toStringCarteSurPlateau());
 		}
 		System.out.println("score du joueur " + partie.getListeJoueurs().get(0).getNom() + " : " + partie.getListeJoueurs().get(0).getScore().getScore() );
