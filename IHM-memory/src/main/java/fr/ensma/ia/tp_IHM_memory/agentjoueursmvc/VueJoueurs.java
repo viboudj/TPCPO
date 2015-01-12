@@ -9,11 +9,11 @@ import fr.ensma.ia.tpmemomry.tpcpo1.Partie;
 public class VueJoueurs extends Container {
 
 	private ModeleJoueurs modele;
-	private ControlleurJoueurs controlleur;
+	private ControleurJoueurs controleur;
 	
 	
 	
-	public VueJoueurs(ModeleJoueurs modele,ControlleurJoueurs controlleur) {
+	public VueJoueurs(ModeleJoueurs modele,ControleurJoueurs controlleur) {
 		
 		JScrollPane tabScr = new JScrollPane();
 		JTable tab = new JTable(modele.getNbrJoueur(),3);
@@ -24,9 +24,9 @@ public class VueJoueurs extends Container {
 
 		
 		for(int i=0; i<modele.getNbrJoueur() ;i++ ){
-			tab.setValueAt(modele.getListeJoueur().get(i).getNom(), i+1, 1);
-			tab.setValueAt(modele.getListeJoueur().get(i).getScore().getScore(), i+1, 2);
-			tab.setValueAt(modele.getListeJoueur().get(i).getNbrPairesTrouvees(), i+1, 3);
+			tab.setValueAt(modele.getListeJoueur().get(i).getNom(), i, 0);
+			tab.setValueAt(modele.getListeJoueur().get(i).getScore().getScore(), i, 1);
+			tab.setValueAt(modele.getListeJoueur().get(i).getNbrPairesTrouvees(), i, 2);
 		}
 		
 		

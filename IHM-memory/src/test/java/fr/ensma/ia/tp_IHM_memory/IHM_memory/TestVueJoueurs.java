@@ -14,7 +14,7 @@ public class TestVueJoueurs extends TestCase {
 	public static void main(){
 		Partie p = new Partie();
 		ModeleJoueurs modele =new ModeleJoueurs(p);
-		ControlleurJoueurs controlleur = new ControlleurJoueurs();
+		ControleurJoueurs controlleur = new ControleurJoueurs();
 
 		
 		p.ajoutJoueurHumain();
