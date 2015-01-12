@@ -12,7 +12,6 @@ import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
  * @author douaultc
  */
 public class Partie {
-	
 	/**
 	 * Le plateau de jeu
 	 */
@@ -180,23 +179,42 @@ public class Partie {
 		this.nbrJoueurs++;
 	}
 	
+	/**
+	 * suupprime un joueur
+	 * @param joueur
+	 */
+	
 	public void supprimerJoueur(IJoueur joueur){
 		listeJoueurs.remove(joueur);
 		this.nbrJoueurs--;
 	}
 	
+	/**
+	 * créer un joueur humain
+	 */
 	public void ajoutJoueurHumain(){
 		ajouterJoueur(new Humain());
 	}
 	
+	/**
+	 * créer un joueur humain de nom "nom"
+	 * @param nom
+	 */
 	public void ajoutJoueurHumain(String nom){
 		ajouterJoueur(new Humain(nom));
 	}
 	
+	/**
+	 * créer une IA Stupide
+	 */
 	public void ajoutJoueurIAStupide(){
 		ajouterJoueur(new Stupide(plateau));
 	}
 	
+	/**
+	 * créer une IA stupide de nom "nom"
+	 * @param nom
+	 */
 	public void ajoutJoueurIAStupide(String nom){
 		ajouterJoueur(new Stupide(plateau,nom));
 	}
@@ -300,7 +318,7 @@ public class Partie {
 	public void traitement() {
 		
 		if(plateau.comparaisonPaire()) {
-			traitementPaireTrouvee();
+			etatCourantPartie.paireTrouvee(); 
 		} else {
 			traitementPaireNonTrouvee();
 		}
