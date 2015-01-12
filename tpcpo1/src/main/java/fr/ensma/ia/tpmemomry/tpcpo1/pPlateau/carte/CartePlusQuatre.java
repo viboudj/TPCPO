@@ -23,6 +23,7 @@ public class CartePlusQuatre extends Carte implements ICarte {
 	 * Effet de la carte
 	 */
 	public int effetCarte() {
+		// offre quatre points de score supplementaires
 		return 4;
 	}
 	
