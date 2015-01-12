@@ -17,7 +17,7 @@ public class Stupide extends IA implements IJoueur{
 	/**
 	 * Constructeur a un parametre
 	 * Cree une instance de Stupide
-	 * @param p Plateau
+	 * @param p Plateau : la reference du plateau de jeu
 	 */
 	public Stupide(Plateau p) {
 		super(p);
@@ -26,42 +26,43 @@ public class Stupide extends IA implements IJoueur{
 	/**
 	 * Constructeur a deux parametres
 	 * Cree une instance de Stupide
-	 * @param p Plateau
-	 * @param nom String
+	 * @param p Plateau : la reference du plateau de jeu
+	 * @param nom String : le nom du joueur
 	 */
 	public Stupide(Plateau p,String nom) {
 		super(p,nom);
 	}
+	
 	/**
 	 * donne le nom du joueur
-	 * @return nom du joueur
+	 * @return nom String : nom du joueur
 	 */
-
 	@Override
 	public String getNom() {
 		return nom;
 	}
+	
 	/**
-	 * set nom du joueur
-	 * @param nom
+	 * modifie le nom du joueur
+	 * @param nom String : le nom du jour
 	 */
 	@Override
 	public void setNom(String nom) {
 		this.nom=nom;
 	}
+	
 	/**
-	 * donne la classe score du joueur
-	 * @return score du joueur
+	 * donne le score du joueur
+	 * @return score Score : la reference du score du joueur
 	 */
 	@Override
 	public Score getScore() {
 		return score;
 	}
 	
-	
 	/**
-	 * mise à jour du score du joueur
-	 * @param effet du bonus
+	 * lance la mise à jour du score du joueur avec un bonus eventuel
+	 * @param bonus int : le bonus de score
 	 */
 	@Override
 	public void updateScore(int bonus) {
@@ -106,6 +107,7 @@ public class Stupide extends IA implements IJoueur{
 
 	/**
 	 * traitement du tour gagné du joueur
+	 * @param effetCarte int : le bonus donne par la paire trouvee
 	 */
 	@Override
 	public void tourGagne(int effetCarte) {

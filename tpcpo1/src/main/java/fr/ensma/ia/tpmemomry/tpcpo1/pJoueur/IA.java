@@ -40,7 +40,8 @@ public abstract class IA implements IJoueur {
 	protected int nbrPairesTrouvees=0;
 
 	/**
-	 * The constructor.
+	 * Constructeur a un parametre
+	 * @param p Plateau : la reference du plateau
 	 */
 	public IA(Plateau p) {
 		super();
@@ -50,6 +51,11 @@ public abstract class IA implements IJoueur {
 		plateau=p;
 	}
 	
+	/**
+	 * Constructeur a deux parametres
+	 * @param p Plateau : la reference du plateau
+	 * @param nom String : le nmo du joueur
+	 */
 	public IA(Plateau p,String nom) {
 		super();
 		numInstance++;

@@ -28,6 +28,8 @@ public abstract class Carte {
 	/**
 	 * Constructeur a un parametre
 	 * Cree une instance de Carte
+	 * @param symboleCarte ESymboleCarte : le symbole de la carte
+	 * @see ESymboleCarte
 	 */
 	public Carte(ESymboleCarte symboleCarte) {
 		super();

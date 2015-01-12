@@ -16,8 +16,8 @@ public class Expert extends IA implements IJoueur {
 
 	/**
 	 * Constructeur a un parametre
-	 * Cree une instance de Stupide
-	 * @param p Plateau
+	 * Cree une instance de Expert
+	 * @param p Plateau : la reference du plateau de jeu
 	 */
 	public Expert(Plateau p) {
 		super(p);
@@ -25,9 +25,9 @@ public class Expert extends IA implements IJoueur {
 	
 	/**
 	 * Constructeur a deux parametres
-	 * Cree une instance de Stupide
-	 * @param p Plateau
-	 * @param nom String
+	 * Cree une instance de Expert
+	 * @param p Plateau : la reference du plateau de jeu
+	 * @param nom String : le nom du joueur
 	 */
 	public Expert(Plateau p,String nom) {
 		super(p,nom);
@@ -35,7 +35,7 @@ public class Expert extends IA implements IJoueur {
 
 	/**
 	 * donne le nom du joueur
-	 * @return nom du joueur
+	 * @return nom String : nom du joueur
 	 */
 	@Override
 	public String getNom() {
@@ -43,8 +43,8 @@ public class Expert extends IA implements IJoueur {
 	}
 
 	/**
-	 * installe le nom du joueur
-	 * @param String
+	 * modifie le nom du joueur
+	 * @param nom String : le nom du jour
 	 */
 	@Override
 	public void setNom(String nom) {
@@ -54,7 +54,7 @@ public class Expert extends IA implements IJoueur {
 
 	/**
 	 * donne le score du joueur
-	 * @return classe score du joueur
+	 * @return score Score : la reference du score du joueur
 	 */
 	@Override
 	public Score getScore() {
@@ -62,8 +62,8 @@ public class Expert extends IA implements IJoueur {
 	}
 
 	/**
-	 * lance la mise à jour du score du joueur
-	 * @param bonus au score
+	 * lance la mise à jour du score du joueur avec un bonus eventuel
+	 * @param bonus int : le bonus de score
 	 */
 	@Override
 	public void updateScore(int bonus) {
@@ -88,6 +88,7 @@ public class Expert extends IA implements IJoueur {
 
 	/**
 	 * traitement du tour gagné du joueur
+	 * @param effetCarte int : le bonus donne par la paire trouvee
 	 */
 	@Override
 	public void tourGagne(int effetCarte) {

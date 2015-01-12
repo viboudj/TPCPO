@@ -79,9 +79,8 @@ public class Plateau {
 	// -- CONSTRUCTEURS -- //
 	
 	/**
-	 * Constructeur avec un parametre
+	 * Constructeur sans parametre
 	 * Cree un plateau compose de 32 cartes sans effet avec 8 symboles differents (2 paires par symbole)
-	 * @param 
 	 */
 	public Plateau(){
 		super();
@@ -100,10 +99,12 @@ public class Plateau {
 	}
 	
 	/**
-	 * Constructeur a trois parametres
+	 * Constructeur a quatre parametres
 	 * Cree un plateau avec nbrSymboles symboles et nbrPairesParSymbole paires par symbole
 	 * @param nbrSymboles int : le nombre de symboles differents
 	 * @param nbrPairesParSymbole int : le nombre de paires par symboles
+	 * @param cartesBonus boolean : indique si, oui ou non, les cartes bonus sont autorisees sur le plateau
+	 * @param probabiliteBonus int : la probabilite d'apparition des paires bonus (entre 0 et 10)
 	 */
 	public Plateau(int nbrSymboles, int nbrPairesParSymbole, boolean cartesBonus, int probabiliteBonus) {
 		super();

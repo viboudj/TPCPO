@@ -83,8 +83,10 @@ public class Partie {
 	/**
 	 * Constructeur a deux parametres
 	 * Cree une nouvelle partie avec des parametres personnalisŽs
-	 * @param nbrSymboles int : nombre de symboles differents
-	 * @param nbrPairesParSymbole int : nombre de paires par symbole
+	 * @param nbrSymb int : nombre de symboles differents
+	 * @param nbrPairesParSymb int : nombre de paires par symbole
+	 * @param pairesBonus boolean : indique si, oui ou non, les cartes bonus sont autorisees sur le plateau
+	 * @param probabiliteBonus int : la probabilite d'apparition des paires bonus (entre 0 et 10)
 	 */
 	public Partie(int nbrSymb, int nbrPairesParSymb, boolean pairesBonus, int probabiliteBonus) {
 		super();
@@ -160,7 +162,7 @@ public class Partie {
 	/**
 	 * Obtient la liste des joueurs jouant une partie
 	 * @return listeJoueurs ArrayList : la liste des joueurs
-	 * @see Joueur
+	 * @see IJoueur
 	 */
 	public ArrayList<IJoueur> getListeJoueurs() {
 		return listeJoueurs;
@@ -169,7 +171,7 @@ public class Partie {
 	/**
 	 * Ajout d'un joueur a la liste des joueurs
 	 * @param joueur : le joueur a ajouter a la liste
-	 * @see Joueur
+	 * @see IJoueur
 	 */
 	public void ajouterJoueur(IJoueur joueur) {
 		if (listeJoueurs.size()==0){
@@ -180,40 +182,40 @@ public class Partie {
 	}
 	
 	/**
-	 * suupprime un joueur
-	 * @param joueur
+	 * Suppression d'un joueur de la liste des joueurs
+	 * @param joueur IJoueur : le joueur a supprimer de la liste
+	 * @see IJoueur
 	 */
-	
 	public void supprimerJoueur(IJoueur joueur){
 		listeJoueurs.remove(joueur);
 		this.nbrJoueurs--;
 	}
 	
 	/**
-	 * créer un joueur humain
+	 * Creer un joueur humain
 	 */
 	public void ajoutJoueurHumain(){
 		ajouterJoueur(new Humain());
 	}
 	
 	/**
-	 * créer un joueur humain de nom "nom"
-	 * @param nom
+	 * Creer un joueur humain avec nom
+	 * @param nom String : le nom du joueur
 	 */
 	public void ajoutJoueurHumain(String nom){
 		ajouterJoueur(new Humain(nom));
 	}
 	
 	/**
-	 * créer une IA Stupide
+	 * Creer un joueur ordinateur avec un niveau d'intelligence stupide
 	 */
 	public void ajoutJoueurIAStupide(){
 		ajouterJoueur(new Stupide(plateau));
 	}
 	
 	/**
-	 * créer une IA stupide de nom "nom"
-	 * @param nom
+	 * Creer un joueur ordinateur avec un niveau d'intelligence stupide avec un nom
+	 * @param nom String : le nom du joueur
 	 */
 	public void ajoutJoueurIAStupide(String nom){
 		ajouterJoueur(new Stupide(plateau,nom));

@@ -51,7 +51,7 @@ public interface ICarte {
 	
 	/**
 	 * Redefinition de la methode toString pour ICarte
-	 * @return
+	 * @return String
 	 */
 	@Override
 	public String toString();

@@ -11,25 +11,25 @@ public interface IJoueur {
 	
 	/**
 	 * donne le nom du joueur
-	 * @return nom du joueur
+	 * @return nom String : nom du joueur
 	 */
 	public String getNom();
 	
 	/**
-	 * installe le nom du joueur
-	 * @param String
+	 * modifie le nom du joueur
+	 * @param nom String : le nom du jour
 	 */
 	public void setNom(String nom);
 	
 	/**
 	 * donne le score du joueur
-	 * @return classe score du joueur
+	 * @return score Score : la reference du score du joueur
 	 */
 	public Score getScore();
 	
 	/**
-	 * lance la mise à jour du score du joueur
-	 * @param bonus au score
+	 * lance la mise à jour du score du joueur avec un bonus eventuel
+	 * @param bonus int : le bonus de score
 	 */
 	public void updateScore(int bonus);
 	
@@ -45,6 +45,7 @@ public interface IJoueur {
 	
 	/**
 	 * traitement du tour gagné du joueur
+	 * @param effetCarte int : le bonus donne par la paire trouvee
 	 */
 	public void tourGagne(int effetCarte);
 

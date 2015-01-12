@@ -6,10 +6,6 @@ package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
  *
  */
 public class Score {
-
-	/**
-	 * Reference du joueur ayant ce score
-	 */
 	
 	/**
 	 * la valeur du score
@@ -43,6 +39,7 @@ public class Score {
 	/**
 	 * Calcul de la valeur du score en fonction du nombre de paires successivement trouvées par le joueur
 	 * @param pairesSuccessives int : le nombre de paires successivement trouvées
+	 * @param bonus int : le bonus eventuel donne par la paire trouvee
 	 */
 	public void updateScore(int pairesSuccessives, int bonus){
 		if(pairesSuccessives==0){

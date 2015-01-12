@@ -13,6 +13,7 @@ public class CartePlusDix extends Carte implements ICarte {
 	/**
 	 * Constructeur a un parametre
 	 * Cree une instance de carte
+	 * @param symboleCarte ESymboleCarte : le symbole de la carte
 	 */
 	public CartePlusDix(ESymboleCarte symboleCarte) {
 		super(symboleCarte);
