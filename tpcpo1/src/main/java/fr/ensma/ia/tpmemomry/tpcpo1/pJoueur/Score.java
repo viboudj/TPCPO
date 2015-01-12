@@ -37,7 +37,7 @@ public class Score {
 
 
 	/**
-	 * Calcul de la valeur du score en fonction du nombre de paires successivement trouvées par le joueur
+	 * Calcul de la valeur du score en fonction du nombre de paires successivement trouvées par le joueur et des bonus eventuels
 	 * @param pairesSuccessives int : le nombre de paires successivement trouvées
 	 * @param bonus int : le bonus eventuel donne par la paire trouvee
 	 */

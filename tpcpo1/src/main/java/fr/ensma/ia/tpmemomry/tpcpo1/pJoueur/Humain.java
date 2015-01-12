@@ -23,10 +23,15 @@ public class Humain implements IJoueur {
 	private Score score;
 	
 	/**
-	 * nombre de paire trouvée par le joueur
+	 * nombre de paires trouvees successivement dans un meme tour
+	 */
+	private int nbrPairesSuccessives = 0;
+	
+	/**
+	 * nombre total de paires trouvees par le joueur
 	 */
 	private int nbrPairesTrouvees=0;
-	
+
 	/**
 	 * Constructeur sans parametre
 	 * Cree une instance de Humain
@@ -67,6 +72,14 @@ public class Humain implements IJoueur {
 	public void setNom(String nom) {
 		this.nom=nom;
 	}
+	
+	/**
+	 * Obtient le nombre total de paires trouvees par le joueur
+	 * @return nbrPairesTrouvees int : le nombren total de paires trouvees
+	 */
+	public int getNbrPairesTrouvees() {
+		return nbrPairesTrouvees;
+	}
 
 	/**
 	 * donne le score du joueur
@@ -75,15 +88,6 @@ public class Humain implements IJoueur {
 	@Override
 	public Score getScore() {
 		return score;
-	}
-
-	/**
-	 * lance la mise à jour du score du joueur avec un bonus eventuel
-	 * @param bonus int : le bonus de score
-	 */
-	@Override
-	public void updateScore(int bonus) {
-		score.updateScore(nbrPairesTrouvees, bonus);
 	}
 
 	/**
@@ -98,8 +102,7 @@ public class Humain implements IJoueur {
 	 */
 	@Override
 	public void tourPerdu() {
-		this.nbrPairesTrouvees=0;
-		
+		nbrPairesSuccessives = 0;		
 	}
 
 	/**
@@ -108,7 +111,9 @@ public class Humain implements IJoueur {
 	 */
 	@Override
 	public void tourGagne(int effetCarte) {
-		this.score.updateScore(nbrPairesTrouvees, effetCarte);
+		nbrPairesSuccessives++;
+		nbrPairesTrouvees++;
+		this.score.updateScore(nbrPairesSuccessives, effetCarte);
 		
 	}
 }

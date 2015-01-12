@@ -28,10 +28,10 @@ public interface IJoueur {
 	public Score getScore();
 	
 	/**
-	 * lance la mise à jour du score du joueur avec un bonus eventuel
-	 * @param bonus int : le bonus de score
+	 * Obtient le nombre total de paires trouvees par le joueur
+	 * @return nbrPairesTrouvees int : le nombren total de paires trouvees
 	 */
-	public void updateScore(int bonus);
+	public int getNbrPairesTrouvees();
 	
 	/**
 	 * lance le jeu des joueur IA

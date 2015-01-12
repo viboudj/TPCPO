@@ -315,7 +315,7 @@ public class Partie {
 		if(plateau.comparaisonPaire()) {
 			etatCourantPartie.paireTrouvee(); 
 		} else {
-			traitementPaireNonTrouvee();
+			etatCourantPartie.pasPaireTrouvee();
 		}
 	}
 	
