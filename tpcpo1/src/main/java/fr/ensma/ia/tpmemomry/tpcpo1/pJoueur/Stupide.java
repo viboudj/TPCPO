@@ -17,6 +17,7 @@ public class Stupide extends IA implements IJoueur{
 	/**
 	 * Constructeur a un parametre
 	 * Cree une instance de Stupide
+	 * @param p Plateau
 	 */
 	public Stupide(Plateau p) {
 		super(p);
@@ -111,7 +112,4 @@ public class Stupide extends IA implements IJoueur{
 		this.score.updateScore(nbrPairesTrouvees, effetCarte);
 		
 	}
-
-	
-
 }
