@@ -306,7 +306,7 @@ public class Partie {
 	// -- COMPORTEMENT DE LA PARTIR -- //
 
 	/**
-	 * traitement d'un tour
+	 * Compare les deux cartes d'une paire et lance les actions adequates
 	 */
 	public void traitement() {
 		
