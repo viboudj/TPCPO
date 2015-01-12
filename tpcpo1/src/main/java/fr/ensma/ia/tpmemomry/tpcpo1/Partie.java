@@ -224,7 +224,7 @@ public class Partie {
 	/**
 	 * Obtient la reference du joueur courant
 	 * @return joueurCourant Joueur : le joueur courant
-	 * @see Joueur
+	 * @see IJoueur
 	 */
 	public IJoueur getJoueurCourant() {
 		return joueurCourant;
@@ -233,7 +233,7 @@ public class Partie {
 	/**
 	 * Modifie le joueur courant
 	 * @param joueurCourant Joueur : le nouveau joueur courant
-	 * @see Joueur
+	 * @see IJoueur
 	 */
 	public void setJoueurCourant(IJoueur joueurCourant) {
 		this.joueurCourant = joueurCourant;

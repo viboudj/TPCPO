@@ -46,6 +46,7 @@ public interface ICarte {
 	
 	/**
 	 * Produit un effet si la carte est trouvee avec une carte identique
+	 * @return int
 	 */
 	public int effetCarte();
 	

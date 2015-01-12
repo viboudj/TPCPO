@@ -4,8 +4,7 @@ package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 /**
  * joueur humain
  * @author clementdouault
- * @see Joueur
- *
+ * @see IJoueur
  */
 public class Humain implements IJoueur {
 	
