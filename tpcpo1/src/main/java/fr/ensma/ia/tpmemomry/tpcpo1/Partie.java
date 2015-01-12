@@ -302,14 +302,7 @@ public class Partie {
 	public void setEtatCourantPartie(IEtatPartie newEtatCourant) {
 		this.etatCourantPartie = newEtatCourant;
 	}
-	
-	/**
-	 * Declanche la transition paireTrouvee de l'automate
-	 */
-	public void paireCartesIdentiques() {
-		etatCourantPartie.paireTrouvee();
-	}
-	
+
 	// -- COMPORTEMENT DE LA PARTIR -- //
 
 	/**
@@ -324,13 +317,7 @@ public class Partie {
 		}
 	}
 	
-	/**
-	 * Declanche la transition pasPaireTrouvee de l'automate
-	 */
-	public void paireCartesDifferentes() {
-		etatCourantPartie.pasPaireTrouvee();
-	}
-	
+
 	/**
 	 * Traite les actions si une paire a ete trouvee par un joueur
 	 */
