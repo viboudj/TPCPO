@@ -22,6 +22,12 @@ public class Stupide extends IA implements IJoueur{
 		super(p);
 	}
 	
+	/**
+	 * Constructeur a deux parametres
+	 * Cree une instance de Stupide
+	 * @param p
+	 * @param nom
+	 */
 	public Stupide(Plateau p,String nom) {
 		super(p,nom);
 	}
