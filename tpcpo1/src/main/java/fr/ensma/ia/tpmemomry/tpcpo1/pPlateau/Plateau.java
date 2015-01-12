@@ -15,9 +15,6 @@ import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.pEtatPlateau.*;
  *
  */
 public class Plateau {
-
-
-
 	
 	/**
 	 * Nombre de cartes dont est compose le plateau
