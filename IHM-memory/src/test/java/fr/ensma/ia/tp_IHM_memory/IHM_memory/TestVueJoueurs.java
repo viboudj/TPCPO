@@ -25,10 +25,12 @@ public class TestVueJoueurs extends TestCase {
 		p.ajoutJoueurHumain("Léon");
 		p.ajoutJoueurHumain("Jacque");
 		p.ajoutJoueurHumain("Jean");
+		
+		for(int i=0;i<10;i++) p.ajoutJoueurHumain();
 
 		VueJoueurs vue = new VueJoueurs(modele, controlleur);
 		JFrame j = new JFrame("testVueJoueur");
-		j.setSize(200, 200);
+		j.setSize(100, 100);
 		Container C = j.getContentPane();
 		C.add(vue);
 		j.setVisible(true);

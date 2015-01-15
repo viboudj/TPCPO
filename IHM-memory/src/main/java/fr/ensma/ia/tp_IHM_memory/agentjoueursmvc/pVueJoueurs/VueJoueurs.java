@@ -16,16 +16,15 @@ public class VueJoueurs extends Container {
 		
 		tab=new VueJoueursTab(modele, controlleur);
 		
+		this.setLayout(new BorderLayout());
 		JScrollPane tabScr = new JScrollPane(tab);
-		tabScr.setSize(200, 200);
-		
 
+		tabScr.setSize(100, 100);
 		tabScr.setVisible(true);
-		tabScr.setSize(200, 200);
 		tabScr.setViewportView(tab);
 
 
-		this.add(tab, BorderLayout.CENTER);
+		this.add(tab);
 	}
 
 }

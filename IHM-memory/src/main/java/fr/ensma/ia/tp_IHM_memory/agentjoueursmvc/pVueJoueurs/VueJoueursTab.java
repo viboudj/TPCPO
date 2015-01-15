@@ -26,12 +26,8 @@ public class VueJoueursTab extends Container {
 	public VueJoueursTab(ModeleJoueurs modele,ControleurJoueurs controlleur) {
 		
 		this.setLayout(new BorderLayout());
-		this.setSize(200,200);
 		this.setVisible(true);
-		
 
-
-	
 		JTable tab = new JTable(modele.getNbrJoueur(),3);
 		
 
@@ -46,8 +42,6 @@ public class VueJoueursTab extends Container {
 			tab.setValueAt(modele.getListeJoueur().get(i).getNbrPairesTrouvees(), i, 2);
 		}
 		
-
-		this.setSize(200, 200);
 		this.add(tab, BorderLayout.CENTER);
 		this.add(tab.getTableHeader(), BorderLayout.NORTH);
 		
