@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import junit.framework.TestCase;
 import fr.ensma.ia.tp_IHM_memory.agentjoueursmvc.*;
 import fr.ensma.ia.tp_IHM_memory.agentjoueursmvc.pVueJoueurs.VueJoueurs;
+import fr.ensma.ia.tp_IHM_memory.agentjoueursmvc.pVueJoueurs.VueJoueursTab;
 import fr.ensma.ia.tpmemomry.tpcpo1.Partie;
 
 public class TestVueJoueurs extends TestCase {
@@ -19,7 +20,7 @@ public class TestVueJoueurs extends TestCase {
 		Partie p = new Partie();
 		ModeleJoueurs modele =new ModeleJoueurs(p);
 		ControleurJoueurs controlleur = new ControleurJoueurs();
-
+		
 		
 		p.ajoutJoueurHumain();
 		p.ajoutJoueurHumain("Léon");
@@ -29,10 +30,11 @@ public class TestVueJoueurs extends TestCase {
 		for(int i=0;i<10;i++) p.ajoutJoueurHumain();
 
 		VueJoueurs vue = new VueJoueurs(modele, controlleur);
+		
 		JFrame j = new JFrame("testVueJoueur");
-		j.setSize(100, 100);
+		j.setSize(200, 200);
 		Container C = j.getContentPane();
-		C.add(vue);
+		C.add(vue,BorderLayout.CENTER);
 		j.setVisible(true);
 		
 		Thread.sleep(10000);

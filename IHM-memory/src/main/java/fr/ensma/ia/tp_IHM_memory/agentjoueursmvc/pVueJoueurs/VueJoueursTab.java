@@ -28,7 +28,9 @@ public class VueJoueursTab extends Container {
 		this.setLayout(new BorderLayout());
 		this.setVisible(true);
 
+
 		JTable tab = new JTable(modele.getNbrJoueur(),3);
+		
 		
 
 		tab.getColumnModel().getColumn(0).setHeaderValue("Nom des joueurs");
