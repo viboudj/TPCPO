@@ -46,11 +46,31 @@ public class VueJoueursTab extends Container {
 		
 		this.add(tab, BorderLayout.CENTER);
 		this.add(tab.getTableHeader(), BorderLayout.NORTH);
-		
-		
-		
-	
-		
+				
+	}
+
+
+
+	public ModeleJoueurs getModele() {
+		return modele;
+	}
+
+
+
+	public void setModele(ModeleJoueurs modele) {
+		this.modele = modele;
+	}
+
+
+
+	public ControleurJoueurs getControleur() {
+		return controleur;
+	}
+
+
+
+	public void setControleur(ControleurJoueurs controleur) {
+		this.controleur = controleur;
 	}
 	
 

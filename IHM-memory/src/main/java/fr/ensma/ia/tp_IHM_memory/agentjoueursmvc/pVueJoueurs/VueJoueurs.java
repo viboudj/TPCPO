@@ -26,5 +26,12 @@ public class VueJoueurs extends Container {
 
 		this.add(tabScr);
 	}
-
+	
+	public ModeleJoueurs getModele(){
+		return tab.getModele();
+		}
+	
+	public ControleurJoueurs getControlleur(){
+		return tab.getControleur();
+	}
 }
