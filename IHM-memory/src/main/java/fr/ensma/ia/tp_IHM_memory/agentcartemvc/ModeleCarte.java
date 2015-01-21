@@ -2,6 +2,9 @@ package fr.ensma.ia.tp_IHM_memory.agentcartemvc;
 
 import java.util.ArrayList;
 import java.util.ListIterator;
+
+import javax.swing.JButton;
+
 import fr.ensma.ia.tp_IHM_memory.agentplateaumvc.IObserverPlateau;
 
 /**
@@ -148,6 +151,14 @@ public class ModeleCarte implements IObserverPlateau {
 	 */
 	public void setHorsPlateau(boolean horsPlateau) {
 		this.horsPlateau = horsPlateau;
+	}
+	
+	/**
+	 * Obtient la reference de la vue de l'agent carte
+	 * @return vueCarte JButton : la vue de l'agent carte
+	 */
+	public JButton getVueCarte() {
+		return controleurCarte.getVueCarte();
 	}
 	
 }
