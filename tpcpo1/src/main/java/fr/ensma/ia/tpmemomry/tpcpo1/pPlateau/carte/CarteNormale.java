@@ -26,6 +26,13 @@ public class CarteNormale extends Carte implements ICarte {
 		return 0;
 	}
 	
+	/**
+	 * Obtient le bonus de la carte au format chaine de caracteres
+	 * @return bonusCarte Srting : le bonus de la carte (vaut "" car carteNormale n'a pas de bonus)
+	 */
+	public String getBonusCarte() {
+		return "";
+	}
 	@Override
 	public String toString() {
 		return super.toString() + "Bonus : pas d'effet" + "\n";

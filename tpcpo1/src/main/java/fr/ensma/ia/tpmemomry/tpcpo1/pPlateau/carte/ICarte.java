@@ -13,6 +13,12 @@ public interface ICarte {
 	 * @return symboleCarte ESymboleCarte : le symbole de la carte
 	 */
 	public ESymboleCarte getSymbole();
+	
+	/**
+	 * Obtient le bonus de la carte au format chaine de caracteres
+	 * @return bonusCarte Srting : le bonus de la carte (vaut "" si la carte n'a pas de bonus)
+	 */
+	public String getBonusCarte();
 
 	/**
 	 * Modifie le symbole de la carte 

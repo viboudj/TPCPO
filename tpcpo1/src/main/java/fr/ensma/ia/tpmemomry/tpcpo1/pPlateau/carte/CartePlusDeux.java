@@ -27,6 +27,14 @@ public class CartePlusDeux extends Carte implements ICarte {
 		return 2;
 	}
 	
+	/**
+	 * Obtient le bonus de la carte au format chaine de caracteres
+	 * @return bonusCarte Srting : le bonus de la carte
+	 */
+	public String getBonusCarte() {
+		return "bonus2";
+	}
+	
 	@Override
 	public String toString() {
 		return super.toString() + "Bonus : plus 2 points"+"\n";

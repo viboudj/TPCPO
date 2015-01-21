@@ -27,6 +27,14 @@ public class CartePlusQuatre extends Carte implements ICarte {
 		return 4;
 	}
 	
+	/**
+	 * Obtient le bonus de la carte au format chaine de caracteres
+	 * @return bonusCarte Srting : le bonus de la carte
+	 */
+	public String getBonusCarte() {
+		return "bonus4";
+	}
+	
 	@Override
 	public String toString() {
 		return super.toString() + "Bonus : plus 4 points" + "\n";

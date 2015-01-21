@@ -345,7 +345,8 @@ public class Plateau {
 	 */
 	public boolean comparaisonPaire() {
 		etatCourant.comparaisonCartes();
-		if(carte1.getSymbole() == carte2.getSymbole()){
+		if(carte1.getSymbole() == carte2.getSymbole() &&
+				carte1.getBonusCarte() == carte2.getBonusCarte()){
 			return true;
 		} else {
 			return false;
