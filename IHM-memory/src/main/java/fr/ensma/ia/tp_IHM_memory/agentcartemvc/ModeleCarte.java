@@ -17,6 +17,11 @@ import fr.ensma.ia.tp_IHM_memory.agentplateaumvc.IObserverPlateau;
 public class ModeleCarte implements IObserverPlateau {
 
 	/**
+	 * Booleen a vrai si la carte doit etre bloquee, faux si elle doit etre debloquee
+	 */
+	private boolean carteBloquee = false;
+
+	/**
 	 * Booleen a vrai si la carte est face visible, faux sinon
 	 */
 	private boolean carteVisible = false;
@@ -73,6 +78,11 @@ public class ModeleCarte implements IObserverPlateau {
 		}
 	}
 	
+	public void bloquerCarte(boolean carteBloquee) {
+		this.carteBloquee = carteBloquee;
+		controleurCarte.getEtatCourantCarte().updateActivationFaceCachee();
+	}
+	
 	// -- GESTION DES OBSERVATEURS DE LA CARTE -- //
 	
 	/**
@@ -119,6 +129,14 @@ public class ModeleCarte implements IObserverPlateau {
 	 */
 	public String getBonusCarte() {
 		return bonusCarte;
+	}
+	
+	/**
+	 * Obtient le status de l'activation de la carte
+	 * @return carteBloquee boolean : vrai si carte inactive, faux sinon
+	 */
+	public boolean isCarteBloquee() {
+		return carteBloquee;
 	}
 	
 	/**

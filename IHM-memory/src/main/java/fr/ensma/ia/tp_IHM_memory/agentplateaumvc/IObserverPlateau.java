@@ -16,4 +16,10 @@ public interface IObserverPlateau {
 	 */
 	public void updateVisibiliteCarte(boolean horsPlateau);
 	
+	/**
+	 * Notifie aux cartes observatrices qu'elles doivent se desactiver.</br>
+	 * Methode utilisee lorsque deux cartes ont deja ete selectionnees.
+	 * @param carteBloquee boolean : vrai si la carte doit etre bloquee, faux si elle doit etre debloquee
+	 */
+	public void bloquerCarte(boolean carteBloquee);
 }

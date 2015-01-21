@@ -20,11 +20,6 @@ public class ModelePlateau implements IObserverCarte {
 	private int nbCartesSurPlateau;
 	
 	/**
-	 * Liste melangee des cartes composant le plateau
-	 */
-	private ArrayList<ModeleCarte> listeCartesSurPlateau;
-	
-	/**
 	 * Nombre de ligne de cartes dans la vue
 	 */
 	private int nbLignes;
@@ -35,12 +30,27 @@ public class ModelePlateau implements IObserverCarte {
 	private int nbColonnes;
 	
 	/**
-	 * Liste des observateurs du plateau
+	 * Liste melangee des cartes composant le plateau
+	 */
+	private ArrayList<ModeleCarte> listeCartesSurPlateau;
+	
+	/**
+	 * Liste des abonnes au plateau
 	 */
 	private ArrayList<IObserverPlateau> listeObservateursPlateau;
 	
-	// -- CONSTRUCTEURS -- //
+	/**
+	 * Position de la premiere carte cliquee dans la liste des abonnes au plateau
+	 */
+	private int positionCarte1;
 	
+	/**
+	 * Position de la premiere carte cliquee dans la liste des abonnes au plateau
+	 */
+	private int positionCarte2;
+	
+	// -- CONSTRUCTEURS -- //
+
 	/**
 	 * Constructeur du modele d'un plateau
 	 */
@@ -92,6 +102,8 @@ public class ModelePlateau implements IObserverCarte {
 		}
 	}
 	
+	// -- OBERVATION DES CARTES -- //
+	
 	/**
 	 * Permet d'abonner le plateau en tant qu'observateur de chacune des cartes et inversement
 	 * @see ModeleCarte
@@ -106,8 +118,6 @@ public class ModelePlateau implements IObserverCarte {
 		}
 	}
 	
-	// -- OBERVATION DES CARTES -- //
-	
 	public void notificationClic(ModeleCarte modeleCarte) {
 		// TODO Auto-generated method stub
 		
@@ -115,12 +125,36 @@ public class ModelePlateau implements IObserverCarte {
 	
 	// -- GESTION DES OBSERVATEURS DU PLATEAU -- //
 	
+	/**
+	 * Ajoute un observateur du plateau a la liste
+	 * @param observer IObserverPlateau : l'abservateur a ajouter
+	 */
 	public void addObserverPlateau(IObserverPlateau observer) {
 		listeObservateursPlateau.add(observer);
 	}
 	
+	/**
+	 * Supprime un observateur du plateau de la liste
+	 * @param observer IObserverPlateau : l'observateur a supprimer
+	 */
 	public void removeObserverPlateau(IObserverPlateau observer) {
 		listeObservateursPlateau.remove(observer);
+	}
+	
+	/**
+	 * Modifie la position de la premiere carte cliquee
+	 * @param positionCarte1 int : la position de la premiere carte cliquee
+	 */
+	public void setPositionCarte1(int positionCarte1) {
+		this.positionCarte1 = positionCarte1;
+	}
+	
+	/**
+	 * Modifie la position de la premiere carte cliquee
+	 * @param positionCarte1-2 int : la position de la seconde carte cliquee
+	 */
+	public void setPositionCarte2(int positionCarte2) {
+		this.positionCarte2 = positionCarte2;
 	}
 	
 	/**
@@ -147,6 +181,21 @@ public class ModelePlateau implements IObserverCarte {
 	public int getNbColonnes() {
 		return nbColonnes;
 	}
+	
+	/**
+	 * Obtient la reference du modele de la premiere carte cliquee
+	 * @return carte1 IObserverPlateau : le modele de la premiere carte cliquee
+	 */
+	public IObserverPlateau getCarte1() {
+		return listeObservateursPlateau.get(positionCarte1);
+	}
 
+	/**
+	 * Obtient la reference du modele de la seconde carte cliquee
+	 * @return carte2 IObserverPlateau : le modele de la seconde carte cliquee
+	 */
+	public IObserverPlateau getCarte2() {
+		return listeObservateursPlateau.get(positionCarte2);
+	}
 	
 }

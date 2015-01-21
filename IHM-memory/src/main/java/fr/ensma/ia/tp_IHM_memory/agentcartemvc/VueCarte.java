@@ -82,6 +82,18 @@ public class VueCarte extends JButton implements ActionListener {
 	// -- GESTION DE LA MISE A JOUR DE LA VUE -- //
 	
 	/**
+	 * Rend la carte face cachee cliquable ou pas
+	 */
+	public void updateActivationFaceCachee() {
+		if (modeleCarte.isCarteBloquee()) {
+			setDisabledIcon(faceCachee);
+			setEnabled(false);
+		} else {
+			setEnabled(true);
+		}
+	}
+	
+	/**
 	 * Place la carte face visible
 	 */
 	public void updateFaceVisible() {

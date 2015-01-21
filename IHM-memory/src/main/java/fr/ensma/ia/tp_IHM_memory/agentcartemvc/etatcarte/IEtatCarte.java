@@ -10,6 +10,11 @@ package fr.ensma.ia.tp_IHM_memory.agentcartemvc.etatcarte;
 public interface IEtatCarte {
 
 	/**
+	 * Appelle la vue pour mettre a jour la "cliquabilite" de la face cachee de la carte
+	 */
+	public void updateActivationFaceCachee();
+	
+	/**
 	 * Appelle la vue pour que la carte soit placee face visible
 	 */
 	public void carteVisible();

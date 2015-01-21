@@ -25,6 +25,9 @@ public class HorsPlateau implements IEtatCarte {
 		this.controleurCarte = controleurCarte;
 	}
 	
+	public void updateActivationFaceCachee() {		
+	}
+	
 	public void carteVisible() {		
 	}
 

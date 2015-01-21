@@ -1,6 +1,7 @@
 package fr.ensma.ia.tp_IHM_memory.agentcartemvc.etatcarte;
 
 import fr.ensma.ia.tp_IHM_memory.agentcartemvc.ControleurCarte;
+import fr.ensma.ia.tp_IHM_memory.agentcartemvc.VueCarte;
 
 /**
  * Classe representant l'etat ou la carte est face cachee sur le plateau.<br>
@@ -23,6 +24,10 @@ public class FaceCachee implements IEtatCarte {
 	 */
 	public FaceCachee(ControleurCarte controleurCarte) {
 		this.controleurCarte = controleurCarte;
+	}
+	
+	public void updateActivationFaceCachee() {
+		controleurCarte.getVueCarte().updateActivationFaceCachee();
 	}
 	
 	public void carteVisible() {

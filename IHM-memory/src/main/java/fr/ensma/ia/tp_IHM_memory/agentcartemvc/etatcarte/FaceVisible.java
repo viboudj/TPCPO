@@ -25,6 +25,9 @@ public class FaceVisible implements IEtatCarte {
 		this.controleurCarte = controleurCarte;
 	}
 	
+	public void updateActivationFaceCachee() {		
+	}
+	
 	public void carteVisible() {		
 	}
 
@@ -40,5 +43,4 @@ public class FaceVisible implements IEtatCarte {
 
 	public void carteCliquee() {		
 	}
-
 }
