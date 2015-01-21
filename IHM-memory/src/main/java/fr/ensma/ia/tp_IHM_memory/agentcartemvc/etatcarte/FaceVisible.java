@@ -2,6 +2,13 @@ package fr.ensma.ia.tp_IHM_memory.agentcartemvc.etatcarte;
 
 import fr.ensma.ia.tp_IHM_memory.agentcartemvc.ControleurCarte;
 
+/**
+ * Classe representant l'etat ou la carte est face visible sur le plateau.<br>
+ * Pattern strategy
+ * 
+ * @author clementdouault
+ *
+ */
 public class FaceVisible implements IEtatCarte {
 
 	/**

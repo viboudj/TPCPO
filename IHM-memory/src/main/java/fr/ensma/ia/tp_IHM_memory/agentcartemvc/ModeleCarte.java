@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.ListIterator;
 import fr.ensma.ia.tp_IHM_memory.agentplateaumvc.IObserverPlateau;
 
+/**
+ * Classe representant le modele d'une carte conformement a l'architecture MVC.</br>
+ * Implemente IObserverPlateau pour etre informe des evolutions du jeu par le plateau.
+ * 
+ * @author clementdouault
+ *
+ */
 public class ModeleCarte implements IObserverPlateau {
 
 	/**

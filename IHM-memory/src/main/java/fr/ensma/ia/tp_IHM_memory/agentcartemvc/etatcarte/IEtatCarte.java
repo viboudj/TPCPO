@@ -1,5 +1,12 @@
 package fr.ensma.ia.tp_IHM_memory.agentcartemvc.etatcarte;
 
+/**
+ * Classe representant un etat de la carte sur le plateau.</br>
+ * Pattern Strategy
+ * 
+ * @author clementdouault
+ *
+ */
 public interface IEtatCarte {
 
 	/**
