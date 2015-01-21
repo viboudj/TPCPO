@@ -15,6 +15,11 @@ public class ModelePlateau implements IObserverCarte {
 	private Partie noyauFonctionnel;
 	
 	/**
+	 * Reference du controleur du plateau
+	 */
+	private ControleurPlateau controleurPlateau;
+	
+	/**
 	 * Nombre de cartes sur le plateau
 	 */
 	private int nbCartesSurPlateau;
@@ -35,19 +40,19 @@ public class ModelePlateau implements IObserverCarte {
 	private ArrayList<ModeleCarte> listeCartesSurPlateau;
 	
 	/**
-	 * Liste des abonnes au plateau
-	 */
-	private ArrayList<IObserverPlateau> listeObservateursPlateau;
-	
-	/**
-	 * Position de la premiere carte cliquee dans la liste des abonnes au plateau
+	 * Position de la premiere carte cliquee dans la liste des cartes
 	 */
 	private int positionCarte1;
 	
 	/**
-	 * Position de la premiere carte cliquee dans la liste des abonnes au plateau
+	 * Position de la seconde carte cliquee dans la liste des cartes
 	 */
 	private int positionCarte2;
+	
+	/**
+	 * Liste des abonnes au plateau
+	 */
+	private ArrayList<IObserverPlateau> listeObservateursPlateau;
 	
 	// -- CONSTRUCTEURS -- //
 
@@ -55,15 +60,15 @@ public class ModelePlateau implements IObserverCarte {
 	 * Constructeur du modele d'un plateau
 	 */
 	public ModelePlateau() {
+		controleurPlateau = new ControleurPlateau(this);
+		
 		nbCartesSurPlateau = noyauFonctionnel.getPlateau().getListeCartesMelangees().size();
 		// remplissage de listeCartesSurPlateau
 		recupererListeCartes();
 		// calcul de l'agencement du plateau
 		optimisationAgencementCartes();
 		// abonnement du plateau aux cartes et inversement
-		abonnementCartes();
-		
-		
+		abonnementCartes();	
 	}
 
 	/**
@@ -123,6 +128,22 @@ public class ModelePlateau implements IObserverCarte {
 		
 	}
 	
+	/**
+	 * Definit la position de la premiere carte cliquee
+	 * @param carte1 ModeleCarte : la premiere carte cliquee
+	 */
+	public void setPositionCarte1(ModeleCarte carte1) {
+		positionCarte1 = listeCartesSurPlateau.indexOf(carte1);
+	}
+	
+	/**
+	 * Definit la position de la seconde carte cliquee
+	 * @param carte2 ModeleCarte : la seconde carte cliquee
+	 */
+	public void setPositionCarte2(ModeleCarte carte2) {
+		positionCarte2 = listeCartesSurPlateau.indexOf(carte2);
+	}
+	
 	// -- GESTION DES OBSERVATEURS DU PLATEAU -- //
 	
 	/**
@@ -141,27 +162,21 @@ public class ModelePlateau implements IObserverCarte {
 		listeObservateursPlateau.remove(observer);
 	}
 	
-	/**
-	 * Modifie la position de la premiere carte cliquee
-	 * @param positionCarte1 int : la position de la premiere carte cliquee
-	 */
-	public void setPositionCarte1(int positionCarte1) {
-		this.positionCarte1 = positionCarte1;
-	}
-	
-	/**
-	 * Modifie la position de la premiere carte cliquee
-	 * @param positionCarte1-2 int : la position de la seconde carte cliquee
-	 */
-	public void setPositionCarte2(int positionCarte2) {
-		this.positionCarte2 = positionCarte2;
+	public void bloquerCartesPasSelectionnees() {
+		ListIterator<IObserverPlateau> iterator = listeObservateursPlateau.listIterator();
+		while(iterator.hasNext()) {
+			iterator.next().bloquerCarte(true);
+		}
 	}
 	
 	/**
 	 * Informe les cartes selectionnees d'un changement de leur etat
 	 */
 	public void notifierCartes() {
-		// TODO
+		ListIterator<IObserverPlateau> iterator = listeObservateursPlateau.listIterator();
+		while(iterator.hasNext()) {
+			
+		}
 	}
 	
 	// -- ACCESSEURS -- //
