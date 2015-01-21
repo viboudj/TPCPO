@@ -312,7 +312,7 @@ public class Partie {
 	 */
 	public void traitement() {
 		
-		if(plateau.comparaisonPaire()) {
+		if(plateau.getCartesIdentiques()) {
 			etatCourantPartie.paireTrouvee(); 
 		} else {
 			etatCourantPartie.pasPaireTrouvee();

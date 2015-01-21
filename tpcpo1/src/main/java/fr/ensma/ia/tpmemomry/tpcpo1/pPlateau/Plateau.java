@@ -55,6 +55,11 @@ public class Plateau {
 	 * Reference de la deuxieme carte selectionnee par le joueur
 	 */
 	private ICarte carte2 = null;
+	
+	/**
+	 * Vrai si carte1 et carte2 sont identiques, faux sinon
+	 */
+	private boolean cartesIdentiques;
 
 	/**
 	 * Instance de l'Žtat PasCarteSelectionnee
@@ -337,6 +342,15 @@ public class Plateau {
 		etatCourant.selectCarte2();
 	}
 	
+	/**
+	 * Obtient le resultat de la comparaison des cartes.</br>
+	 * Vrai si les cartes sont identiques, faux sinon.
+	 * @return cartesIdentiques boolean : le resutat de la comparaison
+	 */
+	public boolean getCartesIdentiques() {
+		return cartesIdentiques;
+	}
+	
 	// -- COMPORTEMENT -- //
 	
 	/**
@@ -347,8 +361,10 @@ public class Plateau {
 		etatCourant.comparaisonCartes();
 		if(carte1.getSymbole() == carte2.getSymbole() &&
 				carte1.getBonusCarte() == carte2.getBonusCarte()){
+			cartesIdentiques = true;
 			return true;
 		} else {
+			cartesIdentiques = false;
 			return false;
 		}
 	}
