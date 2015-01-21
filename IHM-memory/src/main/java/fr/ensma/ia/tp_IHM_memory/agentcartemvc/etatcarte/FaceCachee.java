@@ -42,8 +42,7 @@ public class FaceCachee implements IEtatCarte {
 	}
 
 	public void carteCliquee() {
-		// TODO Auto-generated method stub
-		
+		controleurCarte.clicDetecte();
 	}
 
 }

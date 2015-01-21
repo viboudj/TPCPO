@@ -68,6 +68,12 @@ public class ControleurCarte {
 		return vueCarte;
 	}
 	
+	// -- COMPORTEMENT -- //
+	
+	public void clicDetecte() {
+		modeleCarte.notifierClic();
+	}
+	
 	// -- GESTION DES ETATS DE L'AUTOMATE -- //
 	
 	/**

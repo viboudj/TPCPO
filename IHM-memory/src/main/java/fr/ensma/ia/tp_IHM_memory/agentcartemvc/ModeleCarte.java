@@ -106,6 +106,7 @@ public class ModeleCarte implements IObserverPlateau {
 	 */
 	public void notifierClic() {
 		carteVisible = true;
+		controleurCarte.getEtatCourantCarte().carteVisible();
 		
 		ListIterator<IObserverCarte> iterator = listeObservateurs.listIterator();
 		while(iterator.hasNext()) {
