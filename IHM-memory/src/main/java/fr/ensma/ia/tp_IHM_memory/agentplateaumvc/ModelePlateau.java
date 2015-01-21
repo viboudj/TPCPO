@@ -25,14 +25,14 @@ public class ModelePlateau implements IObserverCarte {
 	private ArrayList<ModeleCarte> listeCartesSurPlateau;
 	
 	/**
-	 * Nombre de colonnes de cartes dans la vue
-	 */
-	private int nbColonnes;
-	
-	/**
 	 * Nombre de ligne de cartes dans la vue
 	 */
 	private int nbLignes;
+	
+	/**
+	 * Nombre de colonnes de cartes dans la vue
+	 */
+	private int nbColonnes;
 	
 	/**
 	 * Liste des observateurs du plateau
@@ -48,11 +48,14 @@ public class ModelePlateau implements IObserverCarte {
 		nbCartesSurPlateau = noyauFonctionnel.getPlateau().getListeCartesMelangees().size();
 		// remplissage de listeCartesSurPlateau
 		recupererListeCartes();
+		// calcul de l'agencement du plateau
+		optimisationAgencementCartes();
 		// abonnement du plateau aux cartes et inversement
 		abonnementCartes();
 		
+		
 	}
-	
+
 	/**
 	 * Remplit la iste des cartes sur le plateau en recuperant les informations necessaires dans listeCartesMelangees
 	 * @see Plateau
@@ -68,7 +71,30 @@ public class ModelePlateau implements IObserverCarte {
 	}
 	
 	/**
+	 * Obtient le nombre de lignes et de colonnes optimal en fonction du nombre total de cartes.</br>
+	 * nbLignes et nbColonnes servent ensuite a la vue pour arranger la repartition des cartes.
+	 */
+	public void optimisationAgencementCartes() {
+		ArrayList<Integer> diviseurs = new ArrayList<Integer>();
+		
+		for(int i=1; i<=nbCartesSurPlateau;i++){
+			if(nbCartesSurPlateau%i==0){
+				diviseurs.add(i);
+			}
+		}
+		
+		if(diviseurs.size()%2==0){
+			nbLignes = diviseurs.get(diviseurs.size()/2-1);
+			nbColonnes = diviseurs.get(diviseurs.size()/2);
+		}else{
+			nbLignes = diviseurs.get((diviseurs.size()-1)/2);
+			nbColonnes = diviseurs.get((diviseurs.size()-1)/2);
+		}
+	}
+	
+	/**
 	 * Permet d'abonner le plateau en tant qu'observateur de chacune des cartes et inversement
+	 * @see ModeleCarte
 	 */
 	public void abonnementCartes() {
 		ListIterator<ModeleCarte> iterator = listeCartesSurPlateau.listIterator();
@@ -80,6 +106,13 @@ public class ModelePlateau implements IObserverCarte {
 		}
 	}
 	
+	// -- OBERVATION DES CARTES -- //
+	
+	public void notificationClic(ModeleCarte modeleCarte) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	// -- GESTION DES OBSERVATEURS DU PLATEAU -- //
 	
 	public void addObserverPlateau(IObserverPlateau observer) {
@@ -89,10 +122,31 @@ public class ModelePlateau implements IObserverCarte {
 	public void removeObserverPlateau(IObserverPlateau observer) {
 		listeObservateursPlateau.remove(observer);
 	}
-
-	public void notificationClic(ModeleCarte modeleCarte) {
-		// TODO Auto-generated method stub
-		
+	
+	/**
+	 * Informe les cartes selectionnees d'un changement de leur etat
+	 */
+	public void notifierCartes() {
+		// TODO
 	}
+	
+	// -- ACCESSEURS -- //
+	
+	/**
+	 * Obtient le nombre de lignes du plateau
+	 * @return nbLignes int : le nombre de lignes
+	 */
+	public int getNbLignes() {
+		return nbLignes;
+	}
+	
+	/**
+	 * Obtient le nombre de colonnes du plateau
+	 * @return nbColonnes int : le nombre de colonnes
+	 */
+	public int getNbColonnes() {
+		return nbColonnes;
+	}
+
 	
 }
