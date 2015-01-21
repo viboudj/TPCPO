@@ -26,14 +26,14 @@ public class VueCarte extends JButton implements ActionListener {
 	private ModeleCarte modeleCarte;
 
 	/**
-	 * Icone representant la face cachee de la carte
-	 */
-	private ImageIcon faceCachee = new ImageIcon("resources/faceCachee.png");
-	
-	/**
 	 * Icone representant la face visible de la carte
 	 */
 	private ImageIcon faceVisible;
+	
+	/**
+	 * Icone representant la face cachee de la carte
+	 */
+	private ImageIcon faceCachee = new ImageIcon("resources/faceCachee.png");
 
 	/**
 	 * Icone representant la carte hors du plateau
@@ -41,25 +41,24 @@ public class VueCarte extends JButton implements ActionListener {
 	private ImageIcon horsPlateau = new ImageIcon("resources/horsPlateau.png");
 
 
+	// -- CONSTRUCTEUR -- //
+	
 	/**
-	 * Constructeur d'une carte.
-	 * symboleCarte et bonusCarte permettent de trouver la reference de l'icone faceVisible dans le dossier resources
+	 * Constructeur de la vue d'une carte.
 	 * @param controleurCarte ControleurCarte : le controleur de la carte
 	 * @param modeleCarte ModeleCarte : le modele de la carte
-	 * @param symboleCarte String : le symbole de la carte
-	 * @param bonusCartes String : le bonus de la carte (vaut "" si la carte n'a pas de bonus)
 	 */
-	public VueCarte(ControleurCarte controleurCarte, ModeleCarte modeleCarte,
-			String symboleCarte, String bonusCartes) {
+	public VueCarte(ControleurCarte controleurCarte, ModeleCarte modeleCarte) {
 		
 		this.controleurCarte = controleurCarte;
 		this.modeleCarte = modeleCarte;
 		
-		faceVisible = new ImageIcon("resources/" + symboleCarte + bonusCartes + ".png");
+		// recuperation de l'icone de la face visible de la carte
+		faceVisible = new ImageIcon(referenceIconeCarte());
 		
 		// definition des icones par defaut de la carte
 		setIcon(faceCachee);
-		setDisabledIcon(faceVisible);
+		refreshVue();
 		
 		// definition des paramtres geometriques de la carte
 		setMargin(new Insets(0, 0, 0, 0));
@@ -72,17 +71,49 @@ public class VueCarte extends JButton implements ActionListener {
 	}
 	
 	/**
-	 * Recupere les informations de visibilite de la carte et met a jour la vue en consequence.
+	 * Obtient de modeleCarte la reference de l'icone de la face visible de la carte.
+	 * @return String : la reference de l'icone
+	 */
+	public String referenceIconeCarte() {
+		return "resources/" + modeleCarte.getSymboleCarte() + modeleCarte.getBonusCarte() + ".png";
+	}
+	
+	// -- GESTION DE LA MISE A JOUR DE LA VUE -- //
+	
+	/**
+	 * Place la carte face visible.
+	 */
+	public void updateFaceVisible() {
+		setDisabledIcon(faceVisible);
+		setEnabled(false);
+	}
+	
+	/**
+	 * Place la carte face cachee.
+	 */
+	public void updateFaceCachee() {
+		setEnabled(true);
+	}
+	
+	/**
+	 * Place la carte hors du plateau.
+	 */
+	public void updateHorsPlateau() {
+		setDisabledIcon(horsPlateau);
+		setEnabled(false);
+	}
+	
+	/**
+	 * Recupere de modeleCarte les informations de visibilite de la carte et met a jour la vue en consequence.
 	 * Si la carte est sur le plateau : isHorsPlateau == true, false sinon.
 	 * Si la carte est face visible : isCarteVisible == true, false sinon.
 	 */
-	public void updateVue() {
+	public void refreshVue() {
 		if(modeleCarte.isHorsPlateau() == true) {
-			setDisabledIcon(horsPlateau);
-			setEnabled(false);
+			updateHorsPlateau();
 		} else {
-			if (modeleCarte.isCarteVisible() == true) setEnabled(false);
-			else setEnabled(true);
+			if (modeleCarte.isCarteVisible() == true) updateFaceVisible();
+			else updateFaceCachee();
 		}
 	}
 
@@ -90,8 +121,7 @@ public class VueCarte extends JButton implements ActionListener {
 	 * Appel du controleur en cas de detection d'un clic de l'utilisateur sur la carte.
 	 */
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-
+		controleurCarte.getEtatCourantCarte().carteCliquee();
 	}
 	
 	private static final long serialVersionUID = 1L;
