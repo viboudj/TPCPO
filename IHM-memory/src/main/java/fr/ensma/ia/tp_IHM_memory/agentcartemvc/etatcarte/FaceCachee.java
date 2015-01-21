@@ -4,9 +4,9 @@ import fr.ensma.ia.tp_IHM_memory.agentcartemvc.ControleurCarte;
 import fr.ensma.ia.tp_IHM_memory.agentcartemvc.VueCarte;
 
 /**
- * Classe representant l'etat ou la carte est face cachee sur le plateau.<br>
- * Pattern strategy
+ * Classe representant l'etat ou la carte est face cachee sur le plateau.</br></br>
  * 
+ * Pattern strategy
  * @author clementdouault
  *
  */
@@ -18,8 +18,8 @@ public class FaceCachee implements IEtatCarte {
 	private ControleurCarte controleurCarte;
 	
 	/**
-	 * Contructeur.
-	 * Cree une instance de l'etat FaceCachee
+	 * Contructeur.</br>
+	 * Cree une instance de l'etat FaceCachee.
 	 * @param controleurCarte ControleurCarte : la reference du controleur
 	 */
 	public FaceCachee(ControleurCarte controleurCarte) {

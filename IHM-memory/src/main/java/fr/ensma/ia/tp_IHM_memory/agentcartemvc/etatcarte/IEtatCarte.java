@@ -1,9 +1,9 @@
 package fr.ensma.ia.tp_IHM_memory.agentcartemvc.etatcarte;
 
 /**
- * Classe representant un etat de la carte sur le plateau.</br>
- * Pattern Strategy
+ * Classe representant un etat de la carte sur le plateau.</br></br>
  * 
+ * Pattern Strategy
  * @author clementdouault
  *
  */
@@ -25,7 +25,7 @@ public interface IEtatCarte {
 	public void carteCachee();
 	
 	/**
-	 * Appelle la vue pour que la carte soit mise en dehors du plateau
+	 * Appelle la vue pour que la carte soit retiree du plateau
 	 */
 	public void carteHorsPlateau();
 	

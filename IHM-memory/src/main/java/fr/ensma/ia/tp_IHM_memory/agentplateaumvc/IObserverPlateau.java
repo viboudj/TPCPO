@@ -11,10 +11,10 @@ package fr.ensma.ia.tp_IHM_memory.agentplateaumvc;
 public interface IObserverPlateau {
 
 	/**
-	 * Notifie aux observateurs d'un changement de visibilite de la carte
-	 * @param horsPlateau boolean : false si la carte reste sur le plateau, false sinon
+	 * Notifie aux observateurs du resultat de la comparaison des deux cartes selectionnees
+	 * @param resultatComparaison boolean : le resultat de la comparaison : true si identique, false sinon
 	 */
-	public void updateVisibiliteCarte(boolean horsPlateau);
+	public void notificationComparaison(boolean resultatComparaison);
 	
 	/**
 	 * Notifie aux cartes observatrices qu'elles doivent se desactiver.</br>

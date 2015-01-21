@@ -3,9 +3,9 @@ package fr.ensma.ia.tp_IHM_memory.agentcartemvc.etatcarte;
 import fr.ensma.ia.tp_IHM_memory.agentcartemvc.ControleurCarte;
 
 /**
- * Classe representant l'etat ou la carte est face visible sur le plateau.<br>
- * Pattern strategy
+ * Classe representant l'etat ou la carte est face visible sur le plateau.</br></br>
  * 
+ * Pattern strategy
  * @author clementdouault
  *
  */
@@ -17,8 +17,8 @@ public class FaceVisible implements IEtatCarte {
 	private ControleurCarte controleurCarte;
 	
 	/**
-	 * Contructeur.
-	 * Cree une instance de l'etat FaceVisible
+	 * Contructeur.</br>
+	 * Cree une instance de l'etat FaceVisible.
 	 * @param controleurCarte ControleurCarte : la reference du controleur
 	 */
 	public FaceVisible(ControleurCarte controleurCarte) {

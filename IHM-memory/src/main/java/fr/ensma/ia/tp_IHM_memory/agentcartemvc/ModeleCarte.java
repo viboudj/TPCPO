@@ -9,7 +9,7 @@ import fr.ensma.ia.tp_IHM_memory.agentplateaumvc.IObserverPlateau;
 
 /**
  * Classe representant le modele d'une carte conformement a l'architecture MVC.</br>
- * Implemente IObserverPlateau pour etre informe des evolutions du jeu par le plateau.
+ * Implemente IObserverPlateau afin d'etre informe des evolutions du jeu par le plateau.
  * 
  * @author clementdouault
  *
@@ -67,8 +67,9 @@ public class ModeleCarte implements IObserverPlateau {
 	
 	// -- OBSERVATION DU PLATEAU -- //
 	
-	public void updateVisibiliteCarte(boolean horsPlateau) {
-		this.horsPlateau = horsPlateau;
+	public void notificationComparaison(boolean resultatComparaison) {
+		// si les cartes sont identiques, la carte doit etre retiree du plateau
+		horsPlateau = resultatComparaison;
 		if (horsPlateau) {
 			controleurCarte.getEtatCourantCarte().carteHorsPlateau();
 		}

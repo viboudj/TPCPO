@@ -7,6 +7,13 @@ import fr.ensma.ia.tp_IHM_memory.agentcartemvc.IObserverCarte;
 import fr.ensma.ia.tp_IHM_memory.agentcartemvc.ModeleCarte;
 import fr.ensma.ia.tpmemomry.tpcpo1.Partie;
 
+/**
+ * Classe representant le modele d'un plateau conformement a l'architecture MVC.</br>
+ * Implemente IObserverCarte afin d'etre informe des clics sur les cartes.
+ * 
+ * @author clementdouault
+ *
+ */
 public class ModelePlateau implements IObserverCarte {
 
 	/**
@@ -18,6 +25,11 @@ public class ModelePlateau implements IObserverCarte {
 	 * Reference du controleur du plateau
 	 */
 	private ControleurPlateau controleurPlateau;
+	
+	/**
+	 * Delai entre la selection de la deuxieme carte et le retournement de la paire 
+	 */
+	private long delai = 2000;
 	
 	/**
 	 * Nombre de cartes sur le plateau
@@ -48,6 +60,11 @@ public class ModelePlateau implements IObserverCarte {
 	 * Position de la seconde carte cliquee dans la liste des cartes
 	 */
 	private int positionCarte2;
+	
+	/**
+	 * Booleen a vrai si les cartes comparees sont identiques
+	 */
+	private boolean cartesIdentiques;
 	
 	/**
 	 * Liste des abonnes au plateau
@@ -107,7 +124,7 @@ public class ModelePlateau implements IObserverCarte {
 		}
 	}
 	
-	// -- OBERVATION DES CARTES -- //
+	// -- OBSERVATION DES CARTES -- //
 	
 	/**
 	 * Permet d'abonner le plateau en tant qu'observateur de chacune des cartes et inversement
@@ -123,25 +140,13 @@ public class ModelePlateau implements IObserverCarte {
 		}
 	}
 	
-	public void notificationClic(ModeleCarte modeleCarte) {
-		// TODO Auto-generated method stub
+	/**
+	 * Traite la selection d'une carte
+	 * @param carte ModeleCarte : la carte selectionnee
+	 */
+	public void notificationClic(ModeleCarte carte) {
+		controleurPlateau.getEtatCourantPlateau().carteCliquee(carte);
 		
-	}
-	
-	/**
-	 * Definit la position de la premiere carte cliquee
-	 * @param carte1 ModeleCarte : la premiere carte cliquee
-	 */
-	public void setPositionCarte1(ModeleCarte carte1) {
-		positionCarte1 = listeCartesSurPlateau.indexOf(carte1);
-	}
-	
-	/**
-	 * Definit la position de la seconde carte cliquee
-	 * @param carte2 ModeleCarte : la seconde carte cliquee
-	 */
-	public void setPositionCarte2(ModeleCarte carte2) {
-		positionCarte2 = listeCartesSurPlateau.indexOf(carte2);
 	}
 	
 	// -- GESTION DES OBSERVATEURS DU PLATEAU -- //
@@ -162,6 +167,10 @@ public class ModelePlateau implements IObserverCarte {
 		listeObservateursPlateau.remove(observer);
 	}
 	
+	/**
+	 * Bloquer l'ensemble des cartes non selectionnees du plateau.</br>
+	 * Permet d'eviter de selectionner plus de cartes qu'il ne faut.
+	 */
 	public void bloquerCartesPasSelectionnees() {
 		ListIterator<IObserverPlateau> iterator = listeObservateursPlateau.listIterator();
 		while(iterator.hasNext()) {
@@ -170,13 +179,60 @@ public class ModelePlateau implements IObserverCarte {
 	}
 	
 	/**
-	 * Informe les cartes selectionnees d'un changement de leur etat
+	 * Met a jour les cartes conformement au resultat de la comparaison de la paire selectionnee
 	 */
-	public void notifierCartes() {
+	public void miseAJourCartes() {
 		ListIterator<IObserverPlateau> iterator = listeObservateursPlateau.listIterator();
-		while(iterator.hasNext()) {
-			
+		long reveil = System.currentTimeMillis();
+		
+		// Attente pendant "delai" millisecondes
+		while(System.currentTimeMillis() <= (reveil +delai)) {
 		}
+		
+		// Mise a jour des cartes
+		while(iterator.hasNext()) {
+			// debloque les cartes
+			iterator.next().bloquerCarte(false);
+			// informe les observateurs du resultat de la comparaison
+			iterator.next().notificationComparaison(cartesIdentiques);
+		}
+	}
+	
+	// -- COMPORTEMENT -- //
+	
+	/**
+	 * Lance les actions suites a la selection de la premiere carte
+	 * @param carte1 ModeleCarte : la premiere carte cliquee
+	 */
+	public void setCarte1(ModeleCarte carte1) {
+		// enregistre la position de la carte dans la liste
+		positionCarte1 = listeCartesSurPlateau.indexOf(carte1);
+		
+		// indique au noyau fonctionnel quelle carte a ete selectionnee en premiere
+		noyauFonctionnel.getPlateau().setCarte1(noyauFonctionnel.getPlateau().getListeCartesMelangees().get(positionCarte1));
+	}
+	
+	/**
+	 * Lance les actions suites a la selection de la seconde carte
+	 * @param carte2 ModeleCarte : la seconde carte cliquee
+	 */
+	public void setCarte2(ModeleCarte carte2) {
+		// enregistre la position de la carte dans la liste
+		positionCarte2 = listeCartesSurPlateau.indexOf(carte2);
+		
+		// indique au noyau fonctionnel quelle carte a ete selectionnee en seconde
+		noyauFonctionnel.getPlateau().setCarte2(noyauFonctionnel.getPlateau().getListeCartesMelangees().get(positionCarte2));
+		
+		// bloque l'ensemble des cartes non selectionnees
+		bloquerCartesPasSelectionnees();
+		
+		// lance la comparaison des deux cartes selectionnes
+		controleurPlateau.getEtatCourantPlateau().comparaisonCartes();
+	}
+	
+	public void compareCartes() {
+		cartesIdentiques = noyauFonctionnel.getPlateau().comparaisonPaire();
+		miseAJourCartes();
 	}
 	
 	// -- ACCESSEURS -- //
