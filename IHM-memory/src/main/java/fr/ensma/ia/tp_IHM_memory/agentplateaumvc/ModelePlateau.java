@@ -238,19 +238,35 @@ public class ModelePlateau implements IObserverCarte {
 	// -- ACCESSEURS -- //
 	
 	/**
+	 * Obtient le nombre de cartes composant le plateau
+	 * @return nbCartesSurPlateau int : le nombre de carte sur le plateau
+	 */
+	public int getNbCartesSurPlateau() {
+		return nbCartesSurPlateau;
+	}
+	
+	/**
 	 * Obtient le nombre de lignes du plateau
 	 * @return nbLignes int : le nombre de lignes
 	 */
 	public int getNbLignes() {
 		return nbLignes;
 	}
-	
+
 	/**
 	 * Obtient le nombre de colonnes du plateau
 	 * @return nbColonnes int : le nombre de colonnes
 	 */
 	public int getNbColonnes() {
 		return nbColonnes;
+	}
+	
+	/**
+	 * Obtient la liste des cartes composant le plateau
+	 * @return listeCartesSurPlateau ArrayList: la liste des cartes sur le plateau
+	 */
+	public ArrayList<ModeleCarte> getListeCartesSurPlateau() {
+		return listeCartesSurPlateau;
 	}
 	
 	/**

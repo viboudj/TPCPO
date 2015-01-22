@@ -130,6 +130,8 @@ public class VueCarte extends JButton implements ActionListener {
 		}
 	}
 
+	// -- GESTION DES INTERACTIONS -- //
+	
 	/**
 	 * Appel du controleur en cas de detection d'un clic de l'utilisateur sur la carte
 	 */
