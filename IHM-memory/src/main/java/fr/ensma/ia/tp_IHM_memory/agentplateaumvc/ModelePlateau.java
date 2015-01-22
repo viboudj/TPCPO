@@ -75,8 +75,10 @@ public class ModelePlateau implements IObserverCarte {
 
 	/**
 	 * Constructeur du modele d'un plateau
+	 * @param noyauFonctionnel Partie : la reference du noyau fonctionnel
 	 */
-	public ModelePlateau() {
+	public ModelePlateau(Partie noyauFonctionnel) {
+		this.noyauFonctionnel = noyauFonctionnel;
 		controleurPlateau = new ControleurPlateau(this);
 		
 		nbCartesSurPlateau = noyauFonctionnel.getPlateau().getListeCartesMelangees().size();

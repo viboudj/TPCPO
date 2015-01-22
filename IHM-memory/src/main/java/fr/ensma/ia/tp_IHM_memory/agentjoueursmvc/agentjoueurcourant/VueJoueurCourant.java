@@ -1,7 +1,14 @@
 package fr.ensma.ia.tp_IHM_memory.agentjoueursmvc.agentjoueurcourant;
 
-import javax.swing.*;
+import javax.swing.JTable;
 
+/**
+ * Classe representant la vue du joueur courant.</br>
+ * Classe heritant de JTable pour l'affichage des informations concernant le joueur courant.
+ * 
+ * @author clementdouault
+ *
+ */
 public class VueJoueurCourant extends JTable {
 
 	private ModeleJoueurCourant modele;
