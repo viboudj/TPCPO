@@ -11,11 +11,25 @@ import javax.swing.JTable;
  */
 public class VueJoueurCourant extends JTable {
 
-	private ModeleJoueurCourant modele;
+	/**
+	 * Reference du modele du joueur courant
+	 */
+	private ModeleJoueurCourant modeleJoueurCourant;
 	
-	private ControleurJoueurCourant controler;
+	/**
+	 * Reference du controleur du joueur courant
+	 */
+	private ControleurJoueurCourant controleurJoueurCourant;
 	
-	public VueJoueurCourant(ModeleJoueurCourant modele, ControleurJoueurCourant controleur) {
+	// -- CONSTRUCTEUR -- //
+	
+	/**
+	 * Constructeur de la vue du joueur courant
+	 * @param modeleJoueurCourant ModeleJoueurCourant : la reference du modele
+	 * @param controleurJoueurCourant ControleurJoueurCourant : la reference du controleur
+	 */
+	public VueJoueurCourant(ModeleJoueurCourant modeleJoueurCourant, 
+			ControleurJoueurCourant controleurJoueurCourant) {
 		// creation d'un tableau a 3 lignes et 2 colonnes
 		super(3,2);
 		setEnabled(false);
@@ -23,22 +37,40 @@ public class VueJoueurCourant extends JTable {
 		setValueAt("Score", 2, 1);
 		setValueAt("Serie", 3, 1);
 		
-		this.modele = modele;
-		this.controler = controleur;
+		this.modeleJoueurCourant = modeleJoueurCourant;
+		this.controleurJoueurCourant = controleurJoueurCourant;
+		
+		updateVueNom();
+		updateVueScore();
+		updateVueSerie();
 	}
 	
+	// -- GESTION DE LA MISE A JOUR DE LA VUE -- //
+	
+	/**
+	 * Met a jour le champ nom de la vue
+	 */
 	public void updateVueNom() {
-		setValueAt(modele.getNomCourant(), 1, 2);
+		setValueAt(modeleJoueurCourant.getNomCourant(), 1, 2);
 	}
 	
+	/**
+	 * Met a jour le champ score de la vue
+	 */
 	public void updateVueScore() {
-		setValueAt(modele.getScoreCourant(), 2, 2);
+		setValueAt(modeleJoueurCourant.getScoreCourant(), 2, 2);
 	}
 	
+	/**
+	 * Met a jour le champ serie de la vue
+	 */
 	public void updateVueSerie() {
-		setValueAt(modele.getSerieCourante(), 3, 2);
+		setValueAt(modeleJoueurCourant.getSerieCourante(), 3, 2);
 	}
 	
+	/**
+	 * Met a jour l'ensemble des trois champs de la vue
+	 */
 	public void refreshVue() {
 		updateVueNom();
 		updateVueScore();

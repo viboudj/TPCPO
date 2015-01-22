@@ -1,34 +1,32 @@
 package fr.ensma.ia.tp_IHM_memory.agentjoueursmvc;
 
-import fr.ensma.ia.tp_IHM_memory.agentjoueursmvc.pVueJoueurs.VueJoueurs;
+import fr.ensma.ia.tp_IHM_memory.agentjoueursmvc.VueJoueurs;
 
 public class ControleurJoueurs {
 	
-	private ModeleJoueurs modele;
-	private VueJoueurs vue;
+	/**
+	 * Reference du modele de joueurs
+	 */
+	private ModeleJoueurs modeleJoueurs;
 	
-	public ControleurJoueurs(ModeleJoueurs modele, VueJoueurs vue){
-		this.setModele(modele);
-		this.setVue(vue);
-		
-	}
-
-	public ModeleJoueurs getModele() {
-		return modele;
-	}
-
-	public void setModele(ModeleJoueurs modele) {
-		this.modele = modele;
-	}
-
-	public VueJoueurs getVue() {
-		return vue;
-	}
-
-	public void setVue(VueJoueurs vue) {
-		this.vue = vue;
-	}
+	/**
+	 * Reference de la vue de joueurs
+	 */
+	private VueJoueurs vueJoueurs;
 	
-	
+	/**
+	 * Constructeur du controleur de joueurs
+	 * @param modeleJoueurs ModeleJoueurs : la reference du modele de joueurs
+	 */
+	public ControleurJoueurs(ModeleJoueurs modeleJoueurs){
+		this.modeleJoueurs = modeleJoueurs;
+		vueJoueurs = new VueJoueurs(modeleJoueurs, this);
+	}
 
+	/**
+	 * Informe la vue qu'elle doit se mettre a jour
+	 */
+	public void updateVue() {
+		vueJoueurs.refreshVue();
+	}
 }

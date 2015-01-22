@@ -45,8 +45,11 @@ public class ModeleJoueurCourant implements IObserverPartie {
 	 */
 	public ModeleJoueurCourant(Partie noyauFonctionnel) {
 		this.noyauFonctionnel = noyauFonctionnel;
-		
 		controleurJoueurCourant = new ControleurJoueurCourant(this);
+		// initialisation des infos du joueur courant
+		updateNomCourant();
+		updateScoreCourant();
+		updateSerieCourante();
 	}
 	
 	// -- OBSERVATION DE LA PARTIE -- //
