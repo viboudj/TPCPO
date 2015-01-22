@@ -263,7 +263,7 @@ public class ModelePlateau implements IObserverCarte {
 	
 	/**
 	 * Obtient la liste des cartes composant le plateau
-	 * @return listeCartesSurPlateau ArrayList: la liste des cartes sur le plateau
+	 * @return listeCartesSurPlateau ArrayList&lsaquo;ModeleCarte&rsaquo;: la liste des cartes sur le plateau
 	 */
 	public ArrayList<ModeleCarte> getListeCartesSurPlateau() {
 		return listeCartesSurPlateau;

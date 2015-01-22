@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
- * Classe representant une carte de memory.</br>
+ * Classe representant une la vue d'une carte de memory.</br>
  * Classe heritant de JButton et abonnee a ActionListener pour la detection des clics sur le bouton.
  * 
  * @author clementdouault

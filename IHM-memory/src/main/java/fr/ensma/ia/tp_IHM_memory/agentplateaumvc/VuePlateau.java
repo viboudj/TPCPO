@@ -8,6 +8,14 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
+/**
+ * Classe representant la vue du plateau de memory.</br>
+ * Classe heritant de JPanel et comportant un conteneur affecte d'un agent GridLayout 
+ * pour la disposition des cartes sur le plateau.
+ * 
+ * @author clementdouault
+ *
+ */
 public class VuePlateau extends JPanel {
 	
 	/**
