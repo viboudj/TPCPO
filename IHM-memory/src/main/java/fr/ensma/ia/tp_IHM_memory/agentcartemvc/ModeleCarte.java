@@ -175,9 +175,9 @@ public class ModeleCarte implements IObserverPlateau {
 	
 	/**
 	 * Obtient la reference de la vue de l'agent carte
-	 * @return vueCarte JButton : la vue de l'agent carte
+	 * @return vueCarte VueCarte : la vue de l'agent carte
 	 */
-	public JButton getVueCarte() {
+	public VueCarte getVueCarte() {
 		return controleurCarte.getVueCarte();
 	}
 	

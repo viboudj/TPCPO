@@ -29,4 +29,8 @@ public class ControleurJoueurs {
 	public void updateVue() {
 		vueJoueurs.refreshVue();
 	}
+
+	public VueJoueurs getVueJoueurs() {
+		return vueJoueurs;
+	}
 }

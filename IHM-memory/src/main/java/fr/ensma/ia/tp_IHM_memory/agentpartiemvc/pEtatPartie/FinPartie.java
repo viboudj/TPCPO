@@ -26,4 +26,9 @@ public class FinPartie implements IEtatPartie {
 		
 	}
 
+	public void updateVue() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -36,7 +36,7 @@ public class VuePlateau extends JPanel {
 	/**
 	 * Couleur de la bordure du plateau
 	 */
-	private Color couleurBordure = new Color(250, 50, 88);
+	private Color couleurBordure = new Color(247, 159, 129);
 	
 	/**
 	 * Bordure du plateau

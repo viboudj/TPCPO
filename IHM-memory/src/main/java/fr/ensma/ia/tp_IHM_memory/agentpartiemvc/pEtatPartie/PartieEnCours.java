@@ -18,6 +18,10 @@ public class PartieEnCours implements IEtatPartie {
 		this.controleurPartie = controleurPartie;
 	}
 
+	public void updateVue() {
+		
+	}
+	
 	public void plusPaireRestante() {
 		// TODO Auto-generated method stub
 		
@@ -27,5 +31,4 @@ public class PartieEnCours implements IEtatPartie {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

@@ -109,4 +109,8 @@ public class ModeleJoueurCourant implements IObserverPartie {
 	public int getSerieCourante() {
 		return serieCourante;
 	}
+	
+	public VueJoueurCourant getVueJoueurCourant() {
+		return controleurJoueurCourant.getVueJoueurCourant();
+	}
 }

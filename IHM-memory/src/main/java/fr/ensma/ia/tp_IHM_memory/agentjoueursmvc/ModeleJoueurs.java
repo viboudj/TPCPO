@@ -13,7 +13,7 @@ public class ModeleJoueurs implements IObserverPartie {
 	 */
 	private Partie noyauFonctionnel;
 	
-	private ControleurJoueurs controleurJoueur;
+	private ControleurJoueurs controleurJoueurs;
 	
 	private int nbJoueurs;
 	
@@ -26,7 +26,7 @@ public class ModeleJoueurs implements IObserverPartie {
 	
 	public ModeleJoueurs(Partie noyauFonctionnel){
 		this.noyauFonctionnel=noyauFonctionnel;
-		controleurJoueur = new ControleurJoueurs(this);
+		controleurJoueurs = new ControleurJoueurs(this);
 		
 		
 		nbJoueurs = noyauFonctionnel.getListeJoueurs().size();
@@ -45,7 +45,7 @@ public class ModeleJoueurs implements IObserverPartie {
 		updateListeNomJoueurs();
 		updateListeScore();
 		updateListePaires();
-		controleurJoueur.updateVue();
+		controleurJoueurs.updateVue();
 	}
 	
 	public void updateListeNomJoueurs() {
@@ -84,5 +84,7 @@ public class ModeleJoueurs implements IObserverPartie {
 		return listePairesTrouvees;
 	}
 	
-	
+	public VueJoueurs getVueJoueurs() {
+		return controleurJoueurs.getVueJoueurs();
+	}
 }

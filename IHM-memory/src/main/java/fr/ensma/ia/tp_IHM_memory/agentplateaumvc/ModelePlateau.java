@@ -287,4 +287,12 @@ public class ModelePlateau implements IObserverCarte {
 		return listeObservateursPlateau.get(positionCarte2);
 	}
 	
+	/**
+	 * Obtient la reference de la vue de l'agent plateau
+	 * @return vuePlateau VuePlateau : la vue de l'agent plateau
+	 */
+	public VuePlateau getVuePlateau() {
+		return controleurPlateau.getVuePlateau();
+	}
+	
 }

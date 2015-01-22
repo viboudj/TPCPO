@@ -38,4 +38,11 @@ public class ControleurPartie {
 	public IEtatPartie getFinPartie() {
 		return finPartie;
 	}
+	
+	// -- ACCESSEURS -- //
+	
+	public VuePartie getVuePartie() {
+		return vuePartie;
+	}
+
 }

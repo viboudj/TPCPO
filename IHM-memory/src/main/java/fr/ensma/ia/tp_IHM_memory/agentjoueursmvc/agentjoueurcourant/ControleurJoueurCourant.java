@@ -33,5 +33,8 @@ public class ControleurJoueurCourant {
 	public void updateVue() {
 		vueJoueurCourant.refreshVue();
 	}
-	
+
+	public VueJoueurCourant getVueJoueurCourant() {
+		return vueJoueurCourant;
+	}
 }
