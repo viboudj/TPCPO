@@ -3,6 +3,8 @@ package fr.ensma.ia.tp_IHM_memory.agentpartiemvc;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,56 +13,211 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
-public class VuePartie extends JFrame implements ActionListener {
+public class VuePartie implements ActionListener {
 
 	private ModelePartie modelePartie;
 	
 	private ControleurPartie controleurPartie;
 	
-	private Container container;
+	// -- ATTRIBUTS RELATIFS A LA FRAME PRINCIPALE -- //
 	
-	private Box infoJoueurs;
-	
-	private Box infoPlateau;
+	private JFrame frameJeuPrincipale;
 		
+	private Container containerPrincipal;
+	
 	private JLabel memory = new JLabel();
 	
 	private JLabel pairesRestantes = new JLabel();
 	
-	private JButton recommencer = new JButton();
+	private JButton recommencerPrincipal = new JButton();
+	
+	private JButton quitterPrincipal = new JButton();
+	
+	private JFrame frameJeuVictoire;
+	
+	private Box ensemblePlateau;
+	
+	private Box infoJoueurs;
+	
+	private Box plateauDeJeu;
+	
+	private Dimension dimensionBoutons = new Dimension(130, 32);
+	
+	// -- ATTRIBUTS RELATIFS A LA FRAME DE VICTOIRE
+
+	private Container containerVictoire;
+	
+	private Box donneesVainqueur;
+	
+	private JButton recommencerVictoire = new JButton();
+	
+	private JButton quitterVictoire = new JButton();
 	
 	public VuePartie(ModelePartie modelePartie, ControleurPartie controleurPartie) {
 		this.modelePartie = modelePartie;
 		this.controleurPartie = controleurPartie;
-		container = getContentPane();
 		
-		// formatage du JLabel memory et ajout au conteneur
-		memory.setText("<html><font color = #F79F81 >MEMORY</font></html>");
-		memory.setFont(new Font("Calibri", Font.BOLD, 36));
-		container.add(memory, BorderLayout.NORTH);
+		frameJeuPrincipale = new JFrame();
+		frameJeuPrincipale.setTitle("Mémory");
+		frameJeuPrincipale.setBounds(350, 350, 800, 800);
+		containerPrincipal = frameJeuPrincipale.getContentPane();
 		
-		// formatage du JLabel pairesRestantes et du JButton
+		// formatage du JLabel pairesRestantes et ajout dans une Box
 		updatePairesRestantes();
-		recommencer.setText("Rejouer");
-		recommencer.addActionListener(this);
+		Box boxPaires = Box.createVerticalBox();
+		boxPaires.add(pairesRestantes);
+		boxPaires.add(Box.createVerticalGlue());
 		
-		// organisation des infos sur les joueurs et le joueur courant
+		// formatage des JButton recommencer et quitter et ajout dans un Box avec pairesRestantes
+		recommencerPrincipal.setText("Rejouer");
+		recommencerPrincipal.setPreferredSize(dimensionBoutons);
+		recommencerPrincipal.addActionListener(this);
+		quitterPrincipal.setText("Quitter");
+		quitterPrincipal.setPreferredSize(dimensionBoutons);
+		quitterPrincipal.addActionListener(this);
+		Box pairesPlusBouton = Box.createHorizontalBox();
+		pairesPlusBouton.add(boxPaires);
+		pairesPlusBouton.add(Box.createHorizontalGlue());
+		pairesPlusBouton.add(recommencerPrincipal);
+		pairesPlusBouton.add(Box.createHorizontalStrut(5));
+		pairesPlusBouton.add(quitterPrincipal);
+		
+		// ajout de VuePlateau et pairesPlusBouton a la Box plateauJeu
+		plateauDeJeu = Box.createVerticalBox();
+		plateauDeJeu.add(modelePartie.getModelePlateau().getVuePlateau());
+		plateauDeJeu.add(Box.createVerticalStrut(5));
+		plateauDeJeu.add(pairesPlusBouton);
+		
+		// ajout des infos sur les joueurs et le joueur courant a la Box infoJoueurs
 		infoJoueurs = Box.createVerticalBox();
 		infoJoueurs.add(modelePartie.getModeleJoueurs().getVueJoueurs());
 		infoJoueurs.add(Box.createVerticalGlue());
 		infoJoueurs.add(modelePartie.getModeleJoueurCourant().getVueJoueurCourant());
 		
-		// or
+		// ajout de plateauDeJeu et infoJoueur a la Box ensemblePlateau
+		ensemblePlateau = Box.createHorizontalBox();
+		ensemblePlateau.add(infoJoueurs);
+		ensemblePlateau.add(Box.createHorizontalStrut(5));
+		ensemblePlateau.add(plateauDeJeu);
+		
+		// formatage du JLabel memory et ajout au conteneur
+		memory.setText("<html><font color = #F79F81 >MEMORY</font></html>");
+		memory.setFont(new Font("Calibri", Font.BOLD, 36));
+		containerPrincipal.add(memory, BorderLayout.NORTH);
+		
+		// ajout de ensemblePlateau au conteneur
+		containerPrincipal.add(ensemblePlateau, BorderLayout.CENTER);
+		
+		// formatage de la frame principale
+		frameJeuPrincipale.pack();
+		int _width = frameJeuPrincipale.getWidth();
+		int _height = frameJeuPrincipale.getHeight();
+		frameJeuPrincipale.setMinimumSize(new Dimension(_width + 5, _height + 5));
+		frameJeuPrincipale.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frameJeuPrincipale.setVisible(true);
 	}
 	
 	public void updatePairesRestantes() {
 		pairesRestantes.setText("Paires restantes : " + modelePartie.getNbPairesRestantes());
 	}
+	
+	public void updateVictoire() {
+		frameJeuVictoire.setTitle("And the winner is...");
+		frameJeuVictoire.setBounds(400, 400, 250, 250);
+		containerVictoire = frameJeuVictoire.getContentPane();
+		donneesVainqueur = Box.createVerticalBox();
+
+		// Annonce du vainqueur
+		JPanel panelTitre = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JLabel titre = new JLabel("GAGNANT :");
+		titre.setFont(new Font("Calibri",Font.BOLD,36));
+		panelTitre.add(titre);
+		containerVictoire.add(panelTitre,BorderLayout.NORTH);
+		
+		// Organisation des donnees du vainqueur
+		// le nom du vainqueur
+		JPanel panelNomVainqueur = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JLabel nomVainqueur = new JLabel(modelePartie.getNomVainqueur());
+		nomVainqueur.setFont(new Font("Calibri",Font.PLAIN, 36));
+		panelNomVainqueur.add(nomVainqueur);
+		donneesVainqueur.add(panelNomVainqueur);
+		
+		// le score du vainqueur
+		JPanel panelScoreVainqueur = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JLabel scoreVainqueur = new JLabel("Score : " + modelePartie.getScoreVainqueur());
+		scoreVainqueur.setFont(new Font("Calibri",Font.PLAIN,26));
+		panelScoreVainqueur.add(scoreVainqueur);
+		donneesVainqueur.add(panelScoreVainqueur);
+
+		// le nombre de paires trouvees par le vainqueur
+		JPanel panelNbPaires = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JLabel nbPairesVainqueur = new JLabel("nombre de paires : " + modelePartie.getPairesVainqueurs());
+		nbPairesVainqueur.setFont(new Font("Calibri",Font.PLAIN,26));
+		panelNbPaires.add(nbPairesVainqueur);
+		donneesVainqueur.add(panelNbPaires);
+		
+		containerVictoire.add(donneesVainqueur,BorderLayout.CENTER);
+		
+		// ajout des JButton recommencer et quitter
+		recommencerVictoire.setText("Recommencer");
+		recommencerVictoire.setPreferredSize(dimensionBoutons);
+		recommencerVictoire.addActionListener(this);
+		quitterVictoire.setText("Quitter");
+		quitterVictoire.setPreferredSize(dimensionBoutons);
+		quitterVictoire.addActionListener(this);
+		Box boxBoutons = Box.createHorizontalBox();
+		boxBoutons.add(recommencerVictoire);
+		boxBoutons.add(Box.createHorizontalStrut(5));
+		boxBoutons.add(quitterVictoire);
+		
+		containerVictoire.add(boxBoutons, BorderLayout.SOUTH);
+		
+		// formatage de la frame victoire
+		frameJeuVictoire.pack();
+		int _width = frameJeuVictoire.getWidth();
+		int _height = frameJeuVictoire.getHeight();
+		frameJeuVictoire.setMinimumSize(new Dimension(_width + 10, _height + 10));
+		frameJeuVictoire.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frameJeuVictoire.setVisible(true);
+	}
 
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		if(e.getSource() == recommencerPrincipal) {
+			// demande de confirmation
+			if(confirmation("Une partie est en cours, voulez-vous la recommencer ?")) {
+				frameJeuPrincipale.dispose();
+				frameJeuVictoire.dispose();
+				new ModelePartie();			
+			} 
+		} else if (e.getSource() == quitterPrincipal) {
+			//demande de confirmation
+			if(confirmation("Une partie est en cours, voulez-vous la quitter ?")) {
+				frameJeuPrincipale.dispose();
+				frameJeuVictoire.dispose();
+			}
+		} else if (e.getSource() == recommencerVictoire) {
+			frameJeuPrincipale.dispose();
+			frameJeuVictoire.dispose();
+			new ModelePartie();
+		} else if (e.getSource() == quitterVictoire) {
+			frameJeuPrincipale.dispose();
+			frameJeuVictoire.dispose();
+		}
 	}
 	
+	public boolean confirmation(String message) {
+		JOptionPane confirmation = new JOptionPane();
+		int option = JOptionPane.showConfirmDialog(null,
+				message, "Confirmation", 
+				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+		if(option != JOptionPane.NO_OPTION 
+				&& option != JOptionPane.CLOSED_OPTION
+				&& option != JOptionPane.CANCEL_OPTION) {
+			return true;
+		} 
+		return false;
+	}
 }

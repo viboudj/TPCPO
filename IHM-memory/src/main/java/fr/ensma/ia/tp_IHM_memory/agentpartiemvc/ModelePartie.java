@@ -23,6 +23,12 @@ public class ModelePartie implements IObserverPlateau {
 	
 	private int nbPairesRestantes;
 	
+	private String nomVainqueur;
+	
+	private int scoreVainqueur;
+	
+	private int pairesVainqueurs;
+	
 	private ArrayList<IObserverPartie> listeObervateursPartie;
 
 	// -- CONSTRUCTEUR -- //
@@ -51,7 +57,7 @@ public class ModelePartie implements IObserverPlateau {
 	// -- OBSERVATION DU PLATEAU -- //
 	
 	public void notificationComparaison(boolean resultatComparaison) {
-		noyauFonctionnel.traitement();
+		majComparaison();
 	}
 
 	/**
@@ -96,7 +102,16 @@ public class ModelePartie implements IObserverPlateau {
 		nbPairesRestantes = noyauFonctionnel.getPlateau().getNbrCartesRestantes()/2;
 		if(nbPairesRestantes == 0) {
 			controleurPartie.getEtatCourantPartie().plusPaireRestante();
+			enregistrementVainqueur();
 		}
+		notifierObservateur();
+		controleurPartie.getEtatCourantPartie().updateVue();
+	}
+	
+	public void enregistrementVainqueur() {
+		nomVainqueur = noyauFonctionnel.joueurGagant().getNom();
+		scoreVainqueur = noyauFonctionnel.joueurGagant().getScore().getScore();
+		pairesVainqueurs = noyauFonctionnel.joueurGagant().getNbrPairesTrouvees();
 	}
 	
 	// -- ACCESSEURS -- //
@@ -116,4 +131,17 @@ public class ModelePartie implements IObserverPlateau {
 	public int getNbPairesRestantes() {
 		return nbPairesRestantes;
 	}
+
+	public String getNomVainqueur() {
+		return nomVainqueur;
+	}
+
+	public int getScoreVainqueur() {
+		return scoreVainqueur;
+	}
+
+	public int getPairesVainqueurs() {
+		return pairesVainqueurs;
+	}
+	
 }

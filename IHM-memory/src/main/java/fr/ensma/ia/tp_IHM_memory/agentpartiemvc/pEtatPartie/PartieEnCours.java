@@ -19,16 +19,10 @@ public class PartieEnCours implements IEtatPartie {
 	}
 
 	public void updateVue() {
-		
+		controleurPartie.getVuePartie().updatePairesRestantes();
 	}
 	
 	public void plusPaireRestante() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void ReLancerPartie() {
-		// TODO Auto-generated method stub
-		
+		controleurPartie.setEtatCourantPartie(controleurPartie.getFinPartie());
 	}
 }

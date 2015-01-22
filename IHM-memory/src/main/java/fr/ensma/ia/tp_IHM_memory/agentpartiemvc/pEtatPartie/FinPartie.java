@@ -18,17 +18,10 @@ public class FinPartie implements IEtatPartie {
 		this.controleurPartie = controleurPartie;
 	}
 
+	public void updateVue() {
+		controleurPartie.getVuePartie().updateVictoire();
+	}
+
 	public void plusPaireRestante() {		
 	}
-
-	public void ReLancerPartie() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void updateVue() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

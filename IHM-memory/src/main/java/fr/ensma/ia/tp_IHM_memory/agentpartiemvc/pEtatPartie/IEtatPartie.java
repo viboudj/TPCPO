@@ -13,9 +13,4 @@ public interface IEtatPartie {
 	 * Transition activee lorsqu'il n'y a plus de carte sur le plateau.
 	 */
 	public void plusPaireRestante();
-	/**
-	 * Permet de relancer une partie.</br>
-	 * Transition de l'etat PartieEnCours a lui-meme et transition de FinPartie a PartieEnCours
-	 */
-	public void ReLancerPartie();
 }
