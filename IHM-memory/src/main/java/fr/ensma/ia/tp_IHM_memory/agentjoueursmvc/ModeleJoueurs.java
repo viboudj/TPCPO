@@ -66,6 +66,8 @@ public class ModeleJoueurs implements IObserverPartie {
 		}
 	}
 	
+	// -- ACCESSEURS -- //
+	
 	public int getNbJoueurs(){
 		return nbJoueurs;
 	}

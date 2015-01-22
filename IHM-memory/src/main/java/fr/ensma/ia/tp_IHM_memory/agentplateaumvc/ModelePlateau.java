@@ -155,7 +155,7 @@ public class ModelePlateau implements IObserverCarte {
 	
 	/**
 	 * Ajoute un observateur du plateau a la liste
-	 * @param observer IObserverPlateau : l'abservateur a ajouter
+	 * @param observer IObserverPlateau : l'observateur a ajouter
 	 */
 	public void addObserverPlateau(IObserverPlateau observer) {
 		listeObservateursPlateau.add(observer);

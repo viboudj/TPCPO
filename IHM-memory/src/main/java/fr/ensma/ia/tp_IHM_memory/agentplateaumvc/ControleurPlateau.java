@@ -53,6 +53,9 @@ public class ControleurPlateau {
 		this.modelePlateau=modelePlateau;
 		vuePlateau = new VuePlateau(modelePlateau, this);
 		
+		// initialisation de l'automate gerant les etats du plateau
+		etatCourantPlateau = pasCarteSelectionnee;
+		
 	}
 	
 	// -- COMPORTEMENT -- //
