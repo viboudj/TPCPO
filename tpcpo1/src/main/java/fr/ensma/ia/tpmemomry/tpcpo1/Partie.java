@@ -311,7 +311,7 @@ public class Partie {
 	// -- COMPORTEMENT DE LA PARTIE -- //
 
 	/**
-	 * Compare les deux cartes d'une paire et lance les actions adequates
+	 * Lance les actions en fonction du resultat de la comparaison des deux cartes trouvees
 	 */
 	public void traitement() {
 		
