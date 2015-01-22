@@ -65,17 +65,20 @@ public class Partie {
 	// -- CONSTRUCTEURS -- //
 
 	/**
-	 * Constructeur sans parametre
-	 * Cree une nouvelle partie avec des parametres par default (8 symboles, 2 paires par symbole)
-	 * Plus une probabilite de 20% d'avoir des paires bonus
+	 * Constructeur sans parametre.</br>
+	 * Cree une nouvelle partie avec des parametres par default (8 symboles, 2 paires par symbole).</br>
+	 * Partie entre deux joueurs humain.</br>
+	 * Probabilite de 20% d'avoir des paires bonus.
 	 */
 	public Partie() {
 		super();
 		nbrSymboles = 8;
 		nbrPairesParSymboles = 2;
-		plateau = new Plateau(nbrSymboles, nbrPairesParSymboles, false, 0);
+		plateau = new Plateau(nbrSymboles, nbrPairesParSymboles, true, 2);
 		
 		listeJoueurs = new ArrayList<IJoueur>();
+		listeJoueurs.add(new Humain());
+		listeJoueurs.add(new Humain());
 		
 		etatCourantPartie = pairesRestantes;	
 	}
