@@ -64,7 +64,7 @@ public class VueCarte extends JButton implements ActionListener {
 		// definition des paramtres geometriques de la carte
 		setMargin(new Insets(0, 0, 0, 0));
 		setPreferredSize(new Dimension(130,130));
-		setBorderPainted(false);
+		//setBorderPainted(false);
 		
 		// ajout du bouton au ActionListener
 		addActionListener(this);

@@ -36,9 +36,7 @@ public class ModelePartie implements IObserverPlateau {
 	public ModelePartie() {
 		// creation d'une partie par defaut
 		noyauFonctionnel = new Partie();
-		nbPairesRestantes = noyauFonctionnel.getPlateau().getNbrCartesRestantes();
-		
-		controleurPartie = new ControleurPartie(this);
+		nbPairesRestantes = noyauFonctionnel.getPlateau().getNbrCartesRestantes();		
 		listeObervateursPartie = new ArrayList<IObserverPartie>();
 		
 		// instantiation de tous les elements du jeu
@@ -50,8 +48,11 @@ public class ModelePartie implements IObserverPlateau {
 		modelePlateau.addObserverPlateau(this);
 		
 		// abonnement des modeles joueurs et joueurCourant 
+		listeObervateursPartie = new ArrayList<IObserverPartie>();
 		listeObervateursPartie.add(modeleJoueurs);
 		listeObervateursPartie.add(modeleJoueurCourant);
+		
+		controleurPartie = new ControleurPartie(this);
 	}
 	
 	// -- OBSERVATION DU PLATEAU -- //

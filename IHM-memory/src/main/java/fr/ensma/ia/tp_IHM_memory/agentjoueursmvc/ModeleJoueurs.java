@@ -25,9 +25,7 @@ public class ModeleJoueurs implements IObserverPartie {
 
 	
 	public ModeleJoueurs(Partie noyauFonctionnel){
-		this.noyauFonctionnel=noyauFonctionnel;
-		controleurJoueurs = new ControleurJoueurs(this);
-		
+		this.noyauFonctionnel=noyauFonctionnel;		
 		
 		nbJoueurs = noyauFonctionnel.getListeJoueurs().size();
 		listeNomJoueurs = new ArrayList<String>(nbJoueurs);
@@ -37,6 +35,8 @@ public class ModeleJoueurs implements IObserverPartie {
 		updateListeNomJoueurs();
 		updateListeScore();
 		updateListePaires();
+		
+		controleurJoueurs = new ControleurJoueurs(this);
 	}
 	
 	// -- OBSERVATION DE LA PARTIE -- //

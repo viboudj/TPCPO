@@ -19,6 +19,9 @@ public class ControleurPartie {
 	public ControleurPartie(ModelePartie modelePartie) {
 		this.modelePartie = modelePartie;
 		vuePartie = new VuePartie(modelePartie, this);
+		
+		// initialisation de l'automate gerant les etats du plateau
+		etatCourantPartie = partieEnCours;
 	}
 	
 	// -- GESTION DES ETATS DE L'AUTOMATE -- //

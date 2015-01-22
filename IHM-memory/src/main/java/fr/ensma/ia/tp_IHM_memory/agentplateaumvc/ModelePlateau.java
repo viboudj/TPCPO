@@ -79,7 +79,6 @@ public class ModelePlateau implements IObserverCarte {
 	 */
 	public ModelePlateau(Partie noyauFonctionnel) {
 		this.noyauFonctionnel = noyauFonctionnel;
-		controleurPlateau = new ControleurPlateau(this);
 		
 		nbCartesSurPlateau = noyauFonctionnel.getPlateau().getListeCartesMelangees().size();
 		// remplissage de listeCartesSurPlateau
@@ -87,7 +86,10 @@ public class ModelePlateau implements IObserverCarte {
 		// calcul de l'agencement du plateau
 		optimisationAgencementCartes();
 		// abonnement du plateau aux cartes et inversement
+		listeObservateursPlateau = new ArrayList<IObserverPlateau>();
 		abonnementCartes();	
+		
+		controleurPlateau = new ControleurPlateau(this);
 	}
 
 	/**
@@ -148,7 +150,6 @@ public class ModelePlateau implements IObserverCarte {
 	 */
 	public void notificationClic(ModeleCarte carte) {
 		controleurPlateau.getEtatCourantPlateau().carteCliquee(carte);
-		
 	}
 	
 	// -- GESTION DES OBSERVATEURS DU PLATEAU -- //

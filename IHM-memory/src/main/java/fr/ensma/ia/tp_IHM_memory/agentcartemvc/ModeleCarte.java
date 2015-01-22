@@ -62,6 +62,8 @@ public class ModeleCarte implements IObserverPlateau {
 	public ModeleCarte(String symboleCarte, String bonusCarte) {
 		this.symboleCarte = symboleCarte;
 		this.bonusCarte = bonusCarte;
+		listeObservateurs = new ArrayList<IObserverCarte>();
+		
 		controleurCarte = new ControleurCarte(this);
 		}
 	
