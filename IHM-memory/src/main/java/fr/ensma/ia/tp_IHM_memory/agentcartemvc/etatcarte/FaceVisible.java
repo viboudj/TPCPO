@@ -25,7 +25,7 @@ public class FaceVisible implements IEtatCarte {
 		this.controleurCarte = controleurCarte;
 	}
 	
-	public void updateActivationFaceCachee() {		
+	public void desactiveFaceCachee() {		
 	}
 	
 	public void carteVisible() {		

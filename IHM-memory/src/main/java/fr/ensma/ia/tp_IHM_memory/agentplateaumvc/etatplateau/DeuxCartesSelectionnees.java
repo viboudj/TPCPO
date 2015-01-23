@@ -30,8 +30,8 @@ public class DeuxCartesSelectionnees implements IEtatPlateau {
 	}
 
 	public void comparaisonCartes() {
-		controleurPlateau.comparerCartes();
 		controleurPlateau.setEtatCourantPlateau(controleurPlateau.getPasCarteSelectionnee());
+		controleurPlateau.comparerCartes();
 	}
 
 }

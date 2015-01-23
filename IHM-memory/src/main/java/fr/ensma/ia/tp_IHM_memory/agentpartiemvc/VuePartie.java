@@ -40,7 +40,7 @@ public class VuePartie implements ActionListener {
 	
 	private Box ensemblePlateau;
 	
-	private Box infoJoueurs;
+	private Container infoJoueurs = new Container();
 	
 	private Box plateauDeJeu;
 	
@@ -61,7 +61,7 @@ public class VuePartie implements ActionListener {
 		this.controleurPartie = controleurPartie;
 		
 		frameJeuPrincipale = new JFrame();
-		frameJeuPrincipale.setTitle("Mémory");
+		frameJeuPrincipale.setTitle("Memory");
 		frameJeuPrincipale.setBounds(350, 350, 800, 800);
 		containerPrincipal = frameJeuPrincipale.getContentPane();
 		
@@ -91,22 +91,32 @@ public class VuePartie implements ActionListener {
 		plateauDeJeu.add(Box.createVerticalStrut(5));
 		plateauDeJeu.add(pairesPlusBouton);
 		
-		// ajout des infos sur les joueurs et le joueur courant a la Box infoJoueurs
-		infoJoueurs = Box.createVerticalBox();
-		infoJoueurs.add(modelePartie.getModeleJoueurs().getVueJoueurs());
-		infoJoueurs.add(Box.createVerticalGlue());
-		infoJoueurs.add(modelePartie.getModeleJoueurCourant().getVueJoueurCourant());
-		
+		// ajout des infos sur les joueurs et le joueur courant au container infoJoueurs
+		Container contJoueurs = new Container();
+		contJoueurs.setLayout(new BorderLayout());
+		contJoueurs.add(modelePartie.getModeleJoueurs().getVueJoueurs(), BorderLayout.CENTER);
+		contJoueurs.setPreferredSize(new Dimension(200, 100));
+		infoJoueurs.setLayout(new BorderLayout());
+		infoJoueurs.add(contJoueurs, BorderLayout.NORTH);
+		Box boxJoueurCourant = Box.createVerticalBox();
+		boxJoueurCourant.add(modelePartie.getModeleJoueurCourant().getVueJoueurCourant());
+		boxJoueurCourant.add(Box.createVerticalStrut(13));
+		infoJoueurs.add(boxJoueurCourant, BorderLayout.SOUTH);
+
 		// ajout de plateauDeJeu et infoJoueur a la Box ensemblePlateau
 		ensemblePlateau = Box.createHorizontalBox();
+		ensemblePlateau.add(Box.createHorizontalStrut(5));
 		ensemblePlateau.add(infoJoueurs);
 		ensemblePlateau.add(Box.createHorizontalStrut(5));
 		ensemblePlateau.add(plateauDeJeu);
+		ensemblePlateau.add(Box.createHorizontalStrut(5));
 		
 		// formatage du JLabel memory et ajout au conteneur
 		memory.setText("<html><font color = #F79F81 >MEMORY</font></html>");
 		memory.setFont(new Font("Calibri", Font.BOLD, 36));
-		containerPrincipal.add(memory, BorderLayout.NORTH);
+		JPanel panelLabel = new JPanel();
+		panelLabel.add(memory, BorderLayout.CENTER);
+		containerPrincipal.add(panelLabel, BorderLayout.NORTH);
 		
 		// ajout de ensemblePlateau au conteneur
 		containerPrincipal.add(ensemblePlateau, BorderLayout.CENTER);

@@ -12,7 +12,7 @@ public interface IEtatCarte {
 	/**
 	 * Appelle la vue pour mettre a jour la "cliquabilite" de la face cachee de la carte
 	 */
-	public void updateActivationFaceCachee();
+	public void desactiveFaceCachee();
 	
 	/**
 	 * Appelle la vue pour que la carte soit placee face visible

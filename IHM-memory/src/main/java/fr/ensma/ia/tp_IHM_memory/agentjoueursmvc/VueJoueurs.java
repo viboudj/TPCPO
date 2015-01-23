@@ -2,6 +2,11 @@ package fr.ensma.ia.tp_IHM_memory.agentjoueursmvc;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
+
+import javax.swing.Box;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -41,8 +46,10 @@ public class VueJoueurs extends Container {
 	public VueJoueurs(ModeleJoueurs modeleJoueurs, ControleurJoueurs controleurJoueurs) {
 		this.modeleJoueurs = modeleJoueurs;
 		this.controleurJoueurs = controleurJoueurs;
+
+		setLayout(new BorderLayout());
 		
-		String[] columnNames = {"Joueur","Score","Nb paires trouvées"};
+		String[] columnNames = {"Joueur","Score","Nb paires"};
 		Object[][] data = new Object[modeleJoueurs.getNbJoueurs()][3];
 		for(int i=0 ; i<modeleJoueurs.getNbJoueurs() ; i++){
 			data[i][0] = modeleJoueurs.getListeNomJoueurs().get(i);
@@ -52,8 +59,15 @@ public class VueJoueurs extends Container {
 		
 		infoJoueurs = new JTable(data, columnNames);
 		infoJoueurs.setEnabled(false);
-		setLayout(new BorderLayout());
-		add(new JScrollPane(infoJoueurs), BorderLayout.CENTER);
+		
+		Box colonne = Box.createVerticalBox();
+		JLabel titre = new JLabel();
+		titre.setText("<html><font color = #F79F81 >Score joueurs :</font></html>");
+		titre.setFont(new Font("Calibri", Font.BOLD, 20));
+		colonne.add(titre);
+		colonne.add(new JScrollPane(infoJoueurs), BorderLayout.CENTER);
+		
+		add(colonne);
 		
 	}
 

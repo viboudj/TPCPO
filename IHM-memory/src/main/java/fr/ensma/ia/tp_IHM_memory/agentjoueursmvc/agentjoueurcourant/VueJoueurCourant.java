@@ -1,6 +1,15 @@
 package fr.ensma.ia.tp_IHM_memory.agentjoueursmvc.agentjoueurcourant;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
+
+import javax.swing.Box;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.border.LineBorder;
 
 /**
  * Classe representant la vue du joueur courant.</br>
@@ -9,7 +18,7 @@ import javax.swing.JTable;
  * @author clementdouault
  *
  */
-public class VueJoueurCourant extends JTable {
+public class VueJoueurCourant extends Container {
 
 	/**
 	 * Reference du modele du joueur courant
@@ -21,6 +30,8 @@ public class VueJoueurCourant extends JTable {
 	 */
 	private ControleurJoueurCourant controleurJoueurCourant;
 	
+	private JTable infoJoueurCourant;
+	
 	// -- CONSTRUCTEUR -- //
 	
 	/**
@@ -30,12 +41,16 @@ public class VueJoueurCourant extends JTable {
 	 */
 	public VueJoueurCourant(ModeleJoueurCourant modeleJoueurCourant, 
 			ControleurJoueurCourant controleurJoueurCourant) {
+		setPreferredSize(new Dimension(200,100));
+		setLayout(new BorderLayout());
+		
 		// creation d'un tableau a 3 lignes et 2 colonnes
-		super(3,2);
-		setEnabled(false);
-		setValueAt("Nom", 0, 0);
-		setValueAt("Score", 1, 0);
-		setValueAt("Serie", 2, 0);
+		infoJoueurCourant = new JTable(3,2);
+		infoJoueurCourant.setBorder(new LineBorder(Color.LIGHT_GRAY));
+		infoJoueurCourant.setEnabled(false);
+		infoJoueurCourant.setValueAt("Nom", 0, 0);
+		infoJoueurCourant.setValueAt("Score", 1, 0);
+		infoJoueurCourant.setValueAt("Serie", 2, 0);
 		
 		this.modeleJoueurCourant = modeleJoueurCourant;
 		this.controleurJoueurCourant = controleurJoueurCourant;
@@ -43,6 +58,15 @@ public class VueJoueurCourant extends JTable {
 		updateVueNom();
 		updateVueScore();
 		updateVueSerie();
+		
+		// ajout du tableau dans le container
+		Box colonne = Box.createVerticalBox();
+		JLabel titre = new JLabel();
+		titre.setText("<html><font color = #F79F81 >Joueur courant :</font></html>");
+		titre.setFont(new Font("Calibri", Font.BOLD, 20));
+		colonne.add(titre);
+		colonne.add(infoJoueurCourant);
+		add(colonne);
 	}
 	
 	// -- GESTION DE LA MISE A JOUR DE LA VUE -- //
@@ -51,21 +75,21 @@ public class VueJoueurCourant extends JTable {
 	 * Met a jour le champ nom de la vue
 	 */
 	public void updateVueNom() {
-		setValueAt(modeleJoueurCourant.getNomCourant(), 0, 1);
+		infoJoueurCourant.setValueAt(modeleJoueurCourant.getNomCourant(), 0, 1);
 	}
 	
 	/**
 	 * Met a jour le champ score de la vue
 	 */
 	public void updateVueScore() {
-		setValueAt(modeleJoueurCourant.getScoreCourant(), 1, 1);
+		infoJoueurCourant.setValueAt(modeleJoueurCourant.getScoreCourant(), 1, 1);
 	}
 	
 	/**
 	 * Met a jour le champ serie de la vue
 	 */
 	public void updateVueSerie() {
-		setValueAt(modeleJoueurCourant.getSerieCourante(), 2, 1);
+		infoJoueurCourant.setValueAt(modeleJoueurCourant.getSerieCourante(), 2, 1);
 	}
 	
 	/**

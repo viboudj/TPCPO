@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -59,12 +60,11 @@ public class VueCarte extends JButton implements ActionListener {
 		
 		// definition des icones par defaut de la carte
 		setIcon(faceCachee);
-		refreshVue();
 		
 		// definition des paramtres geometriques de la carte
 		setMargin(new Insets(0, 0, 0, 0));
 		setPreferredSize(new Dimension(130,130));
-		//setBorderPainted(false);
+		setBorderPainted(false);
 		
 		// ajout du bouton au ActionListener
 		addActionListener(this);
@@ -84,7 +84,7 @@ public class VueCarte extends JButton implements ActionListener {
 	/**
 	 * Rend la carte face cachee cliquable ou pas
 	 */
-	public void updateActivationFaceCachee() {
+	public void desactiveFaceCachee() {
 		if (modeleCarte.isCarteBloquee()) {
 			setDisabledIcon(faceCachee);
 			setEnabled(false);

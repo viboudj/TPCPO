@@ -26,13 +26,13 @@ public class FaceCachee implements IEtatCarte {
 		this.controleurCarte = controleurCarte;
 	}
 	
-	public void updateActivationFaceCachee() {
-		controleurCarte.getVueCarte().updateActivationFaceCachee();
+	public void desactiveFaceCachee() {
+		controleurCarte.getVueCarte().desactiveFaceCachee();
 	}
 	
 	public void carteVisible() {
-		controleurCarte.getVueCarte().updateFaceVisible();
 		controleurCarte.setEtatCourantCarte(controleurCarte.getFaceVisible());
+		controleurCarte.getVueCarte().updateFaceVisible();
 	}
 
 	public void carteCachee() {		

@@ -41,7 +41,7 @@ public class VuePlateau extends JPanel {
 	/**
 	 * Bordure du plateau
 	 */
-	private Border bordure = new LineBorder(couleurBordure);
+	private Border bordure = new LineBorder(couleurBordure, 2, false);
 	
 	// -- CONSTRUCTEURS -- //
 	

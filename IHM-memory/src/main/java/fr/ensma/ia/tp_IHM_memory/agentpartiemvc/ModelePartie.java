@@ -36,7 +36,7 @@ public class ModelePartie implements IObserverPlateau {
 	public ModelePartie() {
 		// creation d'une partie par defaut
 		noyauFonctionnel = new Partie();
-		nbPairesRestantes = noyauFonctionnel.getPlateau().getNbrCartesRestantes();		
+		nbPairesRestantes = noyauFonctionnel.getPlateau().getNbrCartesRestantes()/2;		
 		listeObervateursPartie = new ArrayList<IObserverPartie>();
 		
 		// instantiation de tous les elements du jeu

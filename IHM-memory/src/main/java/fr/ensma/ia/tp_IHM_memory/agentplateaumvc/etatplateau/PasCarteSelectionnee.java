@@ -27,8 +27,8 @@ public class PasCarteSelectionnee implements IEtatPlateau {
 	}
 
 	public void carteCliquee(ModeleCarte carte) {
-		controleurPlateau.carte1Selectionnee(carte);
 		controleurPlateau.setEtatCourantPlateau(controleurPlateau.getUneCarteSelectionnee());
+		controleurPlateau.carte1Selectionnee(carte);
 	}
 
 	public void comparaisonCartes() {		

@@ -50,7 +50,7 @@ public class ModeleCarte implements IObserverPlateau {
 	/**
 	 * Liste des observateurs de la carte
 	 */
-	private ArrayList<IObserverCarte> listeObservateurs;
+	private ArrayList<IObserverCarte> listeObservateursCarte;
 	
 	// -- CONSTRUCTEUR -- //
 	
@@ -62,7 +62,7 @@ public class ModeleCarte implements IObserverPlateau {
 	public ModeleCarte(String symboleCarte, String bonusCarte) {
 		this.symboleCarte = symboleCarte;
 		this.bonusCarte = bonusCarte;
-		listeObservateurs = new ArrayList<IObserverCarte>();
+		listeObservateursCarte = new ArrayList<IObserverCarte>();
 		
 		controleurCarte = new ControleurCarte(this);
 		}
@@ -83,7 +83,7 @@ public class ModeleCarte implements IObserverPlateau {
 	
 	public void bloquerCarte(boolean carteBloquee) {
 		this.carteBloquee = carteBloquee;
-		controleurCarte.getEtatCourantCarte().updateActivationFaceCachee();
+		controleurCarte.getEtatCourantCarte().desactiveFaceCachee();
 	}
 	
 	// -- GESTION DES OBSERVATEURS DE LA CARTE -- //
@@ -93,7 +93,7 @@ public class ModeleCarte implements IObserverPlateau {
 	 * @param observer IObserverCarte : le nouvel observateur
 	 */
 	public void addObserverCarte(IObserverCarte observer) {
-		listeObservateurs.add(observer);
+		listeObservateursCarte.add(observer);
 	}
 	
 	/**
@@ -101,7 +101,7 @@ public class ModeleCarte implements IObserverPlateau {
 	 * @param observer IObserverCarte : l'observateur a supprimer
 	 */
 	public void removeObserverCarte(IObserverCarte observer) {
-		listeObservateurs.remove(observer);
+		listeObservateursCarte.remove(observer);
 	}
 	
 	/**
@@ -110,8 +110,8 @@ public class ModeleCarte implements IObserverPlateau {
 	public void notifierClic() {
 		carteVisible = true;
 		controleurCarte.getEtatCourantCarte().carteVisible();
-		
-		ListIterator<IObserverCarte> iterator = listeObservateurs.listIterator();
+
+		ListIterator<IObserverCarte> iterator = listeObservateursCarte.listIterator();
 		while(iterator.hasNext()) {
 			iterator.next().notificationClic(this);
 		}

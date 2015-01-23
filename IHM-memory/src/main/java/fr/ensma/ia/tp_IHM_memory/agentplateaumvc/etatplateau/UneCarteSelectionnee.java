@@ -26,10 +26,9 @@ public class UneCarteSelectionnee implements IEtatPlateau {
 		this.controleurPlateau = controleurPlateau;
 	}
 	
-
 	public void carteCliquee(ModeleCarte carte) {
-		controleurPlateau.carte2Selectionnee(carte);
 		controleurPlateau.setEtatCourantPlateau(controleurPlateau.getDeuxCartesSelectionnees());		
+		controleurPlateau.carte2Selectionnee(carte);
 	}
 
 	public void comparaisonCartes() {		

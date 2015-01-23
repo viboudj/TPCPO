@@ -136,11 +136,13 @@ public class ModelePlateau implements IObserverCarte {
 	 */
 	public void abonnementCartes() {
 		ListIterator<ModeleCarte> iterator = listeCartesSurPlateau.listIterator();
+		ModeleCarte _carte;
 		while(iterator.hasNext()) {
+			_carte = iterator.next();
 			// ajout du pateau comme observateur de chacune des cartes
-			iterator.next().addObserverCarte(this);
+			_carte.addObserverCarte(this);
 			// ajout de chaque carte comme observatrice du plateau
-			addObserverPlateau(iterator.next());
+			addObserverPlateau(_carte);
 		}
 	}
 	
@@ -185,20 +187,26 @@ public class ModelePlateau implements IObserverCarte {
 	 * Met a jour les cartes conformement au resultat de la comparaison de la paire selectionnee
 	 */
 	public void miseAJourCartes() {
-		ListIterator<IObserverPlateau> iterator = listeObservateursPlateau.listIterator();
-		long reveil = System.currentTimeMillis();
 		
-		// Attente pendant "delai" millisecondes
-		while(System.currentTimeMillis() <= (reveil +delai)) {
-		}
-		
-		// Mise a jour des cartes
-		while(iterator.hasNext()) {
-			// debloque les cartes
-			iterator.next().bloquerCarte(false);
-			// informe les observateurs du resultat de la comparaison
-			iterator.next().notificationComparaison(cartesIdentiques);
-		}
+		Thread attente = new Thread() {
+			public void run() {
+				//Attente pendant "delai" millisecondes
+				long reveil = System.currentTimeMillis();
+				while(System.currentTimeMillis() <= (reveil +delai)) {}
+				
+				// Mise a jour des cartes
+				ListIterator<IObserverPlateau> iterator = listeObservateursPlateau.listIterator();
+				IObserverPlateau _observer;
+				while(iterator.hasNext()) {
+					_observer = iterator.next();
+					// debloque les cartes
+					_observer.bloquerCarte(false);
+					// informe les observateurs du resultat de la comparaison
+					_observer.notificationComparaison(cartesIdentiques);
+				}
+			}
+		};
+		attente.start();
 	}
 	
 	// -- COMPORTEMENT -- //
