@@ -119,9 +119,8 @@ public class Humain implements IJoueur {
 	 */
 	@Override
 	public void tourGagne(int effetCarte) {
+		this.score.updateScore(nbrPairesSuccessives, effetCarte);
 		nbrPairesSuccessives++;
 		nbrPairesTrouvees++;
-		this.score.updateScore(nbrPairesSuccessives, effetCarte);
-		
 	}
 }
