@@ -121,8 +121,8 @@ public abstract class IA {
 	 * @param effetCarte int : le bonus donne par la paire trouvee
 	 */
 	public void tourGagne(int effetCarte) {
+		this.score.updateScore(nbrPairesSuccessives, effetCarte);	
 		nbrPairesSuccessives++;
 		nbrPairesTrouvees++;
-		this.score.updateScore(nbrPairesSuccessives, effetCarte);	
 	}
 }
