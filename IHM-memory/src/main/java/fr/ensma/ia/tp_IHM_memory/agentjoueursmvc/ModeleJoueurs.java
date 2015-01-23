@@ -31,9 +31,6 @@ public class ModeleJoueurs implements IObserverPartie {
 		// remplissage des listes
 		initialisationListes();
 		// initialisation des infos des joueurs
-		updateListeNomJoueurs();
-		updateListeScore();
-		updateListePaires();
 		
 		controleurJoueurs = new ControleurJoueurs(this);
 	}

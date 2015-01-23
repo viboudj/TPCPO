@@ -1,5 +1,6 @@
 package fr.ensma.ia.tp_IHM_memory.agentcartemvc;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -63,6 +64,7 @@ public class VueCarte extends JButton implements ActionListener {
 		
 		// definition des paramtres geometriques de la carte
 		setMargin(new Insets(0, 0, 0, 0));
+		setBackground(Color.WHITE);
 		setPreferredSize(new Dimension(130,130));
 		setBorderPainted(false);
 		
