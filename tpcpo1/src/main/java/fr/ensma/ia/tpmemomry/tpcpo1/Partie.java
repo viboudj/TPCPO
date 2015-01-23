@@ -78,7 +78,8 @@ public class Partie {
 		
 		listeJoueurs = new ArrayList<IJoueur>();
 		listeJoueurs.add(new Humain());
-		listeJoueurs.add(new Humain());
+		listeJoueurs.add(new Stupide(this.getPlateau()));
+
 		
 		etatCourantPartie = pairesRestantes;
 		joueurCourant = listeJoueurs.get(0);

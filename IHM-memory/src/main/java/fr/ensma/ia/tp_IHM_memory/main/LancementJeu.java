@@ -1,11 +1,12 @@
 package fr.ensma.ia.tp_IHM_memory.main;
 
-import fr.ensma.ia.tp_IHM_memory.agentpartiemvc.ModelePartie;
+import fr.ensma.ia.tp_IHM_memory.agentInitialisationmvc.ModeleInitialisation;
+
 
 public class LancementJeu {
 
 	public static void main(String Args[]) {
-		ModelePartie nouvellePartie = new ModelePartie();
+		ModeleInitialisation nouvellePartie = new ModeleInitialisation();
 	}
 	
 }
