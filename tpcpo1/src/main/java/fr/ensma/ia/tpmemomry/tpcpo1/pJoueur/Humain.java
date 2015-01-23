@@ -39,7 +39,7 @@ public class Humain implements IJoueur {
 	public Humain() {
 		super();
 		numInstanceHumain++;
-		this.nom= "Joueur humain " +numInstanceHumain;
+		this.nom= "Humain " +numInstanceHumain;
 		score = new Score();
 		}
 	

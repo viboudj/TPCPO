@@ -80,7 +80,8 @@ public class Partie {
 		listeJoueurs.add(new Humain());
 		listeJoueurs.add(new Humain());
 		
-		etatCourantPartie = pairesRestantes;	
+		etatCourantPartie = pairesRestantes;
+		joueurCourant = listeJoueurs.get(0);
 	}
 	
 	/**
@@ -100,6 +101,7 @@ public class Partie {
 		listeJoueurs = new ArrayList<IJoueur>();
 		
 		etatCourantPartie = pairesRestantes;
+		joueurCourant = listeJoueurs.get(0);
 	}
 	
 	// -- GETTEURS ET SETTEURS -- //
