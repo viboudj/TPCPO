@@ -72,7 +72,7 @@ public class Partie {
 	 */
 	public Partie() {
 		super();
-		nbrSymboles = 3;
+		nbrSymboles = 8;
 		nbrPairesParSymboles = 2;
 		plateau = new Plateau(nbrSymboles, nbrPairesParSymboles, true, 2);
 		
