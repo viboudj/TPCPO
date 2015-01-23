@@ -62,7 +62,7 @@ public class VuePartie implements ActionListener {
 		
 		frameJeuPrincipale = new JFrame();
 		frameJeuPrincipale.setTitle("Memory");
-		frameJeuPrincipale.setBounds(350, 350, 800, 800);
+		frameJeuPrincipale.setBounds(50, 50, 800, 800);
 		containerPrincipal = frameJeuPrincipale.getContentPane();
 		
 		// formatage du JLabel pairesRestantes et ajout dans une Box
@@ -135,14 +135,16 @@ public class VuePartie implements ActionListener {
 	}
 	
 	public void updateVictoire() {
+		updatePairesRestantes();
+		
+		frameJeuVictoire = new JFrame();
 		frameJeuVictoire.setTitle("And the winner is...");
-		frameJeuVictoire.setBounds(400, 400, 250, 250);
 		containerVictoire = frameJeuVictoire.getContentPane();
 		donneesVainqueur = Box.createVerticalBox();
 
 		// Annonce du vainqueur
 		JPanel panelTitre = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		JLabel titre = new JLabel("GAGNANT :");
+		JLabel titre = new JLabel("<html><font color = #F79F81 >GAGNANT :</font></html>");
 		titre.setFont(new Font("Calibri",Font.BOLD,36));
 		panelTitre.add(titre);
 		containerVictoire.add(panelTitre,BorderLayout.NORTH);
@@ -164,13 +166,11 @@ public class VuePartie implements ActionListener {
 
 		// le nombre de paires trouvees par le vainqueur
 		JPanel panelNbPaires = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		JLabel nbPairesVainqueur = new JLabel("nombre de paires : " + modelePartie.getPairesVainqueurs());
+		JLabel nbPairesVainqueur = new JLabel("Nombre de paires : " + modelePartie.getPairesVainqueurs());
 		nbPairesVainqueur.setFont(new Font("Calibri",Font.PLAIN,26));
 		panelNbPaires.add(nbPairesVainqueur);
 		donneesVainqueur.add(panelNbPaires);
-		
-		containerVictoire.add(donneesVainqueur,BorderLayout.CENTER);
-		
+				
 		// ajout des JButton recommencer et quitter
 		recommencerVictoire.setText("Recommencer");
 		recommencerVictoire.setPreferredSize(dimensionBoutons);
@@ -182,16 +182,22 @@ public class VuePartie implements ActionListener {
 		boxBoutons.add(recommencerVictoire);
 		boxBoutons.add(Box.createHorizontalStrut(5));
 		boxBoutons.add(quitterVictoire);
+		donneesVainqueur.add(boxBoutons);
 		
-		containerVictoire.add(boxBoutons, BorderLayout.SOUTH);
+		containerVictoire.add(donneesVainqueur, BorderLayout.CENTER);
 		
 		// formatage de la frame victoire
 		frameJeuVictoire.pack();
 		int _width = frameJeuVictoire.getWidth();
 		int _height = frameJeuVictoire.getHeight();
-		frameJeuVictoire.setMinimumSize(new Dimension(_width + 10, _height + 10));
+		frameJeuVictoire.setBounds(
+				frameJeuPrincipale.getX()+frameJeuPrincipale.getWidth()/2-_width/2,
+				frameJeuPrincipale.getY()+frameJeuPrincipale.getHeight()/2-_height/2, _width, _height);
 		frameJeuVictoire.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frameJeuVictoire.setVisible(true);
+		frameJeuVictoire.setResizable(false);
+		
+		frameJeuPrincipale.setEnabled(false);
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -199,14 +205,12 @@ public class VuePartie implements ActionListener {
 			// demande de confirmation
 			if(confirmation("Une partie est en cours, voulez-vous la recommencer ?")) {
 				frameJeuPrincipale.dispose();
-				frameJeuVictoire.dispose();
 				new ModelePartie();			
 			} 
 		} else if (e.getSource() == quitterPrincipal) {
 			//demande de confirmation
 			if(confirmation("Une partie est en cours, voulez-vous la quitter ?")) {
 				frameJeuPrincipale.dispose();
-				frameJeuVictoire.dispose();
 			}
 		} else if (e.getSource() == recommencerVictoire) {
 			frameJeuPrincipale.dispose();

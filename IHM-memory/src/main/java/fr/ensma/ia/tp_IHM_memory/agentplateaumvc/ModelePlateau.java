@@ -29,7 +29,7 @@ public class ModelePlateau implements IObserverCarte {
 	/**
 	 * Delai entre la selection de la deuxieme carte et le retournement de la paire 
 	 */
-	private long delai = 2000;
+	private long delai = 1300;
 	
 	/**
 	 * Nombre de cartes sur le plateau

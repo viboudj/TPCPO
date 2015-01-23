@@ -28,15 +28,26 @@ public class ModeleJoueurs implements IObserverPartie {
 		this.noyauFonctionnel=noyauFonctionnel;		
 		
 		nbJoueurs = noyauFonctionnel.getListeJoueurs().size();
-		listeNomJoueurs = new ArrayList<String>(nbJoueurs);
-		listeScoreJoueurs = new ArrayList<Integer>(nbJoueurs);
-		listePairesTrouvees = new ArrayList<Integer>(nbJoueurs);
+		// remplissage des listes
+		initialisationListes();
 		// initialisation des infos des joueurs
 		updateListeNomJoueurs();
 		updateListeScore();
 		updateListePaires();
 		
 		controleurJoueurs = new ControleurJoueurs(this);
+	}
+	
+	public void initialisationListes() {
+		listeNomJoueurs = new ArrayList<String>(nbJoueurs);
+		listeScoreJoueurs = new ArrayList<Integer>(nbJoueurs);
+		listePairesTrouvees = new ArrayList<Integer>(nbJoueurs);
+		
+		for(int i=0 ; i<nbJoueurs ; i++) {
+			listeNomJoueurs.add(noyauFonctionnel.getListeJoueurs().get(i).getNom());
+			listeScoreJoueurs.add(noyauFonctionnel.getListeJoueurs().get(i).getScore().getScore());
+			listePairesTrouvees.add(noyauFonctionnel.getListeJoueurs().get(i).getNbrPairesTrouvees());
+		}
 	}
 	
 	// -- OBSERVATION DE LA PARTIE -- //
@@ -50,19 +61,19 @@ public class ModeleJoueurs implements IObserverPartie {
 	
 	public void updateListeNomJoueurs() {
 		for(int i=0 ; i<nbJoueurs ; i++) {
-			listeNomJoueurs.add(noyauFonctionnel.getListeJoueurs().get(i).getNom()); 
+			listeNomJoueurs.set(i, noyauFonctionnel.getListeJoueurs().get(i).getNom()); 
 		}
 	}
 	
 	public void updateListeScore() {
 		for(int i=0 ; i<nbJoueurs ; i++) {
-			listeScoreJoueurs.add(noyauFonctionnel.getListeJoueurs().get(i).getScore().getScore()); 
+			listeScoreJoueurs.set(i, noyauFonctionnel.getListeJoueurs().get(i).getScore().getScore()); 
 		}	
 	}
 	
 	public void updateListePaires() {
 		for(int i=0 ; i<nbJoueurs ; i++) {
-			listePairesTrouvees.add(noyauFonctionnel.getListeJoueurs().get(i).getNbrPairesTrouvees()); 
+			listePairesTrouvees.set(i, noyauFonctionnel.getListeJoueurs().get(i).getNbrPairesTrouvees()); 
 		}
 	}
 	
