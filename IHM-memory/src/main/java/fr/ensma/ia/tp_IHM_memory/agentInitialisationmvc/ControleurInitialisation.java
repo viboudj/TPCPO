@@ -21,6 +21,8 @@ public class ControleurInitialisation {
 
 	public void partiePerso() {
 		modele.partiePerso();
+		vue.getBoutonPartieClassique().setEnabled(false);
+		vue.getFenetreInitialisation().setVisible(false);
 		
 	}
 

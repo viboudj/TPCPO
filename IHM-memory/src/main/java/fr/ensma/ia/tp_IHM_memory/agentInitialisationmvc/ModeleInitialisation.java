@@ -1,5 +1,6 @@
 package fr.ensma.ia.tp_IHM_memory.agentInitialisationmvc;
 
+import fr.ensma.ia.tp_IHM_memory.Personnalisation.ModelePersonnalisation;
 import fr.ensma.ia.tp_IHM_memory.agentpartiemvc.ModelePartie;
 
 public class ModeleInitialisation {
@@ -16,7 +17,7 @@ public class ModeleInitialisation {
 	}
 
 	public void partiePerso() {
-	System.out.println("bouton disable!");
+	ModelePersonnalisation personnalisation = new ModelePersonnalisation();
 		
 	}
 

@@ -1,8 +1,10 @@
 package fr.ensma.ia.tp_IHM_memory.agentInitialisationmvc;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,7 +27,7 @@ public class VueInitialisation implements ActionListener {
 	
 	private JButton boutonPartiePerso = new JButton();
 	
-	private Dimension dimBouton = new Dimension(150,50);
+	private Dimension dimBouton = new Dimension(200,50);
 	
 	private Box boite1 = new Box(0);
 	
@@ -39,9 +41,10 @@ public class VueInitialisation implements ActionListener {
 		this.modele=modele;
 		this.controleur=controleur;
 		
+		//definition de la fenetre principale
 		fenetreInitialisation=new JFrame();
 		fenetreInitialisation.setTitle("Bonjour");
-		fenetreInitialisation.setBounds(100, 100, 200, 200);
+		fenetreInitialisation.setBounds(100, 100, 400, 100);
 		Container container = fenetreInitialisation.getContentPane();
 		container.setLayout(new BorderLayout());
 		
@@ -64,6 +67,7 @@ public class VueInitialisation implements ActionListener {
 		//définition de la deuxième boite
 		boite2 = Box.createHorizontalBox();
 		boite2.add(boutonPartieClassique);
+		boite2.add(Box.createHorizontalStrut(5));
 		boite2.add(boutonPartiePerso);
 		boite2.add(Box.createHorizontalBox());
 			
@@ -73,7 +77,9 @@ public class VueInitialisation implements ActionListener {
 		boite1.add(boite2);
 		boite1.add(Box.createVerticalGlue());
 		
+		//définition du titre
 		titre.setText("Bienvenue au jeu du memory!");
+		titre.setFont(new Font("Calibri", Font.BOLD, 18));
 		
 		container.add(boite1,BorderLayout.CENTER);
 		
