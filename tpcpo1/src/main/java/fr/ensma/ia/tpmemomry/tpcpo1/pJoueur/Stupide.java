@@ -1,9 +1,11 @@
 package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.IA;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
+import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte.ICarte;
 
 
 /**
@@ -31,32 +33,40 @@ public class Stupide extends IA implements IJoueur{
 	 */
 	public Stupide(Plateau p,String nom) {
 		super(p,nom);
+		capaciteMemoire = 0;
 	}
 	
 	/**
-	 * selectionne deux cartes au hasard sur le plateau
+	 * Override de la methode de la classe mere car inutile pour l'IA stupide
+	 */
+	@Override
+	public void majMemoireIA() {
+	}
+	
+	/**
+	 * Selectionne deux cartes au hasard sur le plateau
 	 */
 	@Override
 	public void jouer() {
-		Random r = new Random();
-		int select1 = 0,select2=0;
-		boolean jeu=false;
-		while(jeu==false){
-			jeu=true;
-			select1=r.nextInt(plateau.getListeCartesMelangees().size());
-			if(plateau.getListeCartesMelangees().get(select1).getSurPlateau()==false) jeu =false;
-		}
-		jeu=false;
-		while(jeu==false){
-			jeu=true;
-			select2=r.nextInt(plateau.getListeCartesMelangees().size());
-			if((plateau.getListeCartesMelangees().get(select2).getSurPlateau()==false)) jeu =false;
-			if (select1==select2) jeu=false;
+		// liste servant a retenir les cartes potentiellement selectionnables
+		ArrayList<ICarte> listeCartesPossibles = new ArrayList<ICarte>();
+		// sert a choisir une carte aleatoirement parmis celles selectionnables
+		Random random = new Random();
+		
+		//enregistrement des cartes pouvant etre selectionnees
+		for(int i=0 ; i<plateau.getListeCartesMelangees().size() ; i++) {
+			if (plateau.getListeCartesMelangees().get(i).getSurPlateau() == true) {
+				listeCartesPossibles.add(plateau.getListeCartesMelangees().get(i));
+			}
 		}
 		
-		// enregistrement des cartes choisie
-		carte1 = plateau.getListeCartesMelangees().get(select1);
-		carte2 = plateau.getListeCartesMelangees().get(select2);
+		// choix aleatoire de la premiere carte
+		carte1 =listeCartesPossibles.get(random.nextInt(listeCartesPossibles.size()));
+		
+		//choix aleatoire de la seconde carte
+		listeCartesPossibles.remove(carte1);
+		carte2 =listeCartesPossibles.get(random.nextInt(listeCartesPossibles.size()));
+		
 		plateau.setCartesSelectionnees(true);
 	}
 }

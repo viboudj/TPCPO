@@ -1,18 +1,17 @@
 package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 
+import java.util.ArrayList;
+
 import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.IA;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
+import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte.ICarte;
 
 /**
- * IA d'intelligence intermédiaire
+ * IA d'intelligence intermediaire.</br>
+ * Peut retenir jusqu'a 2 cartes du plateau et composer avec elles.
  * 
  * @author douaultc
  */
-
-//non implementee
-//idee pour l'implementation : l'IA garde en memoire jusqu'a 4 emplacements de carte
-//elle choisit une carte au hasard sur le plateau et regarde si elle a deja une carte similaire en memoire
-
 public class Intermediaire extends IA implements IJoueur {
 
 	/**
@@ -22,6 +21,8 @@ public class Intermediaire extends IA implements IJoueur {
 	 */
 	public Intermediaire(Plateau p) {
 		super(p);
+		capaciteMemoire = 4;
+		cartesEnMemoire = new ArrayList<ICarte>(capaciteMemoire);
 	}
 	
 	/**
@@ -32,12 +33,7 @@ public class Intermediaire extends IA implements IJoueur {
 	 */
 	public Intermediaire(Plateau p,String nom) {
 		super(p,nom);
-	}
-	
-	/**
-	 * lance le jeu des joueur IA
-	 */
-	@Override
-	public void jouer() {
+		capaciteMemoire = 4;
+		cartesEnMemoire = new ArrayList<ICarte>(capaciteMemoire);
 	}
 }

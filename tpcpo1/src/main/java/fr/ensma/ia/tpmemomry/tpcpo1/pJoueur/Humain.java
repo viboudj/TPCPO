@@ -99,6 +99,10 @@ public class Humain implements IJoueur {
 	public Score getScore() {
 		return score;
 	}
+	
+	@Override
+	public void majMemoireIA() {
+	}
 
 	/**
 	 * lance le jeu des joueur IA

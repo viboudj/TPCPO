@@ -1,17 +1,16 @@
 package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 
+import java.util.ArrayList;
+
 import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.IA;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
+import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte.ICarte;
 
 /**
- * IA experte dans le jeu 
+ * IA experte dans le jeu.</br>
+ * Peut retenir jusqu'a 6 cartes du plateau et composer avec elles.
  * @author douaultc
  */
-
-// non implementee
-// idee pour l'implementation : l'IA garde en memoire jusqu'a 10 emplacements de carte
-// elle choisit une carte au hasard sur le plateau et regarde si elle a deja une carte similaire en memoire
-
 public class Expert extends IA implements IJoueur {
 
 	/**
@@ -21,6 +20,8 @@ public class Expert extends IA implements IJoueur {
 	 */
 	public Expert(Plateau p) {
 		super(p);
+		capaciteMemoire = 6;
+		cartesEnMemoire = new ArrayList<ICarte>(capaciteMemoire);
 	}
 	
 	/**
@@ -31,6 +32,8 @@ public class Expert extends IA implements IJoueur {
 	 */
 	public Expert(Plateau p,String nom) {
 		super(p,nom);
+		capaciteMemoire = 6;
+		cartesEnMemoire = new ArrayList<ICarte>(capaciteMemoire);
 	}
 
 	/**

@@ -64,6 +64,11 @@ public interface IJoueur {
 	public void tourPerdu();
 	
 	/**
+	 * Met a jour les cartes stockees dans la memoire des IA
+	 */
+	public void majMemoireIA();
+	
+	/**
 	 * traitement du tour gagné du joueur
 	 * @param effetCarte int : le bonus donne par la paire trouvee
 	 */

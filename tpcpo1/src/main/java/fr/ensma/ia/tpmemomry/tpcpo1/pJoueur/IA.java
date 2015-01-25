@@ -1,7 +1,7 @@
-/*******************************************************************************
- * 2015, All rights reserved.
- *******************************************************************************/
 package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte.ICarte;
@@ -46,12 +46,23 @@ public abstract class IA {
 	protected ICarte carte2;
 	
 	/**
-	 * nombre de paires trouvees successivement dans un meme tour
+	 * Nombre maximal de cartes que peut memoriser l'IA
 	 */
-	private int nbrPairesSuccessives = 0;
+	protected int capaciteMemoire;
 	
 	/**
-	 * nombre total de paires trouvees par le joueur
+	 * Liste des cartes memorisees.</br>
+	 * Pas de redondance dans les cartes memorisees
+	 */
+	protected ArrayList<ICarte> cartesEnMemoire;
+	
+	/**
+	 * Nombre de paires trouvees successivement dans un meme tour
+	 */
+	protected int nbrPairesSuccessives = 0;
+	
+	/**
+	 * Nombre total de paires trouvees par le joueur
 	 */
 	protected int nbrPairesTrouvees = 0;
 
@@ -94,6 +105,106 @@ public abstract class IA {
 	 */
 	public void setNom(String nom) {
 		this.nom=nom;
+	}
+	
+	public void majMemoireIA() {
+		// verification que les cartes memorisee sont sur le plateau, on les enleve de la memoire sinon
+		for (int i=0 ; i<cartesEnMemoire.size() ; i++) {
+			if (cartesEnMemoire.get(i).getSurPlateau() == false) {
+				cartesEnMemoire.remove(i);
+			}
+		}
+		
+		// mise en memoire des deux cartes selectionnees le tour precedent
+		// verification que les deux cartes selectionnees soient toujours sur le plateau
+		// verification que les cartes ne soient pas deja en memoire (pas de redondance)
+		// si memoire pleine, suppression de la plus ancienne carte (indice=0) puis ajout a la fin
+		if(plateau.getCarte1().getSurPlateau() == true) {
+			if (cartesEnMemoire.indexOf(plateau.getCarte1()) == -1) {
+				if (cartesEnMemoire.size() == capaciteMemoire) {
+					cartesEnMemoire.remove(0);
+				}
+				cartesEnMemoire.add(plateau.getCarte1());
+			}
+		}
+		if(plateau.getCarte2().getSurPlateau() == true) {
+			if (cartesEnMemoire.indexOf(plateau.getCarte2()) == -1) {
+				if(cartesEnMemoire.size() == capaciteMemoire) {
+					cartesEnMemoire.remove(0);
+				}
+				cartesEnMemoire.add(plateau.getCarte2());
+			}
+		}	
+	}
+	
+	public void jouer() {
+		// liste servant a retenir les cartes potentiellement selectionnables
+		ArrayList<ICarte> listeCartesPossibles = new ArrayList<ICarte>();
+		// sert a choisir une carte aleatoirement parmis celles selectionnables
+		Random random = new Random();
+		// deux compteurs de boucle
+		int compteurI = 0;
+		int compteurJ = 0;
+		// booleen a true si les 2 cartes ont ete selectionnees, false sinon
+		boolean comparateur = false;
+		
+		// verification si deux cartes en memoire sont identiques
+		// si oui, on selectionne ces deux cartes
+		while(!comparateur && compteurI<cartesEnMemoire.size()) {
+			while (!comparateur && compteurJ<cartesEnMemoire.size()) {
+				if (compteurI != compteurJ) {
+					if(comparerCartes(cartesEnMemoire.get(compteurI), 
+							cartesEnMemoire.get(compteurJ))) {
+						carte1 = cartesEnMemoire.get(compteurI);
+						carte2 = cartesEnMemoire.get(compteurJ);
+						comparateur = true;
+					}
+				}
+				compteurJ++;
+			}
+			compteurI++;
+		}
+		
+		// selection d'une carte au hasard sur le plateau qui ne soit pas en memoire
+		// puis comparaison avec celles en memoire
+		if(!comparateur) {
+			// enregistrement de la position des cartes pouvant etre selectionnees
+			for (int i=0 ; i<plateau.getListeCartesMelangees().size() ; i++) {
+				if (plateau.getListeCartesMelangees().get(i).getSurPlateau() == true &&
+						cartesEnMemoire.indexOf(plateau.getListeCartesMelangees().get(i)) == -1) {
+					listeCartesPossibles.add(plateau.getListeCartesMelangees().get(i));
+				}
+			}
+			// choix d'une position aleatoire dans la liste des cartes possibles 
+			// puis selection de la carte correspondante
+			carte1 =listeCartesPossibles.get(random.nextInt(listeCartesPossibles.size()));
+			
+			// comparaison de la carte selectionnee avec celles en memoire
+			// si un match est trouve, selection de la deuxieme carte
+			for(int i=0 ; i<cartesEnMemoire.size() ; i++) {
+				if(comparerCartes(carte1, cartesEnMemoire.get(i))) {
+					carte2 = cartesEnMemoire.get(i);
+					comparateur = true;
+				}
+			}
+		}
+		
+		// si aucun match n'est trouve avec une carte en memoire, choix de la seconde carte aleatoirement
+		if(!comparateur) {
+			// suppression de la premiere carte selectionne de la liste des cartes possibles
+			listeCartesPossibles.remove(carte1);
+			
+			carte2 = listeCartesPossibles.get(random.nextInt(listeCartesPossibles.size()));
+		}
+		plateau.setCartesSelectionnees(true);
+	}
+	
+	public boolean comparerCartes(ICarte carte1, ICarte carte2) {
+		if(carte1.getSymbole() == carte2.getSymbole() &&
+				carte1.getBonusCarte() == carte2.getBonusCarte()) {
+			return true;
+		}
+		return false;
 	}
 	
 	/**
