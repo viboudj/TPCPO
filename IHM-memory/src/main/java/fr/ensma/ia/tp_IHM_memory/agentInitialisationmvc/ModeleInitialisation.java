@@ -74,7 +74,7 @@ public class ModeleInitialisation {
 		acquisitionListeNiveauIA();
 		
 		// creation de la partie avec les parametres acquis
-		
+		creationPartie();
 	}
 	
 	public void acquisitionNbSymboles() {
