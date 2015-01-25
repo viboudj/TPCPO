@@ -1,5 +1,7 @@
 package fr.ensma.ia.tp_IHM_memory.agentInitialisationmvc;
 
+import fr.ensma.ia.tp_IHM_memory.agentInitialisationmvc.vue.VueInitialisation;
+
 public class ControleurInitialisation {
 	
 	private  ModeleInitialisation modele;
