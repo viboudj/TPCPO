@@ -57,6 +57,11 @@ public class Plateau {
 	private ICarte carte2 = null;
 	
 	/**
+	 * Booleen a true si les 2 cartes ont ete selectionnees, false sinon;
+	 */
+	private boolean cartesSelectionnees = false;
+	
+	/**
 	 * Vrai si carte1 et carte2 sont identiques, faux sinon
 	 */
 	private boolean cartesIdentiques;
@@ -339,9 +344,18 @@ public class Plateau {
 	 */
 	public void setCarte2(ICarte newCarte2) {
 		this.carte2 = newCarte2;
+		this.cartesSelectionnees = true;
 		etatCourant.selectCarte2();
 	}
 	
+	/**
+	 * Indique si oui ou non les deux cartes ont ete selectionnees ce tour
+	 * @return cartesSelectionnees : true si les deux cartes ont ete selectionnees, false sinon
+	 */
+	public boolean getCartesSelectionnees() {
+		return cartesSelectionnees;
+	}
+
 	/**
 	 * Obtient le resultat de la comparaison des cartes.</br>
 	 * Vrai si les cartes sont identiques, faux sinon.
@@ -359,6 +373,7 @@ public class Plateau {
 	 */
 	public boolean comparaisonPaire() {
 		etatCourant.comparaisonCartes();
+		cartesSelectionnees = false;
 		if(carte1.getSymbole() == carte2.getSymbole() &&
 				carte1.getBonusCarte() == carte2.getBonusCarte()){
 			cartesIdentiques = true;
