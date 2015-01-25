@@ -1,6 +1,5 @@
 package fr.ensma.ia.tp_IHM_memory.agentInitialisationmvc.vue;
 
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -29,6 +28,16 @@ import javax.swing.text.NumberFormatter;
 import fr.ensma.ia.tp_IHM_memory.agentInitialisationmvc.ControleurInitialisation;
 import fr.ensma.ia.tp_IHM_memory.agentInitialisationmvc.ModeleInitialisation;
 
+
+/**
+ * Classe representant la vue de l'initialisation d'une partie de memory.</br>
+ * Classe heritant de JFrame et compose entre autre d'un tableau dynamique pour la gestion
+ * des parametres des joueurs.
+ * @see InitialisationJoueurs
+ * 
+ * @author clementdouault
+ *
+ */
 public class VueInitialisation extends JFrame implements ActionListener, KeyListener {
 	
 	/**
@@ -137,7 +146,12 @@ public class VueInitialisation extends JFrame implements ActionListener, KeyList
 	 * Style de la ligne des bordures
 	 */
 	private Border ligneBordure = new LineBorder(new Color(247, 159, 129), 2, false);
-	
+
+	/**
+	 * Constructeur de la vue d'initialisation de la partie
+	 * @param modeleInitialisation ModeleInitialisation : le modele de l'initialisation
+	 * @param controleurInitialisation v : le controleur de l'initialisation
+	 */
 	public VueInitialisation(ModeleInitialisation modeleInitialisation, 
 			ControleurInitialisation controleurInitialisation) {
 		this.modeleInitialisation = modeleInitialisation;
@@ -333,6 +347,50 @@ public class VueInitialisation extends JFrame implements ActionListener, KeyList
 	}
 
 	public void keyTyped(KeyEvent ev) {}
+	
+	// -- ACCESSEURS DES CHAMPS DE PARAMETRAGES -- //
+	
+	/**
+	 * Obtient la valeur du champ acquerant le nombre de symboles dans la partie
+	 * @return texteNbSymboles String : le nombre de symboles
+	 */
+	public JTextField getTexteNbSymboles() {
+		return texteNbSymboles;
+	}
+
+	/**
+	 * Obtient la valeur du champ acquerant le nombre de paires par symbole dans la partie
+	 * @return texteNbPaires String : le nombre de paires par symbole
+	 */
+	public JTextField getTexteNbPaires() {
+		return texteNbPaires;
+	}
+
+	/**
+	 * Obtient la valeur du champ acquerant la valeur de la probablits d'appartition des cartes bonus
+	 * @return texteProbaBonus String : la probabilite d'apparition des cartes bonus
+	 */
+	public JTextField getTexteProbaBonus() {
+		return texteProbaBonus;
+	}
+
+	/**
+	 * Obtient la valeur booleene du bouton radio avecBonus
+	 * @return radioAvecBonus Boolean : true si le partie se jouera avec des bonus, false sinon
+	 */
+	public JRadioButton getRadioAvecBonus() {
+		return radioAvecBonus;
+	}
+
+	/**
+	 * Obtient la reference du tableau de parametrages des joueurs
+	 * @return tableauParamJoueurs InitialisationJoueurs : le tableau contenant les parametres de joueurs
+	 * @see InitialisationJoueurs
+	 */
+	public InitialisationJoueurs getTableauParamJoueurs() {
+		return tableauParamJoueurs;
+	}
+	
 }
 
 
