@@ -4,28 +4,27 @@ import fr.ensma.ia.tp_IHM_memory.agentInitialisationmvc.vue.VueInitialisation;
 
 public class ControleurInitialisation {
 	
-	private  ModeleInitialisation modele;
+	/**
+	 * Reference du modele de l'initialisation
+	 */
+	private  ModeleInitialisation modeleInitialisation;
 	
-	private VueInitialisation vue;
+	/**
+	 * Reference de la vue d'initialisation
+	 */
+	private VueInitialisation vueInitialisation;
 	
-	public ControleurInitialisation(ModeleInitialisation modele) {
-		this.modele=modele;
-		vue = new VueInitialisation(modele, this);
+	/**
+	 * Constructeur du controleur de l'initialisation
+	 * @param modeleInitialisation ModeleInitialisation : la reference du modele de l'initialisation
+	 */
+	public ControleurInitialisation(ModeleInitialisation modeleInitialisation) {
+		this.modeleInitialisation=modeleInitialisation;
+		vueInitialisation = new VueInitialisation(modeleInitialisation, this);
 	}
 
-	public void partieClassique() {
-		modele.partieClassique();
-		vue.getBoutonPartieClassique().setEnabled(false);
-		vue.getFenetreInitialisation().setVisible(false);
-	
+	public void acquerirParametresPartie() {
 		
 	}
-
-	public void partiePerso() {
-		modele.partiePerso();
-		vue.getBoutonPartieClassique().setEnabled(false);
-		vue.getFenetreInitialisation().setVisible(false);
-		
-	}
-
+	
 }

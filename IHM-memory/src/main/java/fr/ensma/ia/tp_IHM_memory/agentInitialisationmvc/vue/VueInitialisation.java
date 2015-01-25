@@ -291,7 +291,8 @@ public class VueInitialisation extends JFrame implements ActionListener, KeyList
 	public void actionPerformed(ActionEvent ev) {
 		// traitement du clic sur le bouton terminer
 		if (ev.getSource() == boutonTerminer) {
-			// TODO : getData de toute la vue
+			controleurInitialisation.acquerirParametresPartie();
+			dispose();
 			
 		// inversion des boutons radios lors d'un clic sur l'un des deux
 		} else if (ev.getSource() == radioSansBonus) {
