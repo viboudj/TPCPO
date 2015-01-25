@@ -96,7 +96,7 @@ public class VuePartie implements ActionListener {
 		Container contJoueurs = new Container();
 		contJoueurs.setLayout(new BorderLayout());
 		contJoueurs.add(modelePartie.getModeleJoueurs().getVueJoueurs(), BorderLayout.CENTER);
-		contJoueurs.setPreferredSize(new Dimension(200, 100));
+		contJoueurs.setPreferredSize(new Dimension(200, 125));
 		infoJoueurs.setLayout(new BorderLayout());
 		infoJoueurs.add(contJoueurs, BorderLayout.NORTH);
 		Box boxJoueurCourant = Box.createVerticalBox();
