@@ -24,7 +24,10 @@ public class ControleurInitialisation {
 	}
 
 	public void acquerirParametresPartie() {
-		
+		modeleInitialisation.acquisitionParametres();
 	}
-	
+
+	public VueInitialisation getVueInitialisation() {
+		return vueInitialisation;
+	}
 }

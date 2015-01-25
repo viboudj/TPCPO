@@ -34,6 +34,7 @@ public class InitialisationJoueurs extends Container implements ActionListener {
 
 	public InitialisationJoueurs() {
 		setLayout(new BorderLayout());
+		
 		// Initialisation du tableau des donnees des joueurs
 		//		4 colonnes : numero de joueur, nom, si IA ou non, et niveau de l'IA
 		//		2 joueurs humain par defaut
@@ -107,6 +108,18 @@ public class InitialisationJoueurs extends Container implements ActionListener {
 			}
 		}
 	}
+	
+	// -- ACCESSEURS -- //
+	
+	/**
+	 * Obtient le tableau contenant les parametres des nouveaux joueurs
+	 * @return tableauNouveauxJoueurs JTable : le tableau des nouveaux joueurs
+	 */
+	public JTable getTableauNouveauxJoueurs() {
+		return tableauNouveauxJoueurs;
+	}
+	
+	// -- DEFINITION DU MODELE DE TABLEAU -- //
 	
 	/**
 	 * Classe represant un modele de tableau.</br>
