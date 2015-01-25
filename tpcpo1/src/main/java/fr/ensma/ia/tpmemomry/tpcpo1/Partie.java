@@ -102,7 +102,6 @@ public class Partie {
 		listeJoueurs = new ArrayList<IJoueur>();
 		
 		etatCourantPartie = pairesRestantes;
-		joueurCourant = listeJoueurs.get(0);
 	}
 	
 	// -- GETTEURS ET SETTEURS -- //
@@ -225,6 +224,36 @@ public class Partie {
 	 */
 	public void ajoutJoueurIAStupide(String nom){
 		ajouterJoueur(new Stupide(plateau,nom));
+	}
+	
+	/**
+	 * Creer un joueur ordinateur avec un niveau d'intelligence intermediaire
+	 */
+	public void ajoutJoueurIAIntermediaire(){
+		ajouterJoueur(new Intermediaire(plateau));
+	}
+	
+	/**
+	 * Creer un joueur ordinateur avec un niveau d'intelligence intermediaire avec un nom
+	 * @param nom String : le nom du joueur
+	 */
+	public void ajoutJoueurIAIntermediaire(String nom){
+		ajouterJoueur(new Intermediaire(plateau,nom));
+	}
+	
+	/**
+	 * Creer un joueur ordinateur avec un niveau d'intelligence expert
+	 */
+	public void ajoutJoueurIAExpert(){
+		ajouterJoueur(new Expert(plateau));
+	}
+	
+	/**
+	 * Creer un joueur ordinateur avec un niveau d'intelligence expert avec un nom
+	 * @param nom String : le nom du joueur
+	 */
+	public void ajoutJoueurIAExpert(String nom){
+		ajouterJoueur(new Expert(plateau,nom));
 	}
 
 	/**
