@@ -30,7 +30,7 @@ public class InitialisationJoueurs extends Container implements ActionListener {
 	/**
 	 * Tableau de String regroupant les 4 niveaux differents de l'IA
 	 */
-	private String[] niveauCPU = { "Stupide", "Intermediaire", "Normal", "Difficile"};
+	private String[] niveauCPU = { "Stupide", "Intermediaire", "Difficile"};
 
 	public InitialisationJoueurs() {
 		setLayout(new BorderLayout());

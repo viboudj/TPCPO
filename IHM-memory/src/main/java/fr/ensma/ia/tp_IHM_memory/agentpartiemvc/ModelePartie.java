@@ -33,9 +33,8 @@ public class ModelePartie implements IObserverPlateau {
 
 	// -- CONSTRUCTEUR -- //
 	
-	public ModelePartie() {
-		// creation d'une partie par defaut
-		noyauFonctionnel = new Partie();
+	public ModelePartie(Partie noyauFonctionnel) {
+		this.noyauFonctionnel = noyauFonctionnel;
 		nbPairesRestantes = noyauFonctionnel.getPlateau().getNbrCartesRestantes()/2;		
 		listeObervateursPartie = new ArrayList<IObserverPartie>();
 		

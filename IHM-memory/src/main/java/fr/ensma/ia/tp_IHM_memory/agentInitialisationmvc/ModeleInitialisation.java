@@ -1,8 +1,10 @@
 package fr.ensma.ia.tp_IHM_memory.agentInitialisationmvc;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 import fr.ensma.ia.tp_IHM_memory.agentpartiemvc.ModelePartie;
+import fr.ensma.ia.tpmemomry.tpcpo1.Partie;
 
 public class ModeleInitialisation {
 	
@@ -10,6 +12,10 @@ public class ModeleInitialisation {
 	 * Reference du controleur de l'initialisation
 	 */
 	private ControleurInitialisation controleurInitialisation;
+	
+	private Partie nouvellePartie;
+	
+	private ModelePartie modelePartie;
 	
 	private int nbSymbole;
 	
@@ -35,7 +41,27 @@ public class ModeleInitialisation {
 	}
 	
 	public void creationPartie() {
+		// instantiation de la partie personnalisee
+		nouvellePartie = new Partie(nbSymbole, nbPairesParSymbole, partieAvecBonus, probabiliteBonus);
 		
+		// ajout des joueurs a la partie
+		for(int i=0 ; i<nbJoueurs ; i++) {
+			// si le joueur est humain
+			if (!listeIsIA.get(i)) {
+				nouvellePartie.ajoutJoueurHumain(listeNomJoueurs.get(i));
+			} else {
+				if (listeNiveauIA.get(i) == "Stupide") {
+					nouvellePartie.ajoutJoueurIAStupide(listeNomJoueurs.get(i) + " (Stup.)");
+				} else if (listeNiveauIA.get(i) == "Intermediaire") {
+					nouvellePartie.ajoutJoueurIAIntermediaire(listeNomJoueurs.get(i) + " (Interm.)");
+				} else if (listeNiveauIA.get(i) == "Expert") {
+					nouvellePartie.ajoutJoueurIAExpert(listeNomJoueurs.get(i) + " (Expert)");
+				}
+			}
+		}
+		
+		// instanciation du modele de la partie
+		modelePartie = new ModelePartie(nouvellePartie);
 	}
 
 	public void acquisitionParametres() {

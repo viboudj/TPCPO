@@ -1,7 +1,6 @@
 package fr.ensma.ia.tp_IHM_memory.agentpartiemvc;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -15,6 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import fr.ensma.ia.tp_IHM_memory.agentInitialisationmvc.ModeleInitialisation;
 
 public class VuePartie implements ActionListener {
 
@@ -205,7 +206,7 @@ public class VuePartie implements ActionListener {
 			// demande de confirmation
 			if(confirmation("Une partie est en cours, voulez-vous la recommencer ?")) {
 				frameJeuPrincipale.dispose();
-				new ModelePartie();			
+				new ModeleInitialisation();			
 			} 
 		} else if (e.getSource() == quitterPrincipal) {
 			//demande de confirmation
@@ -215,7 +216,7 @@ public class VuePartie implements ActionListener {
 		} else if (e.getSource() == recommencerVictoire) {
 			frameJeuPrincipale.dispose();
 			frameJeuVictoire.dispose();
-			new ModelePartie();
+			new ModeleInitialisation();	
 		} else if (e.getSource() == quitterVictoire) {
 			frameJeuPrincipale.dispose();
 			frameJeuVictoire.dispose();
