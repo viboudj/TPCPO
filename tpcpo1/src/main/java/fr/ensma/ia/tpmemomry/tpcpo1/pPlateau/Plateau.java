@@ -344,7 +344,6 @@ public class Plateau {
 	 */
 	public void setCarte2(ICarte newCarte2) {
 		this.carte2 = newCarte2;
-		this.cartesSelectionnees = true;
 		etatCourant.selectCarte2();
 	}
 	
@@ -354,6 +353,14 @@ public class Plateau {
 	 */
 	public boolean getCartesSelectionnees() {
 		return cartesSelectionnees;
+	}
+	
+	/**
+	 * Modifie la valeur du booleen cartesSelectionnee
+	 * @param cartesSelectionnees boolean : la nouvelle valeur booleene
+	 */
+	public void setCartesSelectionnees(boolean cartesSelectionnees) {
+		this.cartesSelectionnees = cartesSelectionnees;
 	}
 
 	/**

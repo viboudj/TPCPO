@@ -1,5 +1,7 @@
 package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 
+import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte.ICarte;
+
 /**
  * Interface regroupant les comportements des cartes sans et avec effet
  * Pattern Strategy
@@ -26,6 +28,18 @@ public interface IJoueur {
 	 * @return score Score : la reference du score du joueur
 	 */
 	public Score getScore();
+	
+	/**
+	 * Obtient la reference de la premiere carte selectionnee par l'IA
+	 * @return carte1 ICarte : la premiere carte selectionnee par l'IA
+	 */
+	public ICarte getCarte1();
+	
+	/**
+	 * Obtient la reference de la deuxieme carte selectionnee par l'IA
+	 * @return carte2 ICarte : la deuxieme carte selectionnee par l'IA
+	 */
+	public ICarte getCarte2();
 	
 	/**
 	 * Obtient le nombre de paires successives trouvee lors d'un meme tour

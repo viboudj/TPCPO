@@ -1,5 +1,7 @@
 package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 
+import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte.ICarte;
+
 
 /**
  * joueur humain
@@ -103,6 +105,16 @@ public class Humain implements IJoueur {
 	 */
 	@Override
 	public void jouer() {
+	}
+	
+	@Override
+	public ICarte getCarte1() {
+		return null;
+	}
+	
+	@Override
+	public ICarte getCarte2() {
+		return null;
 	}
 
 	/**

@@ -4,6 +4,7 @@
 package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
+import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte.ICarte;
 
 
 
@@ -33,6 +34,16 @@ public abstract class IA {
 	 * Connaissance du plateau par l'IA 
 	 */
 	protected Plateau plateau;
+	
+	/**
+	 * Premiere carte selectionnee par l'IA
+	 */
+	protected ICarte carte1;
+	
+	/**
+	 * Deuxieme carte selectionnee par l'IA
+	 */
+	protected ICarte carte2;
 	
 	/**
 	 * nombre de paires trouvees successivement dans un meme tour
@@ -85,6 +96,22 @@ public abstract class IA {
 		this.nom=nom;
 	}
 	
+	/**
+	 * Obtient la reference de la premiere carte selectionnee par l'IA
+	 * @return carte1 ICarte : la premiere carte selectionnee par l'IA
+	 */
+	public ICarte getCarte1() {
+		return carte1;
+	}
+
+	/**
+	 * Obtient la reference de la deuxieme carte selectionnee par l'IA
+	 * @return carte2 ICarte : la deuxieme carte selectionnee par l'IA
+	 */
+	public ICarte getCarte2() {
+		return carte2;
+	}
+
 	/**
 	 * Obtient le nombre de paires successives trouvee lors d'un meme tour
 	 * @return nbrPairesSuccessives int : le nombre de paires successives
