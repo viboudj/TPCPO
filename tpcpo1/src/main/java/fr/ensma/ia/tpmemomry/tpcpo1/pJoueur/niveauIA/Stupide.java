@@ -1,9 +1,10 @@
-package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
+package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.niveauIA;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.IA;
+import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.IJoueur;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte.ICarte;
 

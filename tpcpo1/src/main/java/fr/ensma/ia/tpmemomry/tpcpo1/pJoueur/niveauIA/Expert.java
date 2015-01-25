@@ -1,8 +1,9 @@
-package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
+package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.niveauIA;
 
 import java.util.ArrayList;
 
 import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.IA;
+import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.IJoueur;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte.ICarte;
 
@@ -34,12 +35,5 @@ public class Expert extends IA implements IJoueur {
 		super(p,nom);
 		capaciteMemoire = 6;
 		cartesEnMemoire = new ArrayList<ICarte>(capaciteMemoire);
-	}
-
-	/**
-	 * lance le jeu des joueur IA
-	 */
-	@Override
-	public void jouer() {
 	}
 }

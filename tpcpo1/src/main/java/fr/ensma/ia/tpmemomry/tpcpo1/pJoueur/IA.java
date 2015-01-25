@@ -6,8 +6,6 @@ import java.util.Random;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte.ICarte;
 
-
-
 /**
  * Description of IA.
  * Classe mère des différentes IA
@@ -108,6 +106,7 @@ public abstract class IA {
 	}
 	
 	public void majMemoireIA() {
+		System.out.print("debut maj memoire\n");
 		// verification que les cartes memorisee sont sur le plateau, on les enleve de la memoire sinon
 		for (int i=0 ; i<cartesEnMemoire.size() ; i++) {
 			if (cartesEnMemoire.get(i).getSurPlateau() == false) {
@@ -119,22 +118,25 @@ public abstract class IA {
 		// verification que les deux cartes selectionnees soient toujours sur le plateau
 		// verification que les cartes ne soient pas deja en memoire (pas de redondance)
 		// si memoire pleine, suppression de la plus ancienne carte (indice=0) puis ajout a la fin
-		if(plateau.getCarte1().getSurPlateau() == true) {
-			if (cartesEnMemoire.indexOf(plateau.getCarte1()) == -1) {
+		if(plateau.getCarte1().getSurPlateau() == true && 
+				cartesEnMemoire.indexOf(plateau.getCarte1()) == -1) {
 				if (cartesEnMemoire.size() == capaciteMemoire) {
 					cartesEnMemoire.remove(0);
 				}
 				cartesEnMemoire.add(plateau.getCarte1());
-			}
 		}
-		if(plateau.getCarte2().getSurPlateau() == true) {
-			if (cartesEnMemoire.indexOf(plateau.getCarte2()) == -1) {
+		if(plateau.getCarte2().getSurPlateau() == true && 
+				cartesEnMemoire.indexOf(plateau.getCarte2()) == -1) {
 				if(cartesEnMemoire.size() == capaciteMemoire) {
 					cartesEnMemoire.remove(0);
 				}
 				cartesEnMemoire.add(plateau.getCarte2());
-			}
 		}	
+		System.out.print("fin maj memoire : \n");
+		for(int i=0 ; i<cartesEnMemoire.size() ; i++) {
+			System.out.println(cartesEnMemoire.get(i).getSymbole() + " " + 
+		cartesEnMemoire.get(i).getBonusCarte() +"\n");
+		}
 	}
 	
 	public void jouer() {

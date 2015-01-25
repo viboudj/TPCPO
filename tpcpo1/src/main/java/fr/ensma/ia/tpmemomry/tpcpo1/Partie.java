@@ -1,9 +1,14 @@
 package fr.ensma.ia.tpmemomry.tpcpo1;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 import fr.ensma.ia.tpmemomry.tpcpo1.pEtatPartie.*;
 import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.*;
+import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.niveauIA.Debutant;
+import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.niveauIA.Expert;
+import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.niveauIA.Intermediaire;
+import fr.ensma.ia.tpmemomry.tpcpo1.pJoueur.niveauIA.Stupide;
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.Plateau;
 
 /**
@@ -227,6 +232,21 @@ public class Partie {
 	}
 	
 	/**
+	 * Creer un joueur ordinateur avec un niveau d'intelligence debutante
+	 */
+	public void ajoutJoueurIADebutant(){
+		ajouterJoueur(new Debutant(plateau));
+	}
+	
+	/**
+	 * Creer un joueur ordinateur avec un niveau d'intelligence debutante avec un nom
+	 * @param nom String : le nom du joueur
+	 */
+	public void ajoutJoueurIADebutant(String nom){
+		ajouterJoueur(new Debutant(plateau,nom));
+	}
+	
+	/**
 	 * Creer un joueur ordinateur avec un niveau d'intelligence intermediaire
 	 */
 	public void ajoutJoueurIAIntermediaire(){
@@ -346,11 +366,18 @@ public class Partie {
 	 * Lance les actions en fonction du resultat de la comparaison des deux cartes trouvees
 	 */
 	public void traitement() {
+
 		
 		if(plateau.getCartesIdentiques()) {
 			etatCourantPartie.paireTrouvee(); 
 		} else {
 			etatCourantPartie.pasPaireTrouvee();
+		}
+		
+		// mets a jour la memoire des IA
+		ListIterator<IJoueur> iterator = listeJoueurs.listIterator();
+		while(iterator.hasNext()) {
+			iterator.next().majMemoireIA();
 		}
 	}
 	
