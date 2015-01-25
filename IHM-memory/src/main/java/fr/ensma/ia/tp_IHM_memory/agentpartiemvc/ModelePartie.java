@@ -52,6 +52,7 @@ public class ModelePartie implements IObserverPlateau {
 		listeObervateursPartie.add(modeleJoueurCourant);
 		
 		controleurPartie = new ControleurPartie(this);
+		debutNouveauTour();
 	}
 	
 	// -- OBSERVATION DU PLATEAU -- //
@@ -104,8 +105,14 @@ public class ModelePartie implements IObserverPlateau {
 			controleurPartie.getEtatCourantPartie().plusPaireRestante();
 			enregistrementVainqueur();
 		}
-		notifierObservateur();
 		controleurPartie.getEtatCourantPartie().updateVue();
+		notifierObservateur();
+		debutNouveauTour();
+	}
+	
+	public void debutNouveauTour() {
+		noyauFonctionnel.getJoueurCourant().jouer();
+		modelePlateau.nouveauTourCommence();
 	}
 	
 	public void enregistrementVainqueur() {

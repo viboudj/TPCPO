@@ -146,6 +146,18 @@ public class ModelePlateau implements IObserverCarte {
 		}
 	}
 	
+	// -- OBSERVATION DE LA PARTIE -- //
+	
+	public void nouveauTourCommence() {
+		if(!noyauFonctionnel.getPlateau().getCartesSelectionnees()) {
+			// ne rien faire : le joueur courant est humain
+			System.out.print("Humain");
+		} else {
+			// le joueur courant est une IA qui a selectionne les 2 cartes
+			jouerTourIA();
+		}
+	}
+	
 	/**
 	 * Traite la selection d'une carte
 	 * @param carte ModeleCarte : la carte selectionnee
@@ -239,6 +251,37 @@ public class ModelePlateau implements IObserverCarte {
 		
 		// lance la comparaison des deux cartes selectionnes
 		controleurPlateau.getEtatCourantPlateau().comparaisonCartes();
+	}
+	
+	public void jouerTourIA() {
+		// bloquage de toutes les cartes pour eviter les clics utilisateurs
+		bloquerCartesPasSelectionnees();
+		
+		// Thread de gestion de l'attente durant le tour d'un joueur IA
+		Thread attente = new Thread() {
+			public void run() {
+				//Attente pendant 800 millisecondes
+				long reveil1 = System.currentTimeMillis();
+				while(System.currentTimeMillis() <= (reveil1 + 800)) {}
+				
+				// debloquage de la premiere carte selectionnee par l'IA et simuation d'un clic sur elle
+				int _positionCarte1IA = noyauFonctionnel.getPlateau().getListeCartesMelangees().
+						indexOf(noyauFonctionnel.getJoueurCourant().getCarte1());
+				listeCartesSurPlateau.get(_positionCarte1IA).bloquerCarte(false);
+				listeCartesSurPlateau.get(_positionCarte1IA).getVueCarte().doClick();
+				
+				//Attente pendant 800 millisecondes
+				long reveil2 = System.currentTimeMillis();
+				while(System.currentTimeMillis() <= (reveil2 + 800)) {}
+			
+				// debloquage de la seconde carte selectionnee par l'IA et simulation d'un clic sur elle
+				int _positionCarte2IA = noyauFonctionnel.getPlateau().getListeCartesMelangees().
+						indexOf(noyauFonctionnel.getJoueurCourant().getCarte2());
+				listeCartesSurPlateau.get(_positionCarte2IA).bloquerCarte(false);
+				listeCartesSurPlateau.get(_positionCarte2IA).getVueCarte().doClick();
+			}
+		};
+		attente.start();
 	}
 	
 	public void compareCartes() {
