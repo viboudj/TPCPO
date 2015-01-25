@@ -52,6 +52,8 @@ public class ModeleInitialisation {
 			} else {
 				if (listeNiveauIA.get(i) == "Stupide") {
 					nouvellePartie.ajoutJoueurIAStupide(listeNomJoueurs.get(i) + " (Stup.)");
+				} else if (listeNiveauIA.get(i) == "Debutant"){
+					nouvellePartie.ajoutJoueurIADebutant(listeNomJoueurs.get(i) + " (Debut.)");
 				} else if (listeNiveauIA.get(i) == "Intermediaire") {
 					nouvellePartie.ajoutJoueurIAIntermediaire(listeNomJoueurs.get(i) + " (Interm.)");
 				} else if (listeNiveauIA.get(i) == "Expert") {

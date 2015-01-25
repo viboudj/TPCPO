@@ -151,7 +151,6 @@ public class ModelePlateau implements IObserverCarte {
 	public void nouveauTourCommence() {
 		if(!noyauFonctionnel.getPlateau().getCartesSelectionnees()) {
 			// ne rien faire : le joueur courant est humain
-			System.out.print("Humain");
 		} else {
 			// le joueur courant est une IA qui a selectionne les 2 cartes
 			jouerTourIA();

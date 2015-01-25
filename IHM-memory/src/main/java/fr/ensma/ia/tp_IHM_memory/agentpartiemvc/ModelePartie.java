@@ -101,13 +101,14 @@ public class ModelePartie implements IObserverPlateau {
 	public void majComparaison() {
 		noyauFonctionnel.traitement();
 		nbPairesRestantes = noyauFonctionnel.getPlateau().getNbrCartesRestantes()/2;
-		if(nbPairesRestantes == 0) {
+		if(nbPairesRestantes != 0) {
+			debutNouveauTour();
+		} else {
 			controleurPartie.getEtatCourantPartie().plusPaireRestante();
 			enregistrementVainqueur();
 		}
 		controleurPartie.getEtatCourantPartie().updateVue();
 		notifierObservateur();
-		debutNouveauTour();
 	}
 	
 	public void debutNouveauTour() {
