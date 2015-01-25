@@ -107,7 +107,7 @@ public class ModeleInitialisation {
 	public void acquisitionListeNomJoueurs() {
 		listeNomJoueurs = new ArrayList<String>(nbJoueurs);
 		for (int i=0 ; i<nbJoueurs ; i++) {
-			listeNomJoueurs.set(i, (String) controleurInitialisation.getVueInitialisation().
+			listeNomJoueurs.add((String) controleurInitialisation.getVueInitialisation().
 					getTableauParamJoueurs().getTableauNouveauxJoueurs().getValueAt(i, 1));
 		}
 	}
@@ -115,7 +115,7 @@ public class ModeleInitialisation {
 	public void acquisitionListeIsIA() {
 		listeIsIA = new ArrayList<Boolean>(nbJoueurs);
 		for (int i=0 ; i<nbJoueurs ; i++) {
-			listeIsIA.set(i, (Boolean) controleurInitialisation.getVueInitialisation().
+			listeIsIA.add((Boolean) controleurInitialisation.getVueInitialisation().
 					getTableauParamJoueurs().getTableauNouveauxJoueurs().getValueAt(i, 2));
 		}
 	}
@@ -123,7 +123,7 @@ public class ModeleInitialisation {
 	public void acquisitionListeNiveauIA() {
 		listeNiveauIA = new ArrayList<String>(nbJoueurs);
 		for (int i=0 ; i<nbJoueurs ; i++) {
-			listeNiveauIA.set(i, (String) controleurInitialisation.getVueInitialisation().
+			listeNiveauIA.add((String) controleurInitialisation.getVueInitialisation().
 					getTableauParamJoueurs().getTableauNouveauxJoueurs().getValueAt(i, 3));
 		}
 	}
