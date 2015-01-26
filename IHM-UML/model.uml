@@ -1,54 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_dhWqIKTYEeS7PYbYIA5FOA" name="NewModel">
-  <packagedElement xmi:type="uml:Class" xmi:id="_h85uPaTYEeS7PYbYIA5FOA" name="ModeleCarte">
-    <interfaceRealization xmi:id="_P5FLsKTaEeS7PYbYIA5FOA" client="_h85uPaTYEeS7PYbYIA5FOA" supplier="_NpxbgKTaEeS7PYbYIA5FOA" contract="_NpxbgKTaEeS7PYbYIA5FOA"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_lQdD0KTYEeS7PYbYIA5FOA" name="ControleurCarte"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_onzaIKTYEeS7PYbYIA5FOA" name="VueControleur"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_siMMEKTYEeS7PYbYIA5FOA" name="IEtatCarte"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_vZqIcKTYEeS7PYbYIA5FOA" name="HorsPlateau">
-    <interfaceRealization xmi:id="_26SBQKTYEeS7PYbYIA5FOA" client="_vZqIcKTYEeS7PYbYIA5FOA" supplier="_siMMEKTYEeS7PYbYIA5FOA" contract="_siMMEKTYEeS7PYbYIA5FOA"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_xWoygKTYEeS7PYbYIA5FOA" name="FaceVisible">
-    <interfaceRealization xmi:id="_2iM4cKTYEeS7PYbYIA5FOA" client="_xWoygKTYEeS7PYbYIA5FOA" supplier="_siMMEKTYEeS7PYbYIA5FOA" contract="_siMMEKTYEeS7PYbYIA5FOA"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_0UiuEKTYEeS7PYbYIA5FOA" name="FaceCachee">
-    <interfaceRealization xmi:id="_2GbicKTYEeS7PYbYIA5FOA" client="_0UiuEKTYEeS7PYbYIA5FOA" supplier="_siMMEKTYEeS7PYbYIA5FOA" contract="_siMMEKTYEeS7PYbYIA5FOA"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="__4QB0KTYEeS7PYbYIA5FOA" name="modeleCartesToIEtatCartes" memberEnd="__4QB0aTYEeS7PYbYIA5FOA __4jj0qTYEeS7PYbYIA5FOA" navigableOwnedEnd="__4jj0qTYEeS7PYbYIA5FOA">
-    <ownedEnd xmi:id="__4QB0aTYEeS7PYbYIA5FOA" name="modeleCartes" type="_h85uPaTYEeS7PYbYIA5FOA" aggregation="composite" association="__4QB0KTYEeS7PYbYIA5FOA">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__4jj0KTYEeS7PYbYIA5FOA"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__4jj0aTYEeS7PYbYIA5FOA" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="__4jj0qTYEeS7PYbYIA5FOA" name="iEtatCartes" type="_siMMEKTYEeS7PYbYIA5FOA" association="__4QB0KTYEeS7PYbYIA5FOA">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__42ewKTYEeS7PYbYIA5FOA"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__42ewaTYEeS7PYbYIA5FOA" value="*"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_AZHTMKTZEeS7PYbYIA5FOA" name="ControleuCarte" memberEnd="_AZHTMaTZEeS7PYbYIA5FOA _AZREMqTZEeS7PYbYIA5FOA" navigableOwnedEnd="_AZREMqTZEeS7PYbYIA5FOA">
-    <ownedEnd xmi:id="_AZHTMaTZEeS7PYbYIA5FOA" name="modeleCartes" type="_h85uPaTYEeS7PYbYIA5FOA" aggregation="composite" association="_AZHTMKTZEeS7PYbYIA5FOA">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AZREMKTZEeS7PYbYIA5FOA" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AZREMaTZEeS7PYbYIA5FOA" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_AZREMqTZEeS7PYbYIA5FOA" name="controleurCartes" type="_lQdD0KTYEeS7PYbYIA5FOA" association="_AZHTMKTZEeS7PYbYIA5FOA">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AZREM6TZEeS7PYbYIA5FOA" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AZRENKTZEeS7PYbYIA5FOA" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_A6KKwKTZEeS7PYbYIA5FOA" name="VueCarte[1]" memberEnd="_A6KKwaTZEeS7PYbYIA5FOA _A6TUsqTZEeS7PYbYIA5FOA" navigableOwnedEnd="_A6TUsqTZEeS7PYbYIA5FOA">
-    <ownedEnd xmi:id="_A6KKwaTZEeS7PYbYIA5FOA" name="controleurCartes" type="_lQdD0KTYEeS7PYbYIA5FOA" aggregation="composite" association="_A6KKwKTZEeS7PYbYIA5FOA">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A6TUsKTZEeS7PYbYIA5FOA" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A6TUsaTZEeS7PYbYIA5FOA" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_A6TUsqTZEeS7PYbYIA5FOA" name="VueCarte" type="_onzaIKTYEeS7PYbYIA5FOA" association="_A6KKwKTZEeS7PYbYIA5FOA">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A6TUs6TZEeS7PYbYIA5FOA" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A6TUtKTZEeS7PYbYIA5FOA" value="1"/>
-    </ownedEnd>
-  </packagedElement>
+  <packageImport xmi:id="_DwTIcKU8EeSvR_bA6y_oyQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
   <packagedElement xmi:type="uml:Class" xmi:id="_DTHmMKTZEeS7PYbYIA5FOA" name="VuePlateau"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_HbwPgKTZEeS7PYbYIA5FOA" name="ControleurPlateau"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_KCnkEKTZEeS7PYbYIA5FOA" name="ModeleCarte">
-    <interfaceRealization xmi:id="_wRDOAKTZEeS7PYbYIA5FOA" client="_KCnkEKTZEeS7PYbYIA5FOA" supplier="_ppZkkKTZEeS7PYbYIA5FOA" contract="_ppZkkKTZEeS7PYbYIA5FOA"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_KCnkEKTZEeS7PYbYIA5FOA" name="ModelePlateau">
+    <interfaceRealization xmi:id="_wRDOAKTZEeS7PYbYIA5FOA" client="_KCnkEKTZEeS7PYbYIA5FOA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_NnCGAKTZEeS7PYbYIA5FOA" name="controleurPlateausToVuePlateaus" memberEnd="_NnCGAaTZEeS7PYbYIA5FOA _NnCGBKTZEeS7PYbYIA5FOA" navigableOwnedEnd="_NnCGBKTZEeS7PYbYIA5FOA">
     <ownedEnd xmi:id="_NnCGAaTZEeS7PYbYIA5FOA" name="controleurPlateaus" type="_HbwPgKTZEeS7PYbYIA5FOA" aggregation="composite" association="_NnCGAKTZEeS7PYbYIA5FOA">
@@ -71,15 +29,9 @@
     </ownedEnd>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_PnWX8KTZEeS7PYbYIA5FOA" name="IEtatPlateau"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_S7j6sKTZEeS7PYbYIA5FOA" name="PasCarteSelectionnee">
-    <interfaceRealization xmi:id="_jbnMoKTZEeS7PYbYIA5FOA" client="_S7j6sKTZEeS7PYbYIA5FOA" supplier="_PnWX8KTZEeS7PYbYIA5FOA" contract="_PnWX8KTZEeS7PYbYIA5FOA"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_cYQeoKTZEeS7PYbYIA5FOA" name="UneCarteSelectionnee">
-    <interfaceRealization xmi:id="_jx6MwKTZEeS7PYbYIA5FOA" client="_cYQeoKTZEeS7PYbYIA5FOA" supplier="_PnWX8KTZEeS7PYbYIA5FOA" contract="_PnWX8KTZEeS7PYbYIA5FOA"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_cvbogKTZEeS7PYbYIA5FOA" name="DeuxCartesSelectionnees">
-    <interfaceRealization xmi:id="_kJV1UKTZEeS7PYbYIA5FOA" client="_cvbogKTZEeS7PYbYIA5FOA" supplier="_PnWX8KTZEeS7PYbYIA5FOA" contract="_PnWX8KTZEeS7PYbYIA5FOA"/>
-  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_S7j6sKTZEeS7PYbYIA5FOA" name="PasCarteSelectionnee"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_cYQeoKTZEeS7PYbYIA5FOA" name="UneCarteSelectionnee"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_cvbogKTZEeS7PYbYIA5FOA" name="DeuxCartesSelectionnees"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_oJYjUKTZEeS7PYbYIA5FOA" name="modeleCartesToIEtatPlateaus" memberEnd="_oJYjUaTZEeS7PYbYIA5FOA _oJiUUqTZEeS7PYbYIA5FOA" navigableOwnedEnd="_oJiUUqTZEeS7PYbYIA5FOA">
     <ownedEnd xmi:id="_oJYjUaTZEeS7PYbYIA5FOA" name="modeleCartes" type="_KCnkEKTZEeS7PYbYIA5FOA" aggregation="composite" association="_oJYjUKTZEeS7PYbYIA5FOA">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oJiUUKTZEeS7PYbYIA5FOA"/>
@@ -90,28 +42,19 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oJiUVKTZEeS7PYbYIA5FOA" value="*"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_ppZkkKTZEeS7PYbYIA5FOA" name="IObserverCarte"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_NpxbgKTaEeS7PYbYIA5FOA" name="IObserverPlateau"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_MkhOMKTbEeS7PYbYIA5FOA" name="modeleCartesToModeleCartes" memberEnd="_MkhOMaTbEeS7PYbYIA5FOA _MkhONKTbEeS7PYbYIA5FOA" navigableOwnedEnd="_MkhONKTbEeS7PYbYIA5FOA">
-    <ownedEnd xmi:id="_MkhOMaTbEeS7PYbYIA5FOA" name="modeleCartes" type="_KCnkEKTZEeS7PYbYIA5FOA" aggregation="composite" association="_MkhOMKTbEeS7PYbYIA5FOA">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MkhOMqTbEeS7PYbYIA5FOA"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MkhOM6TbEeS7PYbYIA5FOA" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_MkhONKTbEeS7PYbYIA5FOA" name="modeleCartes" type="_h85uPaTYEeS7PYbYIA5FOA" association="_MkhOMKTbEeS7PYbYIA5FOA">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MkhONaTbEeS7PYbYIA5FOA"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MkhONqTbEeS7PYbYIA5FOA" value="*"/>
-    </ownedEnd>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_NpxbgKTaEeS7PYbYIA5FOA" name="IObserverPlateau">
+    <ownedOperation xmi:id="_1dhCgKU_EeSvR_bA6y_oyQ" name="notificationComparaison">
+      <ownedParameter xmi:id="_3Zx64KU_EeSvR_bA6y_oyQ" name="resultat">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_OmYYQKTbEeS7PYbYIA5FOA" name="VuePartie"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_Om1EMKTbEeS7PYbYIA5FOA" name="ControleurPartie"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_Om1EN6TbEeS7PYbYIA5FOA" name="ModelePartie"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_Om1EP6TbEeS7PYbYIA5FOA" name="PartieEnCours">
-    <interfaceRealization xmi:id="_Om1EQKTbEeS7PYbYIA5FOA" client="_Om1EP6TbEeS7PYbYIA5FOA _Om1EP6TbEeS7PYbYIA5FOA" supplier="_Om1ER6TbEeS7PYbYIA5FOA" contract="_Om1ER6TbEeS7PYbYIA5FOA"/>
-  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Om1EP6TbEeS7PYbYIA5FOA" name="PartieEnCours"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_Om1ER6TbEeS7PYbYIA5FOA" name="IEtatPartie"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_OnH_LaTbEeS7PYbYIA5FOA" name="FinPartie">
-    <interfaceRealization xmi:id="_OnH_LqTbEeS7PYbYIA5FOA" client="_OnH_LaTbEeS7PYbYIA5FOA _OnH_LaTbEeS7PYbYIA5FOA" supplier="_Om1ER6TbEeS7PYbYIA5FOA" contract="_Om1ER6TbEeS7PYbYIA5FOA"/>
-  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_OnH_LaTbEeS7PYbYIA5FOA" name="FinPartie"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_f7rQIKTbEeS7PYbYIA5FOA" name="modelePartiesToModeleCartes" memberEnd="_f7rQIaTbEeS7PYbYIA5FOA _f7rQJKTbEeS7PYbYIA5FOA" navigableOwnedEnd="_f7rQJKTbEeS7PYbYIA5FOA">
     <ownedEnd xmi:id="_f7rQIaTbEeS7PYbYIA5FOA" name="modeleParties" type="_Om1EN6TbEeS7PYbYIA5FOA" aggregation="composite" association="_f7rQIKTbEeS7PYbYIA5FOA">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_f7rQIqTbEeS7PYbYIA5FOA"/>
@@ -268,7 +211,7 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jbd7VqTcEeS7PYbYIA5FOA" value="*"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_pKNxYKTdEeS7PYbYIA5FOA" name="OObserverPartie"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_pKNxYKTdEeS7PYbYIA5FOA" name="IObserverPartie"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_z7xPcKTdEeS7PYbYIA5FOA" name="modeleCartesToIObserverPlateaus" memberEnd="_z7xPcaTdEeS7PYbYIA5FOA _z7xPdKTdEeS7PYbYIA5FOA" navigableOwnedEnd="_z7xPdKTdEeS7PYbYIA5FOA">
     <ownedEnd xmi:id="_z7xPcaTdEeS7PYbYIA5FOA" name="modeleCartes" type="_KCnkEKTZEeS7PYbYIA5FOA" aggregation="composite" association="_z7xPcKTdEeS7PYbYIA5FOA">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_z7xPcqTdEeS7PYbYIA5FOA"/>
@@ -277,16 +220,6 @@
     <ownedEnd xmi:id="_z7xPdKTdEeS7PYbYIA5FOA" name="iObserverPlateaus" type="_NpxbgKTaEeS7PYbYIA5FOA" association="_z7xPcKTdEeS7PYbYIA5FOA">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_z7xPdaTdEeS7PYbYIA5FOA"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_z7xPdqTdEeS7PYbYIA5FOA" value="*"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_2t4KsKTdEeS7PYbYIA5FOA" name="modeleCartesToIObserverCartes" memberEnd="_2t4KsaTdEeS7PYbYIA5FOA _2t4KtKTdEeS7PYbYIA5FOA" navigableOwnedEnd="_2t4KtKTdEeS7PYbYIA5FOA">
-    <ownedEnd xmi:id="_2t4KsaTdEeS7PYbYIA5FOA" name="modeleCartes" type="_h85uPaTYEeS7PYbYIA5FOA" aggregation="composite" association="_2t4KsKTdEeS7PYbYIA5FOA">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2t4KsqTdEeS7PYbYIA5FOA"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2t4Ks6TdEeS7PYbYIA5FOA" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_2t4KtKTdEeS7PYbYIA5FOA" name="iObserverCartes" type="_ppZkkKTZEeS7PYbYIA5FOA" association="_2t4KsKTdEeS7PYbYIA5FOA">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2t4KtaTdEeS7PYbYIA5FOA"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2t4KtqTdEeS7PYbYIA5FOA" value="*"/>
     </ownedEnd>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_7aKToKTdEeS7PYbYIA5FOA" name="modelePartiesToOObserverParties" memberEnd="_7aKToaTdEeS7PYbYIA5FOA _7aKTpKTdEeS7PYbYIA5FOA" navigableOwnedEnd="_7aKTpKTdEeS7PYbYIA5FOA">
@@ -298,5 +231,360 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7aKTpaTdEeS7PYbYIA5FOA"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7aKTpqTdEeS7PYbYIA5FOA" value="*"/>
     </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_zAWucKU9EeSvR_bA6y_oyQ" name="agentcarte">
+    <packagedElement xmi:type="uml:Class" xmi:id="__GKpsKU9EeSvR_bA6y_oyQ" name="VueCarte">
+      <ownedOperation xmi:id="__GKpsaU9EeSvR_bA6y_oyQ" name="desactiverFaceCachee"/>
+      <ownedOperation xmi:id="__GKpsqU9EeSvR_bA6y_oyQ" name="updateFaceCachee"/>
+      <ownedOperation xmi:id="__GKps6U9EeSvR_bA6y_oyQ" name="updateFaceVisible"/>
+      <ownedOperation xmi:id="__GKptKU9EeSvR_bA6y_oyQ" name="updateHorsPlateau"/>
+      <ownedOperation xmi:id="__GKptaU9EeSvR_bA6y_oyQ" name="refreshVue"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="__t1tsKU9EeSvR_bA6y_oyQ" name="ControleurCarte">
+      <ownedAttribute xmi:id="__t1tsqU9EeSvR_bA6y_oyQ" name="faceCachee" visibility="private" type="_E2JO0KU_EeSvR_bA6y_oyQ"/>
+      <ownedAttribute xmi:id="__t1ts6U9EeSvR_bA6y_oyQ" name="faceVisible" visibility="private" type="_E2JO0KU_EeSvR_bA6y_oyQ"/>
+      <ownedAttribute xmi:id="__t1ttKU9EeSvR_bA6y_oyQ" name="horsPlateau" visibility="private" type="_E2JO0KU_EeSvR_bA6y_oyQ"/>
+      <ownedOperation xmi:id="__t1ttaU9EeSvR_bA6y_oyQ" name="clicDetecte"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_A1jjsKU-EeSvR_bA6y_oyQ" name="controleurCartesToVueCartes" memberEnd="_A1jjsaU-EeSvR_bA6y_oyQ _A1jjtKU-EeSvR_bA6y_oyQ" navigableOwnedEnd="_A1jjsaU-EeSvR_bA6y_oyQ _A1jjtKU-EeSvR_bA6y_oyQ">
+      <ownedEnd xmi:id="_A1jjsaU-EeSvR_bA6y_oyQ" name="controleurCarte" visibility="private" type="__t1tsKU9EeSvR_bA6y_oyQ" association="_A1jjsKU-EeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A1jjsqU-EeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A1jjs6U-EeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_A1jjtKU-EeSvR_bA6y_oyQ" name="vueCarte" visibility="private" type="__GKpsKU9EeSvR_bA6y_oyQ" association="_A1jjsKU-EeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A1jjtaU-EeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A1jjtqU-EeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_T_JqwKU-EeSvR_bA6y_oyQ" name="IObserverCarte">
+      <ownedOperation xmi:id="_T_JqwaU-EeSvR_bA6y_oyQ" name="notificationClic">
+        <ownedParameter xmi:id="_T_JqwqU-EeSvR_bA6y_oyQ" name="carte" type="_WWZO8KU-EeSvR_bA6y_oyQ"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_WWZO8KU-EeSvR_bA6y_oyQ" name="ModeleCarte">
+      <ownedAttribute xmi:id="_WWZO8aU-EeSvR_bA6y_oyQ" name="carteBloquee" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WWZO8qU-EeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WWZO86U-EeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_WWZO9KU-EeSvR_bA6y_oyQ" name="carteVisible" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_WWZO9aU-EeSvR_bA6y_oyQ" name="horsPlateau" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_WWZO9qU-EeSvR_bA6y_oyQ" name="symboleCarte" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_WWZO96U-EeSvR_bA6y_oyQ" name="bonusCarte" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <interfaceRealization xmi:id="_kYKZMKVBEeSvR_bA6y_oyQ" client="_WWZO8KU-EeSvR_bA6y_oyQ" supplier="_NgXXgKVAEeSvR_bA6y_oyQ" contract="_NgXXgKVAEeSvR_bA6y_oyQ"/>
+      <ownedOperation xmi:id="_WWZO-aU-EeSvR_bA6y_oyQ" name="notifierClic"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_bHqlkKU-EeSvR_bA6y_oyQ" name="modeleCartesToControleurCartes" memberEnd="_bHqlkaU-EeSvR_bA6y_oyQ _bHqllKU-EeSvR_bA6y_oyQ" navigableOwnedEnd="_bHqlkaU-EeSvR_bA6y_oyQ _bHqllKU-EeSvR_bA6y_oyQ">
+      <ownedEnd xmi:id="_bHqlkaU-EeSvR_bA6y_oyQ" name="modeleCarte" visibility="private" type="_WWZO8KU-EeSvR_bA6y_oyQ" association="_bHqlkKU-EeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bHqlkqU-EeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bHqlk6U-EeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_bHqllKU-EeSvR_bA6y_oyQ" name="controleurCarte" visibility="private" type="__t1tsKU9EeSvR_bA6y_oyQ" association="_bHqlkKU-EeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bHwsMKU-EeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bHwsMaU-EeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iozbwKU-EeSvR_bA6y_oyQ" name="modeleCartesToIObserverCartes" memberEnd="_iozbwaU-EeSvR_bA6y_oyQ _ipFvoqU-EeSvR_bA6y_oyQ" navigableOwnedEnd="_ipFvoqU-EeSvR_bA6y_oyQ">
+      <ownedEnd xmi:id="_iozbwaU-EeSvR_bA6y_oyQ" name="modeleCartes" type="_WWZO8KU-EeSvR_bA6y_oyQ" aggregation="composite" association="_iozbwKU-EeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ipFvoKU-EeSvR_bA6y_oyQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ipFvoaU-EeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_ipFvoqU-EeSvR_bA6y_oyQ" name="listeObersavateurs" type="_T_JqwKU-EeSvR_bA6y_oyQ" association="_iozbwKU-EeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ipYDgKU-EeSvR_bA6y_oyQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ipYDgaU-EeSvR_bA6y_oyQ" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_4CpuMKU-EeSvR_bA6y_oyQ" name="etatscarte">
+      <packagedElement xmi:type="uml:Interface" xmi:id="_E2JO0KU_EeSvR_bA6y_oyQ" name="IEtatCarte">
+        <ownedOperation xmi:id="_byIpcKU_EeSvR_bA6y_oyQ" name="desactiveFaceCachee"/>
+        <ownedOperation xmi:id="_fItjsKU_EeSvR_bA6y_oyQ" name="carteCachee"/>
+        <ownedOperation xmi:id="_g3uDMKU_EeSvR_bA6y_oyQ" name="carteVisible"/>
+        <ownedOperation xmi:id="_kCeH8KU_EeSvR_bA6y_oyQ" name="carteCliquee"/>
+        <ownedOperation xmi:id="_mdicMKU_EeSvR_bA6y_oyQ" name="carteHorsPlateau"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_GlJuUKU_EeSvR_bA6y_oyQ" name="HorsPlateau">
+        <interfaceRealization xmi:id="_GlJuUaU_EeSvR_bA6y_oyQ" client="_GlJuUKU_EeSvR_bA6y_oyQ _GlJuUKU_EeSvR_bA6y_oyQ"/>
+        <interfaceRealization xmi:id="_KK_MkKU_EeSvR_bA6y_oyQ" client="_GlJuUKU_EeSvR_bA6y_oyQ" supplier="_E2JO0KU_EeSvR_bA6y_oyQ" contract="_E2JO0KU_EeSvR_bA6y_oyQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_HHxTMKU_EeSvR_bA6y_oyQ" name="FaceVisible">
+        <interfaceRealization xmi:id="_HHxTMaU_EeSvR_bA6y_oyQ" client="_HHxTMKU_EeSvR_bA6y_oyQ _HHxTMKU_EeSvR_bA6y_oyQ"/>
+        <interfaceRealization xmi:id="_KtUdkKU_EeSvR_bA6y_oyQ" client="_HHxTMKU_EeSvR_bA6y_oyQ" supplier="_E2JO0KU_EeSvR_bA6y_oyQ" contract="_E2JO0KU_EeSvR_bA6y_oyQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_IYKkEKU_EeSvR_bA6y_oyQ" name="FaceCachee">
+        <interfaceRealization xmi:id="_IYKkEaU_EeSvR_bA6y_oyQ" client="_IYKkEKU_EeSvR_bA6y_oyQ _IYKkEKU_EeSvR_bA6y_oyQ"/>
+        <interfaceRealization xmi:id="_LcnzkKU_EeSvR_bA6y_oyQ" client="_IYKkEKU_EeSvR_bA6y_oyQ" supplier="_E2JO0KU_EeSvR_bA6y_oyQ" contract="_E2JO0KU_EeSvR_bA6y_oyQ"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Qb0RcKU_EeSvR_bA6y_oyQ" name="controleurCartesToIEtatCartes" isLeaf="true" memberEnd="_Qb0RcaU_EeSvR_bA6y_oyQ _Qb0RdKU_EeSvR_bA6y_oyQ" navigableOwnedEnd="_Qb0RdKU_EeSvR_bA6y_oyQ">
+      <ownedEnd xmi:id="_Qb0RcaU_EeSvR_bA6y_oyQ" name="controleurCartes" type="__t1tsKU9EeSvR_bA6y_oyQ" association="_Qb0RcKU_EeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Qb0RcqU_EeSvR_bA6y_oyQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Qb0Rc6U_EeSvR_bA6y_oyQ" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_Qb0RdKU_EeSvR_bA6y_oyQ" name="etatCourant" visibility="private" type="_E2JO0KU_EeSvR_bA6y_oyQ" association="_Qb0RcKU_EeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Qb0RdaU_EeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Qb0RdqU_EeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_LWRegKVAEeSvR_bA6y_oyQ" name="agentplateau">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_NgXXgKVAEeSvR_bA6y_oyQ" name="IObserverPlateau">
+      <ownedOperation xmi:id="_NgXXgaVAEeSvR_bA6y_oyQ" name="notificationComparaison">
+        <ownedParameter xmi:id="_NgXXgqVAEeSvR_bA6y_oyQ" name="resultat">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_QXR6QKVAEeSvR_bA6y_oyQ" name="ModelePlateau">
+      <ownedAttribute xmi:id="_ZFdLUKVAEeSvR_bA6y_oyQ" name="nbCartesSurPlateau" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZFdLUaVAEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZFdLUqVAEeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_dfQdIKVAEeSvR_bA6y_oyQ" name="nbLignes" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dfQdIaVAEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dfQdIqVAEeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_d-0uAKVAEeSvR_bA6y_oyQ" name="nbColonnes" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_d-0uAaVAEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_d-0uAqVAEeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_l0uTQKVAEeSvR_bA6y_oyQ" name="positionCarte1" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_l0uTQaVAEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_l0uTQqVAEeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_mUeKUKVAEeSvR_bA6y_oyQ" name="positionCarte2" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mUeKUaVAEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mUeKUqVAEeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_pSQKEKVAEeSvR_bA6y_oyQ" name="cartesIdentiques" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pSQKEaVAEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pSQKEqVAEeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_zZxMoKVAEeSvR_bA6y_oyQ" name="delai" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zZxMoaVAEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zZxMoqVAEeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+      <interfaceRealization xmi:id="_QXR6QaVAEeSvR_bA6y_oyQ" client="_QXR6QKVAEeSvR_bA6y_oyQ _QXR6QKVAEeSvR_bA6y_oyQ"/>
+      <interfaceRealization xmi:id="_jkYL0KVBEeSvR_bA6y_oyQ" client="_QXR6QKVAEeSvR_bA6y_oyQ" supplier="_T_JqwKU-EeSvR_bA6y_oyQ" contract="_T_JqwKU-EeSvR_bA6y_oyQ"/>
+      <ownedOperation xmi:id="_8k6tkKVAEeSvR_bA6y_oyQ" name="recupererListeCartes"/>
+      <ownedOperation xmi:id="_96RW8KVAEeSvR_bA6y_oyQ" name="optimisationAgencementCartes"/>
+      <ownedOperation xmi:id="_B249gKVBEeSvR_bA6y_oyQ" name="abonnementCartes"/>
+      <ownedOperation xmi:id="_EbTbAKVBEeSvR_bA6y_oyQ" name="nouveauTourCommence"/>
+      <ownedOperation xmi:id="_IoDIQKVBEeSvR_bA6y_oyQ" name="bloquerCartesPasSelectionnees"/>
+      <ownedOperation xmi:id="_LBNYAKVBEeSvR_bA6y_oyQ" name="miseAJourCartes"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_TeUHMKVBEeSvR_bA6y_oyQ" name="modelePlateausToIObserverPlateaus" memberEnd="_TeUHMaVBEeSvR_bA6y_oyQ _TeUHNKVBEeSvR_bA6y_oyQ" navigableOwnedEnd="_TeUHNKVBEeSvR_bA6y_oyQ">
+      <ownedEnd xmi:id="_TeUHMaVBEeSvR_bA6y_oyQ" name="modelePlateaus" type="_QXR6QKVAEeSvR_bA6y_oyQ" aggregation="composite" association="_TeUHMKVBEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TeUHMqVBEeSvR_bA6y_oyQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TeUHM6VBEeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_TeUHNKVBEeSvR_bA6y_oyQ" name="listeObservateurs" type="_NgXXgKVAEeSvR_bA6y_oyQ" association="_TeUHMKVBEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TeUHNaVBEeSvR_bA6y_oyQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TeUHNqVBEeSvR_bA6y_oyQ" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_X3j_YKVBEeSvR_bA6y_oyQ" name="modelePlateausToModeleCartes" memberEnd="_X3j_YaVBEeSvR_bA6y_oyQ _X3j_ZKVBEeSvR_bA6y_oyQ" navigableOwnedEnd="_X3j_ZKVBEeSvR_bA6y_oyQ">
+      <ownedEnd xmi:id="_X3j_YaVBEeSvR_bA6y_oyQ" name="modelePlateaus" type="_QXR6QKVAEeSvR_bA6y_oyQ" aggregation="composite" association="_X3j_YKVBEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X3j_YqVBEeSvR_bA6y_oyQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X3j_Y6VBEeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_X3j_ZKVBEeSvR_bA6y_oyQ" name="listeCartes" type="_WWZO8KU-EeSvR_bA6y_oyQ" association="_X3j_YKVBEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X3j_ZaVBEeSvR_bA6y_oyQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X3j_ZqVBEeSvR_bA6y_oyQ" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_JzNB4KVDEeSvR_bA6y_oyQ" name="ControleurPlateau">
+      <ownedAttribute xmi:id="_9nUeYKVDEeSvR_bA6y_oyQ" name="pasCarteSelectionnee" visibility="private" type="_XTUX8KVDEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9nUeYaVDEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9nUeYqVDEeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_EMRZIKVEEeSvR_bA6y_oyQ" name="uneCarteSelectionnee" visibility="private" type="_XTUX8KVDEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EMRZIaVEEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EMRZIqVEEeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_FmrhoKVEEeSvR_bA6y_oyQ" name="DeuxCartesSelectionnees" visibility="private" type="_XTUX8KVDEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FmrhoaVEEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FmrhoqVEEeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_QhJrIKVEEeSvR_bA6y_oyQ" name="comparerCartes"/>
+      <ownedOperation xmi:id="_TUumAKVEEeSvR_bA6y_oyQ" name="carte1Selectionnee"/>
+      <ownedOperation xmi:id="_U1z-QKVEEeSvR_bA6y_oyQ" name="carte2Selectionnee"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_TxHcgKVDEeSvR_bA6y_oyQ" name="etatplateau">
+      <packagedElement xmi:type="uml:Interface" xmi:id="_XTUX8KVDEeSvR_bA6y_oyQ" name="IEtatPlateau">
+        <ownedOperation xmi:id="_bhx8cKVDEeSvR_bA6y_oyQ" name="carteCliquee">
+          <ownedParameter xmi:id="_cHi78KVDEeSvR_bA6y_oyQ" name="carte" type="_WWZO8KU-EeSvR_bA6y_oyQ"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_gwtfcKVDEeSvR_bA6y_oyQ" name="comparaisonCartes"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_j8ISkKVDEeSvR_bA6y_oyQ" name="UneCarteSelectionnee">
+        <interfaceRealization xmi:id="_yV2xMKVDEeSvR_bA6y_oyQ" client="_j8ISkKVDEeSvR_bA6y_oyQ" supplier="_XTUX8KVDEeSvR_bA6y_oyQ" contract="_XTUX8KVDEeSvR_bA6y_oyQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_j8OZMKVDEeSvR_bA6y_oyQ" name="PasCarteSelectionnee">
+        <interfaceRealization xmi:id="_yxgycKVDEeSvR_bA6y_oyQ" client="_j8OZMKVDEeSvR_bA6y_oyQ" supplier="_XTUX8KVDEeSvR_bA6y_oyQ" contract="_XTUX8KVDEeSvR_bA6y_oyQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_j8OZN6VDEeSvR_bA6y_oyQ" name="DeuxCartesSelectionnees">
+        <interfaceRealization xmi:id="_zb82kKVDEeSvR_bA6y_oyQ" client="_j8OZN6VDEeSvR_bA6y_oyQ" supplier="_XTUX8KVDEeSvR_bA6y_oyQ" contract="_XTUX8KVDEeSvR_bA6y_oyQ"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_3JzBUKVDEeSvR_bA6y_oyQ" name="controleurPlateausToIEtatPlateaus" memberEnd="_3JzBUaVDEeSvR_bA6y_oyQ _3JzBVKVDEeSvR_bA6y_oyQ" navigableOwnedEnd="_3JzBUaVDEeSvR_bA6y_oyQ _3JzBVKVDEeSvR_bA6y_oyQ">
+      <ownedEnd xmi:id="_3JzBUaVDEeSvR_bA6y_oyQ" name="controleurPlateaus" type="_JzNB4KVDEeSvR_bA6y_oyQ" association="_3JzBUKVDEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3JzBUqVDEeSvR_bA6y_oyQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3JzBU6VDEeSvR_bA6y_oyQ" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_3JzBVKVDEeSvR_bA6y_oyQ" name="etatCourant" visibility="private" type="_XTUX8KVDEeSvR_bA6y_oyQ" association="_3JzBUKVDEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3JzBVaVDEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3JzBVqVDEeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_aS88YKVEEeSvR_bA6y_oyQ" name="modelePlateausToControleurPlateaus" memberEnd="_aS88YaVEEeSvR_bA6y_oyQ _aTDDAqVEEeSvR_bA6y_oyQ" navigableOwnedEnd="_aS88YaVEEeSvR_bA6y_oyQ _aTDDAqVEEeSvR_bA6y_oyQ">
+      <ownedEnd xmi:id="_aS88YaVEEeSvR_bA6y_oyQ" name="modelePlateau" visibility="private" type="_QXR6QKVAEeSvR_bA6y_oyQ" association="_aS88YKVEEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aTDDAKVEEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aTDDAaVEEeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_aTDDAqVEEeSvR_bA6y_oyQ" name="controleurPlateau" visibility="private" type="_JzNB4KVDEeSvR_bA6y_oyQ" association="_aS88YKVEEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aTDDA6VEEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aTDDBKVEEeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ghNOYKVEEeSvR_bA6y_oyQ" name="VuePlateau">
+      <ownedAttribute xmi:id="_mhiZIKVEEeSvR_bA6y_oyQ" name="grilleCartes" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mhiZIaVEEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mhofwKVEEeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_o0ZzoKVEEeSvR_bA6y_oyQ" name="remplissageGrille"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_rUPTIKVEEeSvR_bA6y_oyQ" name="vuePlateausToControleurPlateaus" memberEnd="_rUPTIaVEEeSvR_bA6y_oyQ _rUPTJKVEEeSvR_bA6y_oyQ" navigableOwnedEnd="_rUPTIaVEEeSvR_bA6y_oyQ _rUPTJKVEEeSvR_bA6y_oyQ">
+      <ownedEnd xmi:id="_rUPTIaVEEeSvR_bA6y_oyQ" name="vuePlateau" visibility="private" type="_ghNOYKVEEeSvR_bA6y_oyQ" association="_rUPTIKVEEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rUPTIqVEEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rUPTI6VEEeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_rUPTJKVEEeSvR_bA6y_oyQ" name="controleurPlateau" visibility="private" type="_JzNB4KVDEeSvR_bA6y_oyQ" association="_rUPTIKVEEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rUPTJaVEEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rUPTJqVEEeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_-RyiQKVEEeSvR_bA6y_oyQ" name="agentpartie">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_Cgc7EKVFEeSvR_bA6y_oyQ" name="IObserverPartie">
+      <ownedOperation xmi:id="_ERXfEKVFEeSvR_bA6y_oyQ" name="updateJoueurs"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_MTHH8KVFEeSvR_bA6y_oyQ" name="ModelePartie">
+      <ownedAttribute xmi:id="_kGCKkKVFEeSvR_bA6y_oyQ" name="nbPairesRestantes" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kGCKkaVFEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_kGCKkqVFEeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_oJVn8KVFEeSvR_bA6y_oyQ" name="nomVainqueur" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oJVn8aVFEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oJVn8qVFEeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_qjWzUKVFEeSvR_bA6y_oyQ" name="scoreVainqueur" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qjWzUaVFEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qjWzUqVFEeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_r2nK8KVFEeSvR_bA6y_oyQ" name="pairesVainqueur" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_r2nK8aVFEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_r2nK8qVFEeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_yT1tEKVFEeSvR_bA6y_oyQ" name="notifierObservateurs"/>
+      <ownedOperation xmi:id="_1kBrcKVFEeSvR_bA6y_oyQ" name="majComparaison"/>
+      <ownedOperation xmi:id="_3Gu0UKVFEeSvR_bA6y_oyQ" name="debutNouveauTour"/>
+      <ownedOperation xmi:id="_3SXckKVFEeSvR_bA6y_oyQ" name="enregistrementVainqueur"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_YcWxsKVFEeSvR_bA6y_oyQ" name="modelePartiesToModelePlateaus" memberEnd="_YcWxsaVFEeSvR_bA6y_oyQ _YcWxtKVFEeSvR_bA6y_oyQ" navigableOwnedEnd="_YcWxtKVFEeSvR_bA6y_oyQ">
+      <ownedEnd xmi:id="_YcWxsaVFEeSvR_bA6y_oyQ" name="modeleParties" type="_MTHH8KVFEeSvR_bA6y_oyQ" association="_YcWxsKVFEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YcWxsqVFEeSvR_bA6y_oyQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YcWxs6VFEeSvR_bA6y_oyQ" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_YcWxtKVFEeSvR_bA6y_oyQ" name="modelePlateau" visibility="private" type="_QXR6QKVAEeSvR_bA6y_oyQ" association="_YcWxsKVFEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YcWxtaVFEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YcWxtqVFEeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_AfpEcKVGEeSvR_bA6y_oyQ" name="modelePartiesToIObserverParties" memberEnd="_AfpEcaVGEeSvR_bA6y_oyQ _AfvLEqVGEeSvR_bA6y_oyQ" navigableOwnedEnd="_AfvLEqVGEeSvR_bA6y_oyQ">
+      <ownedEnd xmi:id="_AfpEcaVGEeSvR_bA6y_oyQ" name="modeleParties" type="_MTHH8KVFEeSvR_bA6y_oyQ" aggregation="composite" association="_AfpEcKVGEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AfvLEKVGEeSvR_bA6y_oyQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AfvLEaVGEeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_AfvLEqVGEeSvR_bA6y_oyQ" name="listeObservateurs" type="_Cgc7EKVFEeSvR_bA6y_oyQ" association="_AfpEcKVGEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AfvLE6VGEeSvR_bA6y_oyQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AfvLFKVGEeSvR_bA6y_oyQ" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_GZlTUKVGEeSvR_bA6y_oyQ" name="ControleurPartie">
+      <ownedAttribute xmi:id="_samzYKVGEeSvR_bA6y_oyQ" name="partieEnCours" visibility="private" type="_L2irQKVGEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_samzYaVGEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_samzYqVGEeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_wYF8oKVGEeSvR_bA6y_oyQ" name="finPartie" visibility="private" type="_L2irQKVGEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wYF8oaVGEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wYF8oqVGEeSvR_bA6y_oyQ" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_JZwfwKVGEeSvR_bA6y_oyQ" name="etatpartie">
+      <packagedElement xmi:type="uml:Interface" xmi:id="_L2irQKVGEeSvR_bA6y_oyQ" name="IEtatPartie">
+        <ownedOperation xmi:id="_OexRwKVGEeSvR_bA6y_oyQ" name="updateVue"/>
+        <ownedOperation xmi:id="_Pi3MAKVGEeSvR_bA6y_oyQ" name="plusPairesRestantes"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_UAlUgKVGEeSvR_bA6y_oyQ" name="PartieEnCours">
+        <interfaceRealization xmi:id="_btQFQKVGEeSvR_bA6y_oyQ" client="_UAlUgKVGEeSvR_bA6y_oyQ" supplier="_L2irQKVGEeSvR_bA6y_oyQ" contract="_L2irQKVGEeSvR_bA6y_oyQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_WuV7QKVGEeSvR_bA6y_oyQ" name="FinPartie">
+        <interfaceRealization xmi:id="_cInyoKVGEeSvR_bA6y_oyQ" client="_WuV7QKVGEeSvR_bA6y_oyQ" supplier="_L2irQKVGEeSvR_bA6y_oyQ" contract="_L2irQKVGEeSvR_bA6y_oyQ"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_gehb4KVGEeSvR_bA6y_oyQ" name="controleurPartiesToIEtatParties" memberEnd="_gehb4aVGEeSvR_bA6y_oyQ _genigqVGEeSvR_bA6y_oyQ" navigableOwnedEnd="_genigqVGEeSvR_bA6y_oyQ">
+      <ownedEnd xmi:id="_gehb4aVGEeSvR_bA6y_oyQ" name="controleurParties" type="_GZlTUKVGEeSvR_bA6y_oyQ" association="_gehb4KVGEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_genigKVGEeSvR_bA6y_oyQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_genigaVGEeSvR_bA6y_oyQ" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_genigqVGEeSvR_bA6y_oyQ" name="etatCourant" visibility="private" type="_L2irQKVGEeSvR_bA6y_oyQ" association="_gehb4KVGEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_genig6VGEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_genihKVGEeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_nAzdIKVGEeSvR_bA6y_oyQ" name="modelePartiesToControleurParties" memberEnd="_nAzdIaVGEeSvR_bA6y_oyQ _nAzdJKVGEeSvR_bA6y_oyQ" navigableOwnedEnd="_nAzdIaVGEeSvR_bA6y_oyQ _nAzdJKVGEeSvR_bA6y_oyQ">
+      <ownedEnd xmi:id="_nAzdIaVGEeSvR_bA6y_oyQ" name="modelePartie" visibility="private" type="_MTHH8KVFEeSvR_bA6y_oyQ" association="_nAzdIKVGEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nAzdIqVGEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nAzdI6VGEeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_nAzdJKVGEeSvR_bA6y_oyQ" name="controleurPartie" visibility="private" type="_GZlTUKVGEeSvR_bA6y_oyQ" association="_nAzdIKVGEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nAzdJaVGEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nA5jwKVGEeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_0wF3oKVGEeSvR_bA6y_oyQ" name="VuePartie">
+      <ownedOperation xmi:id="_FQ27QKVHEeSvR_bA6y_oyQ" name="updatePairesRestantes"/>
+      <ownedOperation xmi:id="_HXCkoKVHEeSvR_bA6y_oyQ" name="updateVictoire"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_9hCv4KVGEeSvR_bA6y_oyQ" name="controleurPartiesToVueParties" memberEnd="_9hCv4aVGEeSvR_bA6y_oyQ _9hI2gaVGEeSvR_bA6y_oyQ" navigableOwnedEnd="_9hCv4aVGEeSvR_bA6y_oyQ _9hI2gaVGEeSvR_bA6y_oyQ">
+      <ownedEnd xmi:id="_9hCv4aVGEeSvR_bA6y_oyQ" name="controleurPartie" visibility="private" type="_GZlTUKVGEeSvR_bA6y_oyQ" association="_9hCv4KVGEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9hCv4qVGEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9hI2gKVGEeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_9hI2gaVGEeSvR_bA6y_oyQ" name="vuePartie" visibility="private" type="_0wF3oKVGEeSvR_bA6y_oyQ" association="_9hCv4KVGEeSvR_bA6y_oyQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9hI2gqVGEeSvR_bA6y_oyQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9hI2g6VGEeSvR_bA6y_oyQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
   </packagedElement>
 </uml:Model>

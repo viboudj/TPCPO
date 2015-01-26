@@ -93,7 +93,7 @@ public class ModelePlateau implements IObserverCarte {
 	}
 
 	/**
-	 * Remplit la iste des cartes sur le plateau en recuperant les informations necessaires dans listeCartesMelangees
+	 * Remplit la liste des cartes sur le plateau en recuperant les informations necessaires dans listeCartesMelangees
 	 * @see Plateau
 	 */
 	public void recupererListeCartes() {
