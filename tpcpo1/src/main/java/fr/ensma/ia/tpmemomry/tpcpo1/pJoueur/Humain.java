@@ -2,7 +2,6 @@ package fr.ensma.ia.tpmemomry.tpcpo1.pJoueur;
 
 import fr.ensma.ia.tpmemomry.tpcpo1.pPlateau.carte.ICarte;
 
-
 /**
  * joueur humain
  * @author clementdouault
@@ -34,6 +33,8 @@ public class Humain implements IJoueur {
 	 */
 	private int nbrPairesTrouvees=0;
 
+	// -- CONSTRUCTEUR -- //
+	
 	/**
 	 * Constructeur sans parametre
 	 * Cree une instance de Humain
@@ -57,6 +58,47 @@ public class Humain implements IJoueur {
 		score = new Score();
 	}
 
+	// -- COMPORTEMENT -- //
+	
+	@Override
+	public void majMemoireIA() {
+	}
+
+	@Override
+	public void jouer() {
+	}
+	
+	@Override
+	public ICarte getCarte1() {
+		return null;
+	}
+	
+	@Override
+	public ICarte getCarte2() {
+		return null;
+	}
+
+	/**
+	 * traitement du tour perdu du joueur
+	 */
+	@Override
+	public void tourPerdu() {
+		nbrPairesSuccessives = 0;		
+	}
+
+	/**
+	 * traitement du tour gagné du joueur
+	 * @param effetCarte int : le bonus donne par la paire trouvee
+	 */
+	@Override
+	public void tourGagne(int effetCarte) {
+		this.score.updateScore(nbrPairesSuccessives, effetCarte);
+		nbrPairesSuccessives++;
+		nbrPairesTrouvees++;
+	}
+	
+	// -- ACCESSEURS -- //
+	
 	/**
 	 * donne le nom du joueur
 	 * @return nom String : nom du joueur
@@ -98,45 +140,5 @@ public class Humain implements IJoueur {
 	@Override
 	public Score getScore() {
 		return score;
-	}
-	
-	@Override
-	public void majMemoireIA() {
-	}
-
-	/**
-	 * lance le jeu des joueur IA
-	 */
-	@Override
-	public void jouer() {
-	}
-	
-	@Override
-	public ICarte getCarte1() {
-		return null;
-	}
-	
-	@Override
-	public ICarte getCarte2() {
-		return null;
-	}
-
-	/**
-	 * traitement du tour perdu du joueur
-	 */
-	@Override
-	public void tourPerdu() {
-		nbrPairesSuccessives = 0;		
-	}
-
-	/**
-	 * traitement du tour gagné du joueur
-	 * @param effetCarte int : le bonus donne par la paire trouvee
-	 */
-	@Override
-	public void tourGagne(int effetCarte) {
-		this.score.updateScore(nbrPairesSuccessives, effetCarte);
-		nbrPairesSuccessives++;
-		nbrPairesTrouvees++;
 	}
 }

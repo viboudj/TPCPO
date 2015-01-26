@@ -64,6 +64,8 @@ public abstract class IA {
 	 */
 	protected int nbrPairesTrouvees = 0;
 
+	// -- CONSTRUCTEURS -- //
+	
 	/**
 	 * Constructeur a un parametre
 	 * @param p Plateau : la reference du plateau
@@ -88,23 +90,14 @@ public abstract class IA {
 		score = new Score();
 		plateau=p;
 	}
-
-	/**
-	 * donne le nom du joueur
-	 * @return nom String : nom du joueur
-	 */
-	public String getNom() {
-		return nom;
-	}
-
-	/**
-	 * modifie le nom du joueur
-	 * @param nom String : le nom du jour
-	 */
-	public void setNom(String nom) {
-		this.nom=nom;
-	}
 	
+
+	// -- COMPORTEMENT -- //
+	
+	/**
+	 * Mise a jour de la memoire des IA.</br>
+	 * Mise en memoire des cartes jouees ce tour en faisant attention a la redondance
+	 */
 	public void majMemoireIA() {
 		System.out.print("debut maj memoire\n");
 		// verification que les cartes memorisee sont sur le plateau, on les enleve de la memoire sinon
@@ -139,6 +132,10 @@ public abstract class IA {
 		}
 	}
 	
+	/**
+	 * Deroulement du phase de jeu d'une IA.</br>
+	 * Selection des deux cartes en fonction des cartes en memoire
+	 */
 	public void jouer() {
 		// liste servant a retenir les cartes potentiellement selectionnables
 		ArrayList<ICarte> listeCartesPossibles = new ArrayList<ICarte>();
@@ -201,6 +198,12 @@ public abstract class IA {
 		plateau.setCartesSelectionnees(true);
 	}
 	
+	/**
+	 * Retourne true si les deux cartes sont identiques, false sinon
+	 * @param carte1 ICarte : la premiere carte a comparer
+	 * @param carte2 ICarte : la seconde carte a comparer
+	 * @return
+	 */
 	public boolean comparerCartes(ICarte carte1, ICarte carte2) {
 		if(carte1.getSymbole() == carte2.getSymbole() &&
 				carte1.getBonusCarte() == carte2.getBonusCarte()) {
@@ -223,6 +226,41 @@ public abstract class IA {
 	 */
 	public ICarte getCarte2() {
 		return carte2;
+	}
+	
+	/**
+	 * Effectue les actions correspondantes si le joueur n'a pas trouve de paire
+	 */
+	public void tourPerdu() {
+		nbrPairesSuccessives = 0;		
+	}
+
+	/**
+	 * Effectue les actions correspondantes si le joueur a trouve une paire
+	 * @param effetCarte int : le bonus donne par la paire trouvee
+	 */
+	public void tourGagne(int effetCarte) {
+		this.score.updateScore(nbrPairesSuccessives, effetCarte);	
+		nbrPairesSuccessives++;
+		nbrPairesTrouvees++;
+	}
+	
+	// -- ACCESSEURS -- //
+
+	/**
+	 * donne le nom du joueur
+	 * @return nom String : nom du joueur
+	 */
+	public String getNom() {
+		return nom;
+	}
+
+	/**
+	 * modifie le nom du joueur
+	 * @param nom String : le nom du jour
+	 */
+	public void setNom(String nom) {
+		this.nom=nom;
 	}
 
 	/**
@@ -247,22 +285,5 @@ public abstract class IA {
 	 */
 	public Score getScore() {
 		return score;
-	}
-
-	/**
-	 * Effectue les actions correspondantes si le joueur n'a pas trouve de paire
-	 */
-	public void tourPerdu() {
-		nbrPairesSuccessives = 0;		
-	}
-
-	/**
-	 * Effectue les actions correspondantes si le joueur a trouve une paire
-	 * @param effetCarte int : le bonus donne par la paire trouvee
-	 */
-	public void tourGagne(int effetCarte) {
-		this.score.updateScore(nbrPairesSuccessives, effetCarte);	
-		nbrPairesSuccessives++;
-		nbrPairesTrouvees++;
 	}
 }
