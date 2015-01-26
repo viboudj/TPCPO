@@ -32,6 +32,10 @@ public class InitialisationJoueurs extends Container implements ActionListener {
 	 */
 	private String[] niveauCPU = { "Stupide", "Debutant", "Intermediaire", "Expert"};
 
+	
+	/**
+	 * Constructeur du tableau d'acquisition des parametres joueurs
+	 */
 	public InitialisationJoueurs() {
 		setLayout(new BorderLayout());
 		
@@ -80,7 +84,6 @@ public class InitialisationJoueurs extends Container implements ActionListener {
 
 	// -- OVERRIDE DES METHODES DES LISTENERS -- //
 	
-
 	public void actionPerformed(ActionEvent e) {
 		// ajout d'un joueur par defaut dans le tableau si clic sur le bouton ajouter
 		if (e.getSource() == ajouter) {
@@ -200,7 +203,6 @@ public class InitialisationJoueurs extends Container implements ActionListener {
 			// on prend la premiere
 			return this.data[0][col].getClass();
 		}
-		
 		
 		public boolean isCellEditable(int row, int col) {
 			if (col == 0) {

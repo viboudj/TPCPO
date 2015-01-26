@@ -2,6 +2,12 @@ package fr.ensma.ia.tp_IHM_memory.agentjoueursmvc;
 
 import fr.ensma.ia.tp_IHM_memory.agentjoueursmvc.VueJoueurs;
 
+/**
+ * Classe representant le controleur de la liste des joueurs conformement a l'architecture MVC.</br>
+ * 
+ * @author clementdouault
+ *
+ */
 public class ControleurJoueurs {
 	
 	/**
@@ -30,6 +36,10 @@ public class ControleurJoueurs {
 		vueJoueurs.refreshVue();
 	}
 
+	/**
+	 * Obtient la reference de la vue de la liste des joueurs
+	 * @return vueJoueurs VueJoueurs : la reference de la vue
+	 */
 	public VueJoueurs getVueJoueurs() {
 		return vueJoueurs;
 	}

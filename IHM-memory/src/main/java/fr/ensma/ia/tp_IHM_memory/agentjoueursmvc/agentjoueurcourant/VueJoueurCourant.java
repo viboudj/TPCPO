@@ -30,6 +30,9 @@ public class VueJoueurCourant extends Container {
 	 */
 	private ControleurJoueurCourant controleurJoueurCourant;
 	
+	/**
+	 * Tableau contenant les informations du joueur courant
+	 */
 	private JTable infoJoueurCourant;
 	
 	// -- CONSTRUCTEUR -- //

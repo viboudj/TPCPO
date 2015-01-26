@@ -8,7 +8,7 @@ import fr.ensma.ia.tp_IHM_memory.agentcartemvc.ModeleCarte;
 import fr.ensma.ia.tpmemomry.tpcpo1.Partie;
 
 /**
- * Classe representant le modele d'un plateau conformement a l'architecture MVC.</br>
+ * Classe representant le modele du plateau conformement a l'architecture MVC.</br>
  * Implemente IObserverCarte afin d'etre informe des clics sur les cartes.
  * 
  * @author clementdouault
@@ -316,7 +316,7 @@ public class ModelePlateau implements IObserverCarte {
 	
 	/**
 	 * Obtient la liste des cartes composant le plateau
-	 * @return listeCartesSurPlateau ArrayList&lsaquo;ModeleCarte&rsaquo;: la liste des cartes sur le plateau
+	 * @return listeCartesSurPlateau ArrayList&lsaquo;ModeleCarte&rsaquo; : la liste des cartes sur le plateau
 	 */
 	public ArrayList<ModeleCarte> getListeCartesSurPlateau() {
 		return listeCartesSurPlateau;

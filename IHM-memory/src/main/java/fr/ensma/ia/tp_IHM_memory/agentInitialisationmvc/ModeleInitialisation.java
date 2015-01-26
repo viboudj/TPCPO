@@ -1,11 +1,16 @@
 package fr.ensma.ia.tp_IHM_memory.agentInitialisationmvc;
 
 import java.util.ArrayList;
-import java.util.ListIterator;
 
 import fr.ensma.ia.tp_IHM_memory.agentpartiemvc.ModelePartie;
 import fr.ensma.ia.tpmemomry.tpcpo1.Partie;
 
+/**
+ * Classe representant le modele de l'initialisation conformement a l'architecture MVC.</br>
+ * 
+ * @author clementdouault
+ *
+ */
 public class ModeleInitialisation {
 	
 	/**
@@ -13,25 +18,57 @@ public class ModeleInitialisation {
 	 */
 	private ControleurInitialisation controleurInitialisation;
 	
+	/**
+	 * Reference du noyau fonctionnel
+	 */
 	private Partie nouvellePartie;
 	
+	/**
+	 * Reference du modele de partie
+	 */
 	private ModelePartie modelePartie;
 	
-	private int nbSymbole;
+	/**
+	 * Nombre de symboles differents
+	 */
+	private int nbSymboles;
 	
+	/**
+	 * Nombre de paires par symbole
+	 */
 	private int nbPairesParSymbole;
 	
+	/**
+	 * Booleen a true si la partie comporte des bonus, false sinon
+	 */
 	private boolean partieAvecBonus;
 	
+	/**
+	 * Probabilite d'apparition des cartes bonus
+	 */
 	private int probabiliteBonus;
 	
+	/**
+	 * Nombre total de joueurs
+	 */
 	private int nbJoueurs;
 	
+	/**
+	 * Liste des noms des joueurs
+	 */
 	private ArrayList<String> listeNomJoueurs;
 	
+	/**
+	 * Liste de booleen : a true si le joueur est une IA, false sinon
+	 */
 	private ArrayList<Boolean> listeIsIA;
 	
+	/**
+	 * Liste du niveau des IA par joueur
+	 */
 	private ArrayList<String> listeNiveauIA;
+	
+	// -- CONSTRUCTEURS -- //
 	
 	/**
 	 * Constructeur du modele de l'initialisation
@@ -39,10 +76,32 @@ public class ModeleInitialisation {
 	public ModeleInitialisation(){
 		controleurInitialisation = new ControleurInitialisation(this);
 	}
+
+	// -- COMPORTEMENT -- //
 	
+	/**
+	 * Methode acqerant tous les parametres rentrés par l'utilisateurs sur la vue.<br>
+	 * Apres l'acquisition, la methode lance la creation de la partie correspondante.
+	 */
+	public void acquisitionParametres() {
+		acquisitionNbSymboles();
+		acquisitionNbPairesParSymbole();
+		acquisitionProbaBonus();
+		acquisitionNbJoueurs();
+		acquisitionListeNomJoueurs();
+		acquisitionListeIsIA();
+		acquisitionListeNiveauIA();
+		
+		// creation de la partie avec les parametres acquis
+		creationPartie();
+	}
+	
+	/**
+	 * Methode creant la partie en fonction des parametres acquis sur la vue
+	 */
 	public void creationPartie() {
 		// instantiation de la partie personnalisee
-		nouvellePartie = new Partie(nbSymbole, nbPairesParSymbole, partieAvecBonus, probabiliteBonus);
+		nouvellePartie = new Partie(nbSymboles, nbPairesParSymbole, partieAvecBonus, probabiliteBonus);
 		
 		// ajout des joueurs a la partie
 		for(int i=0 ; i<nbJoueurs ; i++) {
@@ -65,30 +124,28 @@ public class ModeleInitialisation {
 		// instanciation du modele de la partie
 		modelePartie = new ModelePartie(nouvellePartie);
 	}
-
-	public void acquisitionParametres() {
-		acquisitionNbSymboles();
-		acquisitionNbPairesParSymbole();
-		acquisitionProbaBonus();
-		acquisitionNbJoueurs();
-		acquisitionListeNomJoueurs();
-		acquisitionListeIsIA();
-		acquisitionListeNiveauIA();
-		
-		// creation de la partie avec les parametres acquis
-		creationPartie();
-	}
 	
+	// -- METHODES D'ACQUISITION -- //
+	
+	/**
+	 * Acquiert le nombre de symboles
+	 */
 	public void acquisitionNbSymboles() {
-		nbSymbole = Integer.parseInt(
+		nbSymboles = Integer.parseInt(
 				controleurInitialisation.getVueInitialisation().getTexteNbSymboles().getText());
 	}
 
+	/**
+	 * Acquiert le nombre de paires par symbole
+	 */
 	public void acquisitionNbPairesParSymbole() {
 		nbPairesParSymbole = Integer.parseInt(
 				controleurInitialisation.getVueInitialisation().getTexteNbPaires().getText());
 	}
 	
+	/**
+	 * Acquiert les parametres lies aux cartes bonus. </br>
+	 */
 	public void acquisitionProbaBonus() {
 		partieAvecBonus = controleurInitialisation.getVueInitialisation().
 				getRadioAvecBonus().isSelected();
@@ -101,11 +158,17 @@ public class ModeleInitialisation {
 		}
 	}
 	
+	/**
+	 * Calcule le nombre de joueurs
+	 */
 	public void acquisitionNbJoueurs() {
 		nbJoueurs = controleurInitialisation.getVueInitialisation().
 				getTableauParamJoueurs().getTableauNouveauxJoueurs().getRowCount();
 	}
 	
+	/**
+	 * Acquiert le nom des joueurs
+	 */
 	public void acquisitionListeNomJoueurs() {
 		listeNomJoueurs = new ArrayList<String>(nbJoueurs);
 		for (int i=0 ; i<nbJoueurs ; i++) {
@@ -114,6 +177,9 @@ public class ModeleInitialisation {
 		}
 	}
 	
+	/**
+	 * Acquiert si les joueurs sont des IA ou non
+	 */
 	public void acquisitionListeIsIA() {
 		listeIsIA = new ArrayList<Boolean>(nbJoueurs);
 		for (int i=0 ; i<nbJoueurs ; i++) {
@@ -122,6 +188,9 @@ public class ModeleInitialisation {
 		}
 	}
 	
+	/**
+	 * Acquiert le niveau de chaque IA
+	 */
 	public void acquisitionListeNiveauIA() {
 		listeNiveauIA = new ArrayList<String>(nbJoueurs);
 		for (int i=0 ; i<nbJoueurs ; i++) {

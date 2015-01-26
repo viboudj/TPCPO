@@ -91,7 +91,6 @@ public abstract class IA {
 		plateau=p;
 	}
 	
-
 	// -- COMPORTEMENT -- //
 	
 	/**
@@ -99,7 +98,6 @@ public abstract class IA {
 	 * Mise en memoire des cartes jouees ce tour en faisant attention a la redondance
 	 */
 	public void majMemoireIA() {
-		System.out.print("debut maj memoire\n");
 		// verification que les cartes memorisee sont sur le plateau, on les enleve de la memoire sinon
 		for (int i=0 ; i<cartesEnMemoire.size() ; i++) {
 			if (cartesEnMemoire.get(i).getSurPlateau() == false) {
@@ -125,11 +123,6 @@ public abstract class IA {
 				}
 				cartesEnMemoire.add(plateau.getCarte2());
 		}	
-		System.out.print("fin maj memoire : \n");
-		for(int i=0 ; i<cartesEnMemoire.size() ; i++) {
-			System.out.println(cartesEnMemoire.get(i).getSymbole() + " " + 
-		cartesEnMemoire.get(i).getBonusCarte() +"\n");
-		}
 	}
 	
 	/**

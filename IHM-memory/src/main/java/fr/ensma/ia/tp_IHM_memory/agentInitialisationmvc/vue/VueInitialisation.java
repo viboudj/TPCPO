@@ -12,7 +12,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.Box;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -147,6 +146,8 @@ public class VueInitialisation extends JFrame implements ActionListener, KeyList
 	 */
 	private Border ligneBordure = new LineBorder(new Color(247, 159, 129), 2, false);
 
+	// -- CONSTRUCTEURS -- //
+	
 	/**
 	 * Constructeur de la vue d'initialisation de la partie
 	 * @param modeleInitialisation ModeleInitialisation : le modele de l'initialisation
@@ -185,6 +186,10 @@ public class VueInitialisation extends JFrame implements ActionListener, KeyList
 		
 	}
 	
+	/**
+	 * Methode permettant de creer la vue de gauche contenant 
+	 * les parametres relatifs aux cartes
+	 */
 	public void creationParametreCartes() {
 		// creation de la Box contenant les parametres de nombres de cartes
 		Box boiteParamNbCartes = Box.createVerticalBox();

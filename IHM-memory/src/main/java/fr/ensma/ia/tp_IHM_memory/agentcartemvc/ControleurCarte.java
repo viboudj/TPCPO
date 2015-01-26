@@ -70,6 +70,9 @@ public class ControleurCarte {
 	
 	// -- COMPORTEMENT -- //
 	
+	/**
+	 * Methode prevenant le modele d'un clic sur la vue
+	 */
 	public void clicDetecte() {
 		modeleCarte.notifierClic();
 	}

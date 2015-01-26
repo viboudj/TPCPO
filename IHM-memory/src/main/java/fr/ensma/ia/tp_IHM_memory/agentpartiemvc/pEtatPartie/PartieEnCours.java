@@ -2,6 +2,13 @@ package fr.ensma.ia.tp_IHM_memory.agentpartiemvc.pEtatPartie;
 
 import fr.ensma.ia.tp_IHM_memory.agentpartiemvc.ControleurPartie;
 
+/**
+ * Classe representant l'etat ou la partie est en cours.</br></br>
+ * 
+ * Pattern strategy
+ * @author clementdouault
+ *
+ */
 public class PartieEnCours implements IEtatPartie {
 
 	/**

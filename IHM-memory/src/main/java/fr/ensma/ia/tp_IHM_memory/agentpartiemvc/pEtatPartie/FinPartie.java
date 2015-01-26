@@ -2,6 +2,13 @@ package fr.ensma.ia.tp_IHM_memory.agentpartiemvc.pEtatPartie;
 
 import fr.ensma.ia.tp_IHM_memory.agentpartiemvc.ControleurPartie;
 
+/**
+ * Classe representant l'etat de fin de partie.</br></br>
+ * 
+ * Pattern strategy
+ * @author clementdouault
+ *
+ */
 public class FinPartie implements IEtatPartie {
 
 	/**

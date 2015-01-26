@@ -1,5 +1,12 @@
 package fr.ensma.ia.tp_IHM_memory.agentpartiemvc.pEtatPartie;
 
+/**
+ * Classe representant un etat de la partie.</br></br>
+ * 
+ * Pattern Strategy
+ * @author clementdouault
+ *
+ */
 public interface IEtatPartie {
 	
 	/**

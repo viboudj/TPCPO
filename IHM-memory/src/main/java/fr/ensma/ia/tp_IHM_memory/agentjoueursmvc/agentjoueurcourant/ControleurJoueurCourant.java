@@ -34,6 +34,10 @@ public class ControleurJoueurCourant {
 		vueJoueurCourant.refreshVue();
 	}
 
+	/**
+	 * Obtient la reference de la vue du joueur courant
+	 * @return vueJoueurCourant VueJoueurCourant : la reference de la vue
+	 */
 	public VueJoueurCourant getVueJoueurCourant() {
 		return vueJoueurCourant;
 	}
